@@ -1,0 +1,7 @@
+﻿namespace Abstracts.Pooling.Base
+{
+    public interface ICreationStrategy<out T> where T : IPoolable
+    {
+        T Create();
+    }
+}
