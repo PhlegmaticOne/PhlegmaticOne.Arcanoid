@@ -1,23 +1,22 @@
-﻿using Abstracts.Popups.Base;
-using Scenes.MainGameScene.Configurations.Packs;
-using Scenes.MainGameScene.Data.Repositories.ResourcesImplementation;
+﻿using System.Collections;
+using App.Scripts.Common.Localization;
+using App.Scripts.Common.Localization.Base;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace App.Scripts.Scenes
 {
     public class Test : MonoBehaviour
     {
-        [SerializeField] private Button _button;
-        [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
+        [SerializeField] private LocalizationSelector _localizationSelector;
 
-        private IPopupManager _popupManager;
-        private void Start()
+        private ILocalizationManager _localizationManager;
+        
+        private IEnumerator Start()
         {
-            var packsRepository = new ResourcesPackRepository(_packCollectionConfiguration);
-            var packLevels = packsRepository.GetLevels("Tutorial");
-            packLevels.PassLevel(0);
-            packsRepository.Save(packLevels);
+            var localizationManager = new LocalizationManager(new[] { "UI" });
+            yield return localizationManager.Initialize();
+            _localizationSelector.Initialize(localizationManager);
+            _localizationManager = localizationManager;
         }
     }
 }

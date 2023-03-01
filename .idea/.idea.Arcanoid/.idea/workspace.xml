@@ -2,31 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackCollectionConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackCollectionConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackLevelCollection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackLevelCollection.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/ILevelRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/ILevelRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/IPackRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/IPackRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/Base/ILocalizationManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/Base/ILocalizationManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/LocalizationManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/LocalizationManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/LocalizationSelector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/LocalizationSelector.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupSystemConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupSystemConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Repositories.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/TutorialPack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +114,7 @@
       <workItem from="1677509491201" duration="12091000" />
       <workItem from="1677563602780" duration="1486000" />
       <workItem from="1677567644649" duration="15143000" />
-      <workItem from="1677648422770" duration="13665000" />
+      <workItem from="1677648422770" duration="18994000" />
     </task>
     <servers />
   </component>
@@ -141,30 +130,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs</url>
-          <line>27</line>
-          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Scenes\MainGameScene\Data\Repositories\ResourcesImplementation\ResourcesPackRepository.cs" initialLine="27" containingFunctionPresentation="method 'GetLevels'">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs</url>
+          <line>14</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Scenes\Test.cs" initialLine="14" containingFunctionPresentation="method 'Start'">
             <startOffsets>
-              <option value="1196" />
+              <option value="442" />
             </startOffsets>
             <endOffsets>
-              <option value="1293" />
+              <option value="496" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Scenes\MainGameScene\Data\Repositories\ResourcesImplementation\Base\ResourcesRepositoryBase.cs" initialLine="23" containingFunctionPresentation="method 'GetMatchesInAssetNames'">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Common/Localization/LocalizationManager.cs</url>
+          <line>40</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Common\Localization\LocalizationManager.cs" initialLine="40" containingFunctionPresentation="method 'GetAvailableLocales'">
             <startOffsets>
-              <option value="924" />
+              <option value="1313" />
             </startOffsets>
             <endOffsets>
-              <option value="957" />
+              <option value="1327" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
