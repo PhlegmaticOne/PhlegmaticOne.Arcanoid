@@ -6,14 +6,23 @@ namespace Abstracts.Pooling.Implementation
 {
     public class PoolProvider : IPoolProvider
     {
-        private readonly Dictionary<Type, IObjectPool> _poolsAvailable = new Dictionary<Type, IObjectPool>();
+        private readonly Dictionary<Type, IObjectPool> _objectPoolsAvailable;
+        private readonly Dictionary<Type, IObjectPool> _abstractPoolsAvailable;
 
-        public PoolProvider AddPool<T>(IObjectPool<T> pool) where T : IPoolable
+        public PoolProvider(Dictionary<Type, IObjectPool> objectPoolsAvailable, 
+            Dictionary<Type, IObjectPool> abstractPoolsAvailable)
         {
-            _poolsAvailable.Add(typeof(T), pool);
-            return this;
+            _objectPoolsAvailable = objectPoolsAvailable;
+            _abstractPoolsAvailable = abstractPoolsAvailable;
         }
 
-        public IObjectPool<T> GetPool<T>() where T : IPoolable => (IObjectPool<T>)_poolsAvailable[typeof(T)];
+        public IObjectPool<T> GetPool<T>() where T : IPoolable => 
+            (IObjectPool<T>)_objectPoolsAvailable[typeof(T)];
+
+        public IObjectPool<T> GetPoolByItemType<T>(T item) where T : IPoolable => 
+            (IObjectPool<T>)_objectPoolsAvailable[item.GetType()];
+        
+        public IAbstractObjectPool<TBase> GetAbstractPool<TBase>() where TBase : IPoolable => 
+            (IAbstractObjectPool<TBase>)_abstractPoolsAvailable[typeof(TBase)];
     }
 }

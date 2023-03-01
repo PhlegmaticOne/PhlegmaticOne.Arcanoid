@@ -7,8 +7,13 @@ namespace Abstracts.Pooling.Implementation
     {
         private readonly Func<T> _factoryFunc;
 
-        public FuncCreationStrategy(Func<T> factoryFunc) => _factoryFunc = factoryFunc;
-        
+        public FuncCreationStrategy(Type objectType, Func<T> factoryFunc)
+        {
+            ObjectType = objectType;
+            _factoryFunc = factoryFunc;
+        }
+
+        public Type ObjectType { get; }
         public T Create() => _factoryFunc.Invoke();
     }
 }
