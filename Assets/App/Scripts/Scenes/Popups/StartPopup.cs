@@ -1,6 +1,5 @@
 ﻿using Abstracts.Popups;
 using Abstracts.Popups.Base;
-using App.Scripts.Common.Localization.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,13 +11,12 @@ namespace Scenes.Popups
         [SerializeField] private Button _startGameButton;
 
         private IPopupManager _popupManager;
-        private ILocalizationManager _localizationManager;
 
-        public void Initialize(IPopupManager popupManager, ILocalizationManager localizationManager)
+        public void Initialize(IPopupManager popupManager)
         {
             _popupManager = popupManager;
-            _localizationManager = localizationManager;
             ConfigureSettingsButton();
+            ConfigureStartGameButton();
         }
 
         public override void EnableInput()
@@ -43,11 +41,21 @@ namespace Scenes.Popups
         {
             _settingsButton.onClick.AddListener(() =>
             {
-                _popupManager.SpawnPopup<SettingsPopup>(popup =>
-                {
-                    popup.Initialize(_popupManager, _localizationManager);
-                });
+                _popupManager.SpawnPopup<SettingsPopup>();
             });
+        }
+        
+        private void ConfigureStartGameButton()
+        {
+            _startGameButton.onClick.AddListener(() =>
+            {
+                _popupManager.HidePopup();
+            });
+        }
+
+        protected override void OnHid()
+        {
+            _popupManager.SpawnPopup<ChoosePackPopup>();
         }
     }
 }

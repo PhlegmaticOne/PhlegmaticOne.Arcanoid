@@ -147,8 +147,8 @@ MonoBehaviour:
   _popupConfiguration:
     _appearAnimationType: 1
     _appearanceTime: 0.7
-    _disappearAnimationType: 0
-    _disappearanceTime: 0
+    _disappearAnimationType: 3
+    _disappearanceTime: 0.4
   _settingsButton: {fileID: 4189770426766146048}
   _startGameButton: {fileID: 1871867023411724763}
 --- !u!1001 &7411348903687507441

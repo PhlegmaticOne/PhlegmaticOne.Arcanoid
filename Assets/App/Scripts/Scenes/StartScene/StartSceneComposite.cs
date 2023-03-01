@@ -1,10 +1,14 @@
 ﻿using System.Collections;
-using Abstracts.Pooling.Base;
 using Abstracts.Pooling.Implementation;
 using Abstracts.Popups;
 using Abstracts.Popups.Base;
+using Abstracts.Popups.Initialization;
+using Abstracts.Services;
 using App.Scripts.Common.Localization;
 using App.Scripts.Common.Localization.Base;
+using Scenes.MainGameScene.Configurations.Packs;
+using Scenes.MainGameScene.Data.Repositories.Base;
+using Scenes.MainGameScene.Data.Repositories.ResourcesImplementation;
 using Scenes.Popups;
 using UnityEngine;
 
@@ -13,31 +17,58 @@ namespace Scenes.StartScene
     public class StartSceneComposite : MonoBehaviour
     {
         [SerializeField] private PopupComposite _popupComposite;
+        [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
 
-        private IPoolProvider _poolProvider;
-        private IPopupManager _popupManager;
-        private ILocalizationManager _localizationManager;
-
+        private IServiceProvider _serviceProvider;
+        
         private IEnumerator Start()
         {
-            var poolBuilder = PoolBuilder.Create();
-            _popupComposite.AddPopupsToPool(poolBuilder);
-            _poolProvider = poolBuilder.BuildProvider();
-            _popupManager = _popupComposite.CreatePopupManager(_poolProvider);
+             var poolBuilder = PoolBuilder.Create();
+             _popupComposite.AddPopupsToPool(poolBuilder);
+             var poolProvider = poolBuilder.BuildProvider();
+             var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
             
-            var localizationManager = new LocalizationManager(new[] { "UI" });
-            yield return localizationManager.Initialize();
-            _localizationManager = localizationManager;
-            
-            SpawnStartPopup();
+             var localizationManager = new LocalizationManager(new[] { "UI" });
+             yield return localizationManager.Initialize();
+
+             var serviceProvider = new ServiceCollection()
+                 .AddSingleton(poolProvider)
+                 .AddSingleton(popupManager)
+                 .AddSingleton<ILocalizationManager>(localizationManager)
+                 .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration))
+                 .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
+                 .BuildServiceProvider();
+             
+             ServiceProviderAccessor.Initialize(serviceProvider);
+             _serviceProvider = serviceProvider;
+
+             popupManager.SpawnPopup<StartPopup>();
         }
 
-        private void SpawnStartPopup()
+        private IPopupInitializersProvider ConfigurePopupInitializers()
         {
-            _popupManager.SpawnPopup<StartPopup>(popup =>
+            var builder = _popupComposite.GetPopupInitializersBuilder();
+            
+            builder.SetInitializerFor<StartPopup>(popup =>
             {
-                popup.Initialize(_popupManager, _localizationManager);
-            });   
+                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>());
+            });
+            
+            builder.SetInitializerFor<SettingsPopup>(popup =>
+            {
+                popup.Initialize(
+                    _serviceProvider.GetRequiredService<IPopupManager>(),
+                    _serviceProvider.GetRequiredService<ILocalizationManager>());
+            });
+            
+            builder.SetInitializerFor<Popups.ChoosePackPopup>(popup =>
+            {
+                popup.Initialize(
+                    _serviceProvider.GetRequiredService<IPopupManager>(),
+                    _serviceProvider.GetRequiredService<IPackRepository>());
+            });
+            
+            return builder.BuildPopupInitializersProvider();
         }
     }
 }

@@ -24,21 +24,29 @@ namespace Abstracts.Popups
         {
             _popupView.SetSortOrder(sortingOrder);
             OnBeforeShowing();
-            popupAnimation.OnAnimationPlayed(OnShow);
+            popupAnimation.OnAnimationPlayed(() =>
+            {
+                EnableInput();
+                OnShow();
+            });
             popupAnimation.Play(this, PopupConfiguration.AppearanceTime);
         }
         
         public void Hide(IPopupAnimation popupAnimation)
         {
             OnBeforeHiding();
-            popupAnimation.OnAnimationPlayed(OnHid);
+            popupAnimation.OnAnimationPlayed(() =>
+            {
+                DisableInput();
+                OnHid();
+            });
             popupAnimation.Play(this, PopupConfiguration.DisappearanceTime);
         }
         
         protected virtual void OnBeforeShowing() { }
         protected virtual void OnBeforeHiding() { }
-        protected virtual void OnShow() => EnableInput();
-        protected virtual void OnHid() => DisableInput();
+        protected virtual void OnShow() { }
+        protected virtual void OnHid() { }
         
         public virtual void Reset() { }
         

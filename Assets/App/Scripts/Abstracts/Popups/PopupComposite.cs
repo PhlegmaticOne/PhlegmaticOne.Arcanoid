@@ -6,6 +6,7 @@ using Abstracts.Pooling.Implementation;
 using Abstracts.Popups.Animations;
 using Abstracts.Popups.Base;
 using Abstracts.Popups.Configurations;
+using Abstracts.Popups.Initialization;
 using UnityEngine;
 
 namespace Abstracts.Popups
@@ -20,11 +21,14 @@ namespace Abstracts.Popups
             poolBuilder.AddAbstractPool(new UnityAbstractObjectPool<Popup>(CreatePopupPrefabInfos()));
         }
 
-        public IPopupManager CreatePopupManager(IPoolProvider poolProvider)
+        public IPopupInitializersBuilder GetPopupInitializersBuilder() => new PopupInitializersBuilder();
+
+        public IPopupManager CreatePopupManager(IPoolProvider poolProvider, IPopupInitializersProvider popupInitializersProvider)
         {
             var appearanceAnimationsFactory = new AppearanceAnimationsFactory();
             var disappearanceAnimationsFactory = new DisappearanceAnimationsFactory();
             return new PopupManager(poolProvider, 
+                popupInitializersProvider,
                 appearanceAnimationsFactory,
                 disappearanceAnimationsFactory, 
                 _mainCanvasTransform,

@@ -15,6 +15,8 @@ namespace Scenes.MainGameScene.Data.Repositories.ResourcesImplementation
         public ResourcesPackRepository(PackCollectionConfiguration packCollectionConfiguration) => 
             _packCollectionConfiguration = packCollectionConfiguration;
 
+        public bool PacksInitialized => _packCollectionConfiguration.PacksInitialized;
+
         public IEnumerable<PackConfiguration> GetAll()
         {
             foreach (var directoryPath in GetSubFolders(_packCollectionConfiguration.PackCollectionSourcePath))
@@ -46,9 +48,13 @@ namespace Scenes.MainGameScene.Data.Repositories.ResourcesImplementation
         }
 
         public void Save(PackLevelCollection packLevelCollection) => SaveToAssets(packLevelCollection);
-        
         public void Save(PackConfiguration packConfiguration) => SaveToAssets(packConfiguration);
-        
+        public void MarkAsInitialized()
+        {
+            _packCollectionConfiguration.MarkPacksInitialized();
+            SaveToAssets(_packCollectionConfiguration);
+        }
+
         private void InitializeLevelCollection(PackLevelCollection levelCollection, string packPath)
         {
             var levelsDirectoryPath = Combine(packPath, _packCollectionConfiguration.LevelsSubfolderName);

@@ -15,5 +15,8 @@ MonoBehaviour:
   _id: 0
   _order: 0
   _name: Tutorial
-  _packImage: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  _packImage: {fileID: 21300000, guid: 1cdf703556f78da4ba9d1865379c61a1, type: 3}
   _levelCollectionId: 0
+  _levelsCount: 0
+  _passedLevelsCount: 0
+  _packColor: {r: 0, g: 0, b: 0, a: 0.83137256}

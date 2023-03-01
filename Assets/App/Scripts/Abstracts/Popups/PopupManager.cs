@@ -5,6 +5,7 @@ using Abstracts.Popups.Animations.Base;
 using Abstracts.Popups.Animations.Concrete;
 using Abstracts.Popups.Animations.Types;
 using Abstracts.Popups.Base;
+using Abstracts.Popups.Initialization;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ namespace Abstracts.Popups
 {
     public class PopupManager : IPopupManager
     {
+        private readonly IPopupInitializersProvider _popupInitializersProvider;
         private readonly IPopupAnimationsFactory<AppearAnimationType> _appearanceAnimationsFactory;
         private readonly IPopupAnimationsFactory<DisappearAnimationType> _disappearanceAnimationsFactory;
         private readonly RectTransform _mainCanvasTransform;
@@ -25,11 +27,13 @@ namespace Abstracts.Popups
         public event UnityAction AllPopupsHid;
 
         public PopupManager(IPoolProvider poolProvider, 
+            IPopupInitializersProvider popupInitializersProvider,
             IPopupAnimationsFactory<AppearAnimationType> appearanceAnimationsFactory,
             IPopupAnimationsFactory<DisappearAnimationType> disappearanceAnimationsFactory,
             RectTransform mainCanvasTransform,
             int startFromSortingOrder)
         {
+            _popupInitializersProvider = popupInitializersProvider;
             _appearanceAnimationsFactory = appearanceAnimationsFactory;
             _disappearanceAnimationsFactory = disappearanceAnimationsFactory;
             _mainCanvasTransform = mainCanvasTransform;
@@ -38,10 +42,10 @@ namespace Abstracts.Popups
             _currentSortingOrder = startFromSortingOrder;
         }
 
-        public void SpawnPopup<T>(Action<T> initAction = null) where T : Popup
+        public T SpawnPopup<T>() where T : Popup
         {
             var popup = _popupsPool.GetConcrete<T>();
-            initAction?.Invoke(popup);
+            _popupInitializersProvider.InitializePopup(popup);
             var conf = popup.PopupConfiguration;
             var animation = _appearanceAnimationsFactory.CreateAnimation(conf.AppearAnimationType, _mainCanvasTransform);
             
@@ -59,6 +63,7 @@ namespace Abstracts.Popups
             ++_currentSortingOrder;
             _popups.Push(popup);
             popup.Show(animation, _currentSortingOrder);
+            return popup;
         }
         
         public void HidePopup()
@@ -93,16 +98,22 @@ namespace Abstracts.Popups
         {
             while (_popups.Count != 0)
             {
-                var popup = _popups.Pop();
-                popup.Hide(new NoneAnimation());
-                _popupsPool.ReturnToPool(popup);
+                HidePermanent();
             }
+            
             OnAllPopupsHid();
         }
 
         private void OnPopupShowed(Popup popup) => PopupShowed?.Invoke(popup);
         private void OnPopupHid(Popup popup) => PopupHid?.Invoke(popup);
         private void OnAllPopupsHid() => AllPopupsHid?.Invoke();
+
+        private void HidePermanent()
+        {
+            var popup = _popups.Pop();
+            popup.Hide(new NoneAnimation());
+            _popupsPool.ReturnToPool(popup);
+        }
 
         private void OnHid(Popup popup)
         {
