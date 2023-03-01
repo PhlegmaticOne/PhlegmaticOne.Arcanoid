@@ -726,8 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb9e0624e954aa083c48e391d145591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popupComposite: {fileID: 695481537}
   _button: {fileID: 369389543}
+  _packCollectionConfiguration: {fileID: 11400000, guid: 9cb23a642a9bd1c43967697d995bac90, type: 2}
 --- !u!1 &860523438
 GameObject:
   m_ObjectHideFlags: 0

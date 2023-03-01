@@ -2,69 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/AbstractObjectPool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/AbstractObjectPool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/PoolBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/PoolBuilder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/UnityAbstractObjectPool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/UnityAbstractObjectPool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/AppearanceAnimationsFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/AppearanceAnimationsFactory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Base/IPopupAnimation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Base/IPopupAnimation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Base/IPopupAnimationsFactory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/NoneAnimation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/NoneAnimation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/PopupAnimationBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/PopupAnimationBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/PopupFadeAnimation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/PopupFadeAnimation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/PopupMoveAnimation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Concrete/PopupMoveAnimation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/DisappearanceAnimationsFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/DisappearanceAnimationsFactory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Types.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Types/AppearAnimationType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Types/AppearAnimationType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Types/DisappearAnimationType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Animations/Types/DisappearAnimationType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Base/IPopupManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Base/IPopupManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupSystemConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupSystemConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Popup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Popup.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/PopupComposite.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/PopupComposite.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/PopupManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/PopupManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/View.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/View/PopupView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/View/PopupView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/ButtonPopup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/ButtonPopup.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackCollectionConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackCollectionConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackLevelCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Configurations/Packs/PackLevelCollection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/ILevelRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/ILevelRepository.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/IPackRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/Base/IPackRepository.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/2D Renderer Data.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/2D Renderer Data.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Base/ICreationStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Base/ICreationStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Base/IObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Base/IObjectPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Base/IPoolProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Base/IPoolProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/FuncCreationStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/FuncCreationStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/MonoFuncCreationStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/MonoFuncCreationStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/PoolProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Pooling/Implementation/PoolProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/UniversalRenderPipelineAsset.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/UniversalRenderPipelineAsset.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupSystemConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Popups/Configurations/PopupSystemConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Abstracts/Repositories.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Scenes/Test.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/TutorialPack.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,10 +38,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/7c/485befc5/InvokableCall.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351e49e2a5bf4fd6beabb458ce2255f3ff600/2c/02cb3ea7/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351e49e2a5bf4fd6beabb458ce2255f3ff600/fa/e02a3ea2/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/37/8ddd0c9d/Environment.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/4e/cd9aca6d/Thread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Models/LevelPreviewData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@10.10.1/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/AspectRatioFitter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -93,23 +59,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.49520153",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49520153&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\lolol\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\lolol\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\lolol\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\lolol\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\lolol\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\lolol\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\2020.3.41f1\Editor\Unity.exe" />
@@ -137,10 +103,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21736">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14928">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="21736" />
+      <option name="pid" value="14928" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -159,6 +125,7 @@
       <workItem from="1677509491201" duration="12091000" />
       <workItem from="1677563602780" duration="1486000" />
       <workItem from="1677567644649" duration="15143000" />
+      <workItem from="1677648422770" duration="13665000" />
     </task>
     <servers />
   </component>
@@ -169,5 +136,37 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs</url>
+          <line>27</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Scenes\MainGameScene\Data\Repositories\ResourcesImplementation\ResourcesPackRepository.cs" initialLine="27" containingFunctionPresentation="method 'GetLevels'">
+            <startOffsets>
+              <option value="1196" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1293" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Scenes/MainGameScene/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Scenes\MainGameScene\Data\Repositories\ResourcesImplementation\Base\ResourcesRepositoryBase.cs" initialLine="23" containingFunctionPresentation="method 'GetMatchesInAssetNames'">
+            <startOffsets>
+              <option value="924" />
+            </startOffsets>
+            <endOffsets>
+              <option value="957" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
