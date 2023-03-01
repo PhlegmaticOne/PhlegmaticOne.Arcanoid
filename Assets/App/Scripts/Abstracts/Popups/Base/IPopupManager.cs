@@ -10,5 +10,6 @@ namespace Abstracts.Popups.Base
         event UnityAction AllPopupsHid;
         void SpawnPopup<T>(Action<T> initAction = null) where T : Popup;
         void HidePopup();
+        void HideAllPermanent();
     }
 }

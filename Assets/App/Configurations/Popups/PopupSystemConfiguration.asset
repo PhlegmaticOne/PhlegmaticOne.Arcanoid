@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f40373a4e94b278e2c0b09a442440a, type: 3}
-  m_Name: Popup System Configuration
+  m_Name: PopupSystemConfiguration
   m_EditorClassIdentifier: 
   _startFromSortingOrder: 2
   _popups:
-  - {fileID: 5729149167452466914, guid: 4aea230237b73e7428dd14e2758429f3, type: 3}
+  - {fileID: 7411348904776707079, guid: c2f9abdbf6025f54d93507e3da670d6f, type: 3}
+  - {fileID: 8785456294690338686, guid: d2a93f2ce6f3544479929e2c53c0c98c, type: 3}

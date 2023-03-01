@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Abstracts.Pooling.Base;
 using Abstracts.Popups.Animations.Base;
+using Abstracts.Popups.Animations.Concrete;
 using Abstracts.Popups.Animations.Types;
 using Abstracts.Popups.Base;
 using UnityEngine;
@@ -86,6 +87,17 @@ namespace Abstracts.Popups
 
             --_currentSortingOrder;
             popup.Hide(animation);
+        }
+
+        public void HideAllPermanent()
+        {
+            while (_popups.Count != 0)
+            {
+                var popup = _popups.Pop();
+                popup.Hide(new NoneAnimation());
+                _popupsPool.ReturnToPool(popup);
+            }
+            OnAllPopupsHid();
         }
 
         private void OnPopupShowed(Popup popup) => PopupShowed?.Invoke(popup);

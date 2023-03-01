@@ -16,6 +16,16 @@ namespace App.Scripts.Common.Localization
             FillDropdown();
         }
 
+        public void Disable() => _languagesDropdown.enabled = false;
+
+        public void Enable() => _languagesDropdown.enabled = true;
+
+        public void Reset()
+        {
+            _languagesDropdown.options.Clear();
+            _languagesDropdown.onValueChanged.RemoveAllListeners();
+        }
+
         private void FillDropdown()
         {
             var options = new List<TMP_Dropdown.OptionData>();
