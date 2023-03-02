@@ -42,7 +42,7 @@ namespace Scenes.StartScene
              ServiceProviderAccessor.Initialize(serviceProvider);
              _serviceProvider = serviceProvider;
 
-             //popupManager.SpawnPopup<StartPopup>();
+             popupManager.SpawnPopup<StartPopup>();
         }
 
         private IPopupInitializersProvider ConfigurePopupInitializers()
