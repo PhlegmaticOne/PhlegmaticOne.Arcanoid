@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace App.Scripts.Common.Localization.Base
+namespace Common.Localization.Base
 {
     public interface ILocalizationManager
     {

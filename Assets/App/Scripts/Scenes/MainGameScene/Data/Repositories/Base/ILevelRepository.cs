@@ -2,6 +2,6 @@
 {
     public interface ILevelRepository
     {
-        LevelData GetLevelData(int levelId, string packName);
+        LevelData GetLevelData(LevelPreviewData levelPreviewData);
     }
 }

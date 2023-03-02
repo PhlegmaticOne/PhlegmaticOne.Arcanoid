@@ -738,12 +738,28 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4438823362689407098, guid: 37d96f18608ba65429493352562a3024, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438823362689407099, guid: 37d96f18608ba65429493352562a3024, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438823362689407099, guid: 37d96f18608ba65429493352562a3024, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}

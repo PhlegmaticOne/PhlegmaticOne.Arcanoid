@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using App.Scripts.Common.Localization.Base;
+using Common.Localization.Base;
 using UnityEngine.Events;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-namespace App.Scripts.Common.Localization
+namespace Common.Localization
 {
     public class LocalizationManager : ILocalizationManager
     {

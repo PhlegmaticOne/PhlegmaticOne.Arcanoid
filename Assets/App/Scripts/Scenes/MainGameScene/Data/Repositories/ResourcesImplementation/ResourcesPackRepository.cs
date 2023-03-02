@@ -33,7 +33,7 @@ namespace Scenes.MainGameScene.Data.Repositories.ResourcesImplementation
 
             if (levelCollection.IsInitialized == false || (levelCollection.IsInitialized && resetIfInitialized))
             {
-                InitializeLevelCollection(levelCollection, packDirectoryPath);
+                InitializeLevelCollection(levelCollection, packName, packDirectoryPath);
             }
 
             return levelCollection;
@@ -55,11 +55,13 @@ namespace Scenes.MainGameScene.Data.Repositories.ResourcesImplementation
             SaveToAssets(_packCollectionConfiguration);
         }
 
-        private void InitializeLevelCollection(PackLevelCollection levelCollection, string packPath)
+        public void Save() => SaveAssets();
+
+        private void InitializeLevelCollection(PackLevelCollection levelCollection, string packName, string packPath)
         {
             var levelsDirectoryPath = Combine(packPath, _packCollectionConfiguration.LevelsSubfolderName);
             var matches = GetMatchesInAssetNames<TextAsset>(NumberAtTheEndOfStringRegex, levelsDirectoryPath);
-            var levelPreviews = matches.Select(x => new LevelPreviewData(int.Parse(x), false));
+            var levelPreviews = matches.Select(x => new LevelPreviewData(int.Parse(x), packName, false));
             levelCollection.Initialize(levelPreviews);
         }
     }

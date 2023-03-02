@@ -36,8 +36,14 @@ namespace Scenes.MainGameScene.Data.Repositories.ResourcesImplementation.Base
             return AssetDatabase.LoadAssetAtPath<TAsset>(assetPath);
         }
 
-        protected static void SaveToAssets<TAsset>(TAsset asset) where TAsset : Object => AssetDatabase.SaveAssetIfDirty(asset);
-        
+        protected static void SaveToAssets<TAsset>(TAsset asset) where TAsset : Object
+        {
+            EditorUtility.SetDirty(asset);
+            //AssetDatabase.SaveAssetIfDirty(asset);
+        }
+
+        protected static void SaveAssets() => AssetDatabase.SaveAssets();
+
         protected static int AssetsCountByFilter(string filter, string directoryPath) =>
             FindAssets(filter, directoryPath).Length;
         

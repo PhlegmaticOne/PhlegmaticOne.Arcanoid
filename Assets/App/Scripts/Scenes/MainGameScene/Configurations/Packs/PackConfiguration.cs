@@ -13,6 +13,8 @@ namespace Scenes.MainGameScene.Configurations.Packs
         [SerializeField] private int _levelsCount;
         [SerializeField] private int _passedLevelsCount;
         [SerializeField] private Color _packColor;
+        [SerializeField] private Color _textColor;
+        [SerializeField] private Color _previewInnerColor;
 
         public int Id => _id;
         public int LevelCollectionId => _levelCollectionId;
@@ -22,6 +24,8 @@ namespace Scenes.MainGameScene.Configurations.Packs
         public int LevelsCount => _levelsCount;
         public int PassedLevelsCount => _passedLevelsCount;
         public Color PackColor => _packColor;
+        public Color TextColor => _textColor;
+        public Color PreviewInnerColor => _previewInnerColor;
 
         public void SetLevelsCount(int levelsCount) => _levelsCount = levelsCount;
         

@@ -221,9 +221,9 @@ MonoBehaviour:
   _popupView: {fileID: 8785456294690338687}
   _popupConfiguration:
     _appearAnimationType: 4
-    _appearanceTime: 0.6
+    _appearanceTime: 0.5
     _disappearAnimationType: 5
-    _disappearanceTime: 0.6
+    _disappearanceTime: 0.5
   _localizationSelector: {fileID: 9202172334035946188}
   _closeButton: {fileID: 4583546209510363138}
 --- !u!1001 &3420256519442215941

@@ -1,7 +1,7 @@
 ﻿using Abstracts.Popups;
 using Abstracts.Popups.Base;
-using App.Scripts.Common.Localization;
-using App.Scripts.Common.Localization.Base;
+using Common.Localization;
+using Common.Localization.Base;
 using UnityEngine;
 using UnityEngine.UI;
 

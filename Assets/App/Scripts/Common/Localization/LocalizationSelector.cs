@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Common.Localization.Base;
+using Common.Localization.Base;
 using TMPro;
 using UnityEngine;
 
-namespace App.Scripts.Common.Localization
+namespace Common.Localization
 {
     public class LocalizationSelector : MonoBehaviour
     {

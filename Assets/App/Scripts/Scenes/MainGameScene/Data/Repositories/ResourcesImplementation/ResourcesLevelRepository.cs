@@ -12,13 +12,14 @@ namespace Scenes.MainGameScene.Data.Repositories.ResourcesImplementation
         public ResourcesLevelRepository(PackCollectionConfiguration packCollectionConfiguration) => 
             _packCollectionConfiguration = packCollectionConfiguration;
 
-        public LevelData GetLevelData(int levelId, string packName)
+        public LevelData GetLevelData(LevelPreviewData levelPreviewData)
         {
+            var packName = levelPreviewData.PackName;
             var levelsDirectoryPath = Combine(
                 Combine(_packCollectionConfiguration.PackCollectionSourcePath, packName),
                 _packCollectionConfiguration.LevelsSubfolderName);
 
-            var levelTextAsset = LoadFirstAssetByFilter<TextAsset>(packName + "_" + levelId, levelsDirectoryPath);
+            var levelTextAsset = LoadFirstAssetByFilter<TextAsset>(packName + "_" + levelPreviewData.LevelId, levelsDirectoryPath);
             return JsonUtility.FromJson<LevelData>(levelTextAsset.text);
         }
     }

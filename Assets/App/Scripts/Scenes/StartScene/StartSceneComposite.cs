@@ -4,8 +4,8 @@ using Abstracts.Popups;
 using Abstracts.Popups.Base;
 using Abstracts.Popups.Initialization;
 using Abstracts.Services;
-using App.Scripts.Common.Localization;
-using App.Scripts.Common.Localization.Base;
+using Common.Localization;
+using Common.Localization.Base;
 using Scenes.MainGameScene.Configurations.Packs;
 using Scenes.MainGameScene.Data.Repositories.Base;
 using Scenes.MainGameScene.Data.Repositories.ResourcesImplementation;
@@ -42,7 +42,7 @@ namespace Scenes.StartScene
              ServiceProviderAccessor.Initialize(serviceProvider);
              _serviceProvider = serviceProvider;
 
-             popupManager.SpawnPopup<StartPopup>();
+             //popupManager.SpawnPopup<StartPopup>();
         }
 
         private IPopupInitializersProvider ConfigurePopupInitializers()
@@ -62,6 +62,13 @@ namespace Scenes.StartScene
             });
             
             builder.SetInitializerFor<Popups.ChoosePackPopup>(popup =>
+            {
+                popup.Initialize(
+                    _serviceProvider.GetRequiredService<IPopupManager>(),
+                    _serviceProvider.GetRequiredService<IPackRepository>());
+            });
+            
+            builder.SetInitializerFor<ChooseLevelPopup>(popup =>
             {
                 popup.Initialize(
                     _serviceProvider.GetRequiredService<IPopupManager>(),

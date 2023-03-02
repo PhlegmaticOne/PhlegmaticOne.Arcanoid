@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Abstracts.Pooling.Base;
 using Abstracts.Popups.Animations.Base;
 using Abstracts.Popups.Animations.Concrete;

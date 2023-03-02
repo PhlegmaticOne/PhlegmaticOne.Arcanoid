@@ -146,9 +146,9 @@ MonoBehaviour:
   _popupView: {fileID: 7411348904776707078}
   _popupConfiguration:
     _appearAnimationType: 1
-    _appearanceTime: 0.7
+    _appearanceTime: 0.5
     _disappearAnimationType: 3
-    _disappearanceTime: 0.4
+    _disappearanceTime: 0.5
   _settingsButton: {fileID: 4189770426766146048}
   _startGameButton: {fileID: 1871867023411724763}
 --- !u!1001 &7411348903687507441

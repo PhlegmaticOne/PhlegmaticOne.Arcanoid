@@ -12,5 +12,6 @@ namespace Scenes.MainGameScene.Data.Repositories.Base
         void Save(PackLevelCollection packLevelCollection);
         void Save(PackConfiguration packConfiguration);
         void MarkAsInitialized();
+        void Save();
     }
 }

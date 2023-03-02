@@ -6,6 +6,7 @@ using Scenes.ChoosePackPopup.Views;
 using Scenes.MainGameScene.Configurations.Packs;
 using Scenes.MainGameScene.Data.Repositories.Base;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Scenes.Popups
@@ -17,6 +18,7 @@ namespace Scenes.Popups
 
         private IPopupManager _popupManager;
         private IPackRepository _packRepository;
+        private UnityAction _onHidSpawnAction;
         public void Initialize(IPopupManager popupManager, IPackRepository packRepository)
         {
             _popupManager = popupManager;
@@ -38,6 +40,7 @@ namespace Scenes.Popups
         public override void Reset()
         {
             RemoveAllListeners(_backButton);
+            _packCollectionView.PackClicked -= PackCollectionViewOnPackClicked;
             _packCollectionView.Clear();
         }
 
@@ -49,19 +52,31 @@ namespace Scenes.Popups
             {
                 InitializePackConfigurations(packConfigurations);
             }
-
+            
+            _packCollectionView.PackClicked += PackCollectionViewOnPackClicked;
             _packCollectionView.ShowPacks(packConfigurations);
+        }
+
+        private void PackCollectionViewOnPackClicked(PackConfiguration packConfiguration)
+        {
+            _onHidSpawnAction = () =>
+            {
+                var popup = _popupManager.SpawnPopup<ChooseLevelPopup>();
+                popup.SetPack(packConfiguration);
+            };
+            _popupManager.HidePopup();
         }
 
         protected override void OnHid()
         {
-            _popupManager.SpawnPopup<StartPopup>();
+            _onHidSpawnAction?.Invoke();
         }
 
         private void ConfigureBackButton()
         {
             _backButton.onClick.AddListener(() =>
             {
+                _onHidSpawnAction = () => _popupManager.SpawnPopup<StartPopup>();
                 _popupManager.HidePopup();
             });
         }
@@ -75,6 +90,7 @@ namespace Scenes.Popups
                 _packRepository.Save(packConfiguration);
             }
             _packRepository.MarkAsInitialized();
+            _packRepository.Save();
         }
     }
 }
