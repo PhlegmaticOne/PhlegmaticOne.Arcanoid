@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -26,10 +25,6 @@ namespace Scenes.LevelChoosePopup.Views
         public void Enable() => _levelButton.enabled = true;
 
         private void OnDisable() => _levelButton.onClick.RemoveAllListeners();
-        private void OnLevelClicked()
-        {
-            Debug.Log("Sss");
-            LevelClicked?.Invoke(_index);
-        }
+        private void OnLevelClicked() => LevelClicked?.Invoke(_index);
     }
 }

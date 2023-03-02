@@ -93,6 +93,8 @@ namespace Abstracts.Popups
             popup.Hide(animation);
         }
 
+        public void HidePopupPermanent() => HidePermanent();
+
         public void HideAllPermanent()
         {
             while (_popups.Count != 0)

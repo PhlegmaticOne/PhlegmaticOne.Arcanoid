@@ -75,6 +75,16 @@ namespace Scenes.StartScene
                     _serviceProvider.GetRequiredService<IPackRepository>());
             });
             
+            builder.SetInitializerFor<MainGamePopup>(popup =>
+            {
+                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>());
+            });
+            
+            builder.SetInitializerFor<MainGameMenuPopup>(popup =>
+            {
+                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>());
+            });
+            
             return builder.BuildPopupInitializersProvider();
         }
     }

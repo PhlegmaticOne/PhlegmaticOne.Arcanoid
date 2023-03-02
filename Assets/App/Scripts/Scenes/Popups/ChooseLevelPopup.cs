@@ -3,6 +3,7 @@ using Abstracts.Popups;
 using Abstracts.Popups.Base;
 using Scenes.LevelChoosePopup.Views;
 using Scenes.MainGameScene.Configurations.Packs;
+using Scenes.MainGameScene.Data;
 using Scenes.MainGameScene.Data.Repositories.Base;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,14 @@ namespace Scenes.Popups
         {
             _popupManager = popupManager;
             _packRepository = packRepository;
+            _levelsCollectionView.LevelClicked += LevelsCollectionViewOnLevelClicked;
             ConfigureBackButton();
+        }
+
+        private void LevelsCollectionViewOnLevelClicked(LevelPreviewData levelPreviewData)
+        {
+            _onHidAction = () => _popupManager.SpawnPopup<MainGamePopup>();
+            _popupManager.HidePopup();
         }
 
         public void SetPack(PackConfiguration packConfiguration)
@@ -48,6 +56,7 @@ namespace Scenes.Popups
         public override void Reset()
         {
             RemoveAllListeners(_backButton);
+            _levelsCollectionView.LevelClicked -= LevelsCollectionViewOnLevelClicked;
             _levelsCollectionView.Clear();
         }
 
