@@ -1,21 +1,22 @@
 using System;
+using UnityEngine;
 
 namespace Common.Data.Models
 {
     [Serializable]
-    public class LevelPreviewData 
+    public class LevelPreviewData
     {
-        public int LevelId { get; }
-        public string PackName { get; }
-        public bool IsCompleted { get; private set; }
+        [SerializeField] private int _levelId;
+        [SerializeField] private bool _isCompleted;
+        public int LevelId => _levelId;
+        public bool IsCompleted => _isCompleted;
 
-        public LevelPreviewData(int levelId, string packName, bool isCompleted)
+        public LevelPreviewData(int levelId, bool isCompleted)
         {
-            LevelId = levelId;
-            PackName = packName;
-            IsCompleted = isCompleted;
+            _levelId = levelId;
+            _isCompleted = isCompleted;
         }
-
-        public void Pass() => IsCompleted = true;
+        
+        public void Pass() => _isCompleted = true;
     }
 }

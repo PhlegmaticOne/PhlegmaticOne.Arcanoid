@@ -13,9 +13,9 @@ namespace Common.Data.Repositories.ResourcesImplementation
         public ResourcesLevelRepository(PackCollectionConfiguration packCollectionConfiguration) => 
             _packCollectionConfiguration = packCollectionConfiguration;
 
-        public LevelData GetLevelData(LevelPreviewData levelPreviewData)
+        public LevelData GetLevelData(PackLevelCollection packLevelCollection, LevelPreviewData levelPreviewData)
         {
-            var packName = levelPreviewData.PackName;
+            var packName = packLevelCollection.PackName;
             var levelsDirectoryPath = Combine(
                 Combine(_packCollectionConfiguration.PackCollectionSourcePath, packName),
                 _packCollectionConfiguration.LevelsSubfolderName);

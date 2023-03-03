@@ -1,7 +1,10 @@
 ﻿using System.Collections;
+using System.Linq;
 using Common.Configurations.Packs;
+using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Common.Data.Repositories.ResourcesImplementation;
+using Game;
 using Libs.Localization;
 using Libs.Localization.Base;
 using Libs.Pooling.Implementation;
@@ -20,33 +23,64 @@ namespace App.Scripts
 {
     public class GameComposite : MonoBehaviour
     {
+        [SerializeField] private MainGame _mainGame;
         [SerializeField] private PopupComposite _popupComposite;
         [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
 
         private IServiceProvider _serviceProvider;
         
-        private IEnumerator Start()
+        private void Awake()
         {
-             var poolBuilder = PoolBuilder.Create();
-             _popupComposite.AddPopupsToPool(poolBuilder);
-             var poolProvider = poolBuilder.BuildProvider();
-             var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
+             _serviceProvider = BuildServices();
+             // TryInitializePackConfigurations();
+             SpawnStartPopup();
+        }
+        
+        private void TryInitializePackConfigurations()
+        {
+            var packRepository = _serviceProvider.GetRequiredService<IPackRepository>();
             
-             var localizationManager = new LocalizationManager(new[] { "UI" });
-             yield return localizationManager.Initialize();
+            if (packRepository.PacksInitialized)
+            {
+                return;
+            }
+            
+            var packConfigurations = packRepository.GetAll().ToList();
+            
+            foreach (var packConfiguration in packConfigurations)
+            {
+                var levelsCount = packRepository.GetLevelsCount(packConfiguration.Name);
+                packConfiguration.SetLevelsCount(levelsCount);
+                packRepository.Save(packConfiguration);
+            }
+            
+            packRepository.MarkAsInitialized();
+            packRepository.Save();
+        }
 
-             var serviceProvider = new ServiceCollection()
-                 .AddSingleton(poolProvider)
-                 .AddSingleton(popupManager)
-                 .AddSingleton<ILocalizationManager>(localizationManager)
-                 .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration))
-                 .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
-                 .BuildServiceProvider();
+        private void SpawnStartPopup()
+        {
+            _serviceProvider.GetRequiredService<IPopupManager>().SpawnPopup<StartPopup>();
+        }
+
+        private IServiceProvider BuildServices()
+        {
+            var poolBuilder = PoolBuilder.Create();
+            _popupComposite.AddPopupsToPool(poolBuilder);
+            var poolProvider = poolBuilder.BuildProvider();
+            var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
+            
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton(poolProvider)
+                .AddSingleton(popupManager)
+                .AddSingleton<ILocalizationManager>(new LocalizationManager(new[] { "UI" }))
+                .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration))
+                .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
+                .AddSingleton(_mainGame)
+                .BuildServiceProvider();
              
-             ServiceProviderAccessor.Initialize(serviceProvider);
-             _serviceProvider = serviceProvider;
-
-             popupManager.SpawnPopup<StartPopup>();
+            ServiceProviderAccessor.Initialize(serviceProvider);
+            return serviceProvider;
         }
 
         private IPopupInitializersProvider ConfigurePopupInitializers()
@@ -81,7 +115,9 @@ namespace App.Scripts
             
             builder.SetInitializerFor<MainGamePopup>(popup =>
             {
-                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>());
+                popup.Initialize(
+                    _serviceProvider.GetRequiredService<IPopupManager>(),
+                    _serviceProvider.GetRequiredService<MainGame>());
             });
             
             builder.SetInitializerFor<MainGameMenuPopup>(popup =>

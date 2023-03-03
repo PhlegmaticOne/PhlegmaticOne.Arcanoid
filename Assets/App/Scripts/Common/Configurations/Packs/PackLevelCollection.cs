@@ -9,16 +9,18 @@ namespace Common.Configurations.Packs
     public class PackLevelCollection : ScriptableObject
     {
         [SerializeField] private int _id;
+        [SerializeField] private bool _isLevelsInitialized;
+        [SerializeField] private string _packName;
         [SerializeField] private List<LevelPreviewData> _levelPreviews;
 
         public int Id => _id;
+        public string PackName => _packName;
+        public bool IsLevelsInitialized => _isLevelsInitialized;
         
         public IReadOnlyList<LevelPreviewData> LevelPreviews => _levelPreviews;
         
         public LevelPreviewData this[int index] => _levelPreviews[index];
         
-        public bool IsInitialized => _levelPreviews.Any();
-
         public void PassLevel(int levelId)
         {
             var levelPreview = ById(levelId);
@@ -36,10 +38,12 @@ namespace Common.Configurations.Packs
             return currentLevelIndex != _levelPreviews.Count - 1 ? _levelPreviews[++currentLevelId] : null;
         }
 
-        public void Initialize(IEnumerable<LevelPreviewData> levelPreviews)
+        public void Initialize(IEnumerable<LevelPreviewData> levelPreviews, string packName)
         {
             _levelPreviews.Clear();
             _levelPreviews.AddRange(levelPreviews);
+            _isLevelsInitialized = true;
+            _packName = packName;
         }
 
         private LevelPreviewData ById(int id) => _levelPreviews.First(x => x.LevelId == id);

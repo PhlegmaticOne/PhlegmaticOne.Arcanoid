@@ -7,7 +7,7 @@ namespace Common.Data.Repositories.Base
     {
         bool PacksInitialized { get; }
         IEnumerable<PackConfiguration> GetAll();
-        PackLevelCollection GetLevels(string packName, bool resetIfInitialized = false);
+        PackLevelCollection GetLevels(string packName);
         int GetLevelsCount(string packName);
         void Save(PackLevelCollection packLevelCollection);
         void Save(PackConfiguration packConfiguration);

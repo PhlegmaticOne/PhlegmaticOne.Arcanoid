@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Common.Configurations.Packs;
+﻿using Common.Configurations.Packs;
 using Common.Data.Repositories.Base;
 using Libs.Popups;
 using Libs.Popups.Base;
@@ -48,14 +46,9 @@ namespace Popups.PackChoose
 
         private void ShowPacks()
         {
-            var packConfigurations = _packRepository.GetAll().ToList();
-
-            if (_packRepository.PacksInitialized == false)
-            {
-                InitializePackConfigurations(packConfigurations);
-            }
-            
             _packCollectionView.PackClicked += PackCollectionViewOnPackClicked;
+            
+            var packConfigurations = _packRepository.GetAll();
             _packCollectionView.ShowPacks(packConfigurations);
         }
 
@@ -81,18 +74,6 @@ namespace Popups.PackChoose
                 _onHidSpawnAction = () => _popupManager.SpawnPopup<StartPopup>();
                 _popupManager.HidePopup();
             });
-        }
-
-        private void InitializePackConfigurations(List<PackConfiguration> packConfigurations)
-        {
-            foreach (var packConfiguration in packConfigurations)
-            {
-                var levelsCount = _packRepository.GetLevelsCount(packConfiguration.Name);
-                packConfiguration.SetLevelsCount(levelsCount);
-                _packRepository.Save(packConfiguration);
-            }
-            _packRepository.MarkAsInitialized();
-            _packRepository.Save();
         }
     }
 }

@@ -10,13 +10,20 @@ namespace Popups.MainGame
         [SerializeField] private Button _menuButton;
 
         private IPopupManager _popupManager;
+        private Game.MainGame _mainGame;
 
-        public void Initialize(IPopupManager popupManager)
+        public void Initialize(IPopupManager popupManager, Game.MainGame mainGame)
         {
+            _mainGame = mainGame;
             _popupManager = popupManager;
             ConfigureMenuButton();
         }
-        
+
+        protected override void OnShow()
+        {
+            _mainGame.StartGame();
+        }
+
         public override void EnableInput()
         {
             EnableBehaviour(_menuButton);

@@ -26,13 +26,13 @@ namespace Common.Data.Repositories.ResourcesImplementation
             }
         }
 
-        public PackLevelCollection GetLevels(string packName, bool resetIfInitialized = false)
+        public PackLevelCollection GetLevels(string packName)
         {
             var packDirectoryPath = Combine(_packCollectionConfiguration.PackCollectionSourcePath, packName);
             var levelCollection = 
                 LoadFirstAssetByFilter<PackLevelCollection>(AssetTypeName<PackLevelCollection>(), packDirectoryPath);
 
-            if (levelCollection.IsInitialized == false || (levelCollection.IsInitialized && resetIfInitialized))
+            if (levelCollection.IsLevelsInitialized == false)
             {
                 InitializeLevelCollection(levelCollection, packName, packDirectoryPath);
             }
@@ -62,8 +62,10 @@ namespace Common.Data.Repositories.ResourcesImplementation
         {
             var levelsDirectoryPath = Combine(packPath, _packCollectionConfiguration.LevelsSubfolderName);
             var matches = GetMatchesInAssetNames<TextAsset>(NumberAtTheEndOfStringRegex, levelsDirectoryPath);
-            var levelPreviews = matches.Select(x => new LevelPreviewData(int.Parse(x), packName, false));
-            levelCollection.Initialize(levelPreviews);
+            var levelPreviews = matches.Select(x => new LevelPreviewData(int.Parse(x), false));
+            levelCollection.Initialize(levelPreviews, packName);
+            SaveToAssets(levelCollection);
+            Save();
         }
     }
 }

@@ -10,13 +10,13 @@ namespace Common.Data.Models
         [SerializeField] private int lifesCount;
         [SerializeField] private int width;
         [SerializeField] private int height;
-        [SerializeField] private int[] blocksData;
+        [SerializeField] private BlockData[] blocksData;
         
         public int LevelId => levelId;
         public int LifesCount => lifesCount;
         public int Width => width;
         public int Height => height;
-        public int[] BlocksData => blocksData;
+        public BlockData[] BlocksData => blocksData;
     }
 }
 
