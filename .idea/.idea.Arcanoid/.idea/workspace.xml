@@ -2,176 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/BlockData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/BlockData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/GameData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/GameData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base/IGame.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base/IGame.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/CollisionBehaviourInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/CollisionBehaviourInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/ICollisionBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/ICollisionBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviourInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviourInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnSystemConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnSystemConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInitializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInitializer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/IBlockSpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/IBlockSpawner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/IFieldBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/IFieldBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameEvents.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameEvents.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Popups/PopupSystemConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Popups/PopupSystemConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Fonts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Fonts/ProstoOne-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Fonts/ProstoOne-Regular.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Fonts/ProstoOne.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Fonts/ProstoOne.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar/Energy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar/Energy.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar/EnergyBarBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar/EnergyBarBack.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar/EnergyBarFill.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/EnergyBar/EnergyBarFill.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/Menu.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/Menu/Header.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/Menu/Header.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/Menu/UpperLine.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Common/Sprites/Menu/UpperLine.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/LevelChoosePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/LevelChoosePopup/Sprites.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/LevelChoosePopup/Sprites/ButtonSprite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/LevelChoosePopup/Sprites/ButtonSprite.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Background.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Background/GameBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Background/GameBack.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Background/Grid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Background/Grid.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Common.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Common/PopupButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/Common/PopupButton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/Group 16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/Group 16.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/Health.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/Health.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/LeftMenuButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/LeftMenuButton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/PackImagePlace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/PackImagePlace.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/PackLevelPlace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/PackLevelPlace.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/RightMenuButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/HeadMenu/RightMenuButton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/LosePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/LosePopup/LosePopup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/LosePopup/LosePopup.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup/BackButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup/BackButton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup/MenuPopupBackground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup/MenuPopupBackground.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup/Vector (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/MenuPopup/Vector (1).png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/LevelsInfo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/LevelsInfo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/Lights.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/Lights.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/PackIconPlace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/PackIconPlace.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/WinPopupBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/MainGamePopup/WinPopup/WinPopupBack.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/Menu.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/Menu/BackArrows.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/Menu/BackArrows.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/Menu/BackButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/Menu/BackButton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/PackPreviews.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/PackPreviews/PackInner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/PackPreviews/PackInner.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/PackPreviews/PackOuter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/PackChoosePopup/PackPreviews/PackOuter.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/SettingsPopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/SettingsPopup/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/SettingsPopup/close.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/SettingsPopup/settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/SettingsPopup/settings.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Background.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Background/Background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Background/Background.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Buttons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Buttons/PlayButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Buttons/PlayButton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Name.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Name/GameName.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/StartPopup/Sprites/Name/GameName.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/EnergyBar.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/EnergyBar.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/MenuHeader.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/MenuHeader.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/UI/Background.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/UI/Background/BackgroundCanvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/UI/Background/BackgroundCanvas.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/UI/[UI].prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Common/UI/[UI].prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/LevelChoosePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/LevelChoosePopup/Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/LevelChoosePopup/Elements/LevelButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/LevelChoosePopup/Elements/LevelButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/LevelChoosePopup/LevelChoosePopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/LevelChoosePopup/LevelChoosePopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/Elements/LifeView.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/Elements/LifeView.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/Elements/PopupButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/Elements/PopupButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/LosePopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/LosePopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/MainGameMenuPopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/MainGameMenuPopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/MainGamePopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/MainGamePopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/WinPopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/MainGamePopup/WinPopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/PackChoosePopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/PackChoosePopup/Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/PackChoosePopup/Elements/PackPreview.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/PackChoosePopup/Elements/PackPreview.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/PackChoosePopup/PackChoosePopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/PackChoosePopup/PackChoosePopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/Elements/CloseButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/Elements/CloseButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/Elements/LocalizationSelector.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/Elements/LocalizationSelector.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/SettingsPopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/SettingsPopup/SettingsPopup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements/GameName.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements/GameName.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements/SettingsButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements/SettingsButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements/StartGameButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/Elements/StartGameButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/StartPopup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/StartPopup/StartPopup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Game/Blocks/GraniteBlock.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Game/Blocks/GraniteBlock/GraniteBlock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Game/Blocks/GraniteBlock/GraniteBlock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/GraniteBlock.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/GraniteBlock.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackLevelCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackLevelCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelPreviewData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelPreviewData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/ILevelRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/ILevelRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/IPackRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/IPackRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/BlockData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/BlockData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/GameComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/GameComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/LevelChoosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/LevelChoosePopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackLevelCollection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackLevelCollection.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +71,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/1b/44dc1fad/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/2e/60547bdd/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/7c/485befc5/InvokableCall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/8b/df58a6a1/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/ec/22d2acc5/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351e49e2a5bf4fd6beabb458ce2255f3ff600/2c/02cb3ea7/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351e49e2a5bf4fd6beabb458ce2255f3ff600/fa/e02a3ea2/Error.cs" root0="SKIP_HIGHLIGHTING" />
@@ -261,10 +150,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="38876">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="33580">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="38876" />
+      <option name="pid" value="33580" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -288,7 +177,8 @@
       <workItem from="1677730564329" duration="1970000" />
       <workItem from="1677734639124" duration="6422000" />
       <workItem from="1677752752153" duration="7894000" />
-      <workItem from="1677822298785" duration="13753000" />
+      <workItem from="1677822298785" duration="23801000" />
+      <workItem from="1677918364923" duration="8936000" />
     </task>
     <servers />
   </component>
@@ -299,24 +189,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs</url>
-          <line>31</line>
-          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Game\Field\GameField.cs" initialLine="31" containingFunctionPresentation="method 'Start'">
-            <startOffsets>
-              <option value="1224" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1334" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

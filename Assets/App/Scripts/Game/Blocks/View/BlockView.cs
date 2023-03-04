@@ -5,13 +5,10 @@ namespace Game.Blocks.View
     public class BlockView : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
-        
-        public float BaseWorldHeight => _spriteRenderer.bounds.size.y;
-        public float BaseWorldWidth => _spriteRenderer.bounds.size.x;
+        public Vector2 Size => _spriteRenderer.size;
 
-        public void SetSize(Vector2 newSize)
-        {
-            _spriteRenderer.size = newSize;
-        }
+        public void SetSprite(Sprite sprite) => _spriteRenderer.sprite = sprite;
+
+        public void SetSize(Vector2 newSize) => _spriteRenderer.size = newSize;
     }
 }

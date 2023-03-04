@@ -1,44 +1,28 @@
-﻿using Game.Blocks.View;
-using Game.Field.Configurations;
-using Game.Field.Helpers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Game.Blocks;
 using UnityEngine;
 
 namespace Game.Field
 {
     public class GameField : MonoBehaviour
     {
-        [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
-        [SerializeField] private FieldPositionsGenerator _fieldPositionsGenerator;
-        [SerializeField] private BlockView _blockView;
+        private readonly List<Block> _blocks = new List<Block>();
+        public int Width { get; private set; }
+        public int Height { get; private set; }
 
-        [SerializeField] private int _columnsCount = 4;
-        [SerializeField] private int _rowsCount;
-        
-        public void GenerateBlocks()
+        public void Initialize(IEnumerable<Block> blocks, int width, int height)
         {
-            var generationResult = _fieldPositionsGenerator.GeneratePositions(
-                _gameFieldConfiguration.FieldMargin,
-                new Vector2(_gameFieldConfiguration.BlockMarginRight, _gameFieldConfiguration.BlockMarginTop),
-                new Vector2Int(_columnsCount, _rowsCount),
-                _blockView.BaseWorldHeight);
-            
-            var positions = generationResult.CellPositions;
-            var cellSize = generationResult.CellSize;
-            
-            for (var y = 0; y < positions.GetLength(0); y++)
-            {
-                for (var x = 0; x < positions.GetLength(1); x++)
-                {
-                    SpawnBlock(positions[y, x], ref cellSize);
-                }
-            }
+            _blocks.Clear();
+            _blocks.AddRange(blocks);
+            Width = width;
+            Height = height;
         }
 
-        private void SpawnBlock(Vector2 position, ref Vector2 size)
-        {
-            var view = Instantiate(_blockView, transform.parent);
-            view.SetSize(size);
-            view.transform.position = position;
-        }
+        public void RemoveBlock(Block block) => _blocks.Remove(block);
+
+        public void AddBlock(Block block) => _blocks.Add(block);
+
+        public int ActiveBlocksCount => _blocks.Count(x => x.BlockConfiguration.ActiveOnPlay);
     }
 }

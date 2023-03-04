@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3415402037502493304}
   - component: {fileID: 7233267645229423088}
   - component: {fileID: 7709824947456356772}
+  - component: {fileID: 3769529678919385829}
   m_Layer: 0
-  m_Name: GraniteBlock
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 701534823
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3fc8b21fc6955c1429938c59c3693d92, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 1.18, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &3415402037502493304
@@ -145,3 +146,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 562859477343018660}
+--- !u!114 &3769529678919385829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748039869102766219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f91f0ce5bb34851af497c16694cfbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockView: {fileID: 7709824947456356772}
+  _boxCollider: {fileID: 7233267645229423088}

@@ -8,8 +8,10 @@ namespace Common.Data.Models
     {
         [SerializeField] private int blockId;
         [SerializeField] private int bonusId;
+        [SerializeField] private int lifesCount;
         
         public int BlockId => blockId;
         public int BonusId => bonusId;
+        public int LifesCount => lifesCount;
     }
 }
