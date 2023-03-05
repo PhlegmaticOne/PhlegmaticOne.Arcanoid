@@ -9,7 +9,21 @@ namespace Game.Blocks
     {
         [SerializeField] private BlockView _blockView;
         [SerializeField] private BoxCollider2D _boxCollider;
+        private int _health;
+        private bool _readyToDestroy;
+
+        public BlockView BlockView => _blockView;
+        public int StartHealth { get; private set; }
+        public int CurrentHealth => _health;
         public BlockConfiguration BlockConfiguration { get; private set; }
+        
+        public void Initialize(BlockConfiguration configuration, int health)
+        {
+            BlockConfiguration = configuration;
+            _health = health;
+            StartHealth = health;
+            _blockView.SetMainSprite(configuration.BlockSprite);
+        }
 
         public void SetPosition(Vector3 position) => transform.position = position;
 
@@ -19,22 +33,27 @@ namespace Game.Blocks
             _boxCollider.size = _blockView.Size;
         }
 
-        public void Initialize(BlockConfiguration configuration)
+        public void Damage()
         {
-            BlockConfiguration = configuration;
-            _blockView.SetSprite(configuration.BlockSprite);
+            --_health;
+            
+            if (_health == 1)
+            {
+                _readyToDestroy = true;
+            }
         }
 
         public float GetBaseHeight() => _boxCollider.size.y;
 
-        protected override bool CanBeDestroyedOnDestroyCollision()
-        {
-            return false;
-        }
+        protected override bool CanBeDestroyedOnDestroyCollision() => _readyToDestroy;
 
         protected override void ResetProtected()
         {
-            base.ResetProtected();
+            _blockView.Reset();
+            _health = 0;
+            StartHealth = 0;
+            _readyToDestroy = false;
+            BlockConfiguration = null;
         }
     }
 }

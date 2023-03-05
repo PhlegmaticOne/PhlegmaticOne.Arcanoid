@@ -15,7 +15,7 @@ MonoBehaviour:
   _fieldMargin:
     _fromTop: 15
     _fromBottom: 25
-    _fromLeft: 1
-    _fromRight: 1
-  _blockMarginTop: 1
-  _blockMarginRight: 1
+    _fromLeft: 1.5
+    _fromRight: 1.5
+  _blockMarginTop: 0.5
+  _blockMarginRight: 0.5

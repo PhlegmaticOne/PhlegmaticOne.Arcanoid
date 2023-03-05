@@ -33,7 +33,6 @@ namespace Game.Field.Helpers
             var cellHeightScreen = (_screenHeight - totalBlockVerticalMargins - bottomMargin - topMargin) / fieldSize.y;
             
             var cellSizeWorld = ToWorldSize(new Vector2(cellWidthScreen, cellHeightScreen));
-            
             if (cellSizeWorld.y > baseItemHeight)
             {
                 cellSizeWorld.y = baseItemHeight;
@@ -41,8 +40,7 @@ namespace Game.Field.Helpers
             
             var marginRightWorld = ToWorldSize(new Vector2(blockMarginRight, 0)).magnitude;
             var marginTopWorld = ToWorldSize(new Vector2(0, blockMarginTop)).magnitude;
-
-
+            
             var startPositionScreen = new Vector2(leftMargin, _screenHeight - topMargin);
             var endPositionScreen = new Vector2(_screenWidth - rightMargin, bottomMargin);
             

@@ -1,14 +1,63 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Blocks.View
 {
     public class BlockView : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer _spriteRenderer;
-        public Vector2 Size => _spriteRenderer.size;
+        private int _currentSortOrder;
+        
+        [SerializeField] private SpriteRenderer _mainSpriteRenderer;
+        [SerializeField] private AdditionalRenderer _additionalRenderer;
+        
+        private readonly Stack<AdditionalRenderer> _additionalRenderers = new Stack<AdditionalRenderer>();
+        public Vector2 Size => _mainSpriteRenderer.size;
 
-        public void SetSprite(Sprite sprite) => _spriteRenderer.sprite = sprite;
+        public void SetMainSprite(Sprite sprite)
+        {
+            _mainSpriteRenderer.sprite = sprite;
+            _currentSortOrder = _mainSpriteRenderer.sortingOrder;
+        }
 
-        public void SetSize(Vector2 newSize) => _spriteRenderer.size = newSize;
+        public void AddSprite(Sprite sprite)
+        {
+            var additionalRenderer = Instantiate(_additionalRenderer, transform);
+            additionalRenderer.SetSprite(sprite, Size, ++_currentSortOrder);
+            _additionalRenderers.Push(additionalRenderer);
+        }
+
+        public void ChangeLastSprite(Sprite sprite)
+        {
+            var additionalRenderer = _additionalRenderers.Peek();
+            additionalRenderer.SetSprite(sprite);
+        }
+        
+        public void SetSize(Vector2 newSize)
+        {
+            _mainSpriteRenderer.size = newSize;
+            
+            foreach (var additionalRenderer in _additionalRenderers)
+            {
+                additionalRenderer.SetSize(newSize);
+            }
+        }
+        
+        public void RemoveAdditionalSprite()
+        {
+            var additionalRenderer = _additionalRenderers.Pop();
+            --_currentSortOrder;
+            Destroy(additionalRenderer.gameObject);
+        }
+
+        public void Reset()
+        {
+            while (_additionalRenderers.Count != 0)
+            {
+                RemoveAdditionalSprite();
+            }
+            
+            _mainSpriteRenderer.sprite = null;
+            _currentSortOrder = 0;
+        }
     }
 }

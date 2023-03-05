@@ -23,7 +23,7 @@ namespace Game.Blocks.Spawners
             
             var block = _blocksPool.Get();
             
-            block.Initialize(blockConfiguration);
+            block.Initialize(blockConfiguration, blockData.LifesCount);
             block.SetSize(blockSpawnData.Size);
             block.SetPosition(blockSpawnData.Position);
 

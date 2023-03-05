@@ -30,8 +30,8 @@ namespace Game
             _fieldBuilder.BuildField(data.LevelData);
             _racket.gameObject.SetActive(true);
             var pos = _racket.transform.position + new Vector3(0, 1, 0);
-            //var ball = _ballSpawner.CreateBall(new BallCreationContext(pos, 4));
-            //ball.StartMove();
+            var ball = _ballSpawner.CreateBall(new BallCreationContext(pos, 4));
+            ball.StartMove();
         }
     }
 }
