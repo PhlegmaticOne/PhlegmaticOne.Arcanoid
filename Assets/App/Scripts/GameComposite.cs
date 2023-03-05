@@ -1,15 +1,14 @@
 ﻿using System.Linq;
 using Common.Configurations.Packs;
+using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Common.Data.Repositories.ResourcesImplementation;
 using Game;
 using Game.Base;
 using Game.Blocks;
-using Game.Blocks.Spawners;
-using Game.Field.Builder;
+using Game.Composite;
 using Libs.Localization;
 using Libs.Localization.Base;
-using Libs.Pooling;
 using Libs.Pooling.Implementation;
 using Libs.Popups;
 using Libs.Popups.Base;
@@ -27,19 +26,21 @@ namespace App.Scripts
     public class GameComposite : MonoBehaviour
     {
         [SerializeField] private PopupComposite _popupComposite;
+        [SerializeField] private MainGameInstaller _mainGameInstaller;
         [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
-        [SerializeField] private BlockSpawnerInitializer _blockSpawnerInitializer;
-        [SerializeField] private FieldBuilder _fieldBuilder;
-        [SerializeField] private Block _block;
-        [SerializeField] private Transform _transform;
 
         private IServiceProvider _serviceProvider;
         
         private void Awake()
         {
              _serviceProvider = BuildServices();
-             TryInitializePackConfigurations();
-             SpawnStartPopup();
+             //TryInitializePackConfigurations();
+             //SpawnStartPopup();
+             var packLevels = _serviceProvider.GetRequiredService<IPackRepository>().GetLevels("Tutorial");
+             var popup = _serviceProvider.GetRequiredService<IPopupManager>().SpawnPopup<MainGamePopup>();
+             var packConfiguration = ScriptableObject.CreateInstance<PackConfiguration>();
+
+             popup.SetGameData(new GameData(packConfiguration, packLevels, new LevelPreviewData(0, false)));
         }
         
         private void TryInitializePackConfigurations()
@@ -72,21 +73,23 @@ namespace App.Scripts
         private IServiceProvider BuildServices()
         {
             var poolBuilder = PoolBuilder.Create();
-            poolBuilder.AddPool(new UnityObjectPool<Block>(new PrefabInfo<Block>(_block, _transform), 10, 100));
-            _popupComposite.AddPopupsToPool(poolBuilder);
-            var poolProvider = poolBuilder.BuildProvider();
-            var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
-            var blockSpawner = _blockSpawnerInitializer.CreateBlockSpawner(poolProvider);
-            _fieldBuilder.Initialize(blockSpawner);
-            var mainGame = new MainGame(_fieldBuilder);
+            var serviceCollection = new ServiceCollection();
             
-            var serviceProvider = new ServiceCollection()
+            _mainGameInstaller.AddPools(poolBuilder);
+            _popupComposite.AddPopupsToPool(poolBuilder);
+            
+            var poolProvider = poolBuilder.BuildProvider();
+            
+            var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
+            var game = _mainGameInstaller.CreateGame(serviceCollection, poolProvider);
+            
+            var serviceProvider = serviceCollection
                 .AddSingleton(poolProvider)
                 .AddSingleton(popupManager)
                 .AddSingleton<ILocalizationManager>(new LocalizationManager(new[] { "UI" }))
                 .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration))
                 .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
-                .AddSingleton<IGame<MainGameData, MainGameEvents>>(mainGame)
+                .AddSingleton<IGame<MainGameData, MainGameEvents>>(game)
                 .BuildServiceProvider();
              
             ServiceProviderAccessor.Initialize(serviceProvider);

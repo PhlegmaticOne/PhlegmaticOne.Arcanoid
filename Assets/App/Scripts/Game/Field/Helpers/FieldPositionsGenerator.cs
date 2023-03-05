@@ -44,7 +44,12 @@ namespace Game.Field.Helpers
 
 
             var startPositionScreen = new Vector2(leftMargin, _screenHeight - topMargin);
-            var startPositionWorld = ToWorldPoint(startPositionScreen) + cellSizeWorld / 2;
+            var endPositionScreen = new Vector2(_screenWidth - rightMargin, bottomMargin);
+            
+            var fieldStartPosition = ToWorldPoint(startPositionScreen);
+            var fieldEndPosition = ToWorldPoint(endPositionScreen);
+            
+            var startPositionWorld = fieldStartPosition + new Vector2(cellSizeWorld.x / 2, -cellSizeWorld.y / 2);
             var startX = startPositionWorld.x;
 
             var result = new Vector2[fieldSize.y, fieldSize.x];
@@ -61,7 +66,13 @@ namespace Game.Field.Helpers
                 startPositionWorld -= new Vector2(0, cellSizeWorld.y + marginTopWorld);
             }
 
-            return new FieldPositionsGenerationResult(result, cellSizeWorld);
+            var fieldSizeWorld = new Vector2(
+                fieldEndPosition.x - fieldStartPosition.x,
+                fieldStartPosition.y - fieldEndPosition.y);
+
+            var fieldBounds = new Bounds((fieldEndPosition + fieldStartPosition) / 2, fieldSizeWorld);
+
+            return new FieldPositionsGenerationResult(result, cellSizeWorld, fieldBounds);
         }
 
         private float HeightFromPercentage(float percentage) => _screenHeight * percentage;
@@ -79,12 +90,14 @@ namespace Game.Field.Helpers
 
     public class FieldPositionsGenerationResult
     {
-        public FieldPositionsGenerationResult(Vector2[,] cellPositions, Vector2 cellSize)
+        public FieldPositionsGenerationResult(Vector2[,] cellPositions, Vector2 cellSize, Bounds fieldBounds)
         {
             CellPositions = cellPositions;
             CellSize = cellSize;
+            FieldBounds = fieldBounds;
         }
 
+        public Bounds FieldBounds { get; }
         public Vector2 CellSize { get; }
         public Vector2[,] CellPositions { get; }
     }

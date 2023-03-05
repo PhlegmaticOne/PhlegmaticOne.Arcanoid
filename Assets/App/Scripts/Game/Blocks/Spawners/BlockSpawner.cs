@@ -19,16 +19,17 @@ namespace Game.Blocks.Spawners
         {
             var blockSpawnConfiguration = _blockSystemConfiguration.FindBlockConfiguration(blockData);
             var blockConfiguration = blockSpawnConfiguration.BlockConfiguration;
+            var blockBehaviorInstaller = blockSpawnConfiguration.BlockBehaviorInstaller;
+            
             var block = _blocksPool.Get();
             
             block.Initialize(blockConfiguration);
             block.SetSize(blockSpawnData.Size);
             block.SetPosition(blockSpawnData.Position);
+
+            blockBehaviorInstaller.InstallCollisionBehaviours(block);
+            blockBehaviorInstaller.InstallDestroyBehaviours(block);
             
-            foreach (var collisionBehaviourInstaller in blockSpawnConfiguration.CollisionBehaviourInstallers)
-            {
-                block.AddBehaviour(collisionBehaviourInstaller.CreateCollisionBehaviour());
-            }
             return block;
         }
     }

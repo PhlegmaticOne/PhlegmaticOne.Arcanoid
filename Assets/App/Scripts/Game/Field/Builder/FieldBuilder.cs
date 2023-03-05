@@ -11,26 +11,26 @@ namespace Game.Field.Builder
     public class FieldBuilder : MonoBehaviour, IFieldBuilder
     {
         [SerializeField] private FieldPositionsGenerator _fieldPositionsGenerator;
+        [SerializeField] private InteractableZoneSetter _interactableZoneSetter;
         [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
         [SerializeField] private GameField _gameField;
         [SerializeField] private Block _block;
         private IBlockSpawner _blockSpawner;
 
-        public void Initialize(IBlockSpawner blockSpawner)
-        {
-            _blockSpawner = blockSpawner;
-        }
+        public void Initialize(IBlockSpawner blockSpawner) => _blockSpawner = blockSpawner;
 
         public void BuildField(LevelData levelData)
         {
             var width = levelData.Width;
             var height = levelData.Height;
             var blocksData = levelData.BlocksData;
+            
             var positionsGenerationResult = _fieldPositionsGenerator.GeneratePositions(
                 _gameFieldConfiguration.FieldMargin,
                 new Vector2(_gameFieldConfiguration.BlockMarginRight, _gameFieldConfiguration.BlockMarginTop),
                 new Vector2Int(width, height),
                 _block.GetBaseHeight());
+            
             var positions = positionsGenerationResult.CellPositions;
             var cellSize = positionsGenerationResult.CellSize;
 
@@ -38,7 +38,7 @@ namespace Game.Field.Builder
             
             for (var y = 0; y < height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (var x = 0; x < width; x++)
                 {
                     var blockData = blocksData[y * levelData.Width + x];
                     var position = positions[y, x];
@@ -46,6 +46,9 @@ namespace Game.Field.Builder
                     result.Add(block);
                 }
             }
+
+            var bounds = _interactableZoneSetter.CalculateZoneBounds(positionsGenerationResult.FieldBounds);
+            _interactableZoneSetter.SetInteractableZone(bounds);
             
             _gameField.Initialize(result, width, height);
         }

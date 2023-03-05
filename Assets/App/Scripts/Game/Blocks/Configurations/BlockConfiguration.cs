@@ -7,13 +7,10 @@ namespace Game.Blocks.Configurations
     {
         [SerializeField] private int _blockId;
         [SerializeField] private Sprite _blockSprite;
-        [SerializeField] private string _collidesWithTag;
         [SerializeField] private bool _activeOnPlay = true;
         
         public int BlockId => _blockId;
         public Sprite BlockSprite => _blockSprite;
-        public string CollidesWithTag => _collidesWithTag;
-        
         public bool ActiveOnPlay => _activeOnPlay;
     }
 }

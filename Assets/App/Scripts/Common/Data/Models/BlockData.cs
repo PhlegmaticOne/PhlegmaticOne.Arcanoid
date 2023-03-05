@@ -13,5 +13,15 @@ namespace Common.Data.Models
         public int BlockId => blockId;
         public int BonusId => bonusId;
         public int LifesCount => lifesCount;
+
+        public static BlockData Create(int blockId, int bonusId, int lifesCount)
+        {
+            return new BlockData()
+            {
+                blockId = blockId,
+                bonusId = bonusId,
+                lifesCount = lifesCount
+            };
+        }
     }
 }

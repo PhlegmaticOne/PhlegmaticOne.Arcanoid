@@ -2,64 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/GameData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/GameData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base/IGame.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base/IGame.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/CollisionBehaviourInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/CollisionBehaviourInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/ICollisionBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/ICollisionBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviourInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviourInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnSystemConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnSystemConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInitializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInitializer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/IBlockSpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/IBlockSpawner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/IFieldBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/IFieldBuilder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameEvents.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameEvents.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/BehaviorObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/BehaviorObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/BehaviorsCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/BehaviorsCollection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/ColliderTag.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/ColliderTag.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/IObjectBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/IObjectBehavior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers/BehaviorInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers/BehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers/BehaviorInstallerItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers/BehaviorInstallerItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers/BehaviorObjectInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Behaviors/Installers/BehaviorObjectInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Log.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Log/LogBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Log/LogBehavior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Log/LogBehaviorInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Log/LogBehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Composite.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Composite/MainGameInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Composite/MainGameInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/InteractableZoneSetter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/InteractableZoneSetter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Ball.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Ball.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Bottom.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Bottom/HealthRemoveBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Bottom/HealthRemoveBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Bottom/HealthRemoveBehaviourInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Bottom/HealthRemoveBehaviourInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Ship.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Ship/MovementAngleCorrectionBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Ship/MovementAngleCorrectionBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Ship/MovementAngleCorrectionBehaviourInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviours/Ship/MovementAngleCorrectionBehaviourInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories/BallSpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories/BallSpawner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories/BallSpawnerInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories/BallSpawnerInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories/IBallSpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Factories/IBallSpawner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/Racket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/Racket.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/ControlSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/ControlSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/IInputSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/IInputSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/IInputSystemFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/IInputSystemFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/InputData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/InputData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/InputSystemFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/InputSystemFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/InputSystemInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/InputSystemInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/MouseInputSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/MouseInputSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/TouchInputSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/InputSystem/TouchInputSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityObjectPoolInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityObjectPoolInstaller.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Game/Blocks/GraniteBlock.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Game/Blocks/GraniteBlock/GraniteBlock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/Game/Blocks/GraniteBlock/GraniteBlock.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/GraniteBlock.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/GraniteBlock.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Field/FieldConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Field/FieldConfiguration.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/BlockData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/BlockData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/CollisionBehaviourInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/CollisionBehaviourInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/ICollisionBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Base/ICollisionBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviourInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/CollisionBehaviours/Log/LogCollisionBehaviourInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInitializer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawnerInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/FieldPositionsGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/FieldPositionsGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/GameComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/GameComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/LevelChoosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/LevelChoosePopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,10 +190,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="33580">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="33580" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -178,7 +218,8 @@
       <workItem from="1677734639124" duration="6422000" />
       <workItem from="1677752752153" duration="7894000" />
       <workItem from="1677822298785" duration="23801000" />
-      <workItem from="1677918364923" duration="8936000" />
+      <workItem from="1677918364923" duration="25862000" />
+      <workItem from="1678007131951" duration="12780000" />
     </task>
     <servers />
   </component>
