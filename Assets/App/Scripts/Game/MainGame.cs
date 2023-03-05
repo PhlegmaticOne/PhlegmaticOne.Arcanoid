@@ -1,8 +1,9 @@
 ﻿using System;
 using Game.Base;
 using Game.Field.Builder;
-using Game.PlayerObjects;
 using Game.PlayerObjects.BallObject.Factories;
+using Game.PlayerObjects.ShipObject;
+using Game.Systems.Control;
 using UnityEngine;
 
 namespace Game
@@ -10,14 +11,19 @@ namespace Game
     public class MainGame : IGame<MainGameData, MainGameEvents>
     {
         private readonly IFieldBuilder _fieldBuilder;
+        private readonly ControlSystem _controlSystem;
         private readonly IBallSpawner _ballSpawner;
-        private readonly Racket _racket;
+        private readonly Ship _ship;
 
-        public MainGame(IFieldBuilder fieldBuilder, IBallSpawner ballSpawner, Racket racket)
+        public MainGame(IFieldBuilder fieldBuilder, 
+            ControlSystem controlSystem,
+            IBallSpawner ballSpawner, 
+            Ship ship)
         {
             _fieldBuilder = fieldBuilder;
+            _controlSystem = controlSystem;
             _ballSpawner = ballSpawner;
-            _racket = racket;
+            _ship = ship;
             Events = new MainGameEvents();
         }
 
@@ -28,10 +34,10 @@ namespace Game
         public void StartGame(MainGameData data)
         {
             _fieldBuilder.BuildField(data.LevelData);
-            _racket.gameObject.SetActive(true);
-            var pos = _racket.transform.position + new Vector3(0, 1, 0);
-            var ball = _ballSpawner.CreateBall(new BallCreationContext(pos, 4));
-            ball.StartMove();
+            
+            _ship.Enable();
+            var ball = _ballSpawner.CreateBall(new BallCreationContext(Vector2.zero, 4));
+            _controlSystem.AddObjectToFollow(ball);
         }
     }
 }

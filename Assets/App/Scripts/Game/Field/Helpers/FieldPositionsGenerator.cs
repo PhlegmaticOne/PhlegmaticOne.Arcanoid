@@ -1,4 +1,5 @@
-﻿using Game.Field.Configurations;
+﻿using Game.Blocks;
+using Game.Field.Configurations;
 using UnityEngine;
 
 namespace Game.Field.Helpers
@@ -6,18 +7,49 @@ namespace Game.Field.Helpers
     public class FieldPositionsGenerator : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
+        [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
+        [SerializeField] private Block _block;
         private float _screenHeight;
         private float _screenWidth;
+        
 
-        private void Start()
+        public Bounds GenerateFieldBounds()
         {
             _screenHeight = Screen.height;
             _screenWidth = Screen.width;
+            
+            var fieldMargin = _gameFieldConfiguration.FieldMargin;
+            
+            var topMargin = HeightFromPercentage(fieldMargin.FromTop);
+            var bottomMargin = HeightFromPercentage(fieldMargin.FromBottom);
+            var rightMargin = WidthFromPercentage(fieldMargin.FromRight);
+            var leftMargin = WidthFromPercentage(fieldMargin.FromLeft);
+            
+            var startPositionScreen = new Vector2(leftMargin, _screenHeight - topMargin);
+            var endPositionScreen = new Vector2(_screenWidth - rightMargin, bottomMargin);
+            
+            var fieldStartPosition = ToWorldPoint(startPositionScreen);
+            var fieldEndPosition = ToWorldPoint(endPositionScreen);
+            
+            var fieldSizeWorld = new Vector2(
+                fieldEndPosition.x - fieldStartPosition.x,
+                fieldStartPosition.y - fieldEndPosition.y);
+            
+            var fieldBounds = new Bounds((fieldEndPosition + fieldStartPosition) / 2, fieldSizeWorld);
+
+            return fieldBounds;
         }
 
-        public FieldPositionsGenerationResult GeneratePositions(MarginInPercentage fieldMargin, Vector2 itemMargins,
-            Vector2Int fieldSize, float baseItemHeight)
+        public FieldPositionsGenerationResult GeneratePositions(Vector2Int fieldSize)
         {
+            _screenHeight = Screen.height;
+            _screenWidth = Screen.width;
+            
+            var fieldMargin = _gameFieldConfiguration.FieldMargin;
+            var itemMargins = new Vector2(_gameFieldConfiguration.BlockMarginRight,
+                _gameFieldConfiguration.BlockMarginTop);
+            var baseItemHeight = _block.GetBaseHeight();
+            
             var topMargin = HeightFromPercentage(fieldMargin.FromTop);
             var bottomMargin = HeightFromPercentage(fieldMargin.FromBottom);
             var rightMargin = WidthFromPercentage(fieldMargin.FromRight);
@@ -42,10 +74,8 @@ namespace Game.Field.Helpers
             var marginTopWorld = ToWorldSize(new Vector2(0, blockMarginTop)).magnitude;
             
             var startPositionScreen = new Vector2(leftMargin, _screenHeight - topMargin);
-            var endPositionScreen = new Vector2(_screenWidth - rightMargin, bottomMargin);
             
             var fieldStartPosition = ToWorldPoint(startPositionScreen);
-            var fieldEndPosition = ToWorldPoint(endPositionScreen);
             
             var startPositionWorld = fieldStartPosition + new Vector2(cellSizeWorld.x / 2, -cellSizeWorld.y / 2);
             var startX = startPositionWorld.x;
@@ -64,13 +94,7 @@ namespace Game.Field.Helpers
                 startPositionWorld -= new Vector2(0, cellSizeWorld.y + marginTopWorld);
             }
 
-            var fieldSizeWorld = new Vector2(
-                fieldEndPosition.x - fieldStartPosition.x,
-                fieldStartPosition.y - fieldEndPosition.y);
-
-            var fieldBounds = new Bounds((fieldEndPosition + fieldStartPosition) / 2, fieldSizeWorld);
-
-            return new FieldPositionsGenerationResult(result, cellSizeWorld, fieldBounds);
+            return new FieldPositionsGenerationResult(result, cellSizeWorld);
         }
 
         private float HeightFromPercentage(float percentage) => _screenHeight * percentage;
@@ -88,14 +112,12 @@ namespace Game.Field.Helpers
 
     public class FieldPositionsGenerationResult
     {
-        public FieldPositionsGenerationResult(Vector2[,] cellPositions, Vector2 cellSize, Bounds fieldBounds)
+        public FieldPositionsGenerationResult(Vector2[,] cellPositions, Vector2 cellSize)
         {
             CellPositions = cellPositions;
             CellSize = cellSize;
-            FieldBounds = fieldBounds;
         }
 
-        public Bounds FieldBounds { get; }
         public Vector2 CellSize { get; }
         public Vector2[,] CellPositions { get; }
     }

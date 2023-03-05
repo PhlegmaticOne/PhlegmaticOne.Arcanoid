@@ -8,28 +8,27 @@ using UnityEngine;
 
 namespace Game.Field.Builder
 {
-    public class FieldBuilder : MonoBehaviour, IFieldBuilder
+    public class FieldBuilder : IFieldBuilder
     {
-        [SerializeField] private FieldPositionsGenerator _fieldPositionsGenerator;
-        [SerializeField] private InteractableZoneSetter _interactableZoneSetter;
-        [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
-        [SerializeField] private GameField _gameField;
-        [SerializeField] private Block _block;
-        private IBlockSpawner _blockSpawner;
+        private readonly IBlockSpawner _blockSpawner;
+        private readonly FieldPositionsGenerator _fieldPositionsGenerator;
+        private readonly GameField _gameField;
 
-        public void Initialize(IBlockSpawner blockSpawner) => _blockSpawner = blockSpawner;
+        public FieldBuilder(IBlockSpawner blockSpawner, 
+            FieldPositionsGenerator fieldPositionsGenerator,
+            GameField gameField)
+        {
+            _blockSpawner = blockSpawner;
+            _fieldPositionsGenerator = fieldPositionsGenerator;
+            _gameField = gameField;
+        }
 
-        public void BuildField(LevelData levelData)
+        public GameField BuildField(LevelData levelData)
         {
             var width = levelData.Width;
             var height = levelData.Height;
             var blocksData = levelData.BlocksData;
-            
-            var positionsGenerationResult = _fieldPositionsGenerator.GeneratePositions(
-                _gameFieldConfiguration.FieldMargin,
-                new Vector2(_gameFieldConfiguration.BlockMarginRight, _gameFieldConfiguration.BlockMarginTop),
-                new Vector2Int(width, height),
-                _block.GetBaseHeight());
+            var positionsGenerationResult = _fieldPositionsGenerator.GeneratePositions(new Vector2Int(width, height));
             
             var positions = positionsGenerationResult.CellPositions;
             var cellSize = positionsGenerationResult.CellSize;
@@ -47,10 +46,8 @@ namespace Game.Field.Builder
                 }
             }
 
-            var bounds = _interactableZoneSetter.CalculateZoneBounds(positionsGenerationResult.FieldBounds);
-            _interactableZoneSetter.SetInteractableZone(bounds);
-            
             _gameField.Initialize(result, width, height);
+            return _gameField;
         }
     }
 }

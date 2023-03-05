@@ -4,6 +4,6 @@ namespace Game.Field.Builder
 {
     public interface IFieldBuilder
     {
-        void BuildField(LevelData levelData);
+        GameField BuildField(LevelData levelData);
     }
 }

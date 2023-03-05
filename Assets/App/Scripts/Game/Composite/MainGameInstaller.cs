@@ -1,12 +1,10 @@
-﻿using Game.Blocks;
-using Game.Blocks.Spawners;
-using Game.Field.Builder;
-using Game.PlayerObjects;
-using Game.PlayerObjects.BallObject;
+﻿using Game.Blocks.Spawners;
+using Game.Field.Helpers;
+using Game.Field.Installer;
 using Game.PlayerObjects.BallObject.Factories;
-using Game.Systems;
+using Game.PlayerObjects.ShipObject;
+using Game.Systems.Control;
 using Libs.InputSystem;
-using Libs.Pooling;
 using Libs.Pooling.Base;
 using Libs.Pooling.Implementation;
 using Libs.Services;
@@ -19,10 +17,11 @@ namespace Game.Composite
         [SerializeField] private InputSystemInstaller _inputSystemInstaller;
         [SerializeField] private BlockSpawnerInstaller _blockSpawnerInstaller;
         [SerializeField] private BallSpawnerInstaller _ballSpawnerInstaller;
+        [SerializeField] private FieldInstaller _fieldInstaller;
 
-        [SerializeField] private FieldBuilder _fieldBuilder;
+        [SerializeField] private InteractableZoneSetter _interactableZoneSetter;
         [SerializeField] private ControlSystem _controlSystem;
-        [SerializeField] private Racket _racket;
+        [SerializeField] private Ship _ship;
 
         public void AddPools(PoolBuilder poolBuilder)
         {
@@ -35,10 +34,15 @@ namespace Game.Composite
             var blockSpawner = _blockSpawnerInstaller.CreateBlockSpawner(poolProvider);
             var ballSpawner = _ballSpawnerInstaller.CreateBallSpawner(poolProvider);
             var inputSystem = _inputSystemInstaller.Create();
-            _fieldBuilder.Initialize(blockSpawner);
-            _controlSystem.Initialize(inputSystem.CreateInput());
+            var fieldBuilder = _fieldInstaller.CreateFieldBuilder(blockSpawner);
 
-            return new MainGame(_fieldBuilder, ballSpawner, _racket);
+            var interactableBounds = _interactableZoneSetter.CalculateZoneBounds(_fieldInstaller.GetFieldBounds());
+            _interactableZoneSetter.SetInteractableZone(interactableBounds);
+            
+            _controlSystem.Initialize(inputSystem.CreateInput(), _ship);
+            _controlSystem.SetInteractableBounds(interactableBounds);
+            
+            return new MainGame(fieldBuilder, _controlSystem, ballSpawner, _ship);
         }
     }
 }
