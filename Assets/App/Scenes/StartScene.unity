@@ -412,6 +412,7 @@ MonoBehaviour:
   _popupComposite: {fileID: 1521087073}
   _mainGameInstaller: {fileID: 629723086}
   _packCollectionConfiguration: {fileID: 11400000, guid: 9cb23a642a9bd1c43967697d995bac90, type: 2}
+  _defaultPackConfiguration: {fileID: 11400000, guid: bb8163f4ea695aa49b472e4472b55098, type: 2}
 --- !u!1 &303576113
 GameObject:
   m_ObjectHideFlags: 0

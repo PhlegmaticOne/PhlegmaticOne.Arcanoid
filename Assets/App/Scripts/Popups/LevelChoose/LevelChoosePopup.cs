@@ -23,6 +23,7 @@ namespace Popups.LevelChoose
 
         private PackConfiguration _packConfiguration;
         private PackLevelCollection _packLevelCollection;
+        private DefaultPackConfiguration _defaultPackConfiguration;
 
         public void Initialize(IPopupManager popupManager, IPackRepository packRepository)
         {
@@ -31,6 +32,11 @@ namespace Popups.LevelChoose
             _levelsCollectionView.LevelClicked += LevelsCollectionViewOnLevelClicked;
             ConfigureBackButton();
         }
+
+        public void SetDefaultPackConfiguration(DefaultPackConfiguration defaultPackConfiguration) => 
+            _defaultPackConfiguration = defaultPackConfiguration;
+
+        protected override void OnShow() => TrySetPack();
 
         private void LevelsCollectionViewOnLevelClicked(LevelPreviewData levelPreviewData)
         {
@@ -69,6 +75,16 @@ namespace Popups.LevelChoose
             RemoveAllListeners(_backButton);
             _levelsCollectionView.LevelClicked -= LevelsCollectionViewOnLevelClicked;
             _levelsCollectionView.Clear();
+        }
+
+        private void TrySetPack()
+        {
+            if (_packConfiguration != null)
+            {
+                return;
+            }
+            
+            SetPack(_defaultPackConfiguration.DefaultPack);
         }
 
         private void ConfigureBackButton()

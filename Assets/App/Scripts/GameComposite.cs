@@ -1,11 +1,9 @@
 ﻿using System.Linq;
 using Common.Configurations.Packs;
-using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Common.Data.Repositories.ResourcesImplementation;
 using Game;
 using Game.Base;
-using Game.Blocks;
 using Game.Composite;
 using Libs.Localization;
 using Libs.Localization.Base;
@@ -28,19 +26,15 @@ namespace App.Scripts
         [SerializeField] private PopupComposite _popupComposite;
         [SerializeField] private MainGameInstaller _mainGameInstaller;
         [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
-
+        [SerializeField] private DefaultPackConfiguration _defaultPackConfiguration;
+        
         private IServiceProvider _serviceProvider;
         
         private void Awake()
         {
              _serviceProvider = BuildServices();
-             //TryInitializePackConfigurations();
-             //SpawnStartPopup();
-             var packLevels = _serviceProvider.GetRequiredService<IPackRepository>().GetLevels("Tutorial");
-             var packConfiguration = ScriptableObject.CreateInstance<PackConfiguration>();
-
-             var popup = _serviceProvider.GetRequiredService<IPopupManager>().SpawnPopup<MainGamePopup>();
-             popup.SetGameData(new GameData(packConfiguration, packLevels, new LevelPreviewData(0, false)));
+             TryInitializePackConfigurations();
+             SpawnStartPopup();
         }
         
         private void TryInitializePackConfigurations()
@@ -124,6 +118,8 @@ namespace App.Scripts
                 popup.Initialize(
                     _serviceProvider.GetRequiredService<IPopupManager>(),
                     _serviceProvider.GetRequiredService<IPackRepository>());
+                
+                popup.SetDefaultPackConfiguration(_defaultPackConfiguration);
             });
             
             builder.SetInitializerFor<MainGamePopup>(popup =>
@@ -131,7 +127,10 @@ namespace App.Scripts
                 popup.Initialize(
                     _serviceProvider.GetRequiredService<IPopupManager>(),
                     _serviceProvider.GetRequiredService<ILevelRepository>(),
+                    _serviceProvider.GetRequiredService<IPackRepository>(),
                     _serviceProvider.GetRequiredService<IGame<MainGameData, MainGameEvents>>());
+                
+                popup.SetDefaultPackConfiguration(_defaultPackConfiguration);
             });
             
             builder.SetInitializerFor<MainGameMenuPopup>(popup =>
