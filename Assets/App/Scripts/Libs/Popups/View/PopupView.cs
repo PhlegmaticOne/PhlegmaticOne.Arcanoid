@@ -10,10 +10,24 @@ namespace Libs.Popups.View
 
         public void SetSortOrder(int sortOrder)
         {
-            _canvas.overrideSorting = true;
+            OverrideSorting();
             _canvas.sortingOrder = sortOrder;
         }
 
+        public void SetSortingLayer(string sortingLayerName)
+        {
+            OverrideSorting();
+            _canvas.sortingLayerName = sortingLayerName;
+        }
+
         public void Transparent() => _canvasGroup.alpha = 0;
+
+        private void OverrideSorting()
+        {
+            if (_canvas.overrideSorting == false)
+            {
+                _canvas.overrideSorting = true;
+            }
+        }
     }
 }

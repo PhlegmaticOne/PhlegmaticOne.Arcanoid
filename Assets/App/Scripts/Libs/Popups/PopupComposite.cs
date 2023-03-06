@@ -31,10 +31,11 @@ namespace Libs.Popups
                 new DisappearanceAnimationsFactory(),
                 popupInitializersProvider,
                 _mainCanvasTransform,
+                _popupSystemConfiguration,
                 _popupSystemConfiguration.StartFromSortingOrder);
         }
 
         private IEnumerable<PrefabInfo<Popup>> CreatePopupPrefabInfos() =>
-            _popupSystemConfiguration.Popups.Select(x => new PrefabInfo<Popup>(x, _mainCanvasTransform));
+            _popupSystemConfiguration.Popups.Select(x => new PrefabInfo<Popup>(x.Popup, _mainCanvasTransform));
     }
 }

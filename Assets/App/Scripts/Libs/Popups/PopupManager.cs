@@ -2,6 +2,7 @@
 using Libs.Popups.Animations.Base;
 using Libs.Popups.Animations.Types;
 using Libs.Popups.Base;
+using Libs.Popups.Configurations;
 using Libs.Popups.Infrastructure;
 using Libs.Popups.Initialization;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Libs.Popups
         private readonly IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
         private readonly IPopupInitializersProvider _popupInitializersProvider;
         private readonly RectTransform _mainCanvasTransform;
+        private readonly PopupSystemConfiguration _popupSystemConfiguration;
         private readonly IAbstractObjectPool<Popup> _popupsPool;
         private readonly StackList<Popup> _popups;
 
@@ -29,12 +31,14 @@ namespace Libs.Popups
             IPopupAnimationsFactory<DisappearAnimationType> disappearAnimationsFactory,
             IPopupInitializersProvider popupInitializersProvider,
             RectTransform mainCanvasTransform,
+            PopupSystemConfiguration popupSystemConfiguration,
             int startFromSortingOrder)
         {
             _appearAnimationsFactory = appearAnimationsFactory;
             _disappearAnimationsFactory = disappearAnimationsFactory;
             _popupInitializersProvider = popupInitializersProvider;
             _mainCanvasTransform = mainCanvasTransform;
+            _popupSystemConfiguration = popupSystemConfiguration;
             _popupsPool = poolProvider.GetAbstractPool<Popup>();
             _popups = new StackList<Popup>();
             _currentSortingOrder = startFromSortingOrder;
@@ -106,9 +110,7 @@ namespace Libs.Popups
 
         private Popup ShowPopup(Popup popup)
         {
-            _popupInitializersProvider.InitializePopup(popup);
-            popup.SetParentTransform(_mainCanvasTransform);
-            popup.SetAnimationFactories(_appearAnimationsFactory, _disappearAnimationsFactory);
+            InitializePopup(popup);
             
             ++_currentSortingOrder;
             if (_popups.Count != 0)
@@ -124,6 +126,16 @@ namespace Libs.Popups
             });
 
             return popup;
+        }
+
+        private void InitializePopup(Popup popup)
+        {
+            var popupConfiguration = _popupSystemConfiguration.FindConfigurationForPrefab(popup);
+            
+            _popupInitializersProvider.InitializePopup(popup);
+            popup.SetParentTransform(_mainCanvasTransform);
+            popup.SetAnimationFactories(_appearAnimationsFactory, _disappearAnimationsFactory);
+            popup.SetPopupConfiguration(popupConfiguration);
         }
 
         private void CloseAnimate(Popup popup)

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f40373a4e94b278e2c0b09a442440a, type: 3}
+  m_Name: PopupSystemConfiguration
+  m_EditorClassIdentifier: 
+  _startFromSortingOrder: 2
+  _popups:
+  - {fileID: 11400000, guid: 509962e706d7e2c4cbd99723c7ec5480, type: 2}
+  - {fileID: 11400000, guid: fffc92db1e7f8c34c95d807e4702a4c1, type: 2}
+  - {fileID: 11400000, guid: 934dad5144001e34bbe7e313234bbe16, type: 2}
+  - {fileID: 11400000, guid: d65bee9a24b87be4cbcbc2962bf2cd23, type: 2}
+  - {fileID: 11400000, guid: 148c10b3cac73584087782139f55cc47, type: 2}
+  - {fileID: 11400000, guid: 01f76a1835156ef4e9c3bf2e9f401318, type: 2}
+  - {fileID: 11400000, guid: 34b1b2d95f549394c843d195b9b16e1d, type: 2}
+  - {fileID: 11400000, guid: 23e330676d3810449a34a46805b3c7c2, type: 2}
+  _startPopup: {fileID: 11400000, guid: 509962e706d7e2c4cbd99723c7ec5480, type: 2}
+  _spawnStartPopup: 1

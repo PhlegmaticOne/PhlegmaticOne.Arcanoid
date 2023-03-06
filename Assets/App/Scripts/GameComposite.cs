@@ -66,7 +66,7 @@ namespace App.Scripts
 
             if (configuration.SpawnStartPopup)
             {
-                popupManager.SpawnPopup(configuration.StartPopup);
+                popupManager.SpawnPopup(configuration.StartPopup.Popup);
             }
             else
             {

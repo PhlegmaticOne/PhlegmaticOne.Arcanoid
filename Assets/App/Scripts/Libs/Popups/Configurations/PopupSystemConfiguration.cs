@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Libs.Popups.Configurations
@@ -7,12 +8,17 @@ namespace Libs.Popups.Configurations
     public class PopupSystemConfiguration : ScriptableObject
     {
         [SerializeField] private int _startFromSortingOrder;
-        [SerializeField] private List<Popup> _popups;
-        [SerializeField] private Popup _startPopup;
+        [SerializeField] private List<PopupConfiguration> _popups;
+        [SerializeField] private PopupConfiguration _startPopup;
         [SerializeField] private bool _spawnStartPopup;
-        public List<Popup> Popups => _popups;
-        public Popup StartPopup => _startPopup;
+        public List<PopupConfiguration> Popups => _popups;
+        public PopupConfiguration StartPopup => _startPopup;
         public bool SpawnStartPopup => _spawnStartPopup;
         public int StartFromSortingOrder => _startFromSortingOrder;
+
+        public PopupConfiguration FindConfigurationForPrefab(Popup popup)
+        {
+            return _popups.First(x => x.Popup.GetType() == popup.GetType());
+        }
     }
 }

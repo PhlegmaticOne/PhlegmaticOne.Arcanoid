@@ -12,41 +12,46 @@ namespace Libs.Popups
     public abstract class Popup : MonoBehaviour, IPoolable
     {
         [SerializeField] private PopupView _popupView;
-        [SerializeField] private PopupConfiguration _popupConfiguration;
         private IPopupAnimationsFactory<AppearAnimationType> _appearAnimationsFactory;
         private IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
         private RectTransform _parentTransform;
 
+        private PopupAnimationConfiguration _popupAnimationConfiguration;
+
         public PopupView PopupView => _popupView;
         public RectTransform RectTransform => transform as RectTransform;
-        public PopupConfiguration PopupConfiguration => _popupConfiguration;
-        
         public abstract void EnableInput();
         
         public abstract void DisableInput();
+
+        public void SetPopupConfiguration(PopupConfiguration popupConfiguration)
+        {
+            _popupAnimationConfiguration = popupConfiguration.PopupAnimationConfiguration;
+            _popupView.SetSortingLayer(popupConfiguration.SortingLayerName);
+        }
         
         public void Show(int sortingOrder, Action onShowed)
         {
             _popupView.SetSortOrder(sortingOrder);
             
             var popupAnimation = _appearAnimationsFactory
-                .CreateAnimation(PopupConfiguration.AppearAnimationType, _parentTransform);
+                .CreateAnimation(_popupAnimationConfiguration.AppearAnimationType, _parentTransform);
             
             popupAnimation.OnAnimationPlayed(() =>
             {
+                EnableInput();
                 onShowed?.Invoke();
                 popupAnimation.Stop(this);
-                EnableInput();
                 OnShow();
             });
             
-            popupAnimation.Play(this, PopupConfiguration.AppearanceTime);
+            popupAnimation.Play(this, _popupAnimationConfiguration.AppearanceTime);
         }
         
         public void Close(Action onCloseAction)
         {
             var popupAnimation = _disappearAnimationsFactory
-                .CreateAnimation(PopupConfiguration.DisappearAnimationType, _parentTransform);
+                .CreateAnimation(_popupAnimationConfiguration.DisappearAnimationType, _parentTransform);
             
             popupAnimation.OnAnimationPlayed(() =>
             {
@@ -55,7 +60,7 @@ namespace Libs.Popups
                 CloseInstant();
             });
             
-            popupAnimation.Play(this, PopupConfiguration.DisappearanceTime);
+            popupAnimation.Play(this, _popupAnimationConfiguration.DisappearanceTime);
         }
 
         public void CloseInstant()

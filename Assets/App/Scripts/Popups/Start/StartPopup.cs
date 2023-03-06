@@ -1,4 +1,5 @@
-﻿using Libs.Popups;
+﻿using System;
+using Libs.Popups;
 using Libs.Popups.Base;
 using Popups.PackChoose;
 using Popups.Settings;
@@ -13,6 +14,7 @@ namespace Popups.Start
         [SerializeField] private Button _startGameButton;
 
         private IPopupManager _popupManager;
+        private Action _spawnPopupAction;
 
         public void Initialize(IPopupManager popupManager)
         {
@@ -51,13 +53,14 @@ namespace Popups.Start
         {
             _startGameButton.onClick.AddListener(() =>
             {
+                _spawnPopupAction = () => _popupManager.SpawnPopup<PackChoosePopup>();
                 _popupManager.CloseLastPopup();
             });
         }
 
         protected override void OnClosed()
         {
-            _popupManager.SpawnPopup<PackChoosePopup>();
+            _spawnPopupAction?.Invoke();
         }
     }
 }

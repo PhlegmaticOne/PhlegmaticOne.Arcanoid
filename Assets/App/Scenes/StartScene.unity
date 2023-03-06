@@ -2486,10 +2486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4438823362416317925, guid: 37d96f18608ba65429493352562a3024, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4438823362689406981, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2576,24 +2572,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438823362689407097, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_Name
-      value: '[UI]'
+      value: '[Popups]'
       objectReference: {fileID: 0}
     - target: {fileID: 4438823362689407098, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4438823362689407098, guid: 37d96f18608ba65429493352562a3024, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438823362689407099, guid: 37d96f18608ba65429493352562a3024, type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438823362689407099, guid: 37d96f18608ba65429493352562a3024, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2603,16 +2587,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438823363607995802, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4438823363607995803, guid: 37d96f18608ba65429493352562a3024, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d96f18608ba65429493352562a3024, type: 3}
