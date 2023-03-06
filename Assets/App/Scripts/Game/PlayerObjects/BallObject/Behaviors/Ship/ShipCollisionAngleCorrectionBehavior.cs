@@ -1,9 +1,9 @@
 ﻿using Game.Behaviors;
 using UnityEngine;
 
-namespace Game.PlayerObjects.BallObject.Behaviours.Ship
+namespace Game.PlayerObjects.BallObject.Behaviors.Ship
 {
-    public class MovementAngleCorrectionBehaviour : IObjectBehavior<Ball>
+    public class ShipCollisionAngleCorrectionBehavior : IObjectBehavior<Ball>
     {
         public void Behave(Ball entity, Collision2D collision2D)
         {

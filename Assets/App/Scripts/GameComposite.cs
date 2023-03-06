@@ -37,9 +37,9 @@ namespace App.Scripts
              //TryInitializePackConfigurations();
              //SpawnStartPopup();
              var packLevels = _serviceProvider.GetRequiredService<IPackRepository>().GetLevels("Tutorial");
-             var popup = _serviceProvider.GetRequiredService<IPopupManager>().SpawnPopup<MainGamePopup>();
              var packConfiguration = ScriptableObject.CreateInstance<PackConfiguration>();
 
+             var popup = _serviceProvider.GetRequiredService<IPopupManager>().SpawnPopup<MainGamePopup>();
              popup.SetGameData(new GameData(packConfiguration, packLevels, new LevelPreviewData(0, false)));
         }
         

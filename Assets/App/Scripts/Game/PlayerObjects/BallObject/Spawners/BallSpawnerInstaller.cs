@@ -3,7 +3,7 @@ using Libs.Pooling;
 using Libs.Pooling.Base;
 using UnityEngine;
 
-namespace Game.PlayerObjects.BallObject.Factories
+namespace Game.PlayerObjects.BallObject.Spawners
 {
     public class BallSpawnerInstaller : MonoBehaviour
     {

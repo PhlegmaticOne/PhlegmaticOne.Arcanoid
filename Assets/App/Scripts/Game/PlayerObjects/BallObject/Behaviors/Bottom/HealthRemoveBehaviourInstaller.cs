@@ -2,7 +2,7 @@
 using Game.Behaviors.Installer;
 using UnityEngine;
 
-namespace Game.PlayerObjects.BallObject.Behaviours.Bottom
+namespace Game.PlayerObjects.BallObject.Behaviors.Bottom
 {
     public class HealthRemoveBehaviourInstaller : BehaviorInstaller<Ball>
     {

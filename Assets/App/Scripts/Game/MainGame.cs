@@ -1,7 +1,7 @@
 ﻿using System;
 using Game.Base;
 using Game.Field.Builder;
-using Game.PlayerObjects.BallObject.Factories;
+using Game.PlayerObjects.BallObject.Spawners;
 using Game.PlayerObjects.ShipObject;
 using Game.Systems.Control;
 using UnityEngine;

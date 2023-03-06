@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.PlayerObjects.BallObject.Factories
+namespace Game.PlayerObjects.BallObject.Spawners
 {
     public interface IBallSpawner
     {

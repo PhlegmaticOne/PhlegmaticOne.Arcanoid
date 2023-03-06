@@ -1,7 +1,7 @@
 ﻿using Game.Behaviors.Installer;
 using Libs.Pooling.Base;
 
-namespace Game.PlayerObjects.BallObject.Factories
+namespace Game.PlayerObjects.BallObject.Spawners
 {
     public class BallSpawner : IBallSpawner
     {

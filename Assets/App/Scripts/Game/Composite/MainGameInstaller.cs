@@ -1,7 +1,7 @@
 ﻿using Game.Blocks.Spawners;
 using Game.Field.Helpers;
 using Game.Field.Installer;
-using Game.PlayerObjects.BallObject.Factories;
+using Game.PlayerObjects.BallObject.Spawners;
 using Game.PlayerObjects.ShipObject;
 using Game.Systems.Control;
 using Libs.InputSystem;

@@ -1,7 +1,7 @@
 ﻿using Game.Behaviors;
 using UnityEngine;
 
-namespace Game.PlayerObjects.BallObject.Behaviours.Bottom
+namespace Game.PlayerObjects.BallObject.Behaviors.Bottom
 {
     public class HealthRemoveBehaviour : IObjectBehavior<Ball>
     {
