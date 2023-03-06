@@ -19,11 +19,11 @@ namespace Popups.MainGame
             _popupManager = popupManager;
             _backButton.onClick.AddListener(() =>
             {
-                _popupManager.HideAllPermanent();
+                _popupManager.CloseAllPopupsInstant();
                 _popupManager.SpawnPopup<PackChoosePopup>();
             });
-            _restartButton.onClick.AddListener(() => _popupManager.HidePopup());
-            _continueButton.onClick.AddListener(() => _popupManager.HidePopup());
+            _restartButton.onClick.AddListener(() => _popupManager.CloseLastPopup());
+            _continueButton.onClick.AddListener(() => _popupManager.CloseLastPopup());
         }
         
 

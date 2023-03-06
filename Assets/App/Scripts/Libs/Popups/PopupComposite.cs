@@ -21,16 +21,15 @@ namespace Libs.Popups
             poolBuilder.AddAbstractPool(new UnityAbstractObjectPool<Popup>(CreatePopupPrefabInfos()));
         }
 
+        public PopupSystemConfiguration PopupSystemConfiguration => _popupSystemConfiguration;
         public IPopupInitializersBuilder GetPopupInitializersBuilder() => new PopupInitializersBuilder();
 
         public IPopupManager CreatePopupManager(IPoolProvider poolProvider, IPopupInitializersProvider popupInitializersProvider)
         {
-            var appearanceAnimationsFactory = new AppearanceAnimationsFactory();
-            var disappearanceAnimationsFactory = new DisappearanceAnimationsFactory();
             return new PopupManager(poolProvider, 
+                new AppearanceAnimationsFactory(),
+                new DisappearanceAnimationsFactory(),
                 popupInitializersProvider,
-                appearanceAnimationsFactory,
-                disappearanceAnimationsFactory, 
                 _mainCanvasTransform,
                 _popupSystemConfiguration.StartFromSortingOrder);
         }

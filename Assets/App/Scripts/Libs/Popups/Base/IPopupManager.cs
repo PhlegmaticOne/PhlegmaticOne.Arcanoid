@@ -5,11 +5,14 @@ namespace Libs.Popups.Base
     public interface IPopupManager
     {
         event UnityAction<Popup> PopupShowed;
-        event UnityAction<Popup> PopupHid;
-        event UnityAction AllPopupsHid;
+        event UnityAction<Popup> PopupClosed;
+        event UnityAction AllPopupsClosed;
         T SpawnPopup<T>() where T : Popup;
-        void HidePopup();
-        void HidePopupPermanent();
-        void HideAllPermanent();
+        Popup SpawnPopup(Popup prefab);
+        void CloseLastPopup();
+        void ClosePopup(Popup popup);
+        void CloseLastPopupInstant();
+        void ClosePopupInstant(Popup popup);
+        void CloseAllPopupsInstant();
     }
 }

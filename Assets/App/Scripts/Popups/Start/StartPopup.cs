@@ -51,11 +51,11 @@ namespace Popups.Start
         {
             _startGameButton.onClick.AddListener(() =>
             {
-                _popupManager.HidePopup();
+                _popupManager.CloseLastPopup();
             });
         }
 
-        protected override void OnHid()
+        protected override void OnClosed()
         {
             _popupManager.SpawnPopup<PackChoosePopup>();
         }

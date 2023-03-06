@@ -20,7 +20,6 @@ namespace Libs.Pooling.Implementation
             _created = new List<T>();
         }
         
-        private bool Pooled<TImpl>() => _created.Any(x => x is TImpl);
         public TImpl GetConcrete<TImpl>() where TImpl : T
         {
             TImpl result;
@@ -39,7 +38,26 @@ namespace Libs.Pooling.Implementation
             _created.Add(result);
             return result;
         }
-        
+
+        public T GetByType(Type type)
+        {
+            T result;
+            
+            if (Pooled(type))
+            {
+                result = CreateItem(type, false);
+            }
+            else
+            {
+                var item = _items.FirstOrDefault(x => x.Key == type);
+                result = item.Value == null ? CreateItem(type, true) : _items[type];
+            }
+            
+            _poolableBehaviour.Enable(result);
+            _created.Add(result);
+            return result;
+        }
+
         public void ReturnToPool(IPoolable item)
         {
             if (!(item is T generic))
@@ -65,6 +83,9 @@ namespace Libs.Pooling.Implementation
             }
             _items.Clear();
         }
+        
+        private bool Pooled<TImpl>() => _created.Any(x => x is TImpl);
+        private bool Pooled(Type type) => _created.Any(x => x.GetType() == type);
 
         private bool Pooled(T item) => _created.Any(x => x.GetType() == item.GetType());
 
@@ -81,6 +102,21 @@ namespace Libs.Pooling.Implementation
             }
             
             return (TItem)item;
+        }
+        
+        private T CreateItem(Type type, bool addToDictionary)
+        {
+            var creationStrategy = _creationStrategies.First(x => x.ObjectType == type);
+            
+            var item = creationStrategy.Create();
+            _poolableBehaviour.Disable(item);
+            
+            if (addToDictionary)
+            {
+                _items.Add(creationStrategy.ObjectType, item);
+            }
+            
+            return item;
         }
     }
 }

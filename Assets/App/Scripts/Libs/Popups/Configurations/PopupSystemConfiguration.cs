@@ -8,7 +8,11 @@ namespace Libs.Popups.Configurations
     {
         [SerializeField] private int _startFromSortingOrder;
         [SerializeField] private List<Popup> _popups;
+        [SerializeField] private Popup _startPopup;
+        [SerializeField] private bool _spawnStartPopup;
         public List<Popup> Popups => _popups;
+        public Popup StartPopup => _startPopup;
+        public bool SpawnStartPopup => _spawnStartPopup;
         public int StartFromSortingOrder => _startFromSortingOrder;
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Libs.Popups.Animations
 {
-    public class DisappearanceAnimationsFactory : IPopupAnimationsFactory<DisappearAnimationType>
+    internal class DisappearanceAnimationsFactory : IPopupAnimationsFactory<DisappearAnimationType>
     {
         private const int Margin = 10;
         private readonly Dictionary<DisappearAnimationType, Func<RectTransform, IPopupAnimation>> _animationFactories;
@@ -28,6 +28,7 @@ namespace Libs.Popups.Animations
                     PopupMoveAnimation.FromZeroTo(new Vector3(t.rect.width + Margin, 0)) },
             };
         }
+        
         public IPopupAnimation CreateAnimation(DisappearAnimationType animationType, RectTransform mainCanvasTransform)
         {
             return _animationFactories[animationType].Invoke(mainCanvasTransform);

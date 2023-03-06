@@ -1,5 +1,7 @@
-﻿using Libs.Pooling.Base;
+﻿using System;
+using Libs.Pooling.Base;
 using Libs.Popups.Animations.Base;
+using Libs.Popups.Animations.Types;
 using Libs.Popups.Configurations;
 using Libs.Popups.View;
 using UnityEngine;
@@ -11,6 +13,9 @@ namespace Libs.Popups
     {
         [SerializeField] private PopupView _popupView;
         [SerializeField] private PopupConfiguration _popupConfiguration;
+        private IPopupAnimationsFactory<AppearAnimationType> _appearAnimationsFactory;
+        private IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
+        private RectTransform _parentTransform;
 
         public PopupView PopupView => _popupView;
         public RectTransform RectTransform => transform as RectTransform;
@@ -20,33 +25,56 @@ namespace Libs.Popups
         
         public abstract void DisableInput();
         
-        public void Show(IPopupAnimation popupAnimation, int sortingOrder)
+        public void Show(int sortingOrder, Action onShowed)
         {
             _popupView.SetSortOrder(sortingOrder);
-            OnBeforeShowing();
+            
+            var popupAnimation = _appearAnimationsFactory
+                .CreateAnimation(PopupConfiguration.AppearAnimationType, _parentTransform);
+            
             popupAnimation.OnAnimationPlayed(() =>
             {
+                onShowed?.Invoke();
+                popupAnimation.Stop(this);
                 EnableInput();
                 OnShow();
             });
+            
             popupAnimation.Play(this, PopupConfiguration.AppearanceTime);
         }
         
-        public void Hide(IPopupAnimation popupAnimation)
+        public void Close(Action onCloseAction)
         {
-            OnBeforeHiding();
+            var popupAnimation = _disappearAnimationsFactory
+                .CreateAnimation(PopupConfiguration.DisappearAnimationType, _parentTransform);
+            
             popupAnimation.OnAnimationPlayed(() =>
             {
-                DisableInput();
-                OnHid();
+                onCloseAction?.Invoke();
+                popupAnimation.Stop(this);
+                CloseInstant();
             });
+            
             popupAnimation.Play(this, PopupConfiguration.DisappearanceTime);
         }
-        
-        protected virtual void OnBeforeShowing() { }
-        protected virtual void OnBeforeHiding() { }
+
+        public void CloseInstant()
+        {
+            DisableInput();
+            OnClosed();
+        }
+
+        public void SetParentTransform(RectTransform parentTransform) => _parentTransform = parentTransform;
+        public void SetAnimationFactories(
+            IPopupAnimationsFactory<AppearAnimationType> appearAnimationsFactory,
+            IPopupAnimationsFactory<DisappearAnimationType> disappearAnimationsFactory)
+        {
+            _appearAnimationsFactory = appearAnimationsFactory;
+            _disappearAnimationsFactory = disappearAnimationsFactory;
+        }
+
         protected virtual void OnShow() { }
-        protected virtual void OnHid() { }
+        protected virtual void OnClosed() { }
         
         public virtual void Reset() { }
         

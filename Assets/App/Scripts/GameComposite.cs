@@ -61,7 +61,17 @@ namespace App.Scripts
 
         private void SpawnStartPopup()
         {
-            _serviceProvider.GetRequiredService<IPopupManager>().SpawnPopup<StartPopup>();
+            var popupManager = _serviceProvider.GetRequiredService<IPopupManager>();
+            var configuration = _popupComposite.PopupSystemConfiguration;
+
+            if (configuration.SpawnStartPopup)
+            {
+                popupManager.SpawnPopup(configuration.StartPopup);
+            }
+            else
+            {
+                popupManager.SpawnPopup<StartPopup>();
+            }
         }
 
         private IServiceProvider BuildServices()

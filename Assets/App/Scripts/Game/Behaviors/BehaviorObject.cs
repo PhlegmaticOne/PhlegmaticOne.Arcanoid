@@ -30,19 +30,26 @@ namespace Game.Behaviors
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            var colliderTag = col.gameObject.tag;
-            var collisionBehaviours = _onCollisionBehaviours.GetBehaviours(colliderTag);
-            var destroyBehaviours = _onDestroyBehaviours.GetBehaviours(colliderTag);
-            
-            if ((CanBeDestroyedOnDestroyCollision() || _markedToDestroy) && destroyBehaviours.Count != 0)
+            if (col.gameObject.TryGetComponent<BehaviorObjectTags>(out var behaviorObjectTags) == false)
             {
-                ExecuteBehaviours(destroyBehaviours, col);
                 return;
             }
 
-            if (collisionBehaviours.Count != 0)
+            foreach (var colliderTag in behaviorObjectTags.ColliderTags)
             {
-                ExecuteBehaviours(collisionBehaviours, col);
+                var collisionBehaviours = _onCollisionBehaviours.GetBehaviours(colliderTag.Tag);
+                var destroyBehaviours = _onDestroyBehaviours.GetBehaviours(colliderTag.Tag);
+            
+                if ((CanBeDestroyedOnDestroyCollision() || _markedToDestroy) && destroyBehaviours.Count != 0)
+                {
+                    ExecuteBehaviours(destroyBehaviours, col);
+                    return;
+                }
+
+                if (collisionBehaviours.Count != 0)
+                {
+                    ExecuteBehaviours(collisionBehaviours, col);
+                }
             }
         }
 

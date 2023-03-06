@@ -43,7 +43,7 @@ namespace Game.Blocks
             }
         }
 
-        public float GetBaseHeight() => _boxCollider.size.y;
+        public Vector2 GetBaseSize() => _boxCollider.size;
 
         protected override bool CanBeDestroyedOnDestroyCollision() => _readyToDestroy;
 

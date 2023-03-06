@@ -14,7 +14,7 @@ namespace Popups.MainGame
         public void Initialize(IPopupManager popupManager)
         {
             _popupManager = popupManager;
-            _restartButton.onClick.AddListener(() => _popupManager.HidePopup());
+            _restartButton.onClick.AddListener(() => _popupManager.CloseLastPopup());
         }
         
         public override void EnableInput()

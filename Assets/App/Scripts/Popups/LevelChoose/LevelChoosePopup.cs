@@ -45,7 +45,7 @@ namespace Popups.LevelChoose
                 var mainGamePopup = _popupManager.SpawnPopup<MainGamePopup>();
                 mainGamePopup.SetGameData(new GameData(_packConfiguration, _packLevelCollection, levelPreviewData));
             };
-            _popupManager.HidePopup();
+            _popupManager.CloseLastPopup();
         }
 
         public void SetPack(PackConfiguration packConfiguration)
@@ -68,7 +68,7 @@ namespace Popups.LevelChoose
             DisableBehaviour(_backButton);
         }
 
-        protected override void OnHid() => _onHidAction?.Invoke();
+        protected override void OnClosed() => _onHidAction?.Invoke();
 
         public override void Reset()
         {
@@ -92,7 +92,7 @@ namespace Popups.LevelChoose
             _backButton.onClick.AddListener(() =>
             {
                 _onHidAction = () => _popupManager.SpawnPopup<PackChoosePopup>();
-                _popupManager.HidePopup();
+                _popupManager.CloseLastPopup();
             });
         }
     }

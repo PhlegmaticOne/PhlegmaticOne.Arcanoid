@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Libs.Pooling.Base;
+﻿using Libs.Pooling.Base;
 using Libs.Popups.Animations.Base;
-using Libs.Popups.Animations.Concrete;
 using Libs.Popups.Animations.Types;
 using Libs.Popups.Base;
+using Libs.Popups.Infrastructure;
 using Libs.Popups.Initialization;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,60 +11,48 @@ namespace Libs.Popups
 {
     public class PopupManager : IPopupManager
     {
+        private readonly IPopupAnimationsFactory<AppearAnimationType> _appearAnimationsFactory;
+        private readonly IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
         private readonly IPopupInitializersProvider _popupInitializersProvider;
-        private readonly IPopupAnimationsFactory<AppearAnimationType> _appearanceAnimationsFactory;
-        private readonly IPopupAnimationsFactory<DisappearAnimationType> _disappearanceAnimationsFactory;
         private readonly RectTransform _mainCanvasTransform;
         private readonly IAbstractObjectPool<Popup> _popupsPool;
-        private readonly Stack<Popup> _popups;
+        private readonly StackList<Popup> _popups;
 
         private int _currentSortingOrder;
 
         public event UnityAction<Popup> PopupShowed;
-        public event UnityAction<Popup> PopupHid;
-        public event UnityAction AllPopupsHid;
+        public event UnityAction<Popup> PopupClosed;
+        public event UnityAction AllPopupsClosed;
 
         public PopupManager(IPoolProvider poolProvider, 
+            IPopupAnimationsFactory<AppearAnimationType> appearAnimationsFactory,
+            IPopupAnimationsFactory<DisappearAnimationType> disappearAnimationsFactory,
             IPopupInitializersProvider popupInitializersProvider,
-            IPopupAnimationsFactory<AppearAnimationType> appearanceAnimationsFactory,
-            IPopupAnimationsFactory<DisappearAnimationType> disappearanceAnimationsFactory,
             RectTransform mainCanvasTransform,
             int startFromSortingOrder)
         {
+            _appearAnimationsFactory = appearAnimationsFactory;
+            _disappearAnimationsFactory = disappearAnimationsFactory;
             _popupInitializersProvider = popupInitializersProvider;
-            _appearanceAnimationsFactory = appearanceAnimationsFactory;
-            _disappearanceAnimationsFactory = disappearanceAnimationsFactory;
             _mainCanvasTransform = mainCanvasTransform;
             _popupsPool = poolProvider.GetAbstractPool<Popup>();
-            _popups = new Stack<Popup>();
+            _popups = new StackList<Popup>();
             _currentSortingOrder = startFromSortingOrder;
         }
 
         public T SpawnPopup<T>() where T : Popup
         {
             var popup = _popupsPool.GetConcrete<T>();
-            _popupInitializersProvider.InitializePopup(popup);
-            var conf = popup.PopupConfiguration;
-            var animation = _appearanceAnimationsFactory.CreateAnimation(conf.AppearAnimationType, _mainCanvasTransform);
-            
-            animation.OnAnimationPlayed(() =>
-            {
-                animation.Stop(popup);
-                OnPopupShowed(popup);
-            });
-
-            if (_popups.Count != 0)
-            {
-                _popups.Peek().DisableInput();
-            }
-
-            ++_currentSortingOrder;
-            _popups.Push(popup);
-            popup.Show(animation, _currentSortingOrder);
-            return popup;
+            return (T)ShowPopup(popup);
         }
-        
-        public void HidePopup()
+
+        public Popup SpawnPopup(Popup prefab)
+        {
+            var popup = _popupsPool.GetByType(prefab.GetType());
+            return ShowPopup(popup);
+        }
+
+        public void CloseLastPopup()
         {
             if (_popups.Count == 0)
             {
@@ -73,57 +60,109 @@ namespace Libs.Popups
             }
             
             var popup = _popups.Pop();
-            var conf = popup.PopupConfiguration;
-            var animation = _disappearanceAnimationsFactory.CreateAnimation(conf.DisappearAnimationType, _mainCanvasTransform);
-            
-            animation.OnAnimationPlayed(() =>
-            {
-                animation.Stop(popup);
-                _popupsPool.ReturnToPool(popup);
-
-                if (_popups.Count != 0)
-                {
-                    _popups.Peek().EnableInput();
-                }
-                
-                OnHid(popup);
-            });
-
-            --_currentSortingOrder;
-            popup.Hide(animation);
+            CloseAnimate(popup);
         }
 
-        public void HidePopupPermanent() => HidePermanent();
+        public void ClosePopup(Popup popup)
+        {
+            if (_popups.Count == 0)
+            {
+                return;
+            }
+            
+            _popups.Remove(popup);
+            CloseAnimate(popup);
+        }
 
-        public void HideAllPermanent()
+        public void CloseLastPopupInstant()
+        {
+            if (_popups.Count == 0)
+            {
+                return;
+            }
+            
+            var popup = _popups.Pop();
+            CloseInstant(popup);
+        }
+
+        public void ClosePopupInstant(Popup popup)
+        {
+            if (_popups.Count == 0)
+            {
+                return;
+            }
+            
+            _popups.Remove(popup);
+            CloseInstant(popup);
+        }
+
+        public void CloseAllPopupsInstant()
         {
             while (_popups.Count != 0)
             {
-                HidePermanent();
+                CloseLastPopupInstant();
+            }
+        }
+
+        private Popup ShowPopup(Popup popup)
+        {
+            _popupInitializersProvider.InitializePopup(popup);
+            popup.SetParentTransform(_mainCanvasTransform);
+            popup.SetAnimationFactories(_appearAnimationsFactory, _disappearAnimationsFactory);
+            
+            ++_currentSortingOrder;
+            if (_popups.Count != 0)
+            {
+                _popups.Peek().DisableInput();
+            }
+
+            _popups.Push(popup);
+            
+            popup.Show(_currentSortingOrder, () =>
+            {
+                OnPopupShowed(popup);
+            });
+
+            return popup;
+        }
+
+        private void CloseAnimate(Popup popup)
+        {
+            --_currentSortingOrder;
+            popup.Close(() => OnClosedActions(popup));
+        }
+
+        private void CloseInstant(Popup popup)
+        {
+            --_currentSortingOrder;
+            popup.CloseInstant();
+            OnClosedActions(popup);
+        }
+
+        private void OnClosedActions(Popup popup)
+        {
+            _popupsPool.ReturnToPool(popup);
+            
+            if (_popups.Count != 0)
+            {
+                _popups.Peek().EnableInput();
             }
             
-            OnAllPopupsHid();
+            OnClosed(popup);
         }
-
-        private void OnPopupShowed(Popup popup) => PopupShowed?.Invoke(popup);
-        private void OnPopupHid(Popup popup) => PopupHid?.Invoke(popup);
-        private void OnAllPopupsHid() => AllPopupsHid?.Invoke();
-
-        private void HidePermanent()
+        
+        private void OnClosed(Popup popup)
         {
-            var popup = _popups.Pop();
-            popup.Hide(new NoneAnimation());
-            _popupsPool.ReturnToPool(popup);
-        }
-
-        private void OnHid(Popup popup)
-        {
-            OnPopupHid(popup);
+            OnPopupClosed(popup);
 
             if (_popups.Count == 0)
             {
-                OnAllPopupsHid();
+                OnAllPopupsClosed();
             }
         }
+        
+        private void OnPopupShowed(Popup popup) => PopupShowed?.Invoke(popup);
+        private void OnPopupClosed(Popup popup) => PopupClosed?.Invoke(popup);
+        private void OnAllPopupsClosed() => AllPopupsClosed?.Invoke();
     }
 }

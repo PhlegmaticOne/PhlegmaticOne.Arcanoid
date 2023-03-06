@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Libs.Popups.Animations
 {
-    public class AppearanceAnimationsFactory : IPopupAnimationsFactory<AppearAnimationType>
+    internal class AppearanceAnimationsFactory : IPopupAnimationsFactory<AppearAnimationType>
     {
         private const int Margin = 10;
         private readonly Dictionary<AppearAnimationType, Func<RectTransform, IPopupAnimation>> _animationFactories;
@@ -29,7 +29,8 @@ namespace Libs.Popups.Animations
             };
         }
         
-        public IPopupAnimation CreateAnimation(AppearAnimationType appearAnimationType, RectTransform mainCanvasTransform) => 
+        public IPopupAnimation CreateAnimation(AppearAnimationType appearAnimationType, 
+            RectTransform mainCanvasTransform) => 
             _animationFactories[appearAnimationType].Invoke(mainCanvasTransform);
     }
 }

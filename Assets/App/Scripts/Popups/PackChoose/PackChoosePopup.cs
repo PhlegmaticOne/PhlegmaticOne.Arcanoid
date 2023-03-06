@@ -59,10 +59,10 @@ namespace Popups.PackChoose
                 var popup = _popupManager.SpawnPopup<LevelChoosePopup>();
                 popup.SetPack(packConfiguration);
             };
-            _popupManager.HidePopup();
+            _popupManager.CloseLastPopup();
         }
 
-        protected override void OnHid()
+        protected override void OnClosed()
         {
             _onHidSpawnAction?.Invoke();
         }
@@ -72,7 +72,7 @@ namespace Popups.PackChoose
             _backButton.onClick.AddListener(() =>
             {
                 _onHidSpawnAction = () => _popupManager.SpawnPopup<StartPopup>();
-                _popupManager.HidePopup();
+                _popupManager.CloseLastPopup();
             });
         }
     }

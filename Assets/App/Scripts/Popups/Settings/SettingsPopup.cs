@@ -15,7 +15,7 @@ namespace Popups.Settings
         public void Initialize(IPopupManager popupManager, ILocalizationManager localizationManager)
         {
             _localizationSelector.Initialize(localizationManager);
-            _closeButton.onClick.AddListener(popupManager.HidePopup);
+            _closeButton.onClick.AddListener(popupManager.CloseLastPopup);
         }
 
         public override void EnableInput() => _localizationSelector.Enable();

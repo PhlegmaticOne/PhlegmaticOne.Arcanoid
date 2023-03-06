@@ -11,11 +11,6 @@ namespace Libs.Pooling.Base
     {
         T Get();
     }
-
-    public interface IAbstractObjectPool<in T> : IObjectPool where T : IPoolable
-    {
-        TImpl GetConcrete<TImpl>() where TImpl : T;
-    }
 }
 
 
