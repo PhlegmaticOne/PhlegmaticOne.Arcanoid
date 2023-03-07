@@ -5,17 +5,11 @@ using Common.Data.Repositories.ResourcesImplementation;
 using Game;
 using Game.Base;
 using Game.Composite;
-using Libs.Localization.Base;
 using Libs.Localization.Installers;
 using Libs.Pooling.Implementation;
 using Libs.Popups;
 using Libs.Popups.Base;
-using Libs.Popups.Initialization;
 using Libs.Services;
-using Popups.LevelChoose;
-using Popups.MainGame;
-using Popups.PackChoose;
-using Popups.Settings;
 using Popups.Start;
 using UnityEngine;
 
@@ -85,7 +79,7 @@ namespace App.Scripts
             
             var poolProvider = poolBuilder.BuildProvider();
             
-            var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
+            var popupManager = _popupComposite.CreatePopupManager(poolProvider, () => ServiceProviderAccessor.ServiceProvider);
             var game = _mainGameInstaller.CreateGame(serviceCollection, poolProvider);
             var localizationManager = _localizationManagerInstaller.CreateLocalizationManagerManager();
             
@@ -93,65 +87,13 @@ namespace App.Scripts
                 .AddSingleton(poolProvider)
                 .AddSingleton(popupManager)
                 .AddSingleton(localizationManager)
-                .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration))
+                .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration, _defaultPackConfiguration))
                 .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
                 .AddSingleton<IGame<MainGameData, MainGameEvents>>(game)
                 .BuildServiceProvider();
              
             ServiceProviderAccessor.Initialize(serviceProvider);
             return serviceProvider;
-        }
-
-        private IPopupInitializersProvider ConfigurePopupInitializers()
-        {
-            var builder = _popupComposite.GetPopupInitializersBuilder();
-            
-            builder.SetInitializerFor<StartPopup>(popup =>
-            {
-                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>(),
-                    _serviceProvider.GetRequiredService<ILocalizationManager>());
-            });
-            
-            builder.SetInitializerFor<SettingsPopup>(popup =>
-            {
-                popup.Initialize(
-                    _serviceProvider.GetRequiredService<IPopupManager>(),
-                    _serviceProvider.GetRequiredService<ILocalizationManager>());
-            });
-            
-            builder.SetInitializerFor<PackChoosePopup>(popup =>
-            {
-                popup.Initialize(
-                    _serviceProvider.GetRequiredService<IPopupManager>(),
-                    _serviceProvider.GetRequiredService<IPackRepository>());
-            });
-            
-            builder.SetInitializerFor<LevelChoosePopup>(popup =>
-            {
-                popup.Initialize(
-                    _serviceProvider.GetRequiredService<IPopupManager>(),
-                    _serviceProvider.GetRequiredService<IPackRepository>());
-                
-                popup.SetDefaultPackConfiguration(_defaultPackConfiguration);
-            });
-            
-            builder.SetInitializerFor<MainGamePopup>(popup =>
-            {
-                popup.Initialize(
-                    _serviceProvider.GetRequiredService<IPopupManager>(),
-                    _serviceProvider.GetRequiredService<ILevelRepository>(),
-                    _serviceProvider.GetRequiredService<IPackRepository>(),
-                    _serviceProvider.GetRequiredService<IGame<MainGameData, MainGameEvents>>());
-                
-                popup.SetDefaultPackConfiguration(_defaultPackConfiguration);
-            });
-            
-            builder.SetInitializerFor<MainGameMenuPopup>(popup =>
-            {
-                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>());
-            });
-            
-            return builder.BuildPopupInitializersProvider();
         }
     }
 }

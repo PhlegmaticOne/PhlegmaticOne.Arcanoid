@@ -1,5 +1,5 @@
 ﻿using Libs.Popups;
-using Libs.Popups.Base;
+using Libs.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +9,11 @@ namespace Popups.MainGame
     {
         [SerializeField] private Button _restartButton;
 
-        private IPopupManager _popupManager;
-
-        public void Initialize(IPopupManager popupManager)
+        protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
-            _popupManager = popupManager;
-            _restartButton.onClick.AddListener(() => _popupManager.CloseLastPopup());
+            ConfigureRestartButton();
         }
-        
+
         public override void EnableInput()
         {
             EnableBehaviour(_restartButton);
@@ -30,6 +27,11 @@ namespace Popups.MainGame
         public override void Reset()
         {
             RemoveAllListeners(_restartButton);
+        }
+
+        private void ConfigureRestartButton()
+        {
+            _restartButton.onClick.AddListener(() => PopupManager.CloseLastPopup());
         }
     }
 }

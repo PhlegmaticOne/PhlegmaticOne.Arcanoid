@@ -6,6 +6,7 @@ namespace Common.Data.Repositories.Base
     public interface IPackRepository
     {
         bool PacksInitialized { get; }
+        DefaultPackConfiguration DefaultPackConfiguration { get; }
         IEnumerable<PackConfiguration> GetAll();
         PackLevelCollection GetLevels(string packName);
         int GetLevelsCount(string packName);

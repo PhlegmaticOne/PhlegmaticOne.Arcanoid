@@ -1,14 +1,13 @@
-﻿using System;
-using Common.Configurations.Packs;
+﻿using Common.Configurations.Packs;
 using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Libs.Popups;
-using Libs.Popups.Base;
 using Popups.MainGame;
 using Popups.PackChoose;
 using SPopups.LevelChoose.Views;
 using UnityEngine;
 using UnityEngine.UI;
+using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Popups.LevelChoose
 {
@@ -17,37 +16,43 @@ namespace Popups.LevelChoose
         [SerializeField] private LevelsCollectionView _levelsCollectionView;
         [SerializeField] private Button _backButton;
 
-        private IPopupManager _popupManager;
         private IPackRepository _packRepository;
-        private Action _onHidAction;
 
         private PackConfiguration _packConfiguration;
         private PackLevelCollection _packLevelCollection;
         private DefaultPackConfiguration _defaultPackConfiguration;
 
-        public void Initialize(IPopupManager popupManager, IPackRepository packRepository)
+        protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
-            _popupManager = popupManager;
-            _packRepository = packRepository;
+            _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _levelsCollectionView.LevelClicked += LevelsCollectionViewOnLevelClicked;
             ConfigureBackButton();
         }
 
-        public void SetDefaultPackConfiguration(DefaultPackConfiguration defaultPackConfiguration) => 
-            _defaultPackConfiguration = defaultPackConfiguration;
-
-        protected override void OnShow() => TrySetPack();
-
-        private void LevelsCollectionViewOnLevelClicked(LevelPreviewData levelPreviewData)
+        protected override void OnShowed()
         {
-            _onHidAction = () =>
-            {
-                var mainGamePopup = _popupManager.SpawnPopup<MainGamePopup>();
-                mainGamePopup.SetGameData(new GameData(_packConfiguration, _packLevelCollection, levelPreviewData));
-            };
-            _popupManager.CloseLastPopup();
+            TrySetPack();
         }
 
+        public override void EnableInput()
+        {
+            _levelsCollectionView.EnableLevels();   
+            EnableBehaviour(_backButton);
+        }
+        
+        public override void DisableInput()
+        {
+            _levelsCollectionView.DisableLevels();
+            DisableBehaviour(_backButton);
+        }
+        
+        public override void Reset()
+        {
+            RemoveAllListeners(_backButton);
+            _levelsCollectionView.LevelClicked -= LevelsCollectionViewOnLevelClicked;
+            _levelsCollectionView.Clear();
+        }
+        
         public void SetPack(PackConfiguration packConfiguration)
         {
             var levels = _packRepository.GetLevels(packConfiguration.Name);
@@ -56,25 +61,14 @@ namespace Popups.LevelChoose
             _levelsCollectionView.ShowLevels(levels, packConfiguration);
         }
 
-        public override void EnableInput()
+        private void LevelsCollectionViewOnLevelClicked(LevelPreviewData levelPreviewData)
         {
-            _levelsCollectionView.EnableLevels();   
-            EnableBehaviour(_backButton);
-        }
-
-        public override void DisableInput()
-        {
-            _levelsCollectionView.DisableLevels();
-            DisableBehaviour(_backButton);
-        }
-
-        protected override void OnClosed() => _onHidAction?.Invoke();
-
-        public override void Reset()
-        {
-            RemoveAllListeners(_backButton);
-            _levelsCollectionView.LevelClicked -= LevelsCollectionViewOnLevelClicked;
-            _levelsCollectionView.Clear();
+            OnCloseSpawn<MainGamePopup>(withSetup: p =>
+            {
+                p.SetGameData(new GameData(_packConfiguration, _packLevelCollection, levelPreviewData));
+            });
+            
+            PopupManager.CloseLastPopup();
         }
 
         private void TrySetPack()
@@ -84,15 +78,15 @@ namespace Popups.LevelChoose
                 return;
             }
             
-            SetPack(_defaultPackConfiguration.DefaultPack);
+            SetPack(_packRepository.DefaultPackConfiguration.DefaultPack);
         }
 
         private void ConfigureBackButton()
         {
             _backButton.onClick.AddListener(() =>
             {
-                _onHidAction = () => _popupManager.SpawnPopup<PackChoosePopup>();
-                _popupManager.CloseLastPopup();
+                OnCloseSpawn<PackChoosePopup>();
+                PopupManager.CloseLastPopup();
             });
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Libs.Pooling;
 using Libs.Pooling.Base;
@@ -6,8 +7,8 @@ using Libs.Pooling.Implementation;
 using Libs.Popups.Animations;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
-using Libs.Popups.Initialization;
 using UnityEngine;
+using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Libs.Popups
 {
@@ -22,14 +23,13 @@ namespace Libs.Popups
         }
 
         public PopupSystemConfiguration PopupSystemConfiguration => _popupSystemConfiguration;
-        public IPopupInitializersBuilder GetPopupInitializersBuilder() => new PopupInitializersBuilder();
 
-        public IPopupManager CreatePopupManager(IPoolProvider poolProvider, IPopupInitializersProvider popupInitializersProvider)
+        public IPopupManager CreatePopupManager(IPoolProvider poolProvider, Func<IServiceProvider> serviceProvider)
         {
             return new PopupManager(poolProvider, 
                 new AppearanceAnimationsFactory(),
                 new DisappearanceAnimationsFactory(),
-                popupInitializersProvider,
+                serviceProvider,
                 _mainCanvasTransform,
                 _popupSystemConfiguration,
                 _popupSystemConfiguration.StartFromSortingOrder);

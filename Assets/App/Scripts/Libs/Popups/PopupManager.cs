@@ -1,12 +1,13 @@
-﻿using Libs.Pooling.Base;
+﻿using System;
+using Libs.Pooling.Base;
 using Libs.Popups.Animations.Base;
 using Libs.Popups.Animations.Types;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
 using Libs.Popups.Infrastructure;
-using Libs.Popups.Initialization;
 using UnityEngine;
 using UnityEngine.Events;
+using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Libs.Popups
 {
@@ -14,7 +15,7 @@ namespace Libs.Popups
     {
         private readonly IPopupAnimationsFactory<AppearAnimationType> _appearAnimationsFactory;
         private readonly IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
-        private readonly IPopupInitializersProvider _popupInitializersProvider;
+        private readonly Func<IServiceProvider> _serviceProvider;
         private readonly RectTransform _mainCanvasTransform;
         private readonly PopupSystemConfiguration _popupSystemConfiguration;
         private readonly IAbstractObjectPool<Popup> _popupsPool;
@@ -29,14 +30,14 @@ namespace Libs.Popups
         public PopupManager(IPoolProvider poolProvider, 
             IPopupAnimationsFactory<AppearAnimationType> appearAnimationsFactory,
             IPopupAnimationsFactory<DisappearAnimationType> disappearAnimationsFactory,
-            IPopupInitializersProvider popupInitializersProvider,
+            Func<IServiceProvider> serviceProvider,
             RectTransform mainCanvasTransform,
             PopupSystemConfiguration popupSystemConfiguration,
             int startFromSortingOrder)
         {
             _appearAnimationsFactory = appearAnimationsFactory;
             _disappearAnimationsFactory = disappearAnimationsFactory;
-            _popupInitializersProvider = popupInitializersProvider;
+            _serviceProvider = serviceProvider;
             _mainCanvasTransform = mainCanvasTransform;
             _popupSystemConfiguration = popupSystemConfiguration;
             _popupsPool = poolProvider.GetAbstractPool<Popup>();
@@ -131,8 +132,8 @@ namespace Libs.Popups
         private void InitializePopup(Popup popup)
         {
             var popupConfiguration = _popupSystemConfiguration.FindConfigurationForPrefab(popup);
-            
-            _popupInitializersProvider.InitializePopup(popup);
+            var serviceProvider = _serviceProvider();
+            popup.Initialize(serviceProvider);
             popup.SetParentTransform(_mainCanvasTransform);
             popup.SetAnimationFactories(_appearAnimationsFactory, _disappearAnimationsFactory);
             popup.SetPopupConfiguration(popupConfiguration);

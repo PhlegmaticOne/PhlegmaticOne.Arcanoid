@@ -1,5 +1,5 @@
 ﻿using Libs.Popups;
-using Libs.Popups.Base;
+using Libs.Services;
 using Popups.PackChoose;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,21 +11,13 @@ namespace Popups.MainGame
         [SerializeField] private Button _backButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _continueButton;
-
-        private IPopupManager _popupManager;
-
-        public void Initialize(IPopupManager popupManager)
-        {
-            _popupManager = popupManager;
-            _backButton.onClick.AddListener(() =>
-            {
-                _popupManager.CloseAllPopupsInstant();
-                _popupManager.SpawnPopup<PackChoosePopup>();
-            });
-            _restartButton.onClick.AddListener(() => _popupManager.CloseLastPopup());
-            _continueButton.onClick.AddListener(() => _popupManager.CloseLastPopup());
-        }
         
+        protected override void InitializeProtected(IServiceProvider serviceProvider)
+        {
+            ConfigureRestartButton();
+            ConfigureContinueButton();
+            ConfigureBackButton();
+        }
 
         public override void EnableInput()
         {
@@ -46,6 +38,25 @@ namespace Popups.MainGame
             RemoveAllListeners(_backButton);
             RemoveAllListeners(_restartButton);
             RemoveAllListeners(_continueButton);
+        }
+
+        private void ConfigureBackButton()
+        {
+            _backButton.onClick.AddListener(() =>
+            {
+                PopupManager.CloseAllPopupsInstant();
+                PopupManager.SpawnPopup<PackChoosePopup>();
+            });
+        }
+        
+        private void ConfigureRestartButton()
+        {
+            _restartButton.onClick.AddListener(() => PopupManager.CloseLastPopup());
+        }
+        
+        private void ConfigureContinueButton()
+        {
+            _restartButton.onClick.AddListener(() => PopupManager.CloseLastPopup());
         }
     }
 }

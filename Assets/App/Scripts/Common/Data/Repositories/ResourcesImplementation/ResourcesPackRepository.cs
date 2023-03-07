@@ -13,10 +13,16 @@ namespace Common.Data.Repositories.ResourcesImplementation
         private const string NumberAtTheEndOfStringRegex = "\\d+$";
         private readonly PackCollectionConfiguration _packCollectionConfiguration;
 
-        public ResourcesPackRepository(PackCollectionConfiguration packCollectionConfiguration) => 
+        public ResourcesPackRepository(
+            PackCollectionConfiguration packCollectionConfiguration,
+            DefaultPackConfiguration defaultPackConfiguration)
+        {
             _packCollectionConfiguration = packCollectionConfiguration;
+            DefaultPackConfiguration = defaultPackConfiguration;
+        }
 
         public bool PacksInitialized => _packCollectionConfiguration.PacksInitialized;
+        public DefaultPackConfiguration DefaultPackConfiguration { get; }
 
         public IEnumerable<PackConfiguration> GetAll()
         {

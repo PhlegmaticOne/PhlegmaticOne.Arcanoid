@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
-using Libs.Popups.Base;
 using Popups.PackChoose;
 using Popups.Settings;
 using UnityEngine;
 using UnityEngine.UI;
+using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Popups.Start
 {
@@ -18,31 +17,24 @@ namespace Popups.Start
         [SerializeField] private Button _startGameButton;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
-        private IPopupManager _popupManager;
-        private Action _spawnPopupAction;
         private ILocalizationManager _localizationManager;
-
         private LocalizationContext _localizationContext;
+        
+        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
 
-        public void Initialize(IPopupManager popupManager, ILocalizationManager localizationManager)
+        protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
-            _popupManager = popupManager;
-            _localizationManager = localizationManager;
+            _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             ConfigureSettingsButton();
             ConfigureStartGameButton();
         }
-
-        protected override void OnShow()
-        {
-            _localizationContext = LocalizationContext.Create(_localizationManager);
-            _localizationContext.BindLocalizable(this);
-            _localizationContext.Refresh();
-        }
         
-        protected override void OnClosed()
+        protected override void OnShowed()
         {
-            _spawnPopupAction?.Invoke();
-            _localizationContext.Flush();
+            _localizationContext = LocalizationContext
+                .Create(_localizationManager)
+                .BindLocalizable(this)
+                .Refresh();
         }
 
         public override void EnableInput()
@@ -56,35 +48,33 @@ namespace Popups.Start
             DisableBehaviour(_settingsButton);
             DisableBehaviour(_startGameButton);
         }
+        
+        protected override void OnClosed()
+        {
+            _localizationContext.Flush();
+            base.OnClosed();
+        }
 
         public override void Reset()
         {
+            _localizationContext = null;
             RemoveAllListeners(_settingsButton);
             RemoveAllListeners(_startGameButton);
         }
-
+        
+        
         private void ConfigureSettingsButton()
         {
-            _settingsButton.onClick.AddListener(() =>
-            {
-                _popupManager.SpawnPopup<SettingsPopup>();
-            });
+            _settingsButton.onClick.AddListener(() => PopupManager.SpawnPopup<SettingsPopup>());
         }
-        
+
         private void ConfigureStartGameButton()
         {
             _startGameButton.onClick.AddListener(() =>
             {
-                _spawnPopupAction = () => _popupManager.SpawnPopup<PackChoosePopup>();
-                _popupManager.CloseLastPopup();
+                OnCloseSpawn<PackChoosePopup>();
+                PopupManager.CloseLastPopup();
             });
-        }
-
-        
-
-        public IEnumerable<ILocalizationBindable> GetBindableComponents()
-        {
-            return _bindableComponents;
         }
     }
 }

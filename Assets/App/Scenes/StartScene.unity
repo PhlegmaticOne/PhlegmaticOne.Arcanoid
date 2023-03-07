@@ -2618,7 +2618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438823362689407097, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_Name
-      value: '[Popups]'
+      value: '[PopupsRoot]'
       objectReference: {fileID: 0}
     - target: {fileID: 4438823362689407098, guid: 37d96f18608ba65429493352562a3024, type: 3}
       propertyPath: m_Camera

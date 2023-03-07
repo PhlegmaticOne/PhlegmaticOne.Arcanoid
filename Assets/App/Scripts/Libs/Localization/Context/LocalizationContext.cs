@@ -18,12 +18,18 @@ namespace Libs.Localization.Context
         public static LocalizationContext Create(ILocalizationManager localizationManager) => 
             new LocalizationContext(localizationManager);
         
+        public LocalizationContext BindLocalizable(ILocalizable localizable)
+        {
+            var bindableComponents = localizable.GetBindableComponents();
+            _localizationBindables.AddRange(bindableComponents);
+            return this;
+        }
 
-        public void BindLocalizable(ILocalizable localizable) => 
-            _localizationBindables.AddRange(localizable.GetBindableComponents());
-
-        public void Refresh() => 
+        public LocalizationContext Refresh()
+        {
             LocalizationManagerOnLocaleChanged(_localizationManager.CurrentLocale);
+            return this;
+        }
 
         public void Flush()
         {
