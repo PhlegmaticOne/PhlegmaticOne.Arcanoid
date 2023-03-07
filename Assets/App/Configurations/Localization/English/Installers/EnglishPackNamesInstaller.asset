@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c77b85d73ed04cba8898a6038156d78f, type: 3}
-  m_Name: RussianUITextLocalizations
+  m_Name: EnglishPackNamesInstaller
   m_EditorClassIdentifier: 
-  _jsonFile: {fileID: 4900000, guid: c58c8c67d7109bf4a8d5b5779a00f653, type: 3}
+  _jsonFile: {fileID: 4900000, guid: abd326fa70a32114aac3eb93761114c6, type: 3}

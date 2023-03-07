@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d3f2529d97e4bdc9ca5fa2ed75b4d54, type: 3}
-  m_Name: RussianSpriteLocalizationInstaller
+  m_Name: RussianSpritesInstaller
   m_EditorClassIdentifier: 
   _spritesLocalizationTable: {fileID: 11400000, guid: c1ec224793ddaed4eaed13df172ab380, type: 2}

@@ -1,8 +1,12 @@
-﻿using Common.Configurations.Packs;
+﻿using System.Collections.Generic;
+using Common.Configurations.Packs;
 using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Game;
 using Game.Base;
+using Libs.Localization.Base;
+using Libs.Localization.Components.Base;
+using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Services;
 using UnityEngine;
@@ -10,22 +14,32 @@ using UnityEngine.UI;
 
 namespace Popups.MainGame
 {
-    public class MainGamePopup : Popup
+    public class MainGamePopup : Popup, ILocalizable
     {
         [SerializeField] private Button _menuButton;
+        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
+        private LocalizationContext _localizationContext;
         private IPackRepository _packRepository;
         private ILevelRepository _levelRepository;
+        private ILocalizationManager _localizationManager;
         private IGame<MainGameData, MainGameEvents> _mainGame;
 
         private GameData _gameData;
         private DefaultPackConfiguration _defaultPackConfiguration;
         
+        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
+
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
+            _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _levelRepository = serviceProvider.GetRequiredService<ILevelRepository>();
             _mainGame = serviceProvider.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
+            _localizationContext = LocalizationContext
+                .Create(_localizationManager)
+                .BindLocalizable(this)
+                .Refresh();
             ConfigureMenuButton();
         }
         
@@ -40,9 +54,13 @@ namespace Popups.MainGame
         
         public override void DisableInput() => DisableBehaviour(_menuButton);
 
-        public override void Reset() => RemoveAllListeners(_menuButton);
-        
-        
+        public override void Reset()
+        {
+            _localizationContext.Flush();
+            _localizationContext = null;
+            RemoveAllListeners(_menuButton);
+        }
+
         public void SetGameData(GameData gameData) => _gameData = gameData;
 
         private void TrySetGameData()

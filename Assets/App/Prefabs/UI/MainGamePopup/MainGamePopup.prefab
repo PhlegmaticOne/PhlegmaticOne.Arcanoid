@@ -133,8 +133,9 @@ GameObject:
   - component: {fileID: 4672484506202244900}
   - component: {fileID: 4672484506202244902}
   - component: {fileID: 4672484506202244903}
+  - component: {fileID: 712194557766866693}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u0415\u041D\u042E"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -256,6 +257,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &712194557766866693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672484506202244901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bindingKey: Menu
+  _textMeshPro: {fileID: 4672484506202244903}
 --- !u!1 &4672484506407766076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,9 +1347,9 @@ GameObject:
   - component: {fileID: 4672484508011889965}
   - component: {fileID: 4672484508011889954}
   - component: {fileID: 4672484508011889955}
-  - component: {fileID: 4672484508011889966}
   - component: {fileID: 4672484508011889967}
   - component: {fileID: 4672484508011889964}
+  - component: {fileID: 4672484508011889966}
   m_Layer: 5
   m_Name: MainGamePopup
   m_TagString: Untagged
@@ -1423,26 +1438,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &4672484508011889966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672484508011889953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f3b325264543aba9a192cae09efe9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _popupView: {fileID: 4672484508011889964}
-  _popupConfiguration:
-    _appearAnimationType: 5
-    _appearanceTime: 0.5
-    _disappearAnimationType: 5
-    _disappearanceTime: 0.5
-  _menuButton: {fileID: 4672484506182346576}
+    m_Bits: 55
 --- !u!225 &4672484508011889967
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1469,3 +1465,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 4672484508011889967}
   _canvas: {fileID: 4672484508011889965}
+--- !u!114 &4672484508011889966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672484508011889953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f3b325264543aba9a192cae09efe9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popupView: {fileID: 4672484508011889964}
+  _menuButton: {fileID: 4672484506182346576}
+  _bindableComponents:
+  - {fileID: 712194557766866693}

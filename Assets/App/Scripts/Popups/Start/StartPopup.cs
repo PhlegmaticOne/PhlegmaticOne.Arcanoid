@@ -25,16 +25,12 @@ namespace Popups.Start
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
-            ConfigureSettingsButton();
-            ConfigureStartGameButton();
-        }
-        
-        protected override void OnShowed()
-        {
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
                 .BindLocalizable(this)
                 .Refresh();
+            ConfigureSettingsButton();
+            ConfigureStartGameButton();
         }
 
         public override void EnableInput()
@@ -48,15 +44,10 @@ namespace Popups.Start
             DisableBehaviour(_settingsButton);
             DisableBehaviour(_startGameButton);
         }
-        
-        protected override void OnClosed()
-        {
-            _localizationContext.Flush();
-            base.OnClosed();
-        }
 
         public override void Reset()
         {
+            _localizationContext.Flush();
             _localizationContext = null;
             RemoveAllListeners(_settingsButton);
             RemoveAllListeners(_startGameButton);

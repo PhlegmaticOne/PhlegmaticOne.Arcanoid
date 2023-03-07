@@ -276,12 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 8561285539520314616}
-  _popupConfiguration:
-    _appearAnimationType: 1
-    _appearanceTime: 0.5
-    _disappearAnimationType: 1
-    _disappearanceTime: 0.5
   _nextLevelButton: {fileID: 6610792177297557108}
+  _bindableComponents: []
 --- !u!1 &3500148935065305172
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +577,7 @@ GameObject:
   - component: {fileID: 6210303958917455371}
   - component: {fileID: 8704594709006314340}
   - component: {fileID: 8459631349525280517}
+  - component: {fileID: 516961552658731967}
   m_Layer: 5
   m_Name: YouWinText
   m_TagString: Untagged
@@ -635,7 +632,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u042B \u0412\u042B\u0418\u0413\u0420\u0410\u041B\u0418!"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebd0fb50290b6514797a3b9c0a36a51c, type: 2}
   m_sharedMaterial: {fileID: 1986787447238423410, guid: ebd0fb50290b6514797a3b9c0a36a51c, type: 2}
@@ -704,6 +701,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &516961552658731967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479284709138501327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bindingKey: YouWin
+  _textMeshPro: {fileID: 8459631349525280517}
 --- !u!1 &6538685613933825192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,11 +1042,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1641394660402760192, guid: 0af6c7b2ad59752419b7ae8313272861, type: 3}
       propertyPath: m_text
-      value: "\u0414\u0410\u041B\u0415\u0415"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4350209598472387877, guid: 0af6c7b2ad59752419b7ae8313272861, type: 3}
       propertyPath: m_Name
       value: NextButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779737303338864527, guid: 0af6c7b2ad59752419b7ae8313272861, type: 3}
+      propertyPath: _bindingKey
+      value: Next
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af6c7b2ad59752419b7ae8313272861, type: 3}

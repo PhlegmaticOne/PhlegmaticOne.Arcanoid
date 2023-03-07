@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Common.Configurations.Packs;
+using Libs.Localization.Base;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Popups.PackChoose.Views
 {
-    public class PackCollectionView : MonoBehaviour
+    public class PackCollectionView : MonoBehaviour, ILocalizable
     {
         //ObjectPool for PackPreview
         [SerializeField] private RectTransform _viewsTransform;
@@ -14,6 +16,9 @@ namespace Popups.PackChoose.Views
         private readonly List<PackPreview> _previews = new List<PackPreview>();
         private readonly List<PackConfiguration> _packConfigurations = new List<PackConfiguration>();
         public event UnityAction<PackConfiguration> PackClicked; 
+        
+        public IEnumerable<ILocalizationBindable> GetBindableComponents() => 
+            _previews.Select(x => x.PackNameTextBindableComponent);
 
         public void ShowPacks(IEnumerable<PackConfiguration> packConfigurations)
         {

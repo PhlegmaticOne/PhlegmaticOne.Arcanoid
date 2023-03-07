@@ -408,7 +408,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!225 &106245234989348485
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -448,13 +448,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 106245234989348486}
-  _popupConfiguration:
-    _appearAnimationType: 2
-    _appearanceTime: 0.5
-    _disappearAnimationType: 3
-    _disappearanceTime: 0.5
   _packCollectionView: {fileID: 106245233768457071}
   _backButton: {fileID: 1937220973483858518}
+  _bindableComponents:
+  - {fileID: 4855125169098436441}
 --- !u!1001 &2890420760837488073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -582,5 +579,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4855125169098436441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7745075080048824976, guid: 3124e7ef6c69fa64dbfc6572dcd78b93, type: 3}
+  m_PrefabInstance: {fileID: 2890420760837488073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

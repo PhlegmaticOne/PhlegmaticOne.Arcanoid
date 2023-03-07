@@ -1,4 +1,5 @@
 ﻿using Common.Configurations.Packs;
+using Libs.Localization.Components.Base;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +15,9 @@ namespace Popups.PackChoose.Views
         [SerializeField] private TextMeshProUGUI _packNameText;
         [SerializeField] private TextMeshProUGUI _levelInfoText;
 
+        [SerializeField] private LocalizationBindableComponent _packNameTextBindableComponent;
+        public LocalizationBindableComponent PackNameTextBindableComponent => _packNameTextBindableComponent;
+
         private int _index;
 
         public event UnityAction<int> Clicked;
@@ -28,6 +32,7 @@ namespace Popups.PackChoose.Views
             _packNameText.color = packConfiguration.TextColor;
             _levelInfoText.color = packConfiguration.TextColor;
             _levelInfoText.text = FormatLevelsInfo(packConfiguration);
+            _packNameTextBindableComponent.SetBindingData<string>(packConfiguration.Name);
         }
 
         private void OnMouseDown() => Clicked?.Invoke(_index);
