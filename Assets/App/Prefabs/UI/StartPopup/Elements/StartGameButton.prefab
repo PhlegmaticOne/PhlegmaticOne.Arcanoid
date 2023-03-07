@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9160413641235601337}
   - component: {fileID: 9160413641235601339}
   - component: {fileID: 9160413641235601336}
-  - component: {fileID: 9160413641235601338}
+  - component: {fileID: 6146523595864952477}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0418\u0413\u0420\u0410\u0422\u042C"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebd0fb50290b6514797a3b9c0a36a51c, type: 2}
   m_sharedMaterial: {fileID: 1986787447238423410, guid: ebd0fb50290b6514797a3b9c0a36a51c, type: 2}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &9160413641235601338
+--- !u!114 &6146523595864952477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,36 +144,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9160413641235601334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:44279ea21f3dc6947bf7643f9e1bdc42
-    m_TableEntryReference:
-      m_KeyId: 10743812096
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9160413641235601336}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  references:
-    version: 1
+  _bindingKey: Play
+  _textMeshPro: {fileID: 9160413641235601336}
 --- !u!1 &9160413641617349749
 GameObject:
   m_ObjectHideFlags: 0

@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!225 &7411348904776707077
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -144,13 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 7411348904776707078}
-  _popupConfiguration:
-    _appearAnimationType: 1
-    _appearanceTime: 0.5
-    _disappearAnimationType: 3
-    _disappearanceTime: 0.5
   _settingsButton: {fileID: 4189770426766146048}
   _startGameButton: {fileID: 1871867023411724763}
+  _bindableComponents:
+  - {fileID: 3717352239997752112}
 --- !u!1001 &7411348903687507441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,5 +478,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3717352239997752112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6146523595864952477, guid: 38164501420afad489b22278d82235c1, type: 3}
+  m_PrefabInstance: {fileID: 7411348904195120557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

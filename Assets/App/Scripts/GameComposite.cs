@@ -5,8 +5,8 @@ using Common.Data.Repositories.ResourcesImplementation;
 using Game;
 using Game.Base;
 using Game.Composite;
-using Libs.Localization;
 using Libs.Localization.Base;
+using Libs.Localization.Installers;
 using Libs.Pooling.Implementation;
 using Libs.Popups;
 using Libs.Popups.Base;
@@ -25,6 +25,7 @@ namespace App.Scripts
     {
         [SerializeField] private PopupComposite _popupComposite;
         [SerializeField] private MainGameInstaller _mainGameInstaller;
+        [SerializeField] private LocalizationManagerInstaller _localizationManagerInstaller;
         [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
         [SerializeField] private DefaultPackConfiguration _defaultPackConfiguration;
         
@@ -86,11 +87,12 @@ namespace App.Scripts
             
             var popupManager = _popupComposite.CreatePopupManager(poolProvider, ConfigurePopupInitializers());
             var game = _mainGameInstaller.CreateGame(serviceCollection, poolProvider);
+            var localizationManager = _localizationManagerInstaller.CreateLocalizationManagerManager();
             
             var serviceProvider = serviceCollection
                 .AddSingleton(poolProvider)
                 .AddSingleton(popupManager)
-                .AddSingleton<ILocalizationManager>(new LocalizationManager(new[] { "UI" }))
+                .AddSingleton(localizationManager)
                 .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration))
                 .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
                 .AddSingleton<IGame<MainGameData, MainGameEvents>>(game)
@@ -106,7 +108,8 @@ namespace App.Scripts
             
             builder.SetInitializerFor<StartPopup>(popup =>
             {
-                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>());
+                popup.Initialize(_serviceProvider.GetRequiredService<IPopupManager>(),
+                    _serviceProvider.GetRequiredService<ILocalizationManager>());
             });
             
             builder.SetInitializerFor<SettingsPopup>(popup =>

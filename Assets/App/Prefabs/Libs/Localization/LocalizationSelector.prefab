@@ -1068,9 +1068,9 @@ GameObject:
   m_Component:
   - component: {fileID: 457285822658739240}
   - component: {fileID: 457285822658739244}
-  - component: {fileID: 457285822658739245}
-  - component: {fileID: 457285822658739247}
   - component: {fileID: 457285822658739246}
+  - component: {fileID: 931384904079083975}
+  - component: {fileID: 4538098304468267580}
   m_Layer: 5
   m_Name: LanguageSprite
   m_TagString: Untagged
@@ -1105,68 +1105,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457285822658739241}
   m_CullTransparentMesh: 1
---- !u!114 &457285822658739245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457285822658739241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!114 &457285822658739247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457285822658739241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 006beb027fab52e48975b991d80a6d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LocalizedAssetReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:76c7b8c85ab09b94da6b5bcb362eff86
-    m_TableEntryReference:
-      m_KeyId: 15034585088
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  m_UpdateAsset:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 457285822658739245}
-        m_TargetAssemblyTypeName: UnityEngine.UI.RawImage, UnityEngine.UI
-        m_MethodName: set_texture
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
 --- !u!114 &457285822658739246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,6 +1119,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1.3
+--- !u!114 &931384904079083975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457285822658739241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4538098304468267580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457285822658739241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928ae3289d8a49f986f89ab09cbc0a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bindingKey: LocaleFlag
+  _image: {fileID: 931384904079083975}
 --- !u!1 &457285822733255177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,3 +1340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _languagesDropdown: {fileID: 457285821471552782}
+  _label: {fileID: 457285821961803597}
+  _bindableComponents:
+  - {fileID: 4538098304468267580}

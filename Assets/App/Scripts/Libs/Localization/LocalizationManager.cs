@@ -1,58 +1,90 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Libs.Localization.Base;
-using UnityEngine.Events;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
+using Libs.Localization.Configurations;
+using Libs.Localization.Installers.Base;
+using Libs.Localization.Models;
 
-namespace Libs.Localization
+namespace Libs.Localization.Implementations
 {
     public class LocalizationManager : ILocalizationManager
     {
-        private readonly List<string> _tablesAvailable;
-        public event UnityAction LocaleChanged;
+        private readonly Dictionary<LocaleConfiguration, LocaleTableCollection> _localeTables;
 
-        public LocalizationManager(IEnumerable<string> tableNames) => _tablesAvailable = tableNames.ToList();
-
-        public IEnumerator Initialize()
+        private LocaleTableCollection _currentTableCollection;
+        private LocaleInfo _currentLocale;
+        
+        public LocalizationManager(LocalizationSystemConfiguration localizationSystemConfiguration)
         {
-            yield return LocalizationSettings.InitializationOperation;
+            _localeTables = new Dictionary<LocaleConfiguration, LocaleTableCollection>();
+            InitializeLocaleTables(localizationSystemConfiguration);
+            SetLocale(localizationSystemConfiguration.DefaultLocale);
+        }
+        
+        public event Action<LocaleInfo> LocaleChanged;
+        
+        public LocaleInfo CurrentLocale => _currentLocale;
+        
+        public void SetLocale(LocaleInfo locale)
+        {
+            var key = _localeTables.Keys.First(x => x.SystemName == locale.SystemName);
+            SetLocale(key);
+            LocaleChanged?.Invoke(CurrentLocale);
         }
 
-        public string CurrentLocale => LocaleName(LocalizationSettings.SelectedLocale);
+        public IEnumerable<LocaleInfo> GetAvailableLocales() => _localeTables.Keys.Select(CreateLocaleInfo);
 
-        public void SetLocale(string locale)
+        public object GetLocalizedValue(string key, Type valueType) => _currentTableCollection.FindValue(key, valueType);
+        
+        public T GetLocalizedValue<T>(string key) => (T)GetLocalizedValue(key, typeof(T));
+
+
+        private void InitializeLocaleTables(LocalizationSystemConfiguration localizationSystemConfiguration)
         {
-            var availableLocale = LocalizationSettings.AvailableLocales.Locales.First(x => LocaleName(x) == locale);
-            
-            if (availableLocale != null)
+            foreach (var localization in localizationSystemConfiguration.Localizations)
             {
-                LocalizationSettings.SelectedLocale = availableLocale;
-                OnLocaleChanged();
+                var table = new LocaleTableCollection(localization.Value);
+                _localeTables.Add(localization.Key, table);
             }
         }
 
-        public IEnumerable<string> GetAvailableLocales() => 
-            LocalizationSettings.AvailableLocales.Locales.Select(LocaleName);
-
-        public string GetLocalizedString(string key)
+        private void SetLocale(LocaleConfiguration localeConfiguration)
         {
-            foreach (var tableName in _tablesAvailable)
+            _currentTableCollection = _localeTables[localeConfiguration];
+            _currentLocale = CreateLocaleInfo(localeConfiguration);
+        }
+
+        private LocaleInfo CreateLocaleInfo(LocaleConfiguration localeConfiguration)
+        {
+            var displayName = GetLocalizedValue<string>(localeConfiguration.SystemName);
+            return new LocaleInfo(localeConfiguration.SystemName, displayName);
+        }
+    }
+    
+    internal class LocaleTableCollection
+    {
+        private readonly List<ILocalizationTable> _localizationTables;
+        
+        public LocaleTableCollection(List<LocalizationTableInstallerBase> localizationTables)
+        {
+            _localizationTables = localizationTables.Select(x => x.CreateLocalizationTable()).ToList();
+        }
+
+
+        public object FindValue(string key, Type valueType)
+        {
+            foreach (var localizationTableBase in _localizationTables)
             {
-                var value = LocalizationSettings.StringDatabase.GetLocalizedString(tableName, key);
+                var value = localizationTableBase.GetLocalizedValue(key, valueType);
                 
-                if (string.IsNullOrWhiteSpace(value) == false)
+                if (value != null)
                 {
                     return value;
                 }
             }
 
-            return string.Empty;
+            return null;
         }
-
-        private void OnLocaleChanged() => LocaleChanged?.Invoke();
-        
-        private static string LocaleName(Locale locale) => locale.Identifier.CultureInfo.DisplayName;
     }
 }
