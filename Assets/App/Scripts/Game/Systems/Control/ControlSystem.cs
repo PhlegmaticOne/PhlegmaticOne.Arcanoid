@@ -11,7 +11,6 @@ namespace Game.Systems.Control
         [SerializeField] private ControlSystemConfiguration _controlSystemConfiguration;
         
         private readonly List<IStartMovable> _followingObjects = new List<IStartMovable>();
-        
         private IDimensionable _baseObjectToMove;
         private Bounds _interactableBounds;
         private Camera _camera;
@@ -27,8 +26,8 @@ namespace Game.Systems.Control
             _inputSystem.Reset();
             _baseObjectToMove = baseObjectToMove;
             _startPosition = baseObjectToMove.GetTransform().position;
-            Enable();
             _inputData = new InputData(baseObjectToMove.GetTransform().position, InputState.None, false);
+            Enable();
         }
         
         public void SetInteractableBounds(Bounds interactableBounds) => _interactableBounds = interactableBounds;
@@ -55,22 +54,7 @@ namespace Game.Systems.Control
 
         public void DisableInput() => _inputSystem.MakeInvalid();
         public void EnableInput() => _inputSystem.Reset();
-
-        private void InputSystemOnEnded()
-        {
-            if (NotInBounds(ToWorldPoint()) || NotValid())
-            {
-                return;
-            }
-            
-            foreach (var followingObject in _followingObjects)
-            {
-                followingObject.StartMove();
-            }
-            
-            _followingObjects.Clear();
-        }
-
+        
         private void Update() => _inputData = _inputSystem.ReadInput();
 
         private void FixedUpdate()
@@ -89,6 +73,21 @@ namespace Game.Systems.Control
 
             var newBasePosition = UpdateBasePosition(newPosition);
             UpdateFollowingObjects(newBasePosition);
+        }
+        
+        private void InputSystemOnEnded()
+        {
+            if (NotInBounds(ToWorldPoint()) || NotValid())
+            {
+                return;
+            }
+            
+            foreach (var followingObject in _followingObjects)
+            {
+                followingObject.StartMove();
+            }
+            
+            _followingObjects.Clear();
         }
 
         private bool NotInBounds(Vector2 newPosition) => _interactableBounds.Contains(newPosition) == false;

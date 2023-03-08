@@ -15,14 +15,11 @@ namespace Libs.Popups
     public class PopupComposite : MonoBehaviour
     {
         [SerializeField] private PopupSystemConfiguration _popupSystemConfiguration;
-        [SerializeField] private RectTransform _mainCanvasTransform;
-
+        [SerializeField] private RectTransform _parent;
         public void AddPopupsToPool(PoolBuilder poolBuilder)
         {
             poolBuilder.AddAbstractPool(new UnityAbstractObjectPool<Popup>(CreatePopupPrefabInfos()));
         }
-
-        public PopupSystemConfiguration PopupSystemConfiguration => _popupSystemConfiguration;
 
         public IPopupManager CreatePopupManager(IPoolProvider poolProvider, Func<IServiceProvider> serviceProvider)
         {
@@ -30,12 +27,12 @@ namespace Libs.Popups
                 new AppearanceAnimationsFactory(),
                 new DisappearanceAnimationsFactory(),
                 serviceProvider,
-                _mainCanvasTransform,
+                _parent,
                 _popupSystemConfiguration,
                 _popupSystemConfiguration.StartFromSortingOrder);
         }
 
         private IEnumerable<PrefabInfo<Popup>> CreatePopupPrefabInfos() =>
-            _popupSystemConfiguration.Popups.Select(x => new PrefabInfo<Popup>(x.Popup, _mainCanvasTransform));
+            _popupSystemConfiguration.Popups.Select(x => new PrefabInfo<Popup>(x.Popup, _parent));
     }
 }

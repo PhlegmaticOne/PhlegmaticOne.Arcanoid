@@ -6,6 +6,8 @@ namespace Libs.Popups
     public class PopupContainer : MonoBehaviour
     {
         [SerializeField] private Canvas _canvas;
+        public static RectTransform ParentTransform { get; private set; }
+        
         private static bool _initialized;
         private void Awake()
         {
@@ -14,6 +16,7 @@ namespace Libs.Popups
                 Destroy(gameObject);
             }
             DontDestroyOnLoad(gameObject);
+            ParentTransform = _canvas.transform as RectTransform;
             _initialized = true;
         }
 
