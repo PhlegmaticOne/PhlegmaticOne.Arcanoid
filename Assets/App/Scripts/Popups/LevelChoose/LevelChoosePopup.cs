@@ -1,11 +1,13 @@
 ﻿using Common.Configurations.Packs;
 using Common.Data.Models;
+using Common.Data.Providers;
 using Common.Data.Repositories.Base;
 using Libs.Popups;
-using Popups.MainGame;
 using Popups.PackChoose;
 using SPopups.LevelChoose.Views;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using IServiceProvider = Libs.Services.IServiceProvider;
 
@@ -17,7 +19,8 @@ namespace Popups.LevelChoose
         [SerializeField] private Button _backButton;
 
         private IPackRepository _packRepository;
-
+        private GameDataProvider _gameDataProvider;
+        
         private PackConfiguration _packConfiguration;
         private PackLevelCollection _packLevelCollection;
         private DefaultPackConfiguration _defaultPackConfiguration;
@@ -25,14 +28,12 @@ namespace Popups.LevelChoose
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
+            _gameDataProvider = serviceProvider.GetRequiredService<GameDataProvider>();
             _levelsCollectionView.LevelClicked += LevelsCollectionViewOnLevelClicked;
             ConfigureBackButton();
         }
 
-        protected override void OnShowed()
-        {
-            TrySetPack();
-        }
+        protected override void OnShowed() => TrySetPack();
 
         public override void EnableInput()
         {
@@ -63,12 +64,10 @@ namespace Popups.LevelChoose
 
         private void LevelsCollectionViewOnLevelClicked(LevelPreviewData levelPreviewData)
         {
-            OnCloseSpawn<MainGamePopup>(withSetup: p =>
-            {
-                p.SetGameData(new GameData(_packConfiguration, _packLevelCollection, levelPreviewData));
-            });
-            
-            PopupManager.CloseLastPopup();
+            var gameData = new GameData(_packConfiguration, _packLevelCollection, levelPreviewData);
+            _gameDataProvider.Set(gameData);
+            PopupManager.CloseAllPopupsInstant();
+            SceneManager.LoadScene(1);
         }
 
         private void TrySetPack()

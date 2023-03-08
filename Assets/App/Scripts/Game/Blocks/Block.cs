@@ -15,6 +15,7 @@ namespace Game.Blocks
         public BlockView BlockView => _blockView;
         public int StartHealth { get; private set; }
         public int CurrentHealth => _health;
+        public bool IsDestroyed { get; set; }
         public BlockConfiguration BlockConfiguration { get; private set; }
         
         public void Initialize(BlockConfiguration configuration, int health)
@@ -23,6 +24,7 @@ namespace Game.Blocks
             _health = health;
             StartHealth = health;
             _blockView.SetMainSprite(configuration.BlockSprite);
+            IsDestroyed = false;
         }
 
         public void SetPosition(Vector3 position) => transform.position = position;
@@ -53,6 +55,7 @@ namespace Game.Blocks
             _health = 0;
             StartHealth = 0;
             _readyToDestroy = false;
+            IsDestroyed = false;
             BlockConfiguration = null;
         }
     }

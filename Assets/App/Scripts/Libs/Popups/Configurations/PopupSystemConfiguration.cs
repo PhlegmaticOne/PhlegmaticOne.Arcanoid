@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ namespace Libs.Popups.Configurations
         [SerializeField] private int _startFromSortingOrder;
         [SerializeField] private List<PopupConfiguration> _popups;
         [SerializeField] private PopupConfiguration _startPopup;
-        [SerializeField] private bool _spawnStartPopup;
+        [NonSerialized] private bool _spawnStartPopup = true;
+        
         public List<PopupConfiguration> Popups => _popups;
         public PopupConfiguration StartPopup => _startPopup;
         public bool SpawnStartPopup => _spawnStartPopup;
@@ -20,5 +22,7 @@ namespace Libs.Popups.Configurations
         {
             return _popups.First(x => x.Popup.GetType() == popup.GetType());
         }
+
+        public void DisableStartPopupSpawn() => _spawnStartPopup = false;
     }
 }

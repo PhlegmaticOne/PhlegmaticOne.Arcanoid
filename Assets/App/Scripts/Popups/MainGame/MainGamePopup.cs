@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Common.Configurations.Packs;
-using Common.Data.Models;
+using Common.Data.Providers;
 using Common.Data.Repositories.Base;
+using Common.Scenes;
 using Game;
 using Game.Base;
 using Libs.Localization.Base;
@@ -9,7 +9,9 @@ using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Services;
+using Popups.PackChoose;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Popups.MainGame
@@ -22,12 +24,11 @@ namespace Popups.MainGame
         private LocalizationContext _localizationContext;
         private IPackRepository _packRepository;
         private ILevelRepository _levelRepository;
+        private GameDataProvider _gameDataProvider;
         private ILocalizationManager _localizationManager;
         private IGame<MainGameData, MainGameEvents> _mainGame;
 
-        private GameData _gameData;
-        private DefaultPackConfiguration _defaultPackConfiguration;
-        
+        private MainGameData _currentGameData;
         public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
 
         protected override void InitializeProtected(IServiceProvider serviceProvider)
@@ -35,23 +36,24 @@ namespace Popups.MainGame
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _levelRepository = serviceProvider.GetRequiredService<ILevelRepository>();
-            _mainGame = serviceProvider.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
+            _gameDataProvider = serviceProvider.GetRequiredService<GameDataProvider>();
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
                 .BindLocalizable(this)
                 .Refresh();
             ConfigureMenuButton();
         }
-        
+
+        public override void EnableInput() => EnableBehaviour(_menuButton);
+
         protected override void OnShowed()
         {
-            TrySetGameData();
-            var levelData = _levelRepository.GetLevelData(_gameData.PackLevelCollection, _gameData.LevelPreviewData); 
-            _mainGame.StartGame(new MainGameData(levelData));
+            var gameData = _gameDataProvider.Get();
+            var levelData = _levelRepository.GetLevelData(gameData.PackLevelCollection, gameData.LevelPreviewData);
+            _currentGameData = new MainGameData(levelData);
+            _mainGame.StartGame(_currentGameData);
         }
-        
-        public override void EnableInput() => EnableBehaviour(_menuButton);
-        
+
         public override void DisableInput() => DisableBehaviour(_menuButton);
 
         public override void Reset()
@@ -61,24 +63,28 @@ namespace Popups.MainGame
             RemoveAllListeners(_menuButton);
         }
 
-        public void SetGameData(GameData gameData) => _gameData = gameData;
+        public void SetupGame(IGame<MainGameData, MainGameEvents> mainGame) => _mainGame = mainGame;
 
-        private void TrySetGameData()
-        {
-            if (_gameData != null)
-            {
-                return;
-            }
-
-            var packConfiguration = _packRepository.DefaultPackConfiguration.DefaultPack;
-            var levels = _packRepository.GetLevels(packConfiguration.Name);
-            var level = levels.LevelPreviews[_defaultPackConfiguration.DefaultLevelIndex];
-            SetGameData(new GameData(packConfiguration, levels, level));
-        }
-        
         private void ConfigureMenuButton()
         {
-            _menuButton.onClick.AddListener(() => PopupManager.SpawnPopup<MainGameMenuPopup>());
+            _menuButton.onClick.AddListener(() =>
+            {
+                _mainGame.Pause();
+                var menuPopup = PopupManager.SpawnPopup<MainGameMenuPopup>();
+                menuPopup.OnBack(() =>
+                {
+                    _mainGame.Stop();
+                    var sceneChanger = new SceneChanger<PackChoosePopup>(PopupManager);
+                    sceneChanger.ChangeScene(0);
+                });
+                menuPopup.OnRestart(() =>
+                {
+                    _mainGame.Stop();
+                    _mainGame.StartGame(_currentGameData);
+                    _mainGame.Unpause();
+                });
+                menuPopup.OnContinue(() => _mainGame.Unpause());
+            });
         }
     }
 }

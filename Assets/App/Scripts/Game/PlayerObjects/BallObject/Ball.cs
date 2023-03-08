@@ -11,7 +11,7 @@ namespace Game.PlayerObjects.BallObject
 
         private float _startSpeed;
 
-        private void Start() => _rigidbody2D.bodyType = RigidbodyType2D.Static;
+        private void Start() => ToStatic();
 
         public void Initialize(float startSpeed) => _startSpeed = startSpeed;
         public void StartMove()
@@ -32,6 +32,15 @@ namespace Game.PlayerObjects.BallObject
             }
         }
 
+        protected override void ResetProtected()
+        {
+            _startSpeed = 0;
+            SetSpeed(Vector2.zero);
+            ToStatic();
+        }
+
         protected override bool CanBeDestroyedOnDestroyCollision() => true;
+
+        private void ToStatic() => _rigidbody2D.bodyType = RigidbodyType2D.Static;
     }
 }

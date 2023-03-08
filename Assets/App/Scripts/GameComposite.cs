@@ -1,16 +1,14 @@
 ﻿using System.Linq;
 using Common.Configurations.Packs;
+using Common.Data.Providers;
 using Common.Data.Repositories.Base;
 using Common.Data.Repositories.ResourcesImplementation;
-using Game;
-using Game.Base;
 using Game.Composite;
 using Libs.Localization.Installers;
 using Libs.Pooling.Implementation;
 using Libs.Popups;
 using Libs.Popups.Base;
 using Libs.Services;
-using Popups.Start;
 using UnityEngine;
 
 namespace App.Scripts
@@ -18,7 +16,7 @@ namespace App.Scripts
     public class GameComposite : MonoBehaviour
     {
         [SerializeField] private PopupComposite _popupComposite;
-        [SerializeField] private MainGameInstaller _mainGameInstaller;
+        [SerializeField] private MainGameFactoryInstaller _mainGameInstaller;
         [SerializeField] private LocalizationManagerInstaller _localizationManagerInstaller;
         [SerializeField] private PackCollectionConfiguration _packCollectionConfiguration;
         [SerializeField] private DefaultPackConfiguration _defaultPackConfiguration;
@@ -27,9 +25,10 @@ namespace App.Scripts
         
         private void Awake()
         {
-             _serviceProvider = BuildServices();
-             TryInitializePackConfigurations();
-             SpawnStartPopup();
+            var serviceProvider = ServiceProviderAccessor.ServiceProvider;
+            _serviceProvider = serviceProvider ?? BuildServices();
+            TryInitializePackConfigurations();
+            TrySpawnStartPopup();
         }
         
         private void TryInitializePackConfigurations()
@@ -54,7 +53,7 @@ namespace App.Scripts
             packRepository.Save();
         }
 
-        private void SpawnStartPopup()
+        private void TrySpawnStartPopup()
         {
             var popupManager = _serviceProvider.GetRequiredService<IPopupManager>();
             var configuration = _popupComposite.PopupSystemConfiguration;
@@ -62,34 +61,31 @@ namespace App.Scripts
             if (configuration.SpawnStartPopup)
             {
                 popupManager.SpawnPopup(configuration.StartPopup.Popup);
-            }
-            else
-            {
-                popupManager.SpawnPopup<StartPopup>();
+                configuration.DisableStartPopupSpawn();
             }
         }
 
         private IServiceProvider BuildServices()
         {
-            var poolBuilder = PoolBuilder.Create();
             var serviceCollection = new ServiceCollection();
             
+            var poolBuilder = PoolBuilder.Create();
             _mainGameInstaller.AddPools(poolBuilder);
             _popupComposite.AddPopupsToPool(poolBuilder);
-            
             var poolProvider = poolBuilder.BuildProvider();
             
             var popupManager = _popupComposite.CreatePopupManager(poolProvider, () => ServiceProviderAccessor.ServiceProvider);
-            var game = _mainGameInstaller.CreateGame(serviceCollection, poolProvider);
-            var localizationManager = _localizationManagerInstaller.CreateLocalizationManagerManager();
+            var localizationManager = _localizationManagerInstaller.CreateLocalizationManager();
+            var gameFactory = _mainGameInstaller.CreateGame(poolProvider);
             
             var serviceProvider = serviceCollection
+                .AddSingleton(new GameDataProvider())
                 .AddSingleton(poolProvider)
                 .AddSingleton(popupManager)
                 .AddSingleton(localizationManager)
+                .AddSingleton(gameFactory)
                 .AddSingleton<IPackRepository>(new ResourcesPackRepository(_packCollectionConfiguration, _defaultPackConfiguration))
                 .AddSingleton<ILevelRepository>(new ResourcesLevelRepository(_packCollectionConfiguration))
-                .AddSingleton<IGame<MainGameData, MainGameEvents>>(game)
                 .BuildServiceProvider();
              
             ServiceProviderAccessor.Initialize(serviceProvider);

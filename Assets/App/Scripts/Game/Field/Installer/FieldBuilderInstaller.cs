@@ -5,16 +5,13 @@ using UnityEngine;
 
 namespace Game.Field.Installer
 {
-    public class FieldInstaller : MonoBehaviour
+    public class FieldBuilderInstaller : MonoBehaviour
     {
         [SerializeField] private FieldPositionsGenerator _fieldPositionsGenerator;
-        [SerializeField] private GameField _gameField;
-
-        public Bounds GetFieldBounds() => _fieldPositionsGenerator.GenerateFieldBounds();
 
         public IFieldBuilder CreateFieldBuilder(IBlockSpawner blockSpawner)
         {
-            return new FieldBuilder(blockSpawner, _fieldPositionsGenerator, _gameField);
+            return new FieldBuilder(blockSpawner, _fieldPositionsGenerator);
         }
     }
 }

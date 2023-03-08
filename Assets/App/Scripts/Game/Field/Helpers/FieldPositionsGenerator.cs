@@ -6,15 +6,15 @@ namespace Game.Field.Helpers
 {
     public class FieldPositionsGenerator : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
         [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
         [SerializeField] private Block _block;
+        private Camera _camera;
         private float _screenHeight;
         private float _screenWidth;
         
-
         public Bounds GenerateFieldBounds()
         {
+            _camera = Camera.main;
             _screenHeight = Screen.height;
             _screenWidth = Screen.width;
             
@@ -42,6 +42,8 @@ namespace Game.Field.Helpers
 
         public FieldPositionsGenerationResult GeneratePositions(Vector2Int fieldSize)
         {
+            _camera = Camera.main;
+            
             _screenHeight = Screen.height;
             _screenWidth = Screen.width;
             

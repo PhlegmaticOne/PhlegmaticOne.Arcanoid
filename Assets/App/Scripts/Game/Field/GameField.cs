@@ -2,26 +2,41 @@
 using System.Linq;
 using Game.Blocks;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Field
 {
-    public class GameField : MonoBehaviour
+    public class GameField
     {
-        private readonly List<Block> _blocks = new List<Block>();
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        private readonly List<Block> _blocks;
+        public event UnityAction<Block> BlockAdded;
+        public event UnityAction<Block> BlockRemoved; 
+        public int Width { get; }
+        public int Height { get; }
+        public Bounds Bounds { get; }
+        public IReadOnlyList<Block> Blocks => _blocks;
 
-        public void Initialize(IEnumerable<Block> blocks, int width, int height)
+        public GameField(int width, int height, Bounds bounds, IEnumerable<Block> blocks)
         {
-            _blocks.Clear();
-            _blocks.AddRange(blocks);
+            _blocks = blocks.ToList();
             Width = width;
             Height = height;
+            Bounds = bounds;
         }
 
-        public void RemoveBlock(Block block) => _blocks.Remove(block);
+        public Block this[int row, int col] => _blocks[row * Width + col];
 
-        public void AddBlock(Block block) => _blocks.Add(block);
+        public void RemoveBlock(Block block)
+        {
+            _blocks.Remove(block);
+            BlockAdded?.Invoke(block);
+        }
+
+        public void AddBlock(Block block)
+        {
+            _blocks.Add(block);
+            BlockRemoved?.Invoke(block);
+        }
 
         public int ActiveBlocksCount => _blocks.Count(x => x.BlockConfiguration.ActiveOnPlay);
     }

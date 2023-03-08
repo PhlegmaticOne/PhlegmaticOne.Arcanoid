@@ -2,7 +2,6 @@
 using Common.Data.Models;
 using Game.Blocks;
 using Game.Blocks.Spawners;
-using Game.Field.Configurations;
 using Game.Field.Helpers;
 using UnityEngine;
 
@@ -12,15 +11,12 @@ namespace Game.Field.Builder
     {
         private readonly IBlockSpawner _blockSpawner;
         private readonly FieldPositionsGenerator _fieldPositionsGenerator;
-        private readonly GameField _gameField;
 
         public FieldBuilder(IBlockSpawner blockSpawner, 
-            FieldPositionsGenerator fieldPositionsGenerator,
-            GameField gameField)
+            FieldPositionsGenerator fieldPositionsGenerator)
         {
             _blockSpawner = blockSpawner;
             _fieldPositionsGenerator = fieldPositionsGenerator;
-            _gameField = gameField;
         }
 
         public GameField BuildField(LevelData levelData)
@@ -46,8 +42,7 @@ namespace Game.Field.Builder
                 }
             }
 
-            _gameField.Initialize(result, width, height);
-            return _gameField;
+            return new GameField(width, height, _fieldPositionsGenerator.GenerateFieldBounds(), result);
         }
     }
 }

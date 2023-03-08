@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Game.PlayerObjects.Base;
 using Libs.InputSystem;
 using UnityEngine;
@@ -8,21 +9,25 @@ namespace Game.Systems.Control
     public class ControlSystem : MonoBehaviour
     {
         [SerializeField] private ControlSystemConfiguration _controlSystemConfiguration;
-        [SerializeField] private Camera _camera;
         
         private readonly List<IStartMovable> _followingObjects = new List<IStartMovable>();
         
         private IDimensionable _baseObjectToMove;
         private Bounds _interactableBounds;
+        private Camera _camera;
         
         private IInputSystem _inputSystem;
         private InputData _inputData;
+        private Vector3 _startPosition;
         
-        public void Initialize(IInputSystem inputSystem, IDimensionable baseObjectToMove)
+        public void Initialize(IInputSystem inputSystem, IDimensionable baseObjectToMove, Camera cam)
         {
+            _camera = cam;
             _inputSystem = inputSystem;
+            _inputSystem.Reset();
             _baseObjectToMove = baseObjectToMove;
-            _inputSystem.Ended += InputSystemOnEnded;
+            _startPosition = baseObjectToMove.GetTransform().position;
+            Enable();
             _inputData = new InputData(baseObjectToMove.GetTransform().position, InputState.None, false);
         }
         
@@ -36,12 +41,33 @@ namespace Game.Systems.Control
             _followingObjects.Add(startMovable);
         }
 
+        public void Enable()
+        {
+            _inputSystem.Ended += InputSystemOnEnded;
+            _baseObjectToMove.GetTransform().position = _startPosition;
+        }
+        
+        public void Disable()
+        {
+            _inputSystem.Ended -= InputSystemOnEnded;
+            _followingObjects.Clear();
+        }
+
+        public void DisableInput() => _inputSystem.MakeInvalid();
+        public void EnableInput() => _inputSystem.Reset();
+
         private void InputSystemOnEnded()
         {
+            if (NotInBounds(ToWorldPoint()) || NotValid())
+            {
+                return;
+            }
+            
             foreach (var followingObject in _followingObjects)
             {
                 followingObject.StartMove();
             }
+            
             _followingObjects.Clear();
         }
 
@@ -49,14 +75,14 @@ namespace Game.Systems.Control
 
         private void FixedUpdate()
         {
-            if (_inputData.IsValid == false)
+            if (NotValid())
             {
                 return;
             }
             
             var newPosition = ToWorldPoint();
 
-            if (_interactableBounds.Contains((Vector2)newPosition) == false)
+            if (NotInBounds(newPosition))
             {
                 return;
             }
@@ -64,6 +90,9 @@ namespace Game.Systems.Control
             var newBasePosition = UpdateBasePosition(newPosition);
             UpdateFollowingObjects(newBasePosition);
         }
+
+        private bool NotInBounds(Vector2 newPosition) => _interactableBounds.Contains(newPosition) == false;
+        private bool NotValid() => _inputData.IsValid == false;
 
         private Vector2 UpdateBasePosition(Vector2 newPosition)
         {

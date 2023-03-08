@@ -9,7 +9,7 @@ namespace Libs.Localization.Installers
     {
         [SerializeField] private LocalizationSystemConfiguration _localizationSystemConfiguration;
         
-        public ILocalizationManager CreateLocalizationManagerManager()
+        public ILocalizationManager CreateLocalizationManager()
         {
             return new LocalizationManager(_localizationSystemConfiguration);
         }

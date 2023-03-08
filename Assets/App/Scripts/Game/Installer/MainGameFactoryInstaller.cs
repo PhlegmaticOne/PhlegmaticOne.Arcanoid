@@ -1,4 +1,5 @@
-﻿using Game.Blocks.Spawners;
+﻿using Game.Base;
+using Game.Blocks.Spawners;
 using Game.Field.Helpers;
 using Game.Field.Installer;
 using Game.PlayerObjects.BallObject.Spawners;
@@ -12,16 +13,12 @@ using UnityEngine;
 
 namespace Game.Composite
 {
-    public class MainGameInstaller : MonoBehaviour
+    public class MainGameFactoryInstaller : MonoBehaviour
     {
         [SerializeField] private InputSystemInstaller _inputSystemInstaller;
         [SerializeField] private BlockSpawnerInstaller _blockSpawnerInstaller;
         [SerializeField] private BallSpawnerInstaller _ballSpawnerInstaller;
-        [SerializeField] private FieldInstaller _fieldInstaller;
-
-        [SerializeField] private InteractableZoneSetter _interactableZoneSetter;
-        [SerializeField] private ControlSystem _controlSystem;
-        [SerializeField] private Ship _ship;
+        [SerializeField] private FieldBuilderInstaller _fieldInstaller;
 
         public void AddPools(PoolBuilder poolBuilder)
         {
@@ -29,20 +26,13 @@ namespace Game.Composite
             poolBuilder.AddPool(_ballSpawnerInstaller.BallPoolInstaller.CreateObjectPool());
         }
         
-        public MainGame CreateGame(IServiceCollection serviceCollection, IPoolProvider poolProvider)
+        public IGameFactory<MainGameRequires, MainGame> CreateGame(IPoolProvider poolProvider)
         {
             var blockSpawner = _blockSpawnerInstaller.CreateBlockSpawner(poolProvider);
             var ballSpawner = _ballSpawnerInstaller.CreateBallSpawner(poolProvider);
             var inputSystem = _inputSystemInstaller.Create();
             var fieldBuilder = _fieldInstaller.CreateFieldBuilder(blockSpawner);
-
-            var interactableBounds = _interactableZoneSetter.CalculateZoneBounds(_fieldInstaller.GetFieldBounds());
-            _interactableZoneSetter.SetInteractableZone(interactableBounds);
-            
-            _controlSystem.Initialize(inputSystem.CreateInput(), _ship);
-            _controlSystem.SetInteractableBounds(interactableBounds);
-            
-            return new MainGame(fieldBuilder, _controlSystem, ballSpawner, _ship);
+            return new MainGameFactory(fieldBuilder, poolProvider, ballSpawner, inputSystem.CreateInput());
         }
     }
 }

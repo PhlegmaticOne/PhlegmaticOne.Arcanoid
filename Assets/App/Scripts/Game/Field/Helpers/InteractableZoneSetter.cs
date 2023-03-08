@@ -14,6 +14,7 @@ namespace Game.Field.Helpers
 
         public Bounds CalculateZoneBounds(Bounds fieldBounds)
         {
+            _camera = Camera.main;
             var halfHeight = _camera.orthographicSize;
             var halfWidth = halfHeight * _camera.aspect;
 
