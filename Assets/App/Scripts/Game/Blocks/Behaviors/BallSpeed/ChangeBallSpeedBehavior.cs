@@ -1,29 +1,44 @@
-﻿using Game.Behaviors;
+﻿using Game.Accessors;
+using Game.Behaviors;
 using Game.Field;
+using Game.PlayerObjects.BallObject;
 using UnityEngine;
 
 namespace Game.Blocks.Behaviors.BallSpeed
 {
     public class ChangeBallSpeedBehavior : IObjectBehavior<Block>
     {
-        private readonly GameField _gameField;
-        private readonly int _startBlocksCount;
-        private float _maxBallSpeed;
+        private readonly IObjectAccessor<GameField> _gameFieldAccessor;
+        private readonly IObjectAccessor<BallsOnField> _ballsOnFieldAccessor;
+        private float _increaseSpeed;
 
-        public ChangeBallSpeedBehavior(GameField gameField)
+        public ChangeBallSpeedBehavior(
+            IObjectAccessor<GameField> gameFieldAccessor,
+            IObjectAccessor<BallsOnField> ballsOnFieldAccessor)
         {
-            _gameField = gameField;
-            _startBlocksCount = gameField.Blocks.Count;
+            _gameFieldAccessor = gameFieldAccessor;
+            _ballsOnFieldAccessor = ballsOnFieldAccessor;
         }
         
-        public void SetBehaviorParameters(float maxBallSpeed)
+        public void SetBehaviorParameters(float increaseSpeed)
         {
-            _maxBallSpeed = maxBallSpeed;
+            _increaseSpeed = increaseSpeed;
         }
         
         public void Behave(Block entity, Collision2D collision2D)
         {
-            var notDestroyedBlocksCount = _gameField.NotDestroyedBlocksCount;
+            var field = _gameFieldAccessor.Get();
+            var blocksCount = field.Width * field.Height;
+            var notDestroyedBlocksCount = field.NotDestroyedBlocksCount;
+
+            foreach (var ball in _ballsOnFieldAccessor.Get().All)
+            {
+                var ballStartSpeed = ball.GetStartSpeed();
+                var ballSpeedNormalized = ball.GetSpeed().normalized;
+                var deltaSpeed = _increaseSpeed * (blocksCount - notDestroyedBlocksCount) / blocksCount;
+                var newSpeed = deltaSpeed + ballStartSpeed;
+                ball.SetSpeed(newSpeed * ballSpeedNormalized);
+            }
         }
     }
 }

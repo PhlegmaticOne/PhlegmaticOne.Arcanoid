@@ -9,7 +9,7 @@ namespace Game.PlayerObjects.BallObject.Behaviors.Ship
         {
             var x = HitFactor(entity.transform.position, collision2D.transform.position, collision2D.collider.bounds.size.x);
             var direction = new Vector2(x, 1).normalized;
-            entity.SetSpeed(direction * entity.GetStartSpeed());
+            entity.SetSpeed(direction * entity.GetSpeed().magnitude);
         }
         
         private static float HitFactor(Vector2 ballPosition, Vector2 racketPos, float racketWidth) => 

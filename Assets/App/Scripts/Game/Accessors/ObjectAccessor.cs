@@ -5,7 +5,7 @@
         private T _value;
         
         public T Get() => _value;
-
         public void Set(T value) => _value = value;
+        public void Reset() => _value = default;
     }
 }

@@ -26,12 +26,6 @@ namespace Game.Blocks.View
             _additionalRenderers.Push(additionalRenderer);
         }
 
-        public void ChangeLastSprite(Sprite sprite)
-        {
-            var additionalRenderer = _additionalRenderers.Peek();
-            additionalRenderer.SetSprite(sprite);
-        }
-        
         public void SetSize(Vector2 newSize)
         {
             _mainSpriteRenderer.size = newSize;

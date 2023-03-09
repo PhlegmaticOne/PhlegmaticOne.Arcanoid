@@ -12,7 +12,6 @@ namespace Game.PlayerObjects.BallObject
         private float _startSpeed;
 
         private void Start() => ToStatic();
-
         public void Initialize(float startSpeed) => _startSpeed = startSpeed;
         public void StartMove()
         {

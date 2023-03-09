@@ -27,7 +27,6 @@ namespace Game.Systems.Control
             _baseObjectToMove = baseObjectToMove;
             _startPosition = baseObjectToMove.GetTransform().position;
             _inputData = new InputData(baseObjectToMove.GetTransform().position, InputState.None, false);
-            Enable();
         }
         
         public void SetInteractableBounds(Bounds interactableBounds) => _interactableBounds = interactableBounds;

@@ -4,5 +4,6 @@
     {
         T Get();
         void Set(T value);
+        void Reset();
     }
 }

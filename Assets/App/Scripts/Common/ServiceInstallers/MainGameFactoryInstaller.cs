@@ -1,6 +1,9 @@
 ﻿using Game;
+using Game.Accessors;
 using Game.Base;
+using Game.Field;
 using Game.Field.Builder;
+using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
@@ -18,7 +21,9 @@ namespace Common.ServiceInstallers
                 var fieldBuilder = x.GetRequiredService<IFieldBuilder>();
                 var inputSystem = x.GetRequiredService<IInputSystem>();
                 var poolProvider = x.GetRequiredService<IPoolProvider>();
-                return new MainGameFactory(fieldBuilder, poolProvider, ballSpawner, inputSystem);
+                var gameFieldAccessor = x.GetRequiredService<IObjectAccessor<GameField>>();
+                var ballsOnFieldAccessor = x.GetRequiredService<IObjectAccessor<BallsOnField>>();
+                return new MainGameFactory(fieldBuilder, gameFieldAccessor, ballsOnFieldAccessor, poolProvider, ballSpawner, inputSystem);
             });
         }
     }

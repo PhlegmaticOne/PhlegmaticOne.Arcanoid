@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Accessors;
 using Game.Base;
 using Game.Blocks;
 using Game.Field;
@@ -17,6 +18,8 @@ namespace Game
     {
         private readonly IPoolProvider _poolProvider;
         private readonly IFieldBuilder _fieldBuilder;
+        private readonly IObjectAccessor<GameField> _gameFieldAccessor;
+        private readonly IObjectAccessor<BallsOnField> _ballsOnFieldAccessor;
         private readonly InteractableZoneSetter _interactableZoneSetter;
         private readonly ControlSystem _controlSystem;
         private readonly IBallSpawner _ballSpawner;
@@ -26,7 +29,9 @@ namespace Game
         private Ball _ball;
 
         public MainGame(IPoolProvider poolProvider,
-            IFieldBuilder fieldBuilder, 
+            IFieldBuilder fieldBuilder,
+            IObjectAccessor<GameField> gameFieldAccessor,
+            IObjectAccessor<BallsOnField> ballsOnFieldAccessor,
             InteractableZoneSetter interactableZoneSetter,
             ControlSystem controlSystem,
             IBallSpawner ballSpawner, 
@@ -34,6 +39,8 @@ namespace Game
         {
             _poolProvider = poolProvider;
             _fieldBuilder = fieldBuilder;
+            _gameFieldAccessor = gameFieldAccessor;
+            _ballsOnFieldAccessor = ballsOnFieldAccessor;
             _interactableZoneSetter = interactableZoneSetter;
             _controlSystem = controlSystem;
             _ballSpawner = ballSpawner;
@@ -48,12 +55,16 @@ namespace Game
         public void StartGame(MainGameData data)
         {
             _gameField = _fieldBuilder.BuildField(data.LevelData);
+            _gameFieldAccessor.Set(_gameField);
             var interactableBounds = _interactableZoneSetter.CalculateZoneBounds(_gameField.Bounds);
             _interactableZoneSetter.SetInteractableZone(interactableBounds);
             _controlSystem.SetInteractableBounds(interactableBounds);
             _controlSystem.Enable();
             _ship.Enable();
             _ball = _ballSpawner.CreateBall(new BallCreationContext(Vector2.zero, 5));
+            var ballsOnField = new BallsOnField();
+            ballsOnField.AddBall(_ball);
+            _ballsOnFieldAccessor.Set(ballsOnField);
             _controlSystem.AddObjectToFollow(_ball);
         }
 
@@ -83,6 +94,9 @@ namespace Game
             }
             
             ballsPool.ReturnToPool(_ball);
+            _ballsOnFieldAccessor.Get().Clear();
+            _ballsOnFieldAccessor.Reset();
+            _gameFieldAccessor.Reset();
             _controlSystem.Disable();
             SetTimeScale(1);
         }
