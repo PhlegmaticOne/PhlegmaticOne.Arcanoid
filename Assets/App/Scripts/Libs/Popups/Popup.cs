@@ -1,6 +1,7 @@
 ﻿using System;
 using Libs.Pooling.Base;
 using Libs.Popups.Animations.Base;
+using Libs.Popups.Animations.Concrete.Default;
 using Libs.Popups.Animations.Types;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
@@ -22,6 +23,8 @@ namespace Libs.Popups
         private IPopupAnimationsFactory<AppearAnimationType> _appearAnimationsFactory;
         private IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
         private Action _onCloseSpawnAction;
+
+        private Action _onAnimationPlayedAction;
         
         private RectTransform _parentTransform;
 
@@ -35,46 +38,58 @@ namespace Libs.Popups
             PopupManager = serviceProvider.GetRequiredService<IPopupManager>();
             InitializeProtected(serviceProvider);
         }
-
         
         public abstract void EnableInput();
         
         public abstract void DisableInput();
         
         protected abstract void InitializeProtected(IServiceProvider serviceProvider);
-        
-        
+
+        protected virtual IPopupAnimation CreateCustomAppearAnimation() => new NoneAnimation();
+
+        protected virtual IPopupAnimation CreateCustomDisappearAnimation() => new NoneAnimation();
+
+
         public void Show(int sortingOrder, Action onShowed)
         {
             _popupView.SetSortOrder(sortingOrder);
-            
-            var popupAnimation = _appearAnimationsFactory
-                .CreateAnimation(_popupAnimationConfiguration.AppearAnimationType, _parentTransform);
-            
-            popupAnimation.OnAnimationPlayed(() =>
+
+            var appearAnimation = _popupAnimationConfiguration.UsesCustomAppearAnimation ?
+                    CreateCustomAppearAnimation() : 
+                    CreateDefaultAppearAnimation();
+
+            _onAnimationPlayedAction = () =>
             {
+                appearAnimation.AnimationPlayed -= _onAnimationPlayedAction;
                 onShowed?.Invoke();
-                popupAnimation.Stop(this);
+                appearAnimation.Stop(this);
                 OnShowed();
                 EnableInput();
-            });
+                _onCloseSpawnAction = null;
+            };
             
-            popupAnimation.Play(this, _popupAnimationConfiguration.AppearanceTime);
+            appearAnimation.AnimationPlayed += _onAnimationPlayedAction;
+            appearAnimation.Play(this, _popupAnimationConfiguration.AppearanceTime);
         }
         
+
         public void Close(Action onCloseAction)
         {
-            var popupAnimation = _disappearAnimationsFactory
-                .CreateAnimation(_popupAnimationConfiguration.DisappearAnimationType, _parentTransform);
-            
-            popupAnimation.OnAnimationPlayed(() =>
+            var disappearAnimation = _popupAnimationConfiguration.UsesCustomDisappearAnimation
+                ? CreateCustomDisappearAnimation()
+                : CreateDefaultDisappearAnimation();
+
+            _onAnimationPlayedAction = () =>
             {
-                popupAnimation.Stop(this);
+                disappearAnimation.AnimationPlayed -= _onAnimationPlayedAction;
+                disappearAnimation.Stop(this);
                 CloseInstant();
                 onCloseAction?.Invoke();
-            });
+                _onAnimationPlayedAction = null;
+            };
             
-            popupAnimation.Play(this, _popupAnimationConfiguration.DisappearanceTime);
+            disappearAnimation.AnimationPlayed += _onAnimationPlayedAction;
+            disappearAnimation.Play(this, _popupAnimationConfiguration.DisappearanceTime);
         }
 
         public void CloseInstant()
@@ -101,6 +116,11 @@ namespace Libs.Popups
             _appearAnimationsFactory = appearAnimationsFactory;
             _disappearAnimationsFactory = disappearAnimationsFactory;
         }
+
+        private IPopupAnimation CreateDefaultAppearAnimation() => 
+            _appearAnimationsFactory.CreateAnimation(_popupAnimationConfiguration.AppearAnimationType, _parentTransform);
+        private IPopupAnimation CreateDefaultDisappearAnimation() => 
+            _disappearAnimationsFactory.CreateAnimation(_popupAnimationConfiguration.DisappearAnimationType, _parentTransform);
 
         protected virtual void OnShowed() { }
 

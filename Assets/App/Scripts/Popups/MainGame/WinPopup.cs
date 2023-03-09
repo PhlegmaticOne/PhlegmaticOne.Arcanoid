@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
+using Libs.Popups.Animations.Base;
+using Libs.Popups.Animations.Concrete;
 using Libs.Services;
 using UnityEngine;
 using UnityEngine.UI;

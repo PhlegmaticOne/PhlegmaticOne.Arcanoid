@@ -33,14 +33,31 @@ namespace Libs.Popups.Configurations
     [Serializable]
     public class PopupAnimationConfiguration
     {
-        [SerializeField] private AppearAnimationType _appearAnimationType;
-        [SerializeField] private float _appearanceTime;
-        [SerializeField] private DisappearAnimationType _disappearAnimationType;
+        [SerializeField] private bool _usesCustomAppearAnimation;
+        
+        [SerializeField] 
+        [HideIf(nameof(_usesCustomAppearAnimation))]
+        private AppearAnimationType _appearAnimationType;
+        
+        [SerializeField]
+        [HideIf(nameof(_usesCustomAppearAnimation))]
+        private float _appearanceTime;
+        
+        
+        [SerializeField] private bool _usesCustomDisappearAnimation;
+        
+        [SerializeField] 
+        [HideIf(nameof(_usesCustomDisappearAnimation))]
+        private DisappearAnimationType _disappearAnimationType;
+        
+        [HideIf(nameof(_usesCustomDisappearAnimation))]
         [SerializeField] private float _disappearanceTime;
         
         public AppearAnimationType AppearAnimationType => _appearAnimationType;
         public float AppearanceTime => _appearanceTime;
         public DisappearAnimationType DisappearAnimationType => _disappearAnimationType;
         public float DisappearanceTime => _disappearanceTime;
+        public bool UsesCustomAppearAnimation => _usesCustomAppearAnimation;
+        public bool UsesCustomDisappearAnimation => _usesCustomDisappearAnimation;
     }
 }

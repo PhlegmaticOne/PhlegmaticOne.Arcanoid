@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Libs.Popups.Animations.Base;
 using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Concrete.Default;
 using Libs.Popups.Animations.Types;
 using UnityEngine;
 

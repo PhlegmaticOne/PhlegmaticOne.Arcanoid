@@ -7,6 +7,7 @@ using Libs.Pooling.Implementation;
 using Libs.Popups.Animations;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
+using Libs.Popups.Factory;
 using UnityEngine;
 using IServiceProvider = Libs.Services.IServiceProvider;
 
@@ -29,13 +30,14 @@ namespace Libs.Popups
 
         public IPopupManager CreatePopupManager(IPoolProvider poolProvider, Func<IServiceProvider> serviceProvider)
         {
-            return new PopupManager(poolProvider, 
+            var popupFactory = new PopupFactory(poolProvider,
                 new AppearanceAnimationsFactory(),
                 new DisappearanceAnimationsFactory(),
                 serviceProvider,
                 _parent,
-                _popupSystemConfiguration,
-                _popupSystemConfiguration.StartFromSortingOrder);
+                _popupSystemConfiguration); 
+            
+            return new PopupManager(popupFactory, poolProvider, _popupSystemConfiguration.StartFromSortingOrder);
         }
 
         private IEnumerable<PrefabInfo<Popup>> CreatePopupPrefabInfos() =>

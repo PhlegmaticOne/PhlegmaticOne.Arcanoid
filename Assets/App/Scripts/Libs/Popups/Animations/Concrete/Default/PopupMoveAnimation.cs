@@ -1,7 +1,8 @@
 ﻿using DG.Tweening;
+using Libs.Popups.Animations.Base;
 using UnityEngine;
 
-namespace Libs.Popups.Animations.Concrete
+namespace Libs.Popups.Animations.Concrete.Default
 {
     public class PopupMoveAnimation : PopupAnimationBase
     {
@@ -27,12 +28,9 @@ namespace Libs.Popups.Animations.Concrete
             popupTransform.DOLocalMove(_to, duration)
                 .SetEase(Ease.Linear)
                 .SetUpdate(true)
-                .OnComplete(ExecuteAllActions);
+                .OnComplete(OnAnimationPlayed);
         }
 
-        public override void Stop(Popup popup)
-        {
-            popup.RectTransform.DOKill();
-        }
+        public override void Stop(Popup popup) => popup.RectTransform.DOKill();
     }
 }

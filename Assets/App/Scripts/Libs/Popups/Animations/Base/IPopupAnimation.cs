@@ -1,10 +1,10 @@
-﻿using UnityEngine.Events;
+﻿using System;
 
 namespace Libs.Popups.Animations.Base
 {
     public interface IPopupAnimation
     {
-        void OnAnimationPlayed(UnityAction unityAction);
+        event Action AnimationPlayed;
         void Play(Popup popup, float duration);
         void Stop(Popup popup);
     }

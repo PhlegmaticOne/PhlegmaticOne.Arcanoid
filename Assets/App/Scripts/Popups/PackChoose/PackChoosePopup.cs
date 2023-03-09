@@ -2,10 +2,13 @@
 using System.Linq;
 using Common.Configurations.Packs;
 using Common.Data.Repositories.Base;
+using DG.Tweening;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
+using Libs.Popups.Animations.Base;
+using Libs.Popups.Animations.Concrete;
 using Libs.Services;
 using Popups.LevelChoose;
 using Popups.PackChoose.Views;

@@ -1,7 +1,8 @@
 ﻿using DG.Tweening;
+using Libs.Popups.Animations.Base;
 using UnityEngine;
 
-namespace Libs.Popups.Animations.Concrete
+namespace Libs.Popups.Animations.Concrete.Default
 {
     public class PopupFadeAnimation : PopupAnimationBase
     {
@@ -18,7 +19,7 @@ namespace Libs.Popups.Animations.Concrete
             var popupTransform = popup.RectTransform;
             var canvasGroup = popup.PopupView.CanvasGroup;
             popupTransform.localPosition = Vector3.zero;
-            canvasGroup.DOFade(to, duration).SetUpdate(true).OnComplete(ExecuteAllActions);
+            canvasGroup.DOFade(to, duration).SetUpdate(true).OnComplete(OnAnimationPlayed);
         }
 
         public override void Stop(Popup popup) => popup.PopupView.CanvasGroup.DOKill();
