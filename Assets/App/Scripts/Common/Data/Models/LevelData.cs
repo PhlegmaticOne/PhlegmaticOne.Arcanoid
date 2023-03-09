@@ -10,15 +10,15 @@ namespace Common.Data.Models
         [SerializeField] private int lifesCount;
         [SerializeField] private int width;
         [SerializeField] private int height;
-        [SerializeField] private BlockData[] blocksData;
+        [SerializeField] private int[] blocksData;
         
         public int LevelId => levelId;
         public int LifesCount => lifesCount;
         public int Width => width;
         public int Height => height;
-        public BlockData[] BlocksData => blocksData;
+        public int[] BlocksData => blocksData;
 
-        public static LevelData Create(int levelId, int lifesCount, int width, int height, BlockData[] blockData)
+        public static LevelData Create(int levelId, int lifesCount, int width, int height, int[] blockData)
         {
             var result = new LevelData
             {

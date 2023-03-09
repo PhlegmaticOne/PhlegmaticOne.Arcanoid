@@ -5,7 +5,7 @@ namespace Game.Blocks.Spawners
 {
     public interface IBlockSpawner
     {
-        Block SpawnBlock(BlockData blockData, BlockSpawnData blockSpawnData);
+        Block SpawnBlock(int blockId, BlockSpawnData blockSpawnData);
     }
 
     public class BlockSpawnData

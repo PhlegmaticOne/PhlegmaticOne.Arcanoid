@@ -19,10 +19,10 @@ namespace Game.Blocks.View
             _currentSortOrder = _mainSpriteRenderer.sortingOrder;
         }
 
-        public void AddSprite(Sprite sprite)
+        public void AddSprite(Sprite sprite, bool preserveOriginalSize = false)
         {
             var additionalRenderer = Instantiate(_additionalRenderer, transform);
-            additionalRenderer.SetSprite(sprite, Size, ++_currentSortOrder);
+            additionalRenderer.SetSprite(sprite, Size, ++_currentSortOrder, preserveOriginalSize);
             _additionalRenderers.Push(additionalRenderer);
         }
 

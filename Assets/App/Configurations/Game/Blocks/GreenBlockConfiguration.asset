@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: GreenBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 1
+  _dropBlockId: -1
+  _lifesCount: 3
   _blockSprite: {fileID: 21300000, guid: 7bca2060a71082140a283d845db0d2d2, type: 3}
-  _collidesWithTag: Ball
+  _additionalSprites: []
+  _gravitable: 0
+  _activeOnPlay: 1

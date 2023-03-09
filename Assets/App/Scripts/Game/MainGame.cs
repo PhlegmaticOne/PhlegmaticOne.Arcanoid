@@ -53,7 +53,7 @@ namespace Game
             _controlSystem.SetInteractableBounds(interactableBounds);
             _controlSystem.Enable();
             _ship.Enable();
-            _ball = _ballSpawner.CreateBall(new BallCreationContext(Vector2.zero, 4));
+            _ball = _ballSpawner.CreateBall(new BallCreationContext(Vector2.zero, 5));
             _controlSystem.AddObjectToFollow(_ball);
         }
 

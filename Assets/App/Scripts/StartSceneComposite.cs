@@ -11,6 +11,7 @@ public class StartSceneComposite : MonoBehaviour
     
     private void Awake()
     {
+        ServiceProviderAccessor.SetPrefabPath("App/ServiceProvider/ServiceProviderAccessor");
         var serviceProvider = ServiceProviderAccessor.ServiceProvider;
         TryInitializePackConfigurations(serviceProvider);
         TrySpawnStartPopup(serviceProvider);

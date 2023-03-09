@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using Common.Data.Providers;
+using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Common.Scenes;
 using Game;
+using Game.Accessors;
 using Game.Base;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
@@ -11,7 +12,6 @@ using Libs.Popups;
 using Libs.Services;
 using Popups.PackChoose;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Popups.MainGame
@@ -24,7 +24,7 @@ namespace Popups.MainGame
         private LocalizationContext _localizationContext;
         private IPackRepository _packRepository;
         private ILevelRepository _levelRepository;
-        private GameDataProvider _gameDataProvider;
+        private IObjectAccessor<GameData> _gameDataProvider;
         private ILocalizationManager _localizationManager;
         private IGame<MainGameData, MainGameEvents> _mainGame;
 
@@ -36,7 +36,7 @@ namespace Popups.MainGame
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _levelRepository = serviceProvider.GetRequiredService<ILevelRepository>();
-            _gameDataProvider = serviceProvider.GetRequiredService<GameDataProvider>();
+            _gameDataProvider = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
                 .BindLocalizable(this)

@@ -1,20 +1,21 @@
 ﻿using Common.Configurations.Packs;
 using Common.Data.Models;
-using Common.Data.Providers;
 using Common.Data.Repositories.Base;
 using Game;
+using Game.Accessors;
 using Game.Base;
 using Game.Field.Helpers;
 using Game.PlayerObjects.ShipObject;
 using Game.Systems.Control;
 using Libs.Popups.Base;
+using Libs.Popups.Configurations;
 using Libs.Services;
 using Popups.MainGame;
 using UnityEngine;
 
 public class MainGameSceneComposite : MonoBehaviour
 {
-    [SerializeField] private DefaultPackConfiguration _defaultPackConfiguration;
+    [SerializeField] private PopupSystemConfiguration _popupSystemConfiguration;
     
     [SerializeField] private ControlSystem _controlSystem;
     [SerializeField] private Ship _ship;
@@ -23,8 +24,16 @@ public class MainGameSceneComposite : MonoBehaviour
     
     private void Awake()
     {
+        ServiceProviderAccessor.SetPrefabPath("App/ServiceProvider/ServiceProviderAccessor");
         var serviceProvider = ServiceProviderAccessor.ServiceProvider;
+        
         TrySetGameData(serviceProvider);
+        MarkNotToSpawnStartPopup();
+        StartGame(serviceProvider);
+    }
+
+    private void StartGame(IServiceProvider serviceProvider)
+    {
         var popupManager = serviceProvider.GetRequiredService<IPopupManager>();
         var factory = serviceProvider.GetRequiredService<IGameFactory<MainGameRequires, MainGame>>();
         
@@ -43,7 +52,7 @@ public class MainGameSceneComposite : MonoBehaviour
 
     private void TrySetGameData(IServiceProvider serviceProvider)
     {
-        var gameDataProvider = serviceProvider.GetRequiredService<GameDataProvider>();
+        var gameDataProvider = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
 
         var gameData = gameDataProvider.Get();
         if (gameData != null)
@@ -52,10 +61,15 @@ public class MainGameSceneComposite : MonoBehaviour
         }
 
         var packRepository = serviceProvider.GetRequiredService<IPackRepository>();
-        var packConfiguration = _defaultPackConfiguration.DefaultPack;
-        var levelCollection = packRepository.GetLevels(packConfiguration.Name);
-        var levelId = _defaultPackConfiguration.DefaultLevelIndex;
-        gameData = new GameData(packConfiguration, levelCollection, new LevelPreviewData(levelId, false));
+        var defaultPackConfiguration = packRepository.DefaultPackConfiguration;
+        var levelCollection = packRepository.GetLevels(defaultPackConfiguration.DefaultPack.Name);
+        var levelId = defaultPackConfiguration.DefaultLevelIndex;
+        gameData = new GameData(defaultPackConfiguration.DefaultPack, levelCollection, new LevelPreviewData(levelId, false));
         gameDataProvider.Set(gameData);
+    }
+
+    private void MarkNotToSpawnStartPopup()
+    {
+        _popupSystemConfiguration.DisableStartPopupSpawn();
     }
 }

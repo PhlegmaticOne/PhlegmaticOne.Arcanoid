@@ -1,56 +1,28 @@
-﻿using Game.Behaviors;
+﻿using System;
+using Game.PlayerObjects.BallObject.Behaviors.Base;
 using UnityEngine;
 
 namespace Game.PlayerObjects.BallObject.Behaviors.Blocks
 {
-    public class BlockAngleCorrectionBehavior : IObjectBehavior<Ball>
+    public class BlockAngleCorrectionBehavior : MovementAngleCorrectionBehaviorBase
     {
-        private float _minSideBounceAngle;
+        protected override bool SideAngleValid(in float angle) => 90f - angle < MinSideBounceAngle;
+        protected override bool TopBottomAngleValid(in float angle) => 90f - angle < MinTopBounceAngle;
 
-        public void SetBehaviorParameters(float minSideBounceAngle)
+        protected override Vector2 ResolveBottomWallBounce(in Vector2 ballVelocity)
         {
-            _minSideBounceAngle = minSideBounceAngle;
-        }
-        
-        public void Behave(Ball entity, Collision2D collision2D)
-        {
-            var normal = collision2D.contacts[0].normal;
-            Debug.Log(normal);
-            // var ballVelocity = entity.GetSpeed();
-            // var velocityAngle = Vector3.Angle(ballVelocity, normal);
-            //
-            // if (IsLeftWall(normal) && SideAngleValid(velocityAngle))
-            // {
-            //     ballVelocity = ResolveLeftWallBounce(ballVelocity);
-            //     ReflectAndSetSpeed(entity, ballVelocity, normal);
-            // }
-            //
-            // if (IsRightWall(normal) && SideAngleValid(velocityAngle))
-            // {
-            //     ballVelocity = ResolveRightWallBounce(ballVelocity);
-            //     ReflectAndSetSpeed(entity, ballVelocity, normal);
-            // }
-        }
-        
-        private bool SideAngleValid(in float angle) => 90f - angle < _minSideBounceAngle;
-
-        private Vector2 ResolveLeftWallBounce(in Vector2 ballVelocity)
-        {
-            var angle = ballVelocity.y >= 0 ? _minSideBounceAngle : -_minSideBounceAngle;
+            var angle = ballVelocity.x >= 0 ? MinTopBounceAngle : -MinTopBounceAngle;
             return Rotate(ballVelocity, angle);
         }
 
-        private Vector2 ResolveRightWallBounce(in Vector2 ballVelocity)
+        protected override bool IsTopWall(in Vector2 normal) => Math.Abs(normal.y - 1) < Tolerance;
+
+        protected override bool IsBottomWall(in Vector2 normal) => Math.Abs(normal.y - (-1)) < Tolerance;
+
+        protected override Vector2 ResolveTopWallBounce(in Vector2 ballVelocity)
         {
-            var angle = ballVelocity.y >= 0 ? -_minSideBounceAngle : _minSideBounceAngle;
+            var angle = ballVelocity.x >= 0 ? -MinTopBounceAngle : MinTopBounceAngle;
             return Rotate(ballVelocity, angle);
         }
-        
-        private static Vector2 Rotate(in Vector2 vector2, in float angle) =>
-            Quaternion.Euler(0, 0, angle) * vector2;
-        private static void ReflectAndSetSpeed(Ball entity, in Vector2 ballVelocity, in Vector2 normal) => 
-            entity.SetSpeed(Vector3.Reflect(ballVelocity, normal));
-        private static bool IsLeftWall(in Vector2 normal) => normal.x == 1f;
-        private static bool IsRightWall(in Vector2 normal) => normal.x == -1f;
     }
 }

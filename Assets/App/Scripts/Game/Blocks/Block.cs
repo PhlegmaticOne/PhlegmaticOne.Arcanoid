@@ -9,6 +9,7 @@ namespace Game.Blocks
     {
         [SerializeField] private BlockView _blockView;
         [SerializeField] private BoxCollider2D _boxCollider;
+        [SerializeField] private Rigidbody2D _rigidbody2D;
         private int _health;
         private bool _readyToDestroy;
 
@@ -18,13 +19,23 @@ namespace Game.Blocks
         public bool IsDestroyed { get; set; }
         public BlockConfiguration BlockConfiguration { get; private set; }
         
-        public void Initialize(BlockConfiguration configuration, int health)
+        public void Initialize(BlockConfiguration configuration)
         {
             BlockConfiguration = configuration;
-            _health = health;
-            StartHealth = health;
-            _blockView.SetMainSprite(configuration.BlockSprite);
+            _health = configuration.LifesCount;
+            StartHealth = configuration.LifesCount;
             IsDestroyed = false;
+            
+            _blockView.SetMainSprite(configuration.BlockSprite);
+            foreach (var additionalSprite in configuration.AdditionalSprites)
+            {
+                _blockView.AddSprite(additionalSprite, true);
+            }
+
+            if (configuration.Gravitable)
+            {
+                _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+            }
         }
 
         public void SetPosition(Vector3 position) => transform.position = position;
@@ -55,7 +66,7 @@ namespace Game.Blocks
             _health = 0;
             StartHealth = 0;
             _readyToDestroy = false;
-            IsDestroyed = false;
+            IsDestroyed = true;
             BlockConfiguration = null;
         }
     }

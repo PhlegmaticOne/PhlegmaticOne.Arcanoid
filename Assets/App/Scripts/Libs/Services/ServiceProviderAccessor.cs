@@ -7,6 +7,7 @@ namespace Libs.Services
     {
         [SerializeField] private List<ServiceInstaller> _installers;
         private IServiceProvider _serviceProvider;
+        private static string _prefabPath;
         private static ServiceProviderAccessor _accessor;
 
         public static IServiceProvider ServiceProvider
@@ -15,13 +16,7 @@ namespace Libs.Services
             {
                 if (_accessor == null)
                 {
-                    var existing = FindObjectOfType<ServiceProviderAccessor>();
-                    
-                    if (existing == false)
-                    {
-                        return null;
-                    }
-                    
+                    var existing = Resources.Load<ServiceProviderAccessor>(_prefabPath);
                     existing.BuildServiceProvider();
                     DontDestroyOnLoad(existing);
                     _accessor = existing;
@@ -30,7 +25,9 @@ namespace Libs.Services
                 return _accessor._serviceProvider;
             }
         }
-        
+
+        public static void SetPrefabPath(string path) => _prefabPath = path;
+
         private void BuildServiceProvider()
         {
             var serviceCollection = new ServiceCollection();

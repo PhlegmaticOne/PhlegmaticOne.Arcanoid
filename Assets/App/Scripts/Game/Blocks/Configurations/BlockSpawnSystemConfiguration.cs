@@ -11,9 +11,9 @@ namespace Game.Blocks.Configurations
         
         public List<BlockSpawnConfiguration> BlockConfigurations => _blockConfigurations;
 
-        public BlockSpawnConfiguration FindBlockConfiguration(BlockData blockData)
+        public BlockSpawnConfiguration FindBlockConfiguration(int blockId)
         {
-            var configuration = _blockConfigurations.FirstOrDefault(x => x.BlockConfiguration.BlockId == blockData.BlockId);
+            var configuration = _blockConfigurations.FirstOrDefault(x => x.BlockConfiguration.BlockId == blockId);
             return configuration;
         }
     }

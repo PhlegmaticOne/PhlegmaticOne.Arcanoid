@@ -15,15 +15,15 @@ namespace Game.Blocks.Spawners
             _blockSystemConfiguration = blockSystemConfiguration;
         }
         
-        public Block SpawnBlock(BlockData blockData, BlockSpawnData blockSpawnData)
+        public Block SpawnBlock(int blockId, BlockSpawnData blockSpawnData)
         {
-            var blockSpawnConfiguration = _blockSystemConfiguration.FindBlockConfiguration(blockData);
+            var blockSpawnConfiguration = _blockSystemConfiguration.FindBlockConfiguration(blockId);
             var blockConfiguration = blockSpawnConfiguration.BlockConfiguration;
             var blockBehaviorInstaller = blockSpawnConfiguration.BlockBehaviorInstaller;
             
             var block = _blocksPool.Get();
             
-            block.Initialize(blockConfiguration, blockData.LifesCount);
+            block.Initialize(blockConfiguration);
             block.SetSize(blockSpawnData.Size);
             block.SetPosition(blockSpawnData.Position);
 

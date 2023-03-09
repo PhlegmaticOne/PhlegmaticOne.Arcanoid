@@ -39,5 +39,6 @@ namespace Game.Field
         }
 
         public int ActiveBlocksCount => _blocks.Count(x => x.BlockConfiguration.ActiveOnPlay);
+        public int NotDestroyedBlocksCount => _blocks.Count(x => x.IsDestroyed == false);
     }
 }

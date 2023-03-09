@@ -1,11 +1,10 @@
 ﻿using Common.Configurations.Packs;
 using Common.Data.Models;
-using Common.Data.Providers;
 using Common.Data.Repositories.Base;
+using Game.Accessors;
 using Libs.Popups;
 using Popups.PackChoose;
 using SPopups.LevelChoose.Views;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,7 +18,7 @@ namespace Popups.LevelChoose
         [SerializeField] private Button _backButton;
 
         private IPackRepository _packRepository;
-        private GameDataProvider _gameDataProvider;
+        private IObjectAccessor<GameData> _gameDataProvider;
         
         private PackConfiguration _packConfiguration;
         private PackLevelCollection _packLevelCollection;
@@ -28,7 +27,7 @@ namespace Popups.LevelChoose
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
-            _gameDataProvider = serviceProvider.GetRequiredService<GameDataProvider>();
+            _gameDataProvider = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
             _levelsCollectionView.LevelClicked += LevelsCollectionViewOnLevelClicked;
             ConfigureBackButton();
         }

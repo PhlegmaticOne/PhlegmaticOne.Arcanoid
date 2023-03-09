@@ -13,14 +13,18 @@ namespace Common.ServiceInstallers
         [SerializeField] private PopupComposite _popupComposite;
         [SerializeField] private UnityObjectPoolInstaller<Ball> _ballPoolInstaller;
         [SerializeField] private UnityObjectPoolInstaller<Block> _blockPoolInstaller;
+        [SerializeField] private PooledObjectsContainer _pooledObjectsContainer;
+        [SerializeField] private PopupContainer _popupContainer;
         
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             var poolBuilder = PoolBuilder.Create();
+            var popupContainer = Instantiate(_popupContainer);
+            var poolContainer = Instantiate(_pooledObjectsContainer);
             
-            _popupComposite.AddPopupsToPool(poolBuilder);
-            poolBuilder.AddPool(_ballPoolInstaller.CreateObjectPool());
-            poolBuilder.AddPool(_blockPoolInstaller.CreateObjectPool());
+            _popupComposite.AddPopupsToPool(poolBuilder, popupContainer.CanvasTransform);
+            poolBuilder.AddPool(_ballPoolInstaller.CreateObjectPool(poolContainer.transform));
+            poolBuilder.AddPool(_blockPoolInstaller.CreateObjectPool(poolContainer.transform));
             
             var poolProvider = poolBuilder.BuildProvider();
 
