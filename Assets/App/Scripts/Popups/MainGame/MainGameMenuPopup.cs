@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Game.Commands.Base;
+using Game.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
@@ -23,10 +25,8 @@ namespace Popups.MainGame
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
 
-        private UnityAction _onRestart;
-        private UnityAction _onContinue;
-        private UnityAction _onBack;
-        private UnityAction _activeAction;
+        private MainMenuViewModel _mainMenuViewModel;
+        private ICommand _onCloseCommand;
 
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
@@ -39,6 +39,11 @@ namespace Popups.MainGame
                 .Create(_localizationManager)
                 .BindLocalizable(this)
                 .Refresh();
+        }
+
+        public void SetupViewModel(MainMenuViewModel mainMenuViewModel)
+        {
+            _mainMenuViewModel = mainMenuViewModel;
         }
 
         public override void EnableInput()
@@ -55,32 +60,23 @@ namespace Popups.MainGame
             DisableBehaviour(_continueButton);
         }
 
-        protected override void OnClosed() => _activeAction?.Invoke();
+        protected override void OnClosed() => _onCloseCommand.Execute();
 
         public override void Reset()
         {
             _localizationContext.Flush();
             _localizationContext = null;
-            _onRestart = null;
-            _onContinue = null;
-            _onBack = null;
-            _activeAction = null;
             RemoveAllListeners(_backButton);
             RemoveAllListeners(_restartButton);
             RemoveAllListeners(_continueButton);
         }
 
-        public void OnRestart(UnityAction action) => _onRestart = action;
-
-        public void OnContinue(UnityAction action) => _onContinue = action;
-
-        public void OnBack(UnityAction action) => _onBack = action;
-
         private void ConfigureBackButton()
         {
             _backButton.onClick.AddListener(() =>
             {
-                _onBack?.Invoke();
+                _onCloseCommand = _mainMenuViewModel.BackToPackMenuCommand;
+                //_onBack?.Invoke();
                 PopupManager.CloseAllPopupsInstant();
             });
         }
@@ -89,7 +85,7 @@ namespace Popups.MainGame
         {
             _restartButton.onClick.AddListener(() =>
             {
-                _activeAction = _onRestart;
+                _onCloseCommand = _mainMenuViewModel.RestartCommand;
                 PopupManager.CloseLastPopup();
             });
         }
@@ -98,7 +94,7 @@ namespace Popups.MainGame
         {
             _continueButton.onClick.AddListener(() =>
             {
-                _activeAction = _onContinue;
+                _onCloseCommand = _mainMenuViewModel.ContinueCommand;
                 PopupManager.CloseLastPopup();
             });
         }

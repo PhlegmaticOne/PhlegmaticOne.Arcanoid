@@ -16,8 +16,8 @@ MonoBehaviour:
   _popupAnimationConfiguration:
     _usesCustomAppearAnimation: 0
     _appearAnimationType: 1
-    _appearanceTime: 0.5
+    _appearanceTime: 1
     _usesCustomDisappearAnimation: 0
     _disappearAnimationType: 5
-    _disappearanceTime: 0.5
+    _disappearanceTime: 1
   _popup: {fileID: 5213800753101665489, guid: 0590ccf09a576fe4f8ec7e937afab505, type: 3}

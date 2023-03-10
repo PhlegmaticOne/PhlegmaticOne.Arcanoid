@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 4672484507022615344}
   - component: {fileID: 4672484507022615346}
   - component: {fileID: 4672484507022615347}
+  - component: {fileID: 7847499900500390622}
   m_Layer: 5
   m_Name: PackImagePlace
   m_TagString: Untagged
@@ -728,6 +729,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7847499900500390622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672484507022615345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd64f03e7b04a61ab6c05facc381501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelsInfoText: {fileID: 4672484507943588054}
+  _packIconImage: {fileID: 4672484506834206391}
 --- !u!1 &4672484507149802456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1017,7 @@ GameObject:
   - component: {fileID: 4672484507758867464}
   - component: {fileID: 4672484507758867466}
   - component: {fileID: 4672484507758867467}
+  - component: {fileID: 6912381341744304712}
   m_Layer: 5
   m_Name: ProgressInfo
   m_TagString: Untagged
@@ -1125,6 +1141,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6912381341744304712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672484507758867465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b64558fb27459eb9f530900e25a747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _percentageText: {fileID: 4672484507758867467}
 --- !u!1 &4672484507869124410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,8 +1322,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1481,3 +1510,5 @@ MonoBehaviour:
   _menuButton: {fileID: 4672484506182346576}
   _bindableComponents:
   - {fileID: 712194557766866693}
+  _packageInfoView: {fileID: 7847499900500390622}
+  _levelPassPercentageView: {fileID: 6912381341744304712}

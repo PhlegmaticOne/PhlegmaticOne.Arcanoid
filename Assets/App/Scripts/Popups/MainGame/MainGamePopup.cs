@@ -1,16 +1,12 @@
 ﻿using System.Collections.Generic;
-using Common.Data.Models;
-using Common.Data.Repositories.Base;
-using Common.Scenes;
-using Game;
-using Game.Accessors;
-using Game.Base;
+using Common.Configurations.Packs;
+using Game.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Services;
-using Popups.PackChoose;
+using Popups.MainGame.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,23 +16,19 @@ namespace Popups.MainGame
     {
         [SerializeField] private Button _menuButton;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
+        [SerializeField] private PackageInfoView _packageInfoView;
+        [SerializeField] private LevelPassPercentageView _levelPassPercentageView;
 
         private LocalizationContext _localizationContext;
-        private IPackRepository _packRepository;
-        private ILevelRepository _levelRepository;
-        private IObjectAccessor<GameData> _gameDataProvider;
         private ILocalizationManager _localizationManager;
-        private IGame<MainGameData, MainGameEvents> _mainGame;
 
-        private MainGameData _currentGameData;
+        private MainGameViewModel _mainGameViewModel;
+
         public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
 
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
-            _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
-            _levelRepository = serviceProvider.GetRequiredService<ILevelRepository>();
-            _gameDataProvider = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
                 .BindLocalizable(this)
@@ -44,17 +36,16 @@ namespace Popups.MainGame
             ConfigureMenuButton();
         }
 
+        public void SetupViewModel(MainGameViewModel mainGameViewModel) => _mainGameViewModel = mainGameViewModel;
+
         public override void EnableInput() => EnableBehaviour(_menuButton);
+
+        public override void DisableInput() => DisableBehaviour(_menuButton);
 
         protected override void OnShowed()
         {
-            var gameData = _gameDataProvider.Get();
-            var levelData = _levelRepository.GetLevelData(gameData.PackLevelCollection, gameData.LevelPreviewData);
-            _currentGameData = new MainGameData(levelData);
-            _mainGame.StartGame(_currentGameData);
+            _mainGameViewModel.StartCommand.Execute();
         }
-
-        public override void DisableInput() => DisableBehaviour(_menuButton);
 
         public override void Reset()
         {
@@ -63,27 +54,23 @@ namespace Popups.MainGame
             RemoveAllListeners(_menuButton);
         }
 
-        public void SetupGame(IGame<MainGameData, MainGameEvents> mainGame) => _mainGame = mainGame;
+        public void UpdatePackInfoView(PackConfiguration packConfiguration)
+        {
+            _packageInfoView.SetPackInfo(packConfiguration);
+        }
+        
+        public void UpdateLevelPassPercentageView(float normalizedPercentage)
+        {
+            _levelPassPercentageView.SetInNormalizedPercentage(normalizedPercentage);
+        }
 
         private void ConfigureMenuButton()
         {
             _menuButton.onClick.AddListener(() =>
             {
-                _mainGame.Pause();
+                _mainGameViewModel.PauseCommand.Execute();
                 var menuPopup = PopupManager.SpawnPopup<MainGameMenuPopup>();
-                menuPopup.OnBack(() =>
-                {
-                    _mainGame.Stop();
-                    var sceneChanger = new SceneChanger<PackChoosePopup>(PopupManager);
-                    sceneChanger.ChangeScene(0);
-                });
-                menuPopup.OnRestart(() =>
-                {
-                    _mainGame.Stop();
-                    _mainGame.StartGame(_currentGameData);
-                    _mainGame.Unpause();
-                });
-                menuPopup.OnContinue(() => _mainGame.Unpause());
+                menuPopup.SetupViewModel(_mainGameViewModel.MainMenuViewModel);
             });
         }
     }

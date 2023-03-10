@@ -34,7 +34,7 @@ namespace Game.Systems.Control
         public void AddObjectToFollow(IStartMovable startMovable)
         {
             var basePosition = _baseObjectToMove.GetTransform().position;
-            basePosition += new Vector3(0, _baseObjectToMove.GetBounds().extents.y + startMovable.GetBounds().extents.y);
+            basePosition += new Vector3(0, _baseObjectToMove.GetBounds().extents.y + startMovable.GetBounds().size.y);
             startMovable.GetTransform().position = basePosition;
             _followingObjects.Add(startMovable);
         }

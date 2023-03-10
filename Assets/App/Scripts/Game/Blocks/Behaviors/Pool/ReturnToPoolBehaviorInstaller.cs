@@ -1,5 +1,7 @@
-﻿using Game.Behaviors;
+﻿using Game.Accessors;
+using Game.Behaviors;
 using Game.Behaviors.Installer;
+using Game.Field;
 using Libs.Pooling.Base;
 using Libs.Services;
 
@@ -11,7 +13,8 @@ namespace Game.Blocks.Behaviors.Pool
         {
             var serviceProvider = ServiceProviderAccessor.ServiceProvider;
             var poolProvider = serviceProvider.GetRequiredService<IPoolProvider>();
-            return new ReturnToPoolBehavior(poolProvider);
+            var fieldAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameField>>();
+            return new ReturnToPoolBehavior(poolProvider, fieldAccessor);
         }
     }
 }

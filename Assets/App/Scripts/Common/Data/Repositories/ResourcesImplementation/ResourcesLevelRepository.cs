@@ -20,7 +20,8 @@ namespace Common.Data.Repositories.ResourcesImplementation
                 Combine(_packCollectionConfiguration.PackCollectionSourcePath, packName),
                 _packCollectionConfiguration.LevelsSubfolderName);
 
-            var levelTextAsset = LoadFirstAssetByFilter<TextAsset>(packName + "_" + levelPreviewData.LevelId, levelsDirectoryPath);
+            var levelFileName = levelPreviewData.LevelId.ToString();
+            var levelTextAsset = LoadFirstAssetByFilter<TextAsset>(levelFileName, levelsDirectoryPath);
             return JsonUtility.FromJson<LevelData>(levelTextAsset.text);
         }
     }

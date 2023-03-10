@@ -15,3 +15,4 @@ MonoBehaviour:
   _packCollectionSourcePath: Assets/Resources/App/MainGame/Packs
   _levelsSubfolderName: Levels
   _packsInitialized: 1
+  _defaultPackConfiguration: {fileID: 11400000, guid: bb8163f4ea695aa49b472e4472b55098, type: 2}

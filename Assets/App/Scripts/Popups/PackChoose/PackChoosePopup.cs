@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Common.Configurations.Packs;
+using Common.Data.Models;
 using Common.Data.Repositories.Base;
-using DG.Tweening;
+using Game.Accessors;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
-using Libs.Popups.Animations.Base;
-using Libs.Popups.Animations.Concrete;
 using Libs.Services;
-using Popups.LevelChoose;
 using Popups.PackChoose.Views;
 using Popups.Start;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Popups.PackChoose
@@ -25,6 +24,7 @@ namespace Popups.PackChoose
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
         private IPackRepository _packRepository;
+        private IObjectAccessor<GameData> _gameDataAccessor;
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
         
@@ -37,6 +37,7 @@ namespace Popups.PackChoose
         {
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
+            _gameDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
             ConfigureBackButton();
             ShowPacks();
         }
@@ -74,8 +75,25 @@ namespace Popups.PackChoose
 
         private void PackCollectionViewOnPackClicked(PackConfiguration packConfiguration)
         {
-            OnCloseSpawn<LevelChoosePopup>(withSetup: p => p.SetPack(packConfiguration));
-            PopupManager.CloseLastPopup();
+            SetLevelData(packConfiguration);
+            PopupManager.CloseAllPopupsInstant();
+            SceneManager.LoadScene(1);
+        }
+
+        private void SetLevelData(PackConfiguration packConfiguration)
+        {
+            var packLevelCollection = _packRepository.GetLevels(packConfiguration.Name);
+            var currentLevelIdIndex = packConfiguration.PassedLevelsCount;
+
+            if (currentLevelIdIndex == packLevelCollection.LevelPreviews.Count)
+            {
+                //TODO: Reset passed levels
+                currentLevelIdIndex = 0;
+            }
+            
+            var currentLevel = packLevelCollection.LevelPreviews[currentLevelIdIndex];
+            var gameData = new GameData(packConfiguration, packLevelCollection, currentLevel);
+            _gameDataAccessor.Set(gameData);
         }
 
         private void ConfigureBackButton()

@@ -9,6 +9,7 @@ using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
 using Game.PlayerObjects.ShipObject;
 using Game.Systems.Control;
+using Game.Systems.StateCheck;
 using Libs.Pooling.Base;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ namespace Game
 
         private GameField _gameField;
         private Ball _ball;
+        private StateCheckSystem _stateCheckSystem;
 
         public MainGame(IPoolProvider poolProvider,
             IFieldBuilder fieldBuilder,
@@ -56,6 +58,9 @@ namespace Game
         {
             _gameField = _fieldBuilder.BuildField(data.LevelData);
             _gameFieldAccessor.Set(_gameField);
+            _stateCheckSystem = new StateCheckSystem(_gameField);
+            _stateCheckSystem.ActiveBlocksDestroyed += StateCheckSystemOnActiveBlocksDestroyed;
+            _gameField.BlockRemoved += GameFieldOnBlockRemoved;
             var interactableBounds = _interactableZoneSetter.CalculateZoneBounds(_gameField.Bounds);
             _interactableZoneSetter.SetInteractableZone(interactableBounds);
             _controlSystem.SetInteractableBounds(interactableBounds);
@@ -67,6 +72,17 @@ namespace Game
             _ballsOnFieldAccessor.Set(ballsOnField);
             _controlSystem.AddObjectToFollow(_ball);
         }
+
+        private void GameFieldOnBlockRemoved(Block block)
+        {
+            Events.OnBlockDestroyed(new BlockDestroyedEventArgs
+            {
+                ActiveBlocksCount = _gameField.StartActiveBlocksCount,
+                RemainBlocksCount = _gameField.ActiveBlocksCount
+            });
+        }
+
+        private void StateCheckSystemOnActiveBlocksDestroyed() => Won?.Invoke();
 
         public void Pause()
         {
@@ -93,6 +109,8 @@ namespace Game
                 }
             }
             
+            _stateCheckSystem.ActiveBlocksDestroyed -= StateCheckSystemOnActiveBlocksDestroyed;
+            _gameField.BlockRemoved -= GameFieldOnBlockRemoved;
             ballsPool.ReturnToPool(_ball);
             _ballsOnFieldAccessor.Get().Clear();
             _ballsOnFieldAccessor.Reset();

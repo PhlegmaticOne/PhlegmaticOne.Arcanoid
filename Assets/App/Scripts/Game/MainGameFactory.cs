@@ -2,14 +2,10 @@
 using Game.Base;
 using Game.Field;
 using Game.Field.Builder;
-using Game.Field.Helpers;
 using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
-using Game.PlayerObjects.ShipObject;
-using Game.Systems.Control;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
-using UnityEngine;
 
 namespace Game
 {
@@ -54,13 +50,5 @@ namespace Game
                 _mainGameRequires.InteractableZoneSetter,
                 controlSystem, _ballSpawner, ship);
         }
-    }
-
-    public class MainGameRequires : IGameRequires
-    {
-        public ControlSystem ControlSystem { get; set; }
-        public Ship Ship { get; set; }
-        public InteractableZoneSetter InteractableZoneSetter { get; set; }
-        public Camera Camera { get; set; }
     }
 }

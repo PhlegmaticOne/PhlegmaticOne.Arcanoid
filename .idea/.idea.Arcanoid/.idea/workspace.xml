@@ -2,36 +2,92 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Base/PopupAnimationBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/DoTweenCallbackAnimation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/DoTweenCallbackAnimation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Factory.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Factory/IPopupFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Factory/IPopupFactory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Factory/PopupFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Factory/PopupFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/BackToPacksMenuCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/BackToPacksMenuCommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/Base/ICommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/Base/ICommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/ContinueGameCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/ContinueGameCommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/PauseGameCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/PauseGameCommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/RestartLevelCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/RestartLevelCommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/StartGameCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/StartGameCommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Controllers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Controllers/GameController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Controllers/GameController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameRequires.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameRequires.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/StateCheck.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/StateCheck/StateCheckSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/StateCheck/StateCheckSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels/MainGameViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels/MainGameViewModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels/MainMenuViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels/MainMenuViewModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/ColorBindableComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/ColorBindableComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/LevelPassPercentageView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/LevelPassPercentageView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/PackageInfoView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/PackageInfoView.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/LevelChoosePopupConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/LevelChoosePopupConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/PackChoosePopupConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/PackChoosePopupConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/LevelChoosePopupConfiguration.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/LevelChoosePopupConfiguration.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/WinPopupConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/Popup/WinPopupConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/AppearanceAnimationsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/AppearanceAnimationsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Base/IPopupAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Base/IPopupAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/NoneAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default/NoneAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/NoneAnimation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default/NoneAnimation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/PopupAnimationBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/PopupAnimationBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Base/PopupAnimationBase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/PopupFadeAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default/PopupFadeAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/PopupFadeAnimation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default/PopupFadeAnimation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/PopupMoveAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default/PopupMoveAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/PopupMoveAnimation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/Concrete/Default/PopupMoveAnimation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/DisappearanceAnimationsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Animations/DisappearanceAnimationsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Configurations/PopupConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Configurations/PopupConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Popup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/Popup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/PopupComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/PopupComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/PopupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/PopupManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/PopupSystemConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/PopupSystemConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LevelChoosePopup.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LevelChoosePopup/Elements.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LevelChoosePopup/Elements/LevelButton.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LevelChoosePopup/Elements/LevelButton.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LevelChoosePopup/LevelChoosePopup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LevelChoosePopup/LevelChoosePopup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/WinPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/WinPopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/PackChoosePopup/Elements/PackPreview.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/PackChoosePopup/Elements/PackPreview.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackCollectionConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackCollectionConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/Base/ResourcesRepositoryBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesLevelRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/ResourcesImplementation/ResourcesPackRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/ObjectAccessorsInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/ObjectAccessorsInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/RepositoriesInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/RepositoriesInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Control/ControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Control/ControlSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/MainGameSceneComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/MainGameSceneComposite.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/LevelChoosePopup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/LevelChoosePopup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/Views.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/Views/LevelPreview.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/Views/LevelPreview.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/Views/LevelsCollectionView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/LevelChoose/Views/LevelsCollectionView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGameMenuPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGameMenuPopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/WinPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/WinPopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/StartSceneComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/StartSceneComposite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/StartSceneComposite.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/StartSceneComposite.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/Tutorial_0.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackLevelCollection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackLevelCollection.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +114,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/23/62b7fce2/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/37/8ddd0c9d/Environment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/4e/cd9aca6d/Thread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/50/4938adf9/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/50/6c28c706/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/89/6ac683ce/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76860db3a1bd406f9ef62e3284ca274a64200/fc/ec3be483/SerializedScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
@@ -132,10 +189,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="29488">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20544">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="29488" />
+      <option name="pid" value="20544" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -171,7 +228,8 @@
       <workItem from="1678204832611" duration="957000" />
       <workItem from="1678278730063" duration="32801000" />
       <workItem from="1678343582019" duration="3727000" />
-      <workItem from="1678360978800" duration="17096000" />
+      <workItem from="1678360978800" duration="18304000" />
+      <workItem from="1678425526847" duration="15202000" />
     </task>
     <servers />
   </component>
@@ -182,5 +240,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Game\Blocks\Behaviors\Pool\ReturnToPoolBehavior.cs" initialLine="23" containingFunctionPresentation="method 'Behave'">
+            <startOffsets>
+              <option value="768" />
+            </startOffsets>
+            <endOffsets>
+              <option value="794" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -15,6 +15,7 @@ namespace Common.ServiceInstallers
             AddAccessor<GameField>(serviceCollection);
             AddAccessor<Ship>(serviceCollection);
             AddAccessor<BallsOnField>(serviceCollection);
+            AddAccessor<LevelData>(serviceCollection);
         }
 
         private static void AddAccessor<T>(IServiceCollection serviceCollection)

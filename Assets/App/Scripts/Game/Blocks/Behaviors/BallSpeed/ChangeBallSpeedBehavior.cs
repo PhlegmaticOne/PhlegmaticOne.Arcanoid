@@ -29,7 +29,7 @@ namespace Game.Blocks.Behaviors.BallSpeed
         {
             var field = _gameFieldAccessor.Get();
             var blocksCount = field.Width * field.Height;
-            var notDestroyedBlocksCount = field.NotDestroyedBlocksCount;
+            var notDestroyedBlocksCount = field.ActiveBlocksCount;
 
             foreach (var ball in _ballsOnFieldAccessor.Get().All)
             {

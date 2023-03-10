@@ -10,15 +10,12 @@ namespace Common.Data.Repositories.ResourcesImplementation
 {
     public class ResourcesPackRepository : ResourcesRepositoryBase, IPackRepository
     {
-        private const string NumberAtTheEndOfStringRegex = "\\d+$";
         private readonly PackCollectionConfiguration _packCollectionConfiguration;
 
-        public ResourcesPackRepository(
-            PackCollectionConfiguration packCollectionConfiguration,
-            DefaultPackConfiguration defaultPackConfiguration)
+        public ResourcesPackRepository(PackCollectionConfiguration packCollectionConfiguration)
         {
             _packCollectionConfiguration = packCollectionConfiguration;
-            DefaultPackConfiguration = defaultPackConfiguration;
+            DefaultPackConfiguration = packCollectionConfiguration.DefaultPackConfiguration;
         }
 
         public bool PacksInitialized => _packCollectionConfiguration.PacksInitialized;
@@ -67,7 +64,7 @@ namespace Common.Data.Repositories.ResourcesImplementation
         private void InitializeLevelCollection(PackLevelCollection levelCollection, string packName, string packPath)
         {
             var levelsDirectoryPath = Combine(packPath, _packCollectionConfiguration.LevelsSubfolderName);
-            var matches = GetMatchesInAssetNames<TextAsset>(NumberAtTheEndOfStringRegex, levelsDirectoryPath);
+            var matches = GetAssetNamesInDirectory<TextAsset>(levelsDirectoryPath);
             var levelPreviews = matches.Select(x => new LevelPreviewData(int.Parse(x), false));
             levelCollection.Initialize(levelPreviews, packName);
             SaveToAssets(levelCollection);

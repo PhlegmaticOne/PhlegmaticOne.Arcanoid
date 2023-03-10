@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
@@ -10,22 +11,13 @@ namespace Common.Data.Repositories.ResourcesImplementation.Base
     {
         protected static string[] GetSubFolders(string path) => AssetDatabase.GetSubFolders(path);
 
-        protected static List<string> GetMatchesInAssetNames<TAsset>(string regexPattern, string directoryName)
-            where TAsset : Object
+        protected static IEnumerable<string> GetAssetNamesInDirectory<TAsset>(string directoryName) where TAsset : Object
         {
-            var regex = new Regex(regexPattern);
-            var result = new List<string>();
-            
             foreach (var asset in FindAssets(AssetTypeName<TAsset>(), directoryName))
             {
-                var path = ToAssetPath(asset);
-                var extensionIndex = path.IndexOf('.');
-                var subPath = path.Substring(0, extensionIndex);
-                var match = regex.Match(subPath);
-                result.Add(match.Value);
+                var assetPath = ToAssetPath(asset);
+                yield return Path.GetFileNameWithoutExtension(assetPath);
             }
-
-            return result;
         }
 
         protected static TAsset LoadFirstAssetByFilter<TAsset>(string filter, string directoryPath)

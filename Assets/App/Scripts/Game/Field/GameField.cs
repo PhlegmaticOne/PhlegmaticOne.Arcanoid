@@ -19,6 +19,7 @@ namespace Game.Field
         public GameField(int width, int height, Bounds bounds, IEnumerable<Block> blocks)
         {
             _blocks = blocks.ToList();
+            StartActiveBlocksCount = ActiveBlocksCount;
             Width = width;
             Height = height;
             Bounds = bounds;
@@ -29,16 +30,16 @@ namespace Game.Field
         public void RemoveBlock(Block block)
         {
             _blocks.Remove(block);
-            BlockAdded?.Invoke(block);
+            BlockRemoved?.Invoke(block);
         }
 
         public void AddBlock(Block block)
         {
             _blocks.Add(block);
-            BlockRemoved?.Invoke(block);
+            BlockAdded?.Invoke(block);
         }
-
+        
+        public int StartActiveBlocksCount { get; }
         public int ActiveBlocksCount => _blocks.Count(x => x.BlockConfiguration.ActiveOnPlay);
-        public int NotDestroyedBlocksCount => _blocks.Count(x => x.IsDestroyed == false);
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using DG.Tweening;
+using Common.Configurations.Packs;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
-using Libs.Popups.Animations.Base;
-using Libs.Popups.Animations.Concrete;
 using Libs.Services;
+using Popups.MainGame.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +15,7 @@ namespace Popups.MainGame
     {
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
+        [SerializeField] private PackageInfoView _packageInfoView;
 
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
@@ -30,6 +30,11 @@ namespace Popups.MainGame
                 .Create(_localizationManager)
                 .BindLocalizable(this)
                 .Refresh();
+        }
+
+        public void UpdatePackInfoView(PackConfiguration packConfiguration)
+        {
+            _packageInfoView.SetPackInfo(packConfiguration);
         }
 
         public override void EnableInput()
