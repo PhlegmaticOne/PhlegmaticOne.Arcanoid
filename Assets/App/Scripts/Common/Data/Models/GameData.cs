@@ -11,8 +11,13 @@ namespace Common.Data.Models
             LevelPreviewData = levelPreviewData;
         }
 
-        public LevelPreviewData LevelPreviewData { get; }
+        public LevelPreviewData LevelPreviewData { get; private set; }
         public PackLevelCollection PackLevelCollection { get; }
         public PackConfiguration PackConfiguration { get; }
+
+        public void SetNewLevel(LevelPreviewData levelPreviewData)
+        {
+            LevelPreviewData = levelPreviewData;
+        }
     }
 }

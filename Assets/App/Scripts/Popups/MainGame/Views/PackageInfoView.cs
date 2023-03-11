@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Common.Configurations.Packs;
+using Libs.Localization.Components;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -16,19 +17,24 @@ namespace Popups.MainGame.Views
 
         [SerializeField] [ShowIf(nameof(_hasPackNameView))]
         private TextMeshProUGUI _packNameText;
+        [SerializeField] [ShowIf(nameof(_hasPackNameView))] 
+        private TextMeshProLocalizationComponent _packNameLocalizationComponent;
         
         [SerializeField] private bool _hasColorBindableComponents;
         [SerializeField] [ShowIf(nameof(_hasColorBindableComponents))]
         private List<ColorBindableComponent> _colorBindableComponents;
 
+        public TextMeshProLocalizationComponent PackNameLocalizationComponent => _packNameLocalizationComponent;
+
         public void SetPackInfo(PackConfiguration packConfiguration)
         {
             _levelsInfoText.text = FormatLevelsInfo(packConfiguration);
             _packIconImage.sprite = packConfiguration.PackImage;
-
+            
             if (_hasPackNameView)
             {
-                _packNameText.text = packConfiguration.Name;
+                //_packNameText.text = packConfiguration.Name;
+                _packNameLocalizationComponent.SetBindingData<string>(packConfiguration.Name);
             }
 
             if (_hasColorBindableComponents)

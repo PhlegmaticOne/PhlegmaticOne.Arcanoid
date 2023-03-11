@@ -26,10 +26,12 @@ namespace Common.Configurations.Packs
         public Color PackColor => _packColor;
         public Color TextColor => _textColor;
         public Color PreviewInnerColor => _previewInnerColor;
+        public bool IsPassed => _passedLevelsCount == _levelsCount;
 
         public void SetLevelsCount(int levelsCount) => _levelsCount = levelsCount;
         
         public void IncreasePassedLevelsCount() => ++_passedLevelsCount;
+        public void ResetPassedLevelsCount() => _passedLevelsCount = 0;
     }
 }
 

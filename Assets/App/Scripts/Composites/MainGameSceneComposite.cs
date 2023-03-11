@@ -4,6 +4,7 @@ using Game;
 using Game.Accessors;
 using Game.Base;
 using Game.Commands;
+using Game.Commands.Base;
 using Game.Controllers;
 using Game.Field.Helpers;
 using Game.PlayerObjects.ShipObject;
@@ -44,6 +45,7 @@ namespace Composites
             var popupManager = serviceProvider.GetRequiredService<IPopupManager>();
             var factory = serviceProvider.GetRequiredService<IGameFactory<MainGameRequires, MainGame>>();
             var levelRepository = serviceProvider.GetRequiredService<ILevelRepository>();
+            var packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             var gameDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
             var levelDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<LevelData>>();
             
@@ -64,26 +66,52 @@ namespace Composites
                 MainMenuViewModel = new MainMenuViewModel
                 {
                     ContinueCommand = new ContinueGameCommand(game),
-                    RestartCommand = new RestartLevelCommand(game, levelDataAccessor),
-                    BackToPackMenuCommand = new BackToPacksMenuCommand(game, popupManager)
+                    RestartCommand = new RestartMainGameCommand(game, levelDataAccessor),
+                    BackToPackMenuCommand = new CompositeCommand(new ICommand[]
+                    {
+                        new StopGameCommand(game),
+                        new BackToPacksMenuCommand(popupManager)
+                    })
                 }
             });
             
-            _gameController.Initialize(popupManager, game, gameDataAccessor);
+            _gameController.Initialize(popupManager, game);
+            _gameController.SetupWinViewModel(new WinMenuViewModel
+            {
+                OnShowingCommand = new PauseGameCommand(game),
+                OnClosedCommand = new StartGameCommand(gameDataAccessor, levelRepository, levelDataAccessor, game),
+                OnLastClosedCommand = new CompositeCommand(new ICommand[]
+                    {
+                        new CloseAllPopupsCommand(popupManager),
+                        new BackToPacksMenuCommand(popupManager),
+                    }),
+                OnNextButtonClickCommand = new CompositeCommand(new ICommand[]
+                {
+                    new StopGameCommand(game),
+                    new SetNextLevelDataCommand(gameDataAccessor, packRepository)
+                })
+            });
         }
-
+        
         private void TrySetGameData(IServiceProvider serviceProvider)
         {
             var gameDataProvider = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
-
+            
             var gameData = gameDataProvider.Get();
             if (gameData != null)
             {
                 return;
             }
-
+            
             var packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             var defaultPackConfiguration = packRepository.DefaultPackConfiguration;
+            var defaultPack = defaultPackConfiguration.DefaultPack;
+            
+            if (defaultPack.IsPassed)
+            {
+                defaultPack.ResetPassedLevelsCount();
+            }
+            
             var levelCollection = packRepository.GetLevels(defaultPackConfiguration.DefaultPack.Name);
             var levelId = defaultPackConfiguration.DefaultLevelIndex;
             gameData = new GameData(defaultPackConfiguration.DefaultPack, levelCollection, new LevelPreviewData(levelId, false));

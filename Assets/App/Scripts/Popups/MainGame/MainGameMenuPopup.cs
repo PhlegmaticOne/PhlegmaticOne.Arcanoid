@@ -76,7 +76,6 @@ namespace Popups.MainGame
             _backButton.onClick.AddListener(() =>
             {
                 _onCloseCommand = _mainMenuViewModel.BackToPackMenuCommand;
-                //_onBack?.Invoke();
                 PopupManager.CloseAllPopupsInstant();
             });
         }

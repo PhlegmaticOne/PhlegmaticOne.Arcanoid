@@ -1,6 +1,5 @@
-﻿using Common.Data.Models;
-using Game.Accessors;
-using Game.Base;
+﻿using Game.Base;
+using Game.ViewModels;
 using Libs.Popups;
 using Libs.Popups.Base;
 using Popups.MainGame;
@@ -12,16 +11,15 @@ namespace Game.Controllers
     {
         private IGame<MainGameData, MainGameEvents> _mainGame;
         private IPopupManager _popupManager;
-        private IObjectAccessor<GameData> _gameDataAccessor;
         private MainGamePopup _mainGamePopup;
+
+        private WinMenuViewModel _winMenuViewModel;
         
         public void Initialize(IPopupManager popupManager,
-            IGame<MainGameData, MainGameEvents> mainGame,
-            IObjectAccessor<GameData> gameDataAccessor)
+            IGame<MainGameData, MainGameEvents> mainGame)
         {
             _mainGame = mainGame;
             _popupManager = popupManager;
-            _gameDataAccessor = gameDataAccessor;
             
             _popupManager.PopupShowed += PopupManagerOnPopupShowed;
             _mainGame.Won += MainGameOnWon;
@@ -29,14 +27,16 @@ namespace Game.Controllers
             _mainGame.Events.BlockDestroyed += EventsOnBlockDestroyed;
         }
 
+        public void SetupWinViewModel(WinMenuViewModel winMenuViewModel)
+        {
+            _winMenuViewModel = winMenuViewModel;
+        }
+
         private void PopupManagerOnPopupShowed(Popup popup)
         {
             if (popup is MainGamePopup mainGamePopup)
             {
                 _mainGamePopup = mainGamePopup;
-                var gameData = _gameDataAccessor.Get();
-                _mainGamePopup.UpdatePackInfoView(gameData.PackConfiguration);
-                _mainGamePopup.UpdateLevelPassPercentageView(0);
             }
         }
 
@@ -54,9 +54,10 @@ namespace Game.Controllers
 
         private void MainGameOnWon()
         {
-            _mainGame.Pause();
             var popup = _popupManager.SpawnPopup<WinPopup>();
-            popup.UpdatePackInfoView(_gameDataAccessor.Get().PackConfiguration);
+            popup.SetupViewModel(_winMenuViewModel);
+            popup.OnShowing();
+            popup.OnClose(() => _mainGamePopup.UpdateHeader());
         }
 
         private void OnDisable()

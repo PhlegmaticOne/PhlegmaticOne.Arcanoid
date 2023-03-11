@@ -379,6 +379,7 @@ MonoBehaviour:
   _hasColorBindableComponents: 1
   _colorBindableComponents:
   - {fileID: 1784855683414404572}
+  _packNameLocalizationComponent: {fileID: 1749782099444701541}
 --- !u!1 &3620762141384255195
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +481,7 @@ GameObject:
   - component: {fileID: 330587792669928026}
   - component: {fileID: 2459552253994224460}
   - component: {fileID: 5956490536364998048}
+  - component: {fileID: 1749782099444701541}
   m_Layer: 5
   m_Name: PackName
   m_TagString: Untagged
@@ -603,6 +605,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1749782099444701541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4261109524137312719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bindingKey: 
+  _textMeshPro: {fileID: 5956490536364998048}
 --- !u!1 &4479284709138501327
 GameObject:
   m_ObjectHideFlags: 0

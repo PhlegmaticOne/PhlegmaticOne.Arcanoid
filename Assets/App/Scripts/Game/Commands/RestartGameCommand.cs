@@ -5,12 +5,12 @@ using Game.Commands.Base;
 
 namespace Game.Commands
 {
-    public class RestartLevelCommand : ICommand
+    public class RestartMainGameCommand : ICommand
     {
         private readonly IGame<MainGameData, MainGameEvents> _mainGame;
         private readonly IObjectAccessor<LevelData> _levelDataAccessor;
 
-        public RestartLevelCommand(IGame<MainGameData, MainGameEvents> mainGame,
+        public RestartMainGameCommand(IGame<MainGameData, MainGameEvents> mainGame,
             IObjectAccessor<LevelData> levelDataAccessor)
         {
             _mainGame = mainGame;
@@ -19,10 +19,9 @@ namespace Game.Commands
         
         public void Execute()
         {
-            var currentLevelData = _levelDataAccessor.Get();
             _mainGame.Stop();
+            var currentLevelData = _levelDataAccessor.Get();
             _mainGame.StartGame(new MainGameData(currentLevelData));
-            _mainGame.Unpause();
         }
     }
 }

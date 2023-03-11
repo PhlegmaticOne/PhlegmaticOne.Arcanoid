@@ -75,19 +75,21 @@ namespace Popups.PackChoose
 
         private void PackCollectionViewOnPackClicked(PackConfiguration packConfiguration)
         {
-            SetLevelData(packConfiguration);
+            SetGameData(packConfiguration);
             PopupManager.CloseAllPopupsInstant();
             SceneManager.LoadScene(1);
         }
 
-        private void SetLevelData(PackConfiguration packConfiguration)
+        private void SetGameData(PackConfiguration packConfiguration)
         {
             var packLevelCollection = _packRepository.GetLevels(packConfiguration.Name);
             var currentLevelIdIndex = packConfiguration.PassedLevelsCount;
 
-            if (currentLevelIdIndex == packLevelCollection.LevelPreviews.Count)
+            if (packConfiguration.IsPassed)
             {
-                //TODO: Reset passed levels
+                packConfiguration.ResetPassedLevelsCount();
+                _packRepository.Save(packLevelCollection);
+                _packRepository.Save();
                 currentLevelIdIndex = 0;
             }
             

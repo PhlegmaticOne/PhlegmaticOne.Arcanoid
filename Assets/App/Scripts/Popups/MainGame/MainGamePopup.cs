@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Common.Configurations.Packs;
+using Common.Data.Models;
+using Game.Accessors;
 using Game.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
@@ -21,6 +23,7 @@ namespace Popups.MainGame
 
         private LocalizationContext _localizationContext;
         private ILocalizationManager _localizationManager;
+        private IObjectAccessor<GameData> _gameDataAccessor;
 
         private MainGameViewModel _mainGameViewModel;
 
@@ -28,6 +31,7 @@ namespace Popups.MainGame
 
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
+            _gameDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
@@ -44,6 +48,7 @@ namespace Popups.MainGame
 
         protected override void OnShowed()
         {
+            UpdateHeader();
             _mainGameViewModel.StartCommand.Execute();
         }
 
@@ -52,6 +57,12 @@ namespace Popups.MainGame
             _localizationContext.Flush();
             _localizationContext = null;
             RemoveAllListeners(_menuButton);
+        }
+
+        public void UpdateHeader()
+        {
+            UpdatePackInfoView(_gameDataAccessor.Get().PackConfiguration);
+            UpdateLevelPassPercentageView(0);
         }
 
         public void UpdatePackInfoView(PackConfiguration packConfiguration)

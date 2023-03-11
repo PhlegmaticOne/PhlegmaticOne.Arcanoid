@@ -2,16 +2,21 @@
 
 namespace Game.Base
 {
-    public interface IGame { }
-    public interface IGame<in TData, out TEvents> : IGame
+    public interface IGame
     {
-        TEvents Events { get; }
         event Action Won;
         event Action Lost;
-        void StartGame(TData data);
         void Pause();
         void Unpause();
         void Stop();
+    }
+    
+    public interface IGame<in TData, out TEvents> : IGame
+        where TEvents : IGameEvents
+        where TData : IGameData
+    {
+        TEvents Events { get; }
+        void StartGame(TData data);
     }
     
     public interface IGameEvents { }

@@ -42,12 +42,14 @@ namespace Game.Systems.Control
         public void Enable()
         {
             _inputSystem.Ended += InputSystemOnEnded;
+            EnableInput();
             _baseObjectToMove.GetTransform().position = _startPosition;
         }
         
         public void Disable()
         {
             _inputSystem.Ended -= InputSystemOnEnded;
+            DisableInput();
             _followingObjects.Clear();
         }
 

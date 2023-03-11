@@ -5,16 +5,10 @@ namespace Game.Commands
 {
     public class ContinueGameCommand : ICommand
     {
-        private readonly IGame<MainGameData, MainGameEvents> _mainGame;
+        private readonly IGame _game;
 
-        public ContinueGameCommand(IGame<MainGameData, MainGameEvents> mainGame)
-        {
-            _mainGame = mainGame;
-        }
-        
-        public void Execute()
-        {
-            _mainGame.Unpause();
-        }
+        public ContinueGameCommand(IGame game) => _game = game;
+
+        public void Execute() => _game.Unpause();
     }
 }
