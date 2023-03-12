@@ -1657,6 +1657,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthSystem: {fileID: 128405192}
+--- !u!1 &1976129859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1976129860}
+  - component: {fileID: 1976129861}
+  m_Layer: 0
+  m_Name: ChainBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1976129860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976129859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 552306403886423568}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1976129861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976129859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70284d58f8394b7bba0bd3923272e315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockConfiguration: {fileID: 11400000, guid: 904c40bae890274418e40ae6cce50f15, type: 2}
+  _blockBehaviorInstaller:
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 4955626306468190711, guid: 7d48bcd6d5cfe724bb3e2b3464e3a018, type: 3}
+    _onDestroyBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 7775243768347766923, guid: 95c9be3d8a13bba44ab9c887589714d4, type: 3}
+      - {fileID: 6510303263033164637, guid: 72477234cccc1b343a0fa1f1ce3c6193, type: 3}
+      - {fileID: 8107741148533429644, guid: b7d4550bbf24c1342aee8a1e7aa6ec32, type: 3}
 --- !u!1 &1998042972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1832,7 @@ Transform:
   - {fileID: 552306405288020470}
   - {fileID: 552306404807205360}
   - {fileID: 1249170949}
+  - {fileID: 1976129860}
   m_Father: {fileID: 934005459}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1799,6 +1855,7 @@ MonoBehaviour:
   - {fileID: 552306405288020471}
   - {fileID: 552306404807205361}
   - {fileID: 1249170950}
+  - {fileID: 1976129861}
   _noneBlockId: -1
 --- !u!1 &552306403886423571
 GameObject:

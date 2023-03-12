@@ -24,13 +24,22 @@ namespace Game.Field
             Height = height;
         }
 
-        public Block this[int row, int col] => _blocks[row * Width + col];
-        public Block this[in FieldPosition fieldPosition] => _blocks[fieldPosition.Row * Width + fieldPosition.Col];
+        public int GetBlocksCountOnField(int blockId) =>
+            _blocks.Count(x => x != null && x.IsActive && x.IsDestroyed == false && x.BlockConfiguration.BlockId == blockId);
+
+        public Block this[int row, int col] => _blocks[CalculateIndex(row, col)];
+        public Block this[in FieldPosition fieldPosition] => _blocks[CalculateIndex(fieldPosition.Row, fieldPosition.Col)];
 
         public bool TryGetBlock(in FieldPosition fieldPosition, out Block block)
         {
+            if (ContainsPosition(fieldPosition) == false)
+            {
+                block = null;
+                return false;
+            }
+            
             block = this[fieldPosition];
-            return block != null;
+            return block != null && block.IsDestroyed == false;
         }
 
         public bool ContainsPosition(int row, int col) =>
@@ -71,5 +80,7 @@ namespace Game.Field
         }
         
         public int ActiveBlocksCount => _blocks.Count(x => x != null && x.IsActive && x.IsDestroyed == false);
+
+        private int CalculateIndex(int row, int col) => row * Width + col;
     }
 }
