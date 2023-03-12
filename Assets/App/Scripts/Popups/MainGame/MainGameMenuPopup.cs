@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using Game.Commands.Base;
-using Game.ViewModels;
+using Game.PopupRequires.Commands.Base;
+using Game.PopupRequires.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Services;
-using Popups.PackChoose;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

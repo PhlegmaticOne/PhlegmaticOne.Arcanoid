@@ -2,7 +2,7 @@
 using Common.Bag;
 using Common.Configurations.Packs;
 using Common.Data.Models;
-using Game.ViewModels;
+using Game.PopupRequires.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;

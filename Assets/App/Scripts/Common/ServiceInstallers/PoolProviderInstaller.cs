@@ -1,6 +1,6 @@
-﻿using Game.Blocks;
-using Game.Bonuses;
-using Game.PlayerObjects.BallObject;
+﻿using Game.GameEntities.Blocks;
+using Game.GameEntities.Bonuses;
+using Game.GameEntities.PlayerObjects.BallObject;
 using Libs.Pooling;
 using Libs.Pooling.Implementation;
 using Libs.Popups;

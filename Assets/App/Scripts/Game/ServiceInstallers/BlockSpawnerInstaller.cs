@@ -1,6 +1,6 @@
-﻿using Game.Blocks.Behaviors.Common.BallDamage;
-using Game.Blocks.Configurations;
-using Game.Blocks.Spawners;
+﻿using Game.GameEntities.Blocks.Behaviors.Common.BallDamage;
+using Game.GameEntities.Blocks.Configurations;
+using Game.GameEntities.Blocks.Spawners;
 using Libs.Pooling.Base;
 using Libs.Services;
 using UnityEngine;

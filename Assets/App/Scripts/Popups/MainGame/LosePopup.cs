@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Game.ViewModels;
+using Game.PopupRequires.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;

@@ -1,4 +1,4 @@
-﻿using Game.PlayerObjects.BallObject;
+﻿using Game.GameEntities.PlayerObjects.BallObject;
 using Libs.Services;
 using UnityEngine;
 

@@ -1,4 +1,4 @@
-﻿using Game.Bonuses;
+﻿using Game.GameEntities.Bonuses;
 using Libs.Services;
 using UnityEngine;
 

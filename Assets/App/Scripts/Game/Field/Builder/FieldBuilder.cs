@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Common.Data.Models;
-using Game.Blocks;
-using Game.Blocks.Spawners;
 using Game.Field.Helpers;
+using Game.GameEntities.Blocks;
+using Game.GameEntities.Blocks.Spawners;
 using UnityEngine;
 
 namespace Game.Field.Builder

@@ -1,6 +1,6 @@
-﻿using Game.Behaviors.Installer;
-using Game.PlayerObjects.BallObject;
-using Game.PlayerObjects.BallObject.Spawners;
+﻿using Game.GameEntities.PlayerObjects.BallObject;
+using Game.GameEntities.PlayerObjects.BallObject.Spawners;
+using Libs.Behaviors.Installer;
 using Libs.Pooling.Base;
 using Libs.Services;
 using UnityEngine;

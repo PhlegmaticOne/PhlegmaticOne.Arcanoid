@@ -1,4 +1,4 @@
-﻿using Game.PlayerObjects.ShipObject;
+﻿using Game.GameEntities.PlayerObjects.ShipObject;
 using Libs.Services;
 using UnityEngine;
 

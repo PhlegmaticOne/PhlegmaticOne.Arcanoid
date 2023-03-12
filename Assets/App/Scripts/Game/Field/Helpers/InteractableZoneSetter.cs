@@ -1,5 +1,5 @@
 ﻿using Game.Field.Configurations;
-using Game.Systems.Control;
+using Game.Logic.Systems.Control;
 using UnityEngine;
 
 namespace Game.Field.Helpers

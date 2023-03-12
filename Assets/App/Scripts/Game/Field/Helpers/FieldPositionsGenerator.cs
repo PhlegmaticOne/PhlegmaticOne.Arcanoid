@@ -1,5 +1,5 @@
-﻿using Game.Blocks;
-using Game.Field.Configurations;
+﻿using Game.Field.Configurations;
+using Game.GameEntities.Blocks;
 using UnityEngine;
 
 namespace Game.Field.Helpers

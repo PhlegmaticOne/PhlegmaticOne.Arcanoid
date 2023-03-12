@@ -1,5 +1,5 @@
-﻿using Game.Bonuses.Configurations;
-using Game.Bonuses.Spawners;
+﻿using Game.GameEntities.Bonuses.Configurations;
+using Game.GameEntities.Bonuses.Spawners;
 using Libs.Pooling.Base;
 using Libs.Services;
 using UnityEngine;

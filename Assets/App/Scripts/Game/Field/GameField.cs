@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Game.Blocks;
+using Game.GameEntities.Blocks;
 using UnityEngine;
 using UnityEngine.Events;
 

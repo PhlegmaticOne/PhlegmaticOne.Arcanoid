@@ -1,11 +1,11 @@
 ﻿using Game.Base;
-using Game.Bonuses;
 using Game.Field.Builder;
-using Game.PlayerObjects.BallObject;
-using Game.PlayerObjects.BallObject.Spawners;
-using Game.PlayerObjects.ShipObject;
-using Game.Systems.Control;
-using Game.Systems.Health;
+using Game.GameEntities.Bonuses;
+using Game.GameEntities.PlayerObjects.BallObject;
+using Game.GameEntities.PlayerObjects.BallObject.Spawners;
+using Game.GameEntities.PlayerObjects.ShipObject;
+using Game.Logic.Systems.Control;
+using Game.Logic.Systems.Health;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
 
