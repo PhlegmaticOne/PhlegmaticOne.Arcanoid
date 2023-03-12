@@ -7,14 +7,17 @@ namespace Game.PlayerObjects.BallObject.Spawners
     public class BallSpawner : IBallSpawner
     {
         private readonly BehaviorObjectInstaller<Ball> _ballBehaviorInstaller;
+        private readonly float _initialSpeed;
         private readonly Transform _spawnTransform;
         private IObjectPool<Ball> _ballsPool;
         
         public BallSpawner(IPoolProvider poolProvider,
             BehaviorObjectInstaller<Ball> ballBehaviorInstaller,
+            float initialSpeed,
             Transform spawnTransform)
         {
             _ballBehaviorInstaller = ballBehaviorInstaller;
+            _initialSpeed = initialSpeed;
             _spawnTransform = spawnTransform;
             _ballsPool = poolProvider.GetPool<Ball>();
         }
@@ -25,8 +28,8 @@ namespace Game.PlayerObjects.BallObject.Spawners
             var ball = _ballsPool.Get();
             ball.transform.SetParent(_spawnTransform);
             ball.transform.position = ballCreationContext.Position;
-            ball.Initialize(ballCreationContext.StartSpeed);
-            
+            ball.Initialize(ballCreationContext.SetSpecifiedStartSpeed ? ballCreationContext.StartSpeed : _initialSpeed);
+
             _ballBehaviorInstaller.InstallCollisionBehaviours(ball);
             _ballBehaviorInstaller.InstallDestroyBehaviours(ball);
             

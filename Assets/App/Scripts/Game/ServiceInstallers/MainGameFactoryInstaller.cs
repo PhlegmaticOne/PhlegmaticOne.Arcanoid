@@ -1,5 +1,6 @@
 ﻿using Common.Scenes;
 using Game.Base;
+using Game.Bonuses;
 using Game.Field.Builder;
 using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
@@ -26,10 +27,11 @@ namespace Game.ServiceInstallers
                 var healthSystem = x.GetRequiredService<HealthSystem>();
                 var controlSystem = x.GetRequiredService<ControlSystem>();
                 var balls = x.GetRequiredService<BallsOnField>();
+                var bonuses = x.GetRequiredService<BonusesOnField>();
                 var ship = x.GetRequiredService<Ship>();
                 var poolProvider = global.GetRequiredService<IPoolProvider>();
                 return new MainGameFactory(fieldBuilder, poolProvider, ballSpawner, inputSystem,
-                    controlSystem, healthSystem, balls, ship);
+                    controlSystem, healthSystem, balls, bonuses, ship);
             });
         }
     }

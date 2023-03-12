@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DefaultPackConfiguration
   m_EditorClassIdentifier: 
   _defaultPack: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
-  _defaultLevelId: 3
+  _defaultLevelId: 0

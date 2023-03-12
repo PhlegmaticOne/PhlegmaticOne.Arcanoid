@@ -11,13 +11,14 @@ namespace Game.ServiceInstallers
     {
         [SerializeField] private BehaviorObjectInstaller<Ball> _ballBehaviorInstaller;
         [SerializeField] private Transform _spawnTransform;
+        [SerializeField] private float _ballInitialSpeed;
         
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IBallSpawner>(s =>
             {
                 var global = ServiceProviderAccessor.Global;
-                return new BallSpawner(global.GetRequiredService<IPoolProvider>(), _ballBehaviorInstaller, _spawnTransform);
+                return new BallSpawner(global.GetRequiredService<IPoolProvider>(), _ballBehaviorInstaller, _ballInitialSpeed, _spawnTransform);
             });
         }
     }

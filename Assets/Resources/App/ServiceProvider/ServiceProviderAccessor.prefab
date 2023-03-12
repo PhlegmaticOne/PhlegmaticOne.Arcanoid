@@ -69,6 +69,22 @@ PrefabInstance:
       propertyPath: _popupComposite
       value: 
       objectReference: {fileID: 6468223651738466970}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bonusPoolInstaller._prefab
+      value: 
+      objectReference: {fileID: -6723961344206063078, guid: eca51518686ed7c468bac21771519c4d, type: 3}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bonusPoolInstaller._maxCapacity
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bonusPoolInstaller._initialCapacity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bonusPoolInstaller._destroyOnOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004454, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: m_RootOrder
       value: 2

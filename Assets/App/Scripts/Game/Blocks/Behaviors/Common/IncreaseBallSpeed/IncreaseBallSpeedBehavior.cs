@@ -29,7 +29,7 @@ namespace Game.Blocks.Behaviors.Common.IncreaseBallSpeed
 
             foreach (var ball in _ballsOnField.All)
             {
-                var ballStartSpeed = ball.GetStartSpeed();
+                var ballStartSpeed = ball.GetInitialSpeed();
                 var ballSpeedNormalized = ball.GetSpeed().normalized;
                 var deltaSpeed = _increaseSpeed * (blocksCount - notDestroyedBlocksCount) / blocksCount;
                 var newSpeed = deltaSpeed + ballStartSpeed;

@@ -1,4 +1,5 @@
 ﻿using Game.Blocks;
+using Game.Bonuses;
 using Game.PlayerObjects.BallObject;
 using Libs.Pooling;
 using Libs.Pooling.Implementation;
@@ -13,6 +14,7 @@ namespace Common.ServiceInstallers
         [SerializeField] private PopupComposite _popupComposite;
         [SerializeField] private UnityObjectPoolInstaller<Ball> _ballPoolInstaller;
         [SerializeField] private UnityObjectPoolInstaller<Block> _blockPoolInstaller;
+        [SerializeField] private UnityObjectPoolInstaller<Bonus> _bonusPoolInstaller;
         [SerializeField] private PooledObjectsContainer _pooledObjectsContainer;
         [SerializeField] private PopupContainer _popupContainer;
         
@@ -25,6 +27,7 @@ namespace Common.ServiceInstallers
             _popupComposite.AddPopupsToPool(poolBuilder, popupContainer.CanvasTransform);
             poolBuilder.AddPool(_ballPoolInstaller.CreateObjectPool(poolContainer.transform));
             poolBuilder.AddPool(_blockPoolInstaller.CreateObjectPool(poolContainer.transform));
+            poolBuilder.AddPool(_bonusPoolInstaller.CreateObjectPool(poolContainer.transform));
             
             var poolProvider = poolBuilder.BuildProvider();
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.Base;
 using Game.Blocks;
+using Game.Bonuses;
 using Game.Field;
 using Game.Field.Builder;
 using Game.PlayerObjects.BallObject;
@@ -20,6 +21,7 @@ namespace Game
         private readonly IFieldBuilder _fieldBuilder;
         private readonly HealthSystem _healthSystem;
         private readonly BallsOnField _ballsOnField;
+        private readonly BonusesOnField _bonusesOnField;
         private readonly ControlSystem _controlSystem;
         private readonly IBallSpawner _ballSpawner;
         private readonly Ship _ship;
@@ -32,6 +34,7 @@ namespace Game
             IFieldBuilder fieldBuilder,
             HealthSystem healthSystem,
             BallsOnField ballsOnField,
+            BonusesOnField bonusesOnField,
             ControlSystem controlSystem,
             IBallSpawner ballSpawner, 
             Ship ship)
@@ -40,6 +43,7 @@ namespace Game
             _fieldBuilder = fieldBuilder;
             _healthSystem = healthSystem;
             _ballsOnField = ballsOnField;
+            _bonusesOnField = bonusesOnField;
             _controlSystem = controlSystem;
             _ballSpawner = ballSpawner;
             _ship = ship;
@@ -56,7 +60,11 @@ namespace Game
             _stateCheckSystem = new StateCheckSystem(_gameField);
             _controlSystem.Enable();
             _ship.Enable();
-            _ball = _ballSpawner.CreateBall(new BallCreationContext(Vector2.zero, 5));
+            _ball = _ballSpawner.CreateBall(new BallCreationContext
+            {
+                Position = Vector2.zero,
+                SetSpecifiedStartSpeed = false
+            });
             _ballsOnField.AddBall(_ball);
             _controlSystem.AddObjectToFollow(_ball);
             _healthSystem.Initialize(data.LevelData.LifesCount);
@@ -79,16 +87,29 @@ namespace Game
         {
             var blocksPool = _poolProvider.GetPool<Block>();
             var ballsPool = _poolProvider.GetPool<Ball>();
+            var bonusesPool = _poolProvider.GetPool<Bonus>();
             
             foreach (var block in _gameField.Blocks)
             {
-                blocksPool.ReturnToPool(block);
+                if (block.IsDestroyed == false)
+                {
+                    blocksPool.ReturnToPool(block);
+                }
             }
 
             foreach (var ball in _ballsOnField.All)
             {
                 ballsPool.ReturnToPool(ball);
             }
+            
+            foreach (var bonus in _bonusesOnField.All)
+            {
+                bonusesPool.ReturnToPool(bonus);
+            }
+            
+            _ballsOnField.Clear();
+            _bonusesOnField.Clear();
+            _gameField.Clear();
             
             _controlSystem.Disable();
             Unsubscribe();

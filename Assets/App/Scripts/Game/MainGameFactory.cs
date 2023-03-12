@@ -1,4 +1,5 @@
 ﻿using Game.Base;
+using Game.Bonuses;
 using Game.Field.Builder;
 using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
@@ -16,6 +17,7 @@ namespace Game
         private readonly ControlSystem _controlSystem;
         private readonly HealthSystem _healthSystem;
         private readonly BallsOnField _ballsOnField;
+        private readonly BonusesOnField _bonusesOnField;
         private readonly Ship _ship;
         private readonly IFieldBuilder _fieldBuilder;
         private readonly IPoolProvider _poolProvider;
@@ -24,7 +26,7 @@ namespace Game
         public MainGameFactory(IFieldBuilder fieldBuilder, IPoolProvider poolProvider,
             IBallSpawner ballSpawner, IInputSystem inputSystem,
             ControlSystem controlSystem, HealthSystem healthSystem,
-            BallsOnField ballsOnField, Ship ship)
+            BallsOnField ballsOnField, BonusesOnField bonusesOnField, Ship ship)
         {
             _fieldBuilder = fieldBuilder;
             _poolProvider = poolProvider;
@@ -33,6 +35,7 @@ namespace Game
             _controlSystem = controlSystem;
             _healthSystem = healthSystem;
             _ballsOnField = ballsOnField;
+            _bonusesOnField = bonusesOnField;
             _ship = ship;
         }
         
@@ -40,7 +43,7 @@ namespace Game
         {
             _controlSystem.Initialize(_inputSystem, _ship);
             return new MainGame(_poolProvider, _fieldBuilder,
-                _healthSystem, _ballsOnField,
+                _healthSystem, _ballsOnField, _bonusesOnField,
                 _controlSystem, _ballSpawner, _ship);
         }
     }

@@ -30,11 +30,6 @@ namespace Game.Blocks
             IsDestroyed = false;
             
             _blockView.Initialize(configuration, blockCracksConfiguration);
-            
-            if (configuration.Gravitable)
-            {
-                _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-            }
         }
 
         public void SetPosition(Vector3 position) => transform.position = position;

@@ -5,9 +5,13 @@ namespace Game.Blocks.View
     public class AdditionalRenderer : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        private Vector2 _blockSize;
+        private bool _preserveOriginalSize;
 
-        public void SetSprite(Sprite sprite, Vector2 size, int sortingOrder, bool preserveOriginalSize = false)
+        public void Initialize(Sprite sprite, Vector2 size, int sortingOrder, bool preserveOriginalSize = false)
         {
+            _preserveOriginalSize = preserveOriginalSize;
+            _blockSize = size;
             _spriteRenderer.sortingOrder = sortingOrder;
             SetSprite(sprite);
             
@@ -16,15 +20,21 @@ namespace Game.Blocks.View
                 SetSize(size);
             }
         }
-
-        public void SetSprite(Sprite sprite)
-        {
-            _spriteRenderer.sprite = sprite;
-        }
-
+        
         public void SetSize(Vector2 size)
         {
-            _spriteRenderer.size = size;
+            var ratio = size.x / _blockSize.x;
+
+            if (ratio < 1)
+            {
+                _spriteRenderer.size *= ratio;
+            }
+            else if(_preserveOriginalSize == false)
+            {
+                _spriteRenderer.size = size;
+            }
         }
+        
+        private void SetSprite(Sprite sprite) => _spriteRenderer.sprite = sprite;
     }
 }

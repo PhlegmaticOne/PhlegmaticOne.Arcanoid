@@ -7,20 +7,16 @@ namespace Game.Blocks.Configurations
     public class BlockConfiguration : ScriptableObject
     {
         [SerializeField] private int _blockId;
-        [SerializeField] private int _dropBlockId;
         [SerializeField] private int _lifesCount;
-        [SerializeField] private bool _gravitable = false;
         [SerializeField] private bool _activeOnPlay = true;
         [SerializeField] private bool _isExtraBlock;
         [SerializeField] private Sprite _blockSprite;
         [SerializeField] private List<Sprite> _additionalSprites;
         
         public int BlockId => _blockId;
-        public int DropBlockId => _dropBlockId;
         public bool IsExtraBlock => _isExtraBlock;
         public int LifesCount => _lifesCount;
         public List<Sprite> AdditionalSprites => _additionalSprites ?? new List<Sprite>();
-        public bool Gravitable => _gravitable;
         public Sprite BlockSprite => _blockSprite;
         public bool ActiveOnPlay => _activeOnPlay;
     }

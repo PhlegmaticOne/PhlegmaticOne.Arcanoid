@@ -43,10 +43,10 @@ namespace Game.Blocks.View
             _currentSortOrder = _mainSpriteRenderer.sortingOrder;
         }
 
-        public void AddSprite(Sprite sprite, bool preserveOriginalSize = false)
+        private void AddSprite(Sprite sprite, bool preserveOriginalSize = false)
         {
             var additionalRenderer = Instantiate(_additionalRenderer, transform);
-            additionalRenderer.SetSprite(sprite, Size, ++_currentSortOrder, preserveOriginalSize);
+            additionalRenderer.Initialize(sprite, Size, ++_currentSortOrder, preserveOriginalSize);
             _additionalRenderers.Push(additionalRenderer);
         }
 
@@ -60,13 +60,6 @@ namespace Game.Blocks.View
             }
         }
         
-        public void RemoveAdditionalSprite()
-        {
-            var additionalRenderer = _additionalRenderers.Pop();
-            --_currentSortOrder;
-            Destroy(additionalRenderer.gameObject);
-        }
-
         public void Reset()
         {
             while (_additionalRenderers.Count != 0)
@@ -77,5 +70,13 @@ namespace Game.Blocks.View
             _mainSpriteRenderer.sprite = null;
             _currentSortOrder = 0;
         }
+        
+        private void RemoveAdditionalSprite()
+        {
+            var additionalRenderer = _additionalRenderers.Pop();
+            --_currentSortOrder;
+            Destroy(additionalRenderer.gameObject);
+        }
+
     }
 }

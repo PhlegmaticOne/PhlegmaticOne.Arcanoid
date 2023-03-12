@@ -42,6 +42,14 @@ namespace Game.Field
             return block != null && block.IsDestroyed == false;
         }
 
+        public void Clear()
+        {
+            _blocks.Clear();
+            Width = 0;
+            Height = 0;
+            StartActiveBlocksCount = 0;
+        }
+
         public bool ContainsPosition(int row, int col) =>
             row >= 0 && row < Height && col >= 0 && col < Width;
 

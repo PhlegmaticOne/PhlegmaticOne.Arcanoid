@@ -12,6 +12,8 @@ namespace Game.PlayerObjects.BallObject.Behaviors.Bottom
 
         public void Behave(Ball entity, Collision2D collision2D)
         {
+            entity.SetStartSpeed(entity.GetSpeed().magnitude);
+            entity.SetDirection(Vector2.up);
             entity.SetSpeed(Vector2.zero);
             _controlSystem.AddObjectToFollow(entity);
         }
