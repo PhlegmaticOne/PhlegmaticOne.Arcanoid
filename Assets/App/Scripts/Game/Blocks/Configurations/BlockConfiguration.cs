@@ -9,10 +9,10 @@ namespace Game.Blocks.Configurations
         [SerializeField] private int _blockId;
         [SerializeField] private int _dropBlockId;
         [SerializeField] private int _lifesCount;
-        [SerializeField] private Sprite _blockSprite;
-        [SerializeField] private List<Sprite> _additionalSprites;
         [SerializeField] private bool _gravitable = false;
         [SerializeField] private bool _activeOnPlay = true;
+        [SerializeField] private Sprite _blockSprite;
+        [SerializeField] private List<Sprite> _additionalSprites;
         
         public int BlockId => _blockId;
         public int DropBlockId => _dropBlockId;

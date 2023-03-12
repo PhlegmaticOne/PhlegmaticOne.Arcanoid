@@ -1,4 +1,5 @@
 ﻿using Game.Behaviors;
+using Game.Blocks.Behaviors.Common.BallDamage;
 using Game.Blocks.Configurations;
 using Game.Blocks.View;
 using UnityEngine;
@@ -16,22 +17,20 @@ namespace Game.Blocks
         public BlockView BlockView => _blockView;
         public int StartHealth { get; private set; }
         public int CurrentHealth => _health;
-        public bool IsDestroyed { get; set; }
+        public bool IsDestroyed { get; private set; }
+        public bool IsActive { get; private set; }
         public BlockConfiguration BlockConfiguration { get; private set; }
         
-        public void Initialize(BlockConfiguration configuration)
+        public void Initialize(BlockConfiguration configuration, BlockCracksConfiguration blockCracksConfiguration)
         {
             BlockConfiguration = configuration;
+            IsActive = configuration.ActiveOnPlay;
             _health = configuration.LifesCount;
             StartHealth = configuration.LifesCount;
             IsDestroyed = false;
             
-            _blockView.SetMainSprite(configuration.BlockSprite);
-            foreach (var additionalSprite in configuration.AdditionalSprites)
-            {
-                _blockView.AddSprite(additionalSprite, true);
-            }
-
+            _blockView.Initialize(configuration, blockCracksConfiguration);
+            
             if (configuration.Gravitable)
             {
                 _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
@@ -48,6 +47,7 @@ namespace Game.Blocks
 
         public void Damage()
         {
+            _blockView.Damage(StartHealth - CurrentHealth);
             --_health;
             
             if (_health == 1)

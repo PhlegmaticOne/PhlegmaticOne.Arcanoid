@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b710b0de46b847528fc38c5211f03fd8, type: 3}
+  m_Name: BombBlockConfiguration
+  m_EditorClassIdentifier: 
+  _destroyingRadius: 1
+  _damagesBlocks: 1
+  _removesLifesCount: 1
+  _damageAffectsOnBlocks:
+  - {fileID: 11400000, guid: aa9e37254f482e345b3b3cbe51c55c5e, type: 2}
+  - {fileID: 11400000, guid: fbc6b758a2bcf7f42808b91f7e8727c2, type: 2}
+  - {fileID: 11400000, guid: c81544df85cb0cb4a85fa994f9f5e587, type: 2}
+  - {fileID: 11400000, guid: d2a4d24cd8ca1c743a176f5719377e67, type: 2}
+  - {fileID: 11400000, guid: 61be861b1c7765e48899483a615626dd, type: 2}
+  _destroysBlocks: 1
+  _destroyAffectsOnBlocks:
+  - {fileID: 11400000, guid: 0f99fa1f5dcfc2448ae0691960ee8846, type: 2}
+  _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}

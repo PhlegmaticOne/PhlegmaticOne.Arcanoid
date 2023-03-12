@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Game.Blocks.Behaviors.Common.BallDamage;
+using Game.Blocks.Configurations;
 using UnityEngine;
 
 namespace Game.Blocks.View
@@ -11,9 +13,31 @@ namespace Game.Blocks.View
         [SerializeField] private AdditionalRenderer _additionalRenderer;
         
         private readonly Stack<AdditionalRenderer> _additionalRenderers = new Stack<AdditionalRenderer>();
+        private BlockCracksConfiguration _blockCracksConfiguration;
         public Vector2 Size => _mainSpriteRenderer.size;
 
-        public void SetMainSprite(Sprite sprite)
+        public void Initialize(BlockConfiguration blockConfiguration, BlockCracksConfiguration blockCracksConfiguration)
+        {
+            SetMainSprite(blockConfiguration.BlockSprite);
+            
+            foreach (var additionalSprite in blockConfiguration.AdditionalSprites)
+            {
+                AddSprite(additionalSprite, true);
+            }
+
+            _blockCracksConfiguration = blockCracksConfiguration;
+        }
+
+        public void Damage(int blockHealth)
+        {
+            var crackSprites = _blockCracksConfiguration.CrackSprites;
+            var stageFloat = (float)blockHealth / crackSprites.Count;
+            var stage = (int)Mathf.Ceil(stageFloat);
+            var crackSprite = crackSprites[stage];
+            AddSprite(crackSprite);
+        }
+
+        private void SetMainSprite(Sprite sprite)
         {
             _mainSpriteRenderer.sprite = sprite;
             _currentSortOrder = _mainSpriteRenderer.sortingOrder;

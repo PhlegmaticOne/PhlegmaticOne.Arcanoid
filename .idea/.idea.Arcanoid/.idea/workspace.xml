@@ -2,113 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Bag.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Bag/IObjectBag.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Bag/IObjectBag.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Bag/ObjectBag.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Bag/ObjectBag.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Scenes/SceneIndexes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Scenes/SceneIndexes.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/GameDataSeed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/GameDataSeed.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/PacksSeed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/PacksSeed.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehaviorInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehaviorInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BallsOnFieldInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BallsOnFieldInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/ControlSystemInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/ControlSystemInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/GameFieldInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/GameFieldInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/HealthSystemInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/HealthSystemInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/ShipInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/ShipInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Health.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Health/HealthSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Health/HealthSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels/LosePopupViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ViewModels/LosePopupViewModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/HealthBarView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/HealthBarView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/HealthView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/HealthView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb/BombBlockConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb/BombBlockConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb/BombBlockDestroyBehaviorInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb/BombBlockDestroyBehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb/BombBlocksDestroyBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Bomb/BombBlocksDestroyBehavior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage/BallDamageBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/FieldPosition.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Block.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Block.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/Elements/LifeView.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/Elements/LifeView.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/MainGamePopup.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/BallSpawnerInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BallSpawnerInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/BallSpawnerInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BallSpawnerInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/BlockSpawnerInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BlockSpawnerInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/BlockSpawnerInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BlockSpawnerInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/FieldBuilderInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/FieldBuilderInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/FieldBuilderInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/FieldBuilderInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/InputSystemServiceInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/InputSystemServiceInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/InputSystemServiceInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/InputSystemServiceInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/MainGameFactoryInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/MainGameFactoryInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/MainGameFactoryInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/MainGameFactoryInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/ObjectAccessorsInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/ObjectBagInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/ObjectAccessorsInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/ObjectBagInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/PopupManagerInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/PopupManagerInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Composites/StartSceneComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/StartSceneComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Accessors.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Accessors/IObjectAccessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Accessors/IObjectAccessor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Accessors/ObjectAccessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Accessors/ObjectAccessor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base/IGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Base/IGameFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehaviorInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/DefaultPackConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/DefaultPackConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackLevelCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackLevelCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/GameDataSeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/GameDataSeed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/IncreaseBallSpeed.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/IncreaseBallSpeed/IncreaseBallSpeedBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehavior.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/IncreaseBallSpeed/IncreaseBallSpeedBehavior.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/IncreaseBallSpeed/IncreaseBallSpeedBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/BallSpeed/ChangeBallSpeedBehaviorInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/IncreaseBallSpeed/IncreaseBallSpeedBehaviorInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage/BallDamageBehavior.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage/BallDamageBehavior.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage/BallDamageBehavior.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage/BallDamageBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage/BallDamageBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage/BallDamageBehaviorInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage/BallDamageBehaviorInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage/BlockCracksConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage/BlockCracksConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Damage/BlockCracksConfiguration.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/BallDamage/BlockCracksConfiguration.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/ReturnToPool.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/ReturnToPool/ReturnToPoolBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehavior.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/ReturnToPool/ReturnToPoolBehavior.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/ReturnToPool/ReturnToPoolBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Pool/ReturnToPoolBehaviorInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Behaviors/Common/ReturnToPool/ReturnToPoolBehaviorInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Block.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnSystemConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Configurations/BlockSpawnSystemConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/Spawners/BlockSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/RestartGameCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/RestartGameCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/SetNextLevelDataCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/SetNextLevelDataCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/StartGameCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/StartGameCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Controllers/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Blocks/View/BlockView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/BackToPacksMenuCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Commands/BackToPacksMenuCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/FieldPositionsGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/FieldPositionsGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/InteractableZoneSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/InteractableZoneSetter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameRequires.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameRequires.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/BallsOnField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/BallsOnField.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/HealthRemoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/HealthRemoveBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/HealthRemoveBehaviourInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Behaviors/Bottom/HealthRemoveBehaviourInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Spawners/BallSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PlayerObjects/BallObject/Spawners/BallSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Control/ControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Systems/Control/ControlSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/Implementation/MonoPoolableBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/Implementation/MonoPoolableBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityAbstractObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityAbstractObjectPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityObjectPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityObjectPoolInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/UnityObjectPoolInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/PopupComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/PopupComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Services/ServiceProviderAccessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Services/ServiceProviderAccessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/LosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/LosePopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BlockSpawnerInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/BlockSpawnerInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGameMenuPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGameMenuPopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/WinPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/WinPopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/DefaultPackConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/DefaultPackConfiguration.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/ServiceProviderAccessor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/ServiceProviderAccessor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/BallSpawnerInstaller.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/BallSpawnerInstaller.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/BlocksSpawnerInstaller.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/BlocksSpawnerInstaller.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/FieldBuilderInstaller.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/FieldBuilderInstaller.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/InputSystemInstaller.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/InputSystemInstaller.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/MainGameFactoryInstaller.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/Services/MainGameFactoryInstaller.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackLevelCollection.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackLevelCollection.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +193,7 @@
       <workItem from="1678515756619" duration="4084000" />
       <workItem from="1678526875909" duration="11077000" />
       <workItem from="1678558728469" duration="1563000" />
-      <workItem from="1678609061410" duration="8232000" />
+      <workItem from="1678609061410" duration="16695000" />
     </task>
     <servers />
   </component>
@@ -265,24 +204,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs</url>
-          <line>53</line>
-          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Composites\MainGameSceneComposite.cs" initialLine="53" containingFunctionPresentation="method 'SetupGame'">
-            <startOffsets>
-              <option value="2000" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2057" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

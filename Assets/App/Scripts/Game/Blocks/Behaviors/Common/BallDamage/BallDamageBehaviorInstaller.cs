@@ -2,15 +2,13 @@
 using Game.Behaviors.Installer;
 using UnityEngine;
 
-namespace Game.Blocks.Behaviors.Damage
+namespace Game.Blocks.Behaviors.Common.BallDamage
 {
     public class BallDamageBehaviorInstaller : BehaviorInstaller<Block>
     {
-        [SerializeField] private BlockCracksConfiguration _blockCracksConfiguration;
         public override IObjectBehavior<Block> CreateBehaviour()
         {
             var behavior = new BallDamageBehavior();
-            behavior.SetBehaviourParameters(_blockCracksConfiguration);
             return behavior;
         }
     }

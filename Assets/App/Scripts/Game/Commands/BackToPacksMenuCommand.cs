@@ -14,7 +14,7 @@ namespace Game.Commands
         public void Execute()
         {
             var sceneChanger = new SceneChanger<PackChoosePopup>(_popupManager);
-            sceneChanger.ChangeScene(0);
+            sceneChanger.ChangeScene(SceneIndexes.MenuScene);
         }
     }
 }

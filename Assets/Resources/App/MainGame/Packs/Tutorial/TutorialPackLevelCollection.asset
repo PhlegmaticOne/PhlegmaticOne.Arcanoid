@@ -17,6 +17,8 @@ MonoBehaviour:
   _packName: Tutorial
   _levelPreviews:
   - _levelId: 0
-    _isCompleted: 1
+    _isCompleted: 0
   - _levelId: 1
+    _isCompleted: 0
+  - _levelId: 2
     _isCompleted: 1

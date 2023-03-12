@@ -3,15 +3,15 @@ using Game.Field;
 using Game.PlayerObjects.BallObject;
 using UnityEngine;
 
-namespace Game.Blocks.Behaviors.BallSpeed
+namespace Game.Blocks.Behaviors.Common.IncreaseBallSpeed
 {
-    public class ChangeBallSpeedBehavior : IObjectBehavior<Block>
+    public class IncreaseBallSpeedBehavior : IObjectBehavior<Block>
     {
         private readonly GameField _gameField;
         private readonly BallsOnField _ballsOnField;
         private float _increaseSpeed;
 
-        public ChangeBallSpeedBehavior(GameField gameField, BallsOnField ballsOnField)
+        public IncreaseBallSpeedBehavior(GameField gameField, BallsOnField ballsOnField)
         {
             _gameField = gameField;
             _ballsOnField = ballsOnField;

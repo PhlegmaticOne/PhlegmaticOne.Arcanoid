@@ -31,6 +31,7 @@ namespace Common.Configurations.Packs
         public void SetLevelsCount(int levelsCount) => _levelsCount = levelsCount;
         
         public void IncreasePassedLevelsCount() => ++_passedLevelsCount;
+        public void SetPassedLevelsCount(int passedLevelsCount) => _passedLevelsCount = passedLevelsCount;
         public void ResetPassedLevelsCount() => _passedLevelsCount = 0;
     }
 }

@@ -27,6 +27,7 @@ namespace Popups.MainGame
 
         private MainMenuViewModel _mainMenuViewModel;
         private ICommand _onCloseCommand;
+        private UnityAction _onRestartSubmitAction;
 
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
@@ -46,6 +47,8 @@ namespace Popups.MainGame
             _mainMenuViewModel = mainMenuViewModel;
         }
 
+        public void OnRestartSubmit(UnityAction onRestartSubmitAction) => _onRestartSubmitAction = onRestartSubmitAction;
+
         public override void EnableInput()
         {
             EnableBehaviour(_backButton);
@@ -60,12 +63,17 @@ namespace Popups.MainGame
             DisableBehaviour(_continueButton);
         }
 
-        protected override void OnClosed() => _onCloseCommand.Execute();
+        protected override void OnClosed()
+        {
+            _onCloseCommand.Execute();
+            _onRestartSubmitAction?.Invoke();
+        }
 
         public override void Reset()
         {
             _localizationContext.Flush();
             _localizationContext = null;
+            _onRestartSubmitAction = null;
             RemoveAllListeners(_backButton);
             RemoveAllListeners(_restartButton);
             RemoveAllListeners(_continueButton);
@@ -76,6 +84,7 @@ namespace Popups.MainGame
             _backButton.onClick.AddListener(() =>
             {
                 _onCloseCommand = _mainMenuViewModel.BackToPackMenuCommand;
+                _onRestartSubmitAction = null;
                 PopupManager.CloseAllPopupsInstant();
             });
         }
@@ -94,6 +103,7 @@ namespace Popups.MainGame
             _continueButton.onClick.AddListener(() =>
             {
                 _onCloseCommand = _mainMenuViewModel.ContinueCommand;
+                _onRestartSubmitAction = null;
                 PopupManager.CloseLastPopup();
             });
         }

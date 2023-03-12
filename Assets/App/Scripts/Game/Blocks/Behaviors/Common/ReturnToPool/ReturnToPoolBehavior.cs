@@ -3,7 +3,7 @@ using Game.Field;
 using Libs.Pooling.Base;
 using UnityEngine;
 
-namespace Game.Blocks.Behaviors.Pool
+namespace Game.Blocks.Behaviors.Common.ReturnToPool
 {
     public class ReturnToPoolBehavior : IObjectBehavior<Block>
     {

@@ -92,6 +92,7 @@ namespace Popups.MainGame
                 _mainGameViewModel.PauseCommand.Execute();
                 var menuPopup = PopupManager.SpawnPopup<MainGameMenuPopup>();
                 menuPopup.SetupViewModel(_mainGameViewModel.MainMenuViewModel);
+                menuPopup.OnRestartSubmit(() => UpdateLevelPassPercentageView(0));
             });
         }
     }

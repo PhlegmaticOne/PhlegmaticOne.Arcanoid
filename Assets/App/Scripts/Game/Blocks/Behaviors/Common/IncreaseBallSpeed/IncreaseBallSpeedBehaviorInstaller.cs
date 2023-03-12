@@ -6,9 +6,9 @@ using Game.PlayerObjects.BallObject;
 using Libs.Services;
 using UnityEngine;
 
-namespace Game.Blocks.Behaviors.BallSpeed
+namespace Game.Blocks.Behaviors.Common.IncreaseBallSpeed
 {
-    public class ChangeBallSpeedBehaviorInstaller : BehaviorInstaller<Block>
+    public class IncreaseBallSpeedBehaviorInstaller : BehaviorInstaller<Block>
     {
         [SerializeField] private float _increaseBallSpeed;
         
@@ -17,7 +17,7 @@ namespace Game.Blocks.Behaviors.BallSpeed
             var serviceProvider = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
             var gameField = serviceProvider.GetRequiredService<GameField>();
             var balls = serviceProvider.GetRequiredService<BallsOnField>();
-            var behavior = new ChangeBallSpeedBehavior(gameField, balls);
+            var behavior = new IncreaseBallSpeedBehavior(gameField, balls);
             behavior.SetBehaviorParameters(_increaseBallSpeed);
             return behavior;
         }

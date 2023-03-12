@@ -24,10 +24,23 @@ namespace Common.Configurations.Packs
         public void PassLevel(int levelId)
         {
             var levelPreview = ById(levelId);
+            
             if (levelPreview != null)
             {
                 levelPreview.Pass();
             }
+        }
+
+        public int GetLevelOrderInPack(int levelId)
+        {
+            var level = _levelPreviews.FirstOrDefault(x => x.LevelId == levelId);
+            
+            if (level == null)
+            {
+                return -1;
+            }
+
+            return _levelPreviews.IndexOf(level);
         }
 
         public LevelPreviewData GetNextLevel(int currentLevelId)

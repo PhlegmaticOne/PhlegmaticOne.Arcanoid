@@ -5,7 +5,7 @@ using Game.Field;
 using Libs.Pooling.Base;
 using Libs.Services;
 
-namespace Game.Blocks.Behaviors.Pool
+namespace Game.Blocks.Behaviors.Common.ReturnToPool
 {
     public class ReturnToPoolBehaviorInstaller : BehaviorInstaller<Block>
     {

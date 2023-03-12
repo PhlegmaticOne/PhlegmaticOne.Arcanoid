@@ -6,9 +6,9 @@ namespace Common.Configurations.Packs
     public class DefaultPackConfiguration : ScriptableObject
     {
         [SerializeField] private PackConfiguration _defaultPack;
-        [SerializeField] private int _defaultLevelIndex;
+        [SerializeField] private int _defaultLevelId;
 
         public PackConfiguration DefaultPack => _defaultPack;
-        public int DefaultLevelIndex => _defaultLevelIndex;
+        public int DefaultLevelId => _defaultLevelId;
     }
 }
