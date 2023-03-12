@@ -9,19 +9,18 @@ namespace Game.Systems.Control
     public class ControlSystem : MonoBehaviour
     {
         [SerializeField] private ControlSystemConfiguration _controlSystemConfiguration;
+        [SerializeField] private Camera _camera;
         
         private readonly List<IStartMovable> _followingObjects = new List<IStartMovable>();
         private IDimensionable _baseObjectToMove;
         private Bounds _interactableBounds;
-        private Camera _camera;
         
         private IInputSystem _inputSystem;
         private InputData _inputData;
         private Vector3 _startPosition;
         
-        public void Initialize(IInputSystem inputSystem, IDimensionable baseObjectToMove, Camera cam)
+        public void Initialize(IInputSystem inputSystem, IDimensionable baseObjectToMove)
         {
-            _camera = cam;
             _inputSystem = inputSystem;
             _inputSystem.Reset();
             _baseObjectToMove = baseObjectToMove;

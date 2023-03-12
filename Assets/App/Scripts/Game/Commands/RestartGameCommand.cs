@@ -1,5 +1,5 @@
-﻿using Common.Data.Models;
-using Game.Accessors;
+﻿using Common.Bag;
+using Common.Data.Models;
 using Game.Base;
 using Game.Commands.Base;
 
@@ -8,19 +8,18 @@ namespace Game.Commands
     public class RestartMainGameCommand : ICommand
     {
         private readonly IGame<MainGameData, MainGameEvents> _mainGame;
-        private readonly IObjectAccessor<LevelData> _levelDataAccessor;
+        private readonly IObjectBag _objectBag;
 
-        public RestartMainGameCommand(IGame<MainGameData, MainGameEvents> mainGame,
-            IObjectAccessor<LevelData> levelDataAccessor)
+        public RestartMainGameCommand(IGame<MainGameData, MainGameEvents> mainGame, IObjectBag objectBag)
         {
             _mainGame = mainGame;
-            _levelDataAccessor = levelDataAccessor;
+            _objectBag = objectBag;
         }
         
         public void Execute()
         {
             _mainGame.Stop();
-            var currentLevelData = _levelDataAccessor.Get();
+            var currentLevelData = _objectBag.Get<LevelData>();
             _mainGame.StartGame(new MainGameData(currentLevelData));
         }
     }

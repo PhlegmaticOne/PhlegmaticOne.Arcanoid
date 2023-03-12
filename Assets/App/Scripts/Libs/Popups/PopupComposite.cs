@@ -25,7 +25,7 @@ namespace Libs.Popups
         public void AddPopupsToPool(PoolBuilder poolBuilder, RectTransform parent)
         {
             _parent = parent;
-            poolBuilder.AddAbstractPool(new UnityAbstractObjectPool<Popup>(CreatePopupPrefabInfos()));
+            poolBuilder.AddAbstractPool(new UnityAbstractObjectPool<Popup>(CreatePopupPrefabInfos(), parent));
         }
 
         public IPopupManager CreatePopupManager(IPoolProvider poolProvider, Func<IServiceProvider> serviceProvider)

@@ -20,6 +20,6 @@ namespace Libs.Pooling
         
         public IObjectPool<T> CreateObjectPool(Transform spawnTransform) =>
             new UnityObjectPool<T>(new PrefabInfo<T>(_prefab, spawnTransform),
-                _initialCapacity, _maxCapacity, _destroyOnOverflow);
+                _initialCapacity, _maxCapacity, _destroyOnOverflow, spawnTransform);
     }
 }

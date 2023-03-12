@@ -12,8 +12,7 @@ namespace Common.ServiceInstallers
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton(s => _popupComposite.CreatePopupManager(
-                s.GetRequiredService<IPoolProvider>(),
-                () => ServiceProviderAccessor.ServiceProvider));
+                s.GetRequiredService<IPoolProvider>(), () => ServiceProviderAccessor.Global));
         }
     }
 }

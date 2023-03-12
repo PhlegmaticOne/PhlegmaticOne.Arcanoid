@@ -1,4 +1,4 @@
-﻿using Game.Accessors;
+﻿using Common.Scenes;
 using Game.Behaviors;
 using Game.Behaviors.Installer;
 using Game.Field;
@@ -11,9 +11,11 @@ namespace Game.Blocks.Behaviors.Pool
     {
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var serviceProvider = ServiceProviderAccessor.ServiceProvider;
-            var poolProvider = serviceProvider.GetRequiredService<IPoolProvider>();
-            var fieldAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameField>>();
+            var global = ServiceProviderAccessor.Global;
+            var game = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            
+            var poolProvider = global.GetRequiredService<IPoolProvider>();
+            var fieldAccessor = game.GetRequiredService<GameField>();
             return new ReturnToPoolBehavior(poolProvider, fieldAccessor);
         }
     }

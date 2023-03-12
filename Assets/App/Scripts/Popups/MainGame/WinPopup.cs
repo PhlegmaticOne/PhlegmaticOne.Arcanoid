@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.Bag;
 using Common.Configurations.Packs;
 using Common.Data.Models;
-using Game.Accessors;
 using Game.Commands.Base;
 using Game.ViewModels;
 using Libs.Localization.Base;
@@ -25,7 +25,7 @@ namespace Popups.MainGame
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
 
-        private IObjectAccessor<GameData> _gameDataAccessor;
+        private IObjectBag _objectBag;
         private WinMenuViewModel _winMenuViewModel;
         private ICommand _onCloseCommand;
         private Action _onCloseAction;
@@ -39,7 +39,7 @@ namespace Popups.MainGame
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
-            _gameDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
+            _objectBag = serviceProvider.GetRequiredService<IObjectBag>();
             ConfigureNextLevelButton();
         }
 
@@ -47,7 +47,7 @@ namespace Popups.MainGame
 
         public void OnShowing()
         {
-            UpdatePackInfoView(_gameDataAccessor.Get().PackConfiguration);
+            UpdatePackInfoView(_objectBag.Get<GameData>().PackConfiguration);
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
                 .BindLocalizable(this)
@@ -85,7 +85,7 @@ namespace Popups.MainGame
         {
             _nextLevelButton.onClick.AddListener(() =>
             {
-                var pack = _gameDataAccessor.Get().PackConfiguration;
+                var pack = _objectBag.Get<GameData>().PackConfiguration;
                 
                 _onCloseCommand = pack.PassedLevelsCount == pack.LevelsCount - 1 ? 
                     _winMenuViewModel.OnLastClosedCommand :

@@ -1,4 +1,4 @@
-﻿using Game.Accessors;
+﻿using Common.Scenes;
 using Game.Behaviors;
 using Game.Behaviors.Installer;
 using Game.Field;
@@ -14,10 +14,10 @@ namespace Game.Blocks.Behaviors.BallSpeed
         
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var serviceProvider = ServiceProviderAccessor.ServiceProvider;
-            var fieldAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameField>>();
-            var ballsAccessor = serviceProvider.GetRequiredService<IObjectAccessor<BallsOnField>>();
-            var behavior = new ChangeBallSpeedBehavior(fieldAccessor, ballsAccessor);
+            var serviceProvider = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameField = serviceProvider.GetRequiredService<GameField>();
+            var balls = serviceProvider.GetRequiredService<BallsOnField>();
+            var behavior = new ChangeBallSpeedBehavior(gameField, balls);
             behavior.SetBehaviorParameters(_increaseBallSpeed);
             return behavior;
         }

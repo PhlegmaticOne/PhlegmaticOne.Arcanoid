@@ -1,14 +1,13 @@
 ﻿using System;
-using Game.Accessors;
 using Game.Base;
 using Game.Blocks;
 using Game.Field;
 using Game.Field.Builder;
-using Game.Field.Helpers;
 using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
 using Game.PlayerObjects.ShipObject;
 using Game.Systems.Control;
+using Game.Systems.Health;
 using Game.Systems.StateCheck;
 using Libs.Pooling.Base;
 using UnityEngine;
@@ -19,9 +18,8 @@ namespace Game
     {
         private readonly IPoolProvider _poolProvider;
         private readonly IFieldBuilder _fieldBuilder;
-        private readonly IObjectAccessor<GameField> _gameFieldAccessor;
-        private readonly IObjectAccessor<BallsOnField> _ballsOnFieldAccessor;
-        private readonly InteractableZoneSetter _interactableZoneSetter;
+        private readonly HealthSystem _healthSystem;
+        private readonly BallsOnField _ballsOnField;
         private readonly ControlSystem _controlSystem;
         private readonly IBallSpawner _ballSpawner;
         private readonly Ship _ship;
@@ -32,18 +30,16 @@ namespace Game
 
         public MainGame(IPoolProvider poolProvider,
             IFieldBuilder fieldBuilder,
-            IObjectAccessor<GameField> gameFieldAccessor,
-            IObjectAccessor<BallsOnField> ballsOnFieldAccessor,
-            InteractableZoneSetter interactableZoneSetter,
+            HealthSystem healthSystem,
+            BallsOnField ballsOnField,
             ControlSystem controlSystem,
             IBallSpawner ballSpawner, 
             Ship ship)
         {
             _poolProvider = poolProvider;
             _fieldBuilder = fieldBuilder;
-            _gameFieldAccessor = gameFieldAccessor;
-            _ballsOnFieldAccessor = ballsOnFieldAccessor;
-            _interactableZoneSetter = interactableZoneSetter;
+            _healthSystem = healthSystem;
+            _ballsOnField = ballsOnField;
             _controlSystem = controlSystem;
             _ballSpawner = ballSpawner;
             _ship = ship;
@@ -57,32 +53,15 @@ namespace Game
         public void StartGame(MainGameData data)
         {
             _gameField = _fieldBuilder.BuildField(data.LevelData);
-            _gameFieldAccessor.Set(_gameField);
             _stateCheckSystem = new StateCheckSystem(_gameField);
-            _stateCheckSystem.ActiveBlocksDestroyed += StateCheckSystemOnActiveBlocksDestroyed;
-            _gameField.BlockRemoved += GameFieldOnBlockRemoved;
-            var interactableBounds = _interactableZoneSetter.CalculateZoneBounds(_gameField.Bounds);
-            _interactableZoneSetter.SetInteractableZone(interactableBounds);
-            _controlSystem.SetInteractableBounds(interactableBounds);
             _controlSystem.Enable();
             _ship.Enable();
             _ball = _ballSpawner.CreateBall(new BallCreationContext(Vector2.zero, 5));
-            var ballsOnField = new BallsOnField();
-            ballsOnField.AddBall(_ball);
-            _ballsOnFieldAccessor.Set(ballsOnField);
+            _ballsOnField.AddBall(_ball);
             _controlSystem.AddObjectToFollow(_ball);
+            _healthSystem.Initialize(data.LevelData.LifesCount);
+            Subscribe();
         }
-
-        private void GameFieldOnBlockRemoved(Block block)
-        {
-            Events.OnBlockDestroyed(new BlockDestroyedEventArgs
-            {
-                ActiveBlocksCount = _gameField.StartActiveBlocksCount,
-                RemainBlocksCount = _gameField.ActiveBlocksCount
-            });
-        }
-
-        private void StateCheckSystemOnActiveBlocksDestroyed() => Won?.Invoke();
 
         public void Pause()
         {
@@ -103,26 +82,58 @@ namespace Game
             
             foreach (var block in _gameField.Blocks)
             {
-                if (block.IsDestroyed == false)
-                {
-                    blocksPool.ReturnToPool(block);
-                }
+                blocksPool.ReturnToPool(block);
+            }
+
+            foreach (var ball in _ballsOnField.All)
+            {
+                ballsPool.ReturnToPool(ball);
             }
             
-            _stateCheckSystem.ActiveBlocksDestroyed -= StateCheckSystemOnActiveBlocksDestroyed;
-            _gameField.BlockRemoved -= GameFieldOnBlockRemoved;
-            ballsPool.ReturnToPool(_ball);
-            _ballsOnFieldAccessor.Get().Clear();
-            _ballsOnFieldAccessor.Reset();
-            _gameFieldAccessor.Reset();
             _controlSystem.Disable();
+            Unsubscribe();
             SetTimeScale(1);
         }
+        
+        private void HealthSystemOnAllHealthLost() => Lost?.Invoke();
+
+        private void HealthSystemOnHealthLost() => Events.OnLoseHealth();
+
+        private void HealthSystemOnHealthAdded() => Events.OnAddHealth();
+
+        private void GameFieldOnBlockRemoved(Block block)
+        {
+            Events.OnBlockDestroyed(new BlockDestroyedEventArgs
+            {
+                ActiveBlocksCount = _gameField.StartActiveBlocksCount,
+                RemainBlocksCount = _gameField.ActiveBlocksCount
+            });
+        }
+
+        private void StateCheckSystemOnActiveBlocksDestroyed() => Won?.Invoke();
 
         private void SetTimeScale(float scale)
         {
             Time.timeScale = scale;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
+
+        private void Subscribe()
+        {
+            _stateCheckSystem.ActiveBlocksDestroyed += StateCheckSystemOnActiveBlocksDestroyed;
+            _gameField.BlockRemoved += GameFieldOnBlockRemoved;
+            _healthSystem.HealthAdded += HealthSystemOnHealthAdded;
+            _healthSystem.HealthLost += HealthSystemOnHealthLost;
+            _healthSystem.AllHealthLost += HealthSystemOnAllHealthLost;
+        }
+        
+        private void Unsubscribe()
+        {
+            _stateCheckSystem.ActiveBlocksDestroyed -= StateCheckSystemOnActiveBlocksDestroyed;
+            _gameField.BlockRemoved -= GameFieldOnBlockRemoved;
+            _healthSystem.HealthAdded -= HealthSystemOnHealthAdded;
+            _healthSystem.HealthLost -= HealthSystemOnHealthLost;
+            _healthSystem.AllHealthLost -= HealthSystemOnAllHealthLost;
         }
     }
 }

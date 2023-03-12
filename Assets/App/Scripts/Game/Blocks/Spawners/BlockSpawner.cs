@@ -1,6 +1,7 @@
 ﻿using Common.Data.Models;
 using Game.Blocks.Configurations;
 using Libs.Pooling.Base;
+using UnityEngine;
 
 namespace Game.Blocks.Spawners
 {
@@ -8,11 +9,14 @@ namespace Game.Blocks.Spawners
     {
         private readonly IObjectPool<Block> _blocksPool;
         private readonly BlockSpawnSystemConfiguration _blockSystemConfiguration;
+        private readonly Transform _spawnTransform;
 
-        public BlockSpawner(IPoolProvider poolProvider, BlockSpawnSystemConfiguration blockSystemConfiguration)
+        public BlockSpawner(IPoolProvider poolProvider, BlockSpawnSystemConfiguration blockSystemConfiguration,
+            Transform spawnTransform)
         {
             _blocksPool = poolProvider.GetPool<Block>();
             _blockSystemConfiguration = blockSystemConfiguration;
+            _spawnTransform = spawnTransform;
         }
         
         public Block SpawnBlock(int blockId, BlockSpawnData blockSpawnData)
@@ -22,7 +26,8 @@ namespace Game.Blocks.Spawners
             var blockBehaviorInstaller = blockSpawnConfiguration.BlockBehaviorInstaller;
             
             var block = _blocksPool.Get();
-            
+
+            block.transform.SetParent(_spawnTransform);
             block.Initialize(blockConfiguration);
             block.SetSize(blockSpawnData.Size);
             block.SetPosition(blockSpawnData.Position);

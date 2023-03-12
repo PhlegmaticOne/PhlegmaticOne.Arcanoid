@@ -1,6 +1,6 @@
-﻿using Common.Data.Models;
+﻿using Common.Bag;
+using Common.Data.Models;
 using Common.Data.Repositories.Base;
-using Game.Accessors;
 using Game.Base;
 using Game.Commands.Base;
 
@@ -8,27 +8,24 @@ namespace Game.Commands
 {
     public class StartGameCommand : ICommand
     {
-        private readonly IObjectAccessor<GameData> _gameDataAccessor;
+        private readonly IObjectBag _objectBag;
         private readonly ILevelRepository _levelRepository;
-        private readonly IObjectAccessor<LevelData> _levelDataAccessor;
         private readonly IGame<MainGameData, MainGameEvents> _mainGame;
 
-        public StartGameCommand(IObjectAccessor<GameData> gameDataAccessor,
+        public StartGameCommand(IObjectBag objectBag,
             ILevelRepository levelRepository,
-            IObjectAccessor<LevelData> levelDataAccessor,
             IGame<MainGameData, MainGameEvents> mainGame)
         {
-            _gameDataAccessor = gameDataAccessor;
+            _objectBag = objectBag;
             _levelRepository = levelRepository;
-            _levelDataAccessor = levelDataAccessor;
             _mainGame = mainGame;
         }
         
         public void Execute()
         {
-            var gameData = _gameDataAccessor.Get();
+            var gameData = _objectBag.Get<GameData>();
             var levelData = _levelRepository.GetLevelData(gameData.PackLevelCollection, gameData.LevelPreviewData);
-            _levelDataAccessor.Set(levelData);
+            _objectBag.Set(levelData);
             _mainGame.StartGame(new MainGameData(levelData));
         }
     }

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.PlayerObjects.BallObject
 {
-    public class BallsOnField
+    public class BallsOnField : MonoBehaviour
     {
         private readonly List<Ball> _balls = new List<Ball>();
         

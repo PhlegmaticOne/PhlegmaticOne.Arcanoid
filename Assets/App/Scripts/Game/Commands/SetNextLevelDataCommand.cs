@@ -1,27 +1,24 @@
-﻿using Common.Data.Models;
+﻿using Common.Bag;
+using Common.Data.Models;
 using Common.Data.Repositories.Base;
-using Game.Accessors;
-using Game.Base;
 using Game.Commands.Base;
 
 namespace Game.Commands
 {
     public class SetNextLevelDataCommand : ICommand
     {
-        private readonly IObjectAccessor<GameData> _gameDataAccessor;
+        private readonly IObjectBag _objectBag;
         private readonly IPackRepository _packRepository;
 
-        public SetNextLevelDataCommand(
-            IObjectAccessor<GameData> gameDataAccessor,
-            IPackRepository packRepository)
+        public SetNextLevelDataCommand(IObjectBag objectBag, IPackRepository packRepository)
         {
-            _gameDataAccessor = gameDataAccessor;
+            _objectBag = objectBag;
             _packRepository = packRepository;
         }
         
         public void Execute()
         {
-            var gameData = _gameDataAccessor.Get();
+            var gameData = _objectBag.Get<GameData>();
             var passedLevelId = gameData.LevelPreviewData.LevelId;
             var packConfiguration = gameData.PackConfiguration;
             var packLevels = gameData.PackLevelCollection;

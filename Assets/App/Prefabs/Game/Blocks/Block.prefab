@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockView: {fileID: 7709824947456356772}
   _boxCollider: {fileID: 7233267645229423088}
+  _rigidbody2D: {fileID: 3415402037502493304}
 --- !u!114 &7808892692978332126
 MonoBehaviour:
   m_ObjectHideFlags: 0

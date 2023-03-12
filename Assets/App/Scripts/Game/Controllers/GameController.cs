@@ -14,9 +14,9 @@ namespace Game.Controllers
         private MainGamePopup _mainGamePopup;
 
         private WinMenuViewModel _winMenuViewModel;
+        private LosePopupViewModel _losePopupViewModel;
         
-        public void Initialize(IPopupManager popupManager,
-            IGame<MainGameData, MainGameEvents> mainGame)
+        public void Initialize(IPopupManager popupManager, IGame<MainGameData, MainGameEvents> mainGame)
         {
             _mainGame = mainGame;
             _popupManager = popupManager;
@@ -24,12 +24,29 @@ namespace Game.Controllers
             _popupManager.PopupShowed += PopupManagerOnPopupShowed;
             _mainGame.Won += MainGameOnWon;
             _mainGame.Lost += MainGameOnLost;
+            _mainGame.Events.HealthAdded += EventsOnHealthAdded;
+            _mainGame.Events.HealthLost += EventsOnHealthLost;
             _mainGame.Events.BlockDestroyed += EventsOnBlockDestroyed;
+        }
+
+        private void EventsOnHealthLost()
+        {
+            _mainGamePopup.HealthBarView.LoseHealth();
+        }
+
+        private void EventsOnHealthAdded()
+        {
+            _mainGamePopup.HealthBarView.AddHealth();
         }
 
         public void SetupWinViewModel(WinMenuViewModel winMenuViewModel)
         {
             _winMenuViewModel = winMenuViewModel;
+        }
+        
+        public void SetupLoseViewModel(LosePopupViewModel losePopupViewModel)
+        {
+            _losePopupViewModel = losePopupViewModel;
         }
 
         private void PopupManagerOnPopupShowed(Popup popup)
@@ -48,8 +65,14 @@ namespace Game.Controllers
 
         private void MainGameOnLost()
         {
-            _mainGame.Pause();
             var popup = _popupManager.SpawnPopup<LosePopup>();
+            popup.SetupViewModel(_losePopupViewModel);
+            popup.OnShowing();
+            popup.OnClose(() =>
+            {
+                _mainGamePopup.UpdateHeader();
+                _mainGamePopup.InitializeHealthBar();
+            });
         }
 
         private void MainGameOnWon()
@@ -57,7 +80,11 @@ namespace Game.Controllers
             var popup = _popupManager.SpawnPopup<WinPopup>();
             popup.SetupViewModel(_winMenuViewModel);
             popup.OnShowing();
-            popup.OnClose(() => _mainGamePopup.UpdateHeader());
+            popup.OnClose(() =>
+            {
+                _mainGamePopup.UpdateHeader();
+                _mainGamePopup.InitializeHealthBar();
+            });
         }
 
         private void OnDisable()
@@ -65,6 +92,8 @@ namespace Game.Controllers
             _popupManager.PopupShowed -= PopupManagerOnPopupShowed;
             _mainGame.Won -= MainGameOnWon;
             _mainGame.Lost -= MainGameOnLost;
+            _mainGame.Events.HealthAdded -= EventsOnHealthAdded;
+            _mainGame.Events.HealthLost -= EventsOnHealthLost;
             _mainGame.Events.BlockDestroyed -= EventsOnBlockDestroyed;
         }
     }

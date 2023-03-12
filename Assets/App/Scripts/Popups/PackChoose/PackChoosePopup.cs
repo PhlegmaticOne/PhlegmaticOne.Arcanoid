@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Bag;
 using Common.Configurations.Packs;
 using Common.Data.Models;
 using Common.Data.Repositories.Base;
-using Game.Accessors;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
@@ -24,7 +24,7 @@ namespace Popups.PackChoose
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
         private IPackRepository _packRepository;
-        private IObjectAccessor<GameData> _gameDataAccessor;
+        private IObjectBag _objectBag;
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
         
@@ -37,7 +37,7 @@ namespace Popups.PackChoose
         {
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
-            _gameDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
+            _objectBag = serviceProvider.GetRequiredService<IObjectBag>();
             ConfigureBackButton();
             ShowPacks();
         }
@@ -95,7 +95,7 @@ namespace Popups.PackChoose
             
             var currentLevel = packLevelCollection.LevelPreviews[currentLevelIdIndex];
             var gameData = new GameData(packConfiguration, packLevelCollection, currentLevel);
-            _gameDataAccessor.Set(gameData);
+            _objectBag.Set(gameData);
         }
 
         private void ConfigureBackButton()

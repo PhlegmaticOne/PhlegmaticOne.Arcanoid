@@ -11,12 +11,15 @@ namespace Game.Field.Builder
     {
         private readonly IBlockSpawner _blockSpawner;
         private readonly FieldPositionsGenerator _fieldPositionsGenerator;
+        private readonly GameField _gameField;
 
         public FieldBuilder(IBlockSpawner blockSpawner, 
-            FieldPositionsGenerator fieldPositionsGenerator)
+            FieldPositionsGenerator fieldPositionsGenerator,
+            GameField gameField)
         {
             _blockSpawner = blockSpawner;
             _fieldPositionsGenerator = fieldPositionsGenerator;
+            _gameField = gameField;
         }
 
         public GameField BuildField(LevelData levelData)
@@ -41,8 +44,9 @@ namespace Game.Field.Builder
                     result.Add(block);
                 }
             }
-
-            return new GameField(width, height, _fieldPositionsGenerator.GenerateFieldBounds(), result);
+            
+            _gameField.Initialize(width, height, result);
+            return _gameField;
         }
     }
 }

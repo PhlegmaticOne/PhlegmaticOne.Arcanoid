@@ -6,23 +6,22 @@ using UnityEngine.Events;
 
 namespace Game.Field
 {
-    public class GameField
+    public class GameField : MonoBehaviour
     {
-        private readonly List<Block> _blocks;
+        private List<Block> _blocks;
         public event UnityAction<Block> BlockAdded;
         public event UnityAction<Block> BlockRemoved; 
-        public int Width { get; }
-        public int Height { get; }
-        public Bounds Bounds { get; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
         public IReadOnlyList<Block> Blocks => _blocks;
+        public int StartActiveBlocksCount { get; private set; }
 
-        public GameField(int width, int height, Bounds bounds, IEnumerable<Block> blocks)
+        public void Initialize(int width, int height, IEnumerable<Block> blocks)
         {
             _blocks = blocks.ToList();
             StartActiveBlocksCount = ActiveBlocksCount;
             Width = width;
             Height = height;
-            Bounds = bounds;
         }
 
         public Block this[int row, int col] => _blocks[row * Width + col];
@@ -39,7 +38,6 @@ namespace Game.Field
             BlockAdded?.Invoke(block);
         }
         
-        public int StartActiveBlocksCount { get; }
         public int ActiveBlocksCount => _blocks.Count(x => x.BlockConfiguration.ActiveOnPlay);
     }
 }

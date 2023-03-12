@@ -1,5 +1,4 @@
-﻿using Game.Accessors;
-using Game.Behaviors;
+﻿using Game.Behaviors;
 using Game.Field;
 using Game.PlayerObjects.BallObject;
 using UnityEngine;
@@ -8,16 +7,14 @@ namespace Game.Blocks.Behaviors.BallSpeed
 {
     public class ChangeBallSpeedBehavior : IObjectBehavior<Block>
     {
-        private readonly IObjectAccessor<GameField> _gameFieldAccessor;
-        private readonly IObjectAccessor<BallsOnField> _ballsOnFieldAccessor;
+        private readonly GameField _gameField;
+        private readonly BallsOnField _ballsOnField;
         private float _increaseSpeed;
 
-        public ChangeBallSpeedBehavior(
-            IObjectAccessor<GameField> gameFieldAccessor,
-            IObjectAccessor<BallsOnField> ballsOnFieldAccessor)
+        public ChangeBallSpeedBehavior(GameField gameField, BallsOnField ballsOnField)
         {
-            _gameFieldAccessor = gameFieldAccessor;
-            _ballsOnFieldAccessor = ballsOnFieldAccessor;
+            _gameField = gameField;
+            _ballsOnField = ballsOnField;
         }
         
         public void SetBehaviorParameters(float increaseSpeed)
@@ -27,11 +24,10 @@ namespace Game.Blocks.Behaviors.BallSpeed
         
         public void Behave(Block entity, Collision2D collision2D)
         {
-            var field = _gameFieldAccessor.Get();
-            var blocksCount = field.Width * field.Height;
-            var notDestroyedBlocksCount = field.ActiveBlocksCount;
+            var blocksCount = _gameField.Width * _gameField.Height;
+            var notDestroyedBlocksCount = _gameField.ActiveBlocksCount;
 
-            foreach (var ball in _ballsOnFieldAccessor.Get().All)
+            foreach (var ball in _ballsOnField.All)
             {
                 var ballStartSpeed = ball.GetStartSpeed();
                 var ballSpeedNormalized = ball.GetSpeed().normalized;

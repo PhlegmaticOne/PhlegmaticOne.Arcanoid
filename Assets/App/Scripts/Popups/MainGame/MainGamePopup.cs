@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Common.Bag;
 using Common.Configurations.Packs;
 using Common.Data.Models;
-using Game.Accessors;
 using Game.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
@@ -20,18 +20,21 @@ namespace Popups.MainGame
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
         [SerializeField] private PackageInfoView _packageInfoView;
         [SerializeField] private LevelPassPercentageView _levelPassPercentageView;
+        [SerializeField] private HealthBarView _healthBarView;
 
         private LocalizationContext _localizationContext;
         private ILocalizationManager _localizationManager;
-        private IObjectAccessor<GameData> _gameDataAccessor;
+        private IObjectBag _objectBag;
 
         private MainGameViewModel _mainGameViewModel;
+
+        public HealthBarView HealthBarView => _healthBarView;
 
         public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
 
         protected override void InitializeProtected(IServiceProvider serviceProvider)
         {
-            _gameDataAccessor = serviceProvider.GetRequiredService<IObjectAccessor<GameData>>();
+            _objectBag = serviceProvider.GetRequiredService<IObjectBag>();
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
@@ -50,6 +53,7 @@ namespace Popups.MainGame
         {
             UpdateHeader();
             _mainGameViewModel.StartCommand.Execute();
+            InitializeHealthBar();
         }
 
         public override void Reset()
@@ -61,7 +65,7 @@ namespace Popups.MainGame
 
         public void UpdateHeader()
         {
-            UpdatePackInfoView(_gameDataAccessor.Get().PackConfiguration);
+            UpdatePackInfoView(_objectBag.Get<GameData>().PackConfiguration);
             UpdateLevelPassPercentageView(0);
         }
 
@@ -73,6 +77,12 @@ namespace Popups.MainGame
         public void UpdateLevelPassPercentageView(float normalizedPercentage)
         {
             _levelPassPercentageView.SetInNormalizedPercentage(normalizedPercentage);
+        }
+
+        public void InitializeHealthBar()
+        {
+            _healthBarView.Clear();
+            _healthBarView.Initialize(_objectBag.Get<LevelData>().LifesCount);
         }
 
         private void ConfigureMenuButton()

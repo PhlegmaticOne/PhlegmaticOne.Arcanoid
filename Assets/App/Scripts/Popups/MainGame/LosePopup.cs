@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using Game.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Services;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Popups.MainGame
@@ -16,6 +18,9 @@ namespace Popups.MainGame
 
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
+
+        private LosePopupViewModel _losePopupViewModel;
+        private UnityAction _onCloseAction;
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
 
@@ -29,6 +34,10 @@ namespace Popups.MainGame
             ConfigureRestartButton();
         }
 
+        public void SetupViewModel(LosePopupViewModel losePopupViewModel) => _losePopupViewModel = losePopupViewModel;
+        public void OnShowing() => _losePopupViewModel.OnShowingCommand.Execute();
+        public void OnClose(UnityAction action) => _onCloseAction = action;
+
         public override void EnableInput()
         {
             EnableBehaviour(_restartButton);
@@ -39,10 +48,17 @@ namespace Popups.MainGame
             DisableBehaviour(_restartButton);
         }
 
+        protected override void OnClosed()
+        {
+            _losePopupViewModel.RestartButtonCommand.Execute();
+            _onCloseAction?.Invoke();
+        }
+
         public override void Reset()
         {
             _localizationContext.Flush();
             _localizationContext = null;
+            _onCloseAction = null;
             RemoveAllListeners(_restartButton);
         }
 

@@ -8,42 +8,12 @@ namespace Game.Field.Helpers
     {
         [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
         [SerializeField] private Block _block;
-        private Camera _camera;
+        [SerializeField] private Camera _camera;
         private float _screenHeight;
         private float _screenWidth;
-        
-        public Bounds GenerateFieldBounds()
-        {
-            _camera = Camera.main;
-            _screenHeight = Screen.height;
-            _screenWidth = Screen.width;
-            
-            var fieldMargin = _gameFieldConfiguration.FieldMargin;
-            
-            var topMargin = HeightFromPercentage(fieldMargin.FromTop);
-            var bottomMargin = HeightFromPercentage(fieldMargin.FromBottom);
-            var rightMargin = WidthFromPercentage(fieldMargin.FromRight);
-            var leftMargin = WidthFromPercentage(fieldMargin.FromLeft);
-            
-            var startPositionScreen = new Vector2(leftMargin, _screenHeight - topMargin);
-            var endPositionScreen = new Vector2(_screenWidth - rightMargin, bottomMargin);
-            
-            var fieldStartPosition = ToWorldPoint(startPositionScreen);
-            var fieldEndPosition = ToWorldPoint(endPositionScreen);
-            
-            var fieldSizeWorld = new Vector2(
-                fieldEndPosition.x - fieldStartPosition.x,
-                fieldStartPosition.y - fieldEndPosition.y);
-            
-            var fieldBounds = new Bounds((fieldEndPosition + fieldStartPosition) / 2, fieldSizeWorld);
-
-            return fieldBounds;
-        }
 
         public FieldPositionsGenerationResult GeneratePositions(Vector2Int fieldSize)
         {
-            _camera = Camera.main;
-            
             _screenHeight = Screen.height;
             _screenWidth = Screen.width;
             

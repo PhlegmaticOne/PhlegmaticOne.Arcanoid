@@ -1,54 +1,47 @@
-﻿using Game.Accessors;
-using Game.Base;
-using Game.Field;
+﻿using Game.Base;
 using Game.Field.Builder;
 using Game.PlayerObjects.BallObject;
 using Game.PlayerObjects.BallObject.Spawners;
+using Game.PlayerObjects.ShipObject;
+using Game.Systems.Control;
+using Game.Systems.Health;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
 
 namespace Game
 {
-    public class MainGameFactory : IGameFactory<MainGameRequires, MainGame>
+    public class MainGameFactory : IGameFactory<MainGame>
     {
         private readonly IInputSystem _inputSystem;
+        private readonly ControlSystem _controlSystem;
+        private readonly HealthSystem _healthSystem;
+        private readonly BallsOnField _ballsOnField;
+        private readonly Ship _ship;
         private readonly IFieldBuilder _fieldBuilder;
-        private readonly IObjectAccessor<GameField> _gameFieldAccessor;
-        private readonly IObjectAccessor<BallsOnField> _ballsOnFieldAccessor;
         private readonly IPoolProvider _poolProvider;
         private readonly IBallSpawner _ballSpawner;
 
-        private MainGameRequires _mainGameRequires;
-        
-        public MainGameFactory(IFieldBuilder fieldBuilder,
-            IObjectAccessor<GameField> gameFieldAccessor,
-            IObjectAccessor<BallsOnField> ballsOnFieldAccessor,
-            IPoolProvider poolProvider,
-            IBallSpawner ballSpawner,
-            IInputSystem inputSystem)
+        public MainGameFactory(IFieldBuilder fieldBuilder, IPoolProvider poolProvider,
+            IBallSpawner ballSpawner, IInputSystem inputSystem,
+            ControlSystem controlSystem, HealthSystem healthSystem,
+            BallsOnField ballsOnField, Ship ship)
         {
             _fieldBuilder = fieldBuilder;
-            _gameFieldAccessor = gameFieldAccessor;
-            _ballsOnFieldAccessor = ballsOnFieldAccessor;
             _poolProvider = poolProvider;
             _ballSpawner = ballSpawner;
             _inputSystem = inputSystem;
+            _controlSystem = controlSystem;
+            _healthSystem = healthSystem;
+            _ballsOnField = ballsOnField;
+            _ship = ship;
         }
         
-        public void SetupGameRequires(MainGameRequires gameRequires)
-        {
-            _mainGameRequires = gameRequires;
-        }
-
         public MainGame CreateGame()
         {
-            var controlSystem = _mainGameRequires.ControlSystem;
-            var ship = _mainGameRequires.Ship;
-            controlSystem.Initialize(_inputSystem, ship, _mainGameRequires.Camera);
-            return new MainGame(_poolProvider, _fieldBuilder, 
-                _gameFieldAccessor, _ballsOnFieldAccessor,
-                _mainGameRequires.InteractableZoneSetter,
-                controlSystem, _ballSpawner, ship);
+            _controlSystem.Initialize(_inputSystem, _ship);
+            return new MainGame(_poolProvider, _fieldBuilder,
+                _healthSystem, _ballsOnField,
+                _controlSystem, _ballSpawner, _ship);
         }
     }
 }

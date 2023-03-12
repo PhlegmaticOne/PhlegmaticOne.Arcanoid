@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using Game.Field.Configurations;
+using Game.Systems.Control;
+using UnityEngine;
 
 namespace Game.Field.Helpers
 {
     public class InteractableZoneSetter : MonoBehaviour
     {
         private const float NonDependentColliderSize = 0.1f;
+        private float _screenWidth;
+        private float _screenHeight;
+        
+        [SerializeField] private GameFieldConfiguration _gameFieldConfiguration;
         [SerializeField] private Camera _camera;
         
         [SerializeField] private BoxCollider2D _bottomCollider;
@@ -12,9 +18,45 @@ namespace Game.Field.Helpers
         [SerializeField] private BoxCollider2D _topCollider;
         [SerializeField] private BoxCollider2D _rightSideCollider;
 
-        public Bounds CalculateZoneBounds(Bounds fieldBounds)
+        [SerializeField] private ControlSystem _controlSystem;
+
+        private void Start()
         {
-            _camera = Camera.main;
+            var fieldBounds = GenerateFieldBounds();
+            var zoneBounds = CalculateZoneBounds(fieldBounds);
+            SetInteractableZone(zoneBounds);
+            _controlSystem.SetInteractableBounds(zoneBounds);
+        }
+
+        private Bounds GenerateFieldBounds()
+        {
+            _screenHeight = Screen.height;
+            _screenWidth = Screen.width;
+            
+            var fieldMargin = _gameFieldConfiguration.FieldMargin;
+            
+            var topMargin = HeightFromPercentage(fieldMargin.FromTop);
+            var bottomMargin = HeightFromPercentage(fieldMargin.FromBottom);
+            var rightMargin = WidthFromPercentage(fieldMargin.FromRight);
+            var leftMargin = WidthFromPercentage(fieldMargin.FromLeft);
+            
+            var startPositionScreen = new Vector2(leftMargin, _screenHeight - topMargin);
+            var endPositionScreen = new Vector2(_screenWidth - rightMargin, bottomMargin);
+            
+            var fieldStartPosition = ToWorldPoint(startPositionScreen);
+            var fieldEndPosition = ToWorldPoint(endPositionScreen);
+            
+            var fieldSizeWorld = new Vector2(
+                fieldEndPosition.x - fieldStartPosition.x,
+                fieldStartPosition.y - fieldEndPosition.y);
+            
+            var fieldBounds = new Bounds((fieldEndPosition + fieldStartPosition) / 2, fieldSizeWorld);
+
+            return fieldBounds;
+        }
+        
+        private Bounds CalculateZoneBounds(Bounds fieldBounds)
+        {
             var halfHeight = _camera.orthographicSize;
             var halfWidth = halfHeight * _camera.aspect;
 
@@ -31,7 +73,7 @@ namespace Game.Field.Helpers
             return bounds;
         }
 
-        public void SetInteractableZone(Bounds interactableBounds)
+        private void SetInteractableZone(Bounds interactableBounds)
         {
             var top = interactableBounds.max;
             var bottom = interactableBounds.min;
@@ -51,10 +93,12 @@ namespace Game.Field.Helpers
             SetCollider(_leftSideCollider, leftPosition, verticalCollidersSize);
             SetCollider(_rightSideCollider, rightPosition, verticalCollidersSize);
         }
-
+        
+        private float HeightFromPercentage(float percentage) => _screenHeight * percentage;
+        private float WidthFromPercentage(float percentage) => _screenWidth * percentage;
+        private Vector2 ToWorldPoint(Vector2 vector) => _camera.ScreenToWorldPoint(vector);
         private static float SubtractNonDependent(float value) => value - NonDependentColliderSize / 2;
         private static float AddNonDependent(float value) => value + NonDependentColliderSize / 2;
-
         private static void SetCollider(BoxCollider2D collider2D, Vector3 position, Vector2 size)
         {
             collider2D.transform.position = position;
