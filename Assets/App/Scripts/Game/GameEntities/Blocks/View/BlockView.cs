@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Game.GameEntities.Blocks.Behaviors.Common.BallDamage;
 using Game.GameEntities.Blocks.Configurations;
 using UnityEngine;
 

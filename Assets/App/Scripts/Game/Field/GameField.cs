@@ -14,12 +14,12 @@ namespace Game.Field
         public int Width { get; private set; }
         public int Height { get; private set; }
         public IReadOnlyList<Block> Blocks => _blocks;
-        public int StartActiveBlocksCount { get; private set; }
+        public int StartDefaultBlocksCount { get; private set; }
 
         public void Initialize(int width, int height, IEnumerable<Block> blocks)
         {
             _blocks = blocks.ToList();
-            StartActiveBlocksCount = ActiveBlocksCount;
+            StartDefaultBlocksCount = GetDefaultBlocksCount();
             Width = width;
             Height = height;
         }
@@ -47,7 +47,7 @@ namespace Game.Field
             _blocks.Clear();
             Width = 0;
             Height = 0;
-            StartActiveBlocksCount = 0;
+            StartDefaultBlocksCount = 0;
         }
 
         public bool ContainsPosition(int row, int col) =>
@@ -87,7 +87,7 @@ namespace Game.Field
             BlockAdded?.Invoke(block);
         }
         
-        public int ActiveBlocksCount => _blocks.Count(x => x != null && x.IsActive && x.IsDestroyed == false);
+        public int GetDefaultBlocksCount() => _blocks.Count(x => x != null && x.IsDefaultBlock());
 
         private int CalculateIndex(int row, int col) => row * Width + col;
     }

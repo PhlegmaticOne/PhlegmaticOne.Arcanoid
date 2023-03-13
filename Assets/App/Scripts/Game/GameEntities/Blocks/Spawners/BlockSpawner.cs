@@ -1,5 +1,5 @@
-﻿using Game.GameEntities.Blocks.Behaviors.Common.BallDamage;
-using Game.GameEntities.Blocks.Configurations;
+﻿using Game.GameEntities.Blocks.Configurations;
+using Game.GameEntities.Blocks.Spawners.Configurations;
 using Libs.Pooling.Base;
 using UnityEngine;
 

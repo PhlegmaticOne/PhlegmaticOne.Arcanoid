@@ -7,7 +7,7 @@ using Libs.Services;
 
 namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
 {
-    public class ReturnToPoolBehaviorInstaller : BehaviorInstaller<Block>
+    public class ReturnBlockToPoolBehaviorInstaller : BehaviorInstaller<Block>
     {
         public override IObjectBehavior<Block> CreateBehaviour()
         {
@@ -16,7 +16,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
             
             var poolProvider = global.GetRequiredService<IPoolProvider>();
             var fieldAccessor = game.GetRequiredService<GameField>();
-            return new ReturnToPoolBehavior(poolProvider, fieldAccessor);
+            return new ReturnBlockToPoolBehavior(poolProvider, fieldAccessor);
         }
     }
 }

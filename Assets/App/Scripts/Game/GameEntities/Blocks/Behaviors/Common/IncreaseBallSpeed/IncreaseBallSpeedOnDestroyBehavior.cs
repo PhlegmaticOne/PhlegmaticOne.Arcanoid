@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Game.GameEntities.Blocks.Behaviors.Common.IncreaseBallSpeed
 {
-    public class IncreaseBallSpeedBehavior : IObjectBehavior<Block>
+    public class IncreaseBallSpeedOnDestroyBehavior : IObjectBehavior<Block>
     {
         private readonly GameField _gameField;
         private readonly BallsOnField _ballsOnField;
         private float _increaseSpeed;
 
-        public IncreaseBallSpeedBehavior(GameField gameField, BallsOnField ballsOnField)
+        public IncreaseBallSpeedOnDestroyBehavior(GameField gameField, BallsOnField ballsOnField)
         {
             _gameField = gameField;
             _ballsOnField = ballsOnField;
@@ -25,7 +25,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.IncreaseBallSpeed
         public void Behave(Block entity, Collision2D collision2D)
         {
             var blocksCount = _gameField.Width * _gameField.Height;
-            var notDestroyedBlocksCount = _gameField.ActiveBlocksCount;
+            var notDestroyedBlocksCount = _gameField.GetDefaultBlocksCount();
 
             foreach (var ball in _ballsOnField.All)
             {

@@ -3,7 +3,7 @@ using System.Linq;
 using Common.Data.Models;
 using UnityEngine;
 
-namespace Game.GameEntities.Blocks.Configurations
+namespace Game.GameEntities.Blocks.Spawners.Configurations
 {
     public class BlockSpawnSystemConfiguration : MonoBehaviour
     {

@@ -7,7 +7,8 @@ namespace Game.GameEntities.PlayerObjects.BallObject
     public class Ball : BehaviorObject<Ball>, IStartMovable
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        [SerializeField] private BoxCollider2D _boxCollider2D;
+        //[SerializeField] private BoxCollider2D _boxCollider2D;
+        [SerializeField] private CircleCollider2D _circleCollider2D;
 
         private float _startSpeed;
         private Vector2 _direction = Vector2.up;
@@ -29,7 +30,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         }
 
         public Transform GetTransform() => transform;
-        public Bounds GetBounds() => _boxCollider2D.bounds;
+        public Bounds GetBounds() => _circleCollider2D.bounds;
         public Vector2 GetSpeed() => _rigidbody2D.velocity;
         public float GetStartSpeed() => _startSpeed;
         public void SetStartSpeed(float startSpeed) => _startSpeed = startSpeed;

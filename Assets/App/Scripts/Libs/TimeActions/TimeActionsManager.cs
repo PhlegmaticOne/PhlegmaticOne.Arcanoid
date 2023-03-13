@@ -14,6 +14,16 @@ namespace Libs.TimeActions
             timeAction.OnStart();
         }
 
+        public void StopAllActions()
+        {
+            foreach (var timeAction in _timeActions)
+            {
+                timeAction.RemainTime = 0;
+                timeAction.OnEnd();
+            }
+            _timeActions.Clear();
+        }
+
         private void Update()
         {
             if (_timeActions.Count == 0)

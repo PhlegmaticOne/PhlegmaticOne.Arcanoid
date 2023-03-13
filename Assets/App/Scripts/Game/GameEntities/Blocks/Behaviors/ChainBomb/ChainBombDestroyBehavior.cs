@@ -43,8 +43,36 @@ namespace Game.GameEntities.Blocks.Behaviors.ChainBomb
             foreach (var position in chainPositions)
             {
                 var block = _gameField[position];
-                block.DestroyWithTag(_chainBombConfiguration.ColliderTag.Tag);
+                
+                if(_chainBombConfiguration.BlockAffecting == BlockAffectingType.Destroying)
+                {
+                    DestroyBlock(block);
+                }
+                else
+                {
+                    if (block.CurrentHealth >= _chainBombConfiguration.RemovesLifesCount)
+                    {
+                        DamageBlock(block);
+                    }
+                    else
+                    {
+                        DestroyBlock(block);
+                    }
+                }
             }
+        }
+        
+        private void DamageBlock(Block block)
+        {
+            for (var i = 0; i < _chainBombConfiguration.RemovesLifesCount; i++)
+            {
+                block.CollideWithTag(_chainBombConfiguration.ColliderTag.Tag);
+            }
+        }
+        
+        private void DestroyBlock(Block block)
+        {
+            block.DestroyWithTag(_chainBombConfiguration.ColliderTag.Tag);
         }
 
         private List<FieldPosition> FindLongestChain(in FieldPosition startPosition)

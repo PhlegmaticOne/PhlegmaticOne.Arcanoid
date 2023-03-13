@@ -8,6 +8,7 @@ using Game.Logic.Systems.Control;
 using Game.Logic.Systems.Health;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
+using Libs.TimeActions;
 
 namespace Game
 {
@@ -21,15 +22,18 @@ namespace Game
         private readonly Ship _ship;
         private readonly IFieldBuilder _fieldBuilder;
         private readonly IPoolProvider _poolProvider;
+        private readonly TimeActionsManager _timeActionsManager;
         private readonly IBallSpawner _ballSpawner;
 
         public MainGameFactory(IFieldBuilder fieldBuilder, IPoolProvider poolProvider,
+            TimeActionsManager timeActionsManager,
             IBallSpawner ballSpawner, IInputSystem inputSystem,
             ControlSystem controlSystem, HealthSystem healthSystem,
             BallsOnField ballsOnField, BonusesOnField bonusesOnField, Ship ship)
         {
             _fieldBuilder = fieldBuilder;
             _poolProvider = poolProvider;
+            _timeActionsManager = timeActionsManager;
             _ballSpawner = ballSpawner;
             _inputSystem = inputSystem;
             _controlSystem = controlSystem;
@@ -42,7 +46,7 @@ namespace Game
         public MainGame CreateGame()
         {
             _controlSystem.Initialize(_inputSystem, _ship);
-            return new MainGame(_poolProvider, _fieldBuilder,
+            return new MainGame(_poolProvider, _fieldBuilder, _timeActionsManager,
                 _healthSystem, _ballsOnField, _bonusesOnField,
                 _controlSystem, _ballSpawner, _ship);
         }

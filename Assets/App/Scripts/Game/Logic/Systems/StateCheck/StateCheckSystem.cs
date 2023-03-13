@@ -18,7 +18,7 @@ namespace Game.Logic.Systems.StateCheck
 
         private void GameFieldOnBlockRemoved(Block block)
         {
-            if (_gameField.ActiveBlocksCount == 0)
+            if (_gameField.GetDefaultBlocksCount() == 0)
             {
                 ActiveBlocksDestroyed?.Invoke();
             }

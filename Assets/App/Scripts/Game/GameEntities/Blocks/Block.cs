@@ -1,5 +1,4 @@
-﻿using Game.GameEntities.Blocks.Behaviors.Common.BallDamage;
-using Game.GameEntities.Blocks.Configurations;
+﻿using Game.GameEntities.Blocks.Configurations;
 using Game.GameEntities.Blocks.View;
 using Libs.Behaviors;
 using UnityEngine;
@@ -13,8 +12,7 @@ namespace Game.GameEntities.Blocks
         [SerializeField] private Rigidbody2D _rigidbody2D;
         private int _health;
         private bool _readyToDestroy;
-
-        public BlockView BlockView => _blockView;
+        
         public int StartHealth { get; private set; }
         public int CurrentHealth => _health;
         public bool IsDestroyed { get; private set; }
@@ -51,6 +49,8 @@ namespace Game.GameEntities.Blocks
             }
         }
 
+        public bool IsDefaultBlock() => BlockConfiguration.ActiveOnPlay && IsDestroyed == false;
+
         public Vector2 GetBaseSize() => _boxCollider.size;
 
         protected override bool CanBeDestroyedOnDestroyCollision() => _readyToDestroy;
@@ -62,7 +62,6 @@ namespace Game.GameEntities.Blocks
             StartHealth = 0;
             _readyToDestroy = false;
             IsDestroyed = true;
-            BlockConfiguration = null;
         }
     }
 }

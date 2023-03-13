@@ -1,4 +1,5 @@
 ﻿using Game.GameEntities.Bonuses.Configurations;
+using Game.GameEntities.Bonuses.Spawners.Configurations;
 using Libs.Pooling.Base;
 using UnityEngine;
 

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: ChainBombConfiguration
   m_EditorClassIdentifier: 
   _blockAffecting: 1
-  _removesLifesCount: 0
-  _damageAffectsOnBlocks: []
+  _removesLifesCount: 1
+  _damageAffectsOnBlocks:
+  - {fileID: 11400000, guid: aa9e37254f482e345b3b3cbe51c55c5e, type: 2}
+  - {fileID: 11400000, guid: c81544df85cb0cb4a85fa994f9f5e587, type: 2}
+  - {fileID: 11400000, guid: d2a4d24cd8ca1c743a176f5719377e67, type: 2}
+  - {fileID: 11400000, guid: 61be861b1c7765e48899483a615626dd, type: 2}
   _destroyAffectsOnBlocks:
   - {fileID: 11400000, guid: aa9e37254f482e345b3b3cbe51c55c5e, type: 2}
   - {fileID: 11400000, guid: c81544df85cb0cb4a85fa994f9f5e587, type: 2}

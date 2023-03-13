@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.GameEntities.Blocks.Behaviors.Common.BallDamage
+namespace Game.GameEntities.Blocks.Configurations
 {
     [CreateAssetMenu(menuName = "Game/Blocks/Behaviors/Create block cracks configuration")]
     public class BlockCracksConfiguration : ScriptableObject

@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
 {
-    public class ReturnToPoolBehavior : IObjectBehavior<Block>
+    public class ReturnBlockToPoolBehavior : IObjectBehavior<Block>
     {
         private readonly IPoolProvider _poolProvider;
         private readonly GameField _gameField;
 
-        public ReturnToPoolBehavior(IPoolProvider poolProvider, GameField gameField)
+        public ReturnBlockToPoolBehavior(IPoolProvider poolProvider, GameField gameField)
         {
             _poolProvider = poolProvider;
             _gameField = gameField;

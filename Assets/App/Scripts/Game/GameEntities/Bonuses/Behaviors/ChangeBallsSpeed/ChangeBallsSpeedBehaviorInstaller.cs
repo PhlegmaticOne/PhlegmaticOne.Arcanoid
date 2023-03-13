@@ -6,19 +6,21 @@ using Libs.Services;
 using Libs.TimeActions;
 using UnityEngine;
 
-namespace Game.GameEntities.Bonuses.Behaviors.IncreaseBallsSpeed
+namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
 {
-    public class IncreaseBallsSpeedBehaviorInstaller : BehaviorInstaller<Bonus>
+    public class ChangeBallsSpeedBehaviorInstaller : BehaviorInstaller<Bonus>
     {
         [SerializeField] private float _actionTime;
-        [SerializeField] private float _speedToAdd;
+        [SerializeField] private float _speedToChange;
+        [SerializeField] private bool _isAdding;
+        
         public override IObjectBehavior<Bonus> CreateBehaviour()
         {
             var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
             var ballsOnField = gameServices.GetRequiredService<BallsOnField>();
             var timeActionsManager = gameServices.GetRequiredService<TimeActionsManager>();
-            var behavior = new IncreaseBallsSpeedBehavior(ballsOnField, timeActionsManager);
-            behavior.SetBehaviorParameters(_speedToAdd, _actionTime);
+            var behavior = new ChangeBallsSpeedBehavior(ballsOnField, timeActionsManager);
+            behavior.SetBehaviorParameters(_speedToChange, _actionTime, _isAdding);
             return behavior;
         }
     }

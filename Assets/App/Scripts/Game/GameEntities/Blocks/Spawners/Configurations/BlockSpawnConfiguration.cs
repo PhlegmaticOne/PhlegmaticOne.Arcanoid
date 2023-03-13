@@ -1,7 +1,8 @@
-﻿using Libs.Behaviors.Installer;
+﻿using Game.GameEntities.Blocks.Configurations;
+using Libs.Behaviors.Installer;
 using UnityEngine;
 
-namespace Game.GameEntities.Blocks.Configurations
+namespace Game.GameEntities.Blocks.Spawners.Configurations
 {
     public class BlockSpawnConfiguration : MonoBehaviour
     {

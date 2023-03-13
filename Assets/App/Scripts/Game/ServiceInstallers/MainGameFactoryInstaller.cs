@@ -9,6 +9,7 @@ using Game.Logic.Systems.Health;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
 using Libs.Services;
+using Libs.TimeActions;
 
 namespace Game.ServiceInstallers
 {
@@ -29,7 +30,8 @@ namespace Game.ServiceInstallers
                 var bonuses = x.GetRequiredService<BonusesOnField>();
                 var ship = x.GetRequiredService<Ship>();
                 var poolProvider = global.GetRequiredService<IPoolProvider>();
-                return new MainGameFactory(fieldBuilder, poolProvider, ballSpawner, inputSystem,
+                var timeActionsManager = x.GetRequiredService<TimeActionsManager>();
+                return new MainGameFactory(fieldBuilder, poolProvider, timeActionsManager, ballSpawner, inputSystem,
                     controlSystem, healthSystem, balls, bonuses, ship);
             });
         }

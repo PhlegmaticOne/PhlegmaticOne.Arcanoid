@@ -11,6 +11,7 @@ using Game.Logic.Systems.Control;
 using Game.Logic.Systems.Health;
 using Game.Logic.Systems.StateCheck;
 using Libs.Pooling.Base;
+using Libs.TimeActions;
 using UnityEngine;
 
 namespace Game
@@ -25,13 +26,14 @@ namespace Game
         private readonly ControlSystem _controlSystem;
         private readonly IBallSpawner _ballSpawner;
         private readonly Ship _ship;
+        private readonly TimeActionsManager _timeActionsManager;
 
         private GameField _gameField;
-        private Ball _ball;
         private StateCheckSystem _stateCheckSystem;
 
         public MainGame(IPoolProvider poolProvider,
             IFieldBuilder fieldBuilder,
+            TimeActionsManager timeActionsManager,
             HealthSystem healthSystem,
             BallsOnField ballsOnField,
             BonusesOnField bonusesOnField,
@@ -41,6 +43,7 @@ namespace Game
         {
             _poolProvider = poolProvider;
             _fieldBuilder = fieldBuilder;
+            _timeActionsManager = timeActionsManager;
             _healthSystem = healthSystem;
             _ballsOnField = ballsOnField;
             _bonusesOnField = bonusesOnField;
@@ -60,13 +63,13 @@ namespace Game
             _stateCheckSystem = new StateCheckSystem(_gameField);
             _controlSystem.Enable();
             _ship.Enable();
-            _ball = _ballSpawner.CreateBall(new BallCreationContext
+            var ball = _ballSpawner.CreateBall(new BallCreationContext
             {
                 Position = Vector2.zero,
                 SetSpecifiedStartSpeed = false
             });
-            _ballsOnField.AddBall(_ball);
-            _controlSystem.AddObjectToFollow(_ball);
+            _ballsOnField.AddBall(ball);
+            _controlSystem.AddObjectToFollow(ball);
             _healthSystem.Initialize(data.LevelData.LifesCount);
             Subscribe();
         }
@@ -111,6 +114,7 @@ namespace Game
             _bonusesOnField.Clear();
             _gameField.Clear();
             
+            _timeActionsManager.StopAllActions();
             _controlSystem.Disable();
             Unsubscribe();
             SetTimeScale(1);
@@ -126,8 +130,8 @@ namespace Game
         {
             Events.OnBlockDestroyed(new BlockDestroyedEventArgs
             {
-                ActiveBlocksCount = _gameField.StartActiveBlocksCount,
-                RemainBlocksCount = _gameField.ActiveBlocksCount
+                ActiveBlocksCount = _gameField.StartDefaultBlocksCount,
+                RemainBlocksCount = _gameField.GetDefaultBlocksCount()
             });
         }
 

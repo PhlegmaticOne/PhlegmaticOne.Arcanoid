@@ -1,7 +1,8 @@
-﻿using Libs.Behaviors.Installer;
+﻿using Game.GameEntities.Bonuses.Configurations;
+using Libs.Behaviors.Installer;
 using UnityEngine;
 
-namespace Game.GameEntities.Bonuses.Configurations
+namespace Game.GameEntities.Bonuses.Spawners.Configurations
 {
     public class BonusSpawnConfiguration : MonoBehaviour
     {
