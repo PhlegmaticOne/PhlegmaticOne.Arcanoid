@@ -43,6 +43,14 @@ namespace Game.GameEntities.PlayerObjects.BallObject
             }
         }
 
+        public void AddDeltaSpeed(float deltaSpeed)
+        {
+            var ballSpeed = GetSpeed();
+            var ballSpeedMagnitude = ballSpeed.magnitude;
+            var newSpeed = (deltaSpeed + ballSpeedMagnitude) * ballSpeed.normalized;
+            SetSpeed(newSpeed);
+        }
+
         protected override void ResetProtected()
         {
             _startSpeed = 0;

@@ -36,13 +36,13 @@ namespace Popups.MainGame.Views
 
         public void AddHealth()
         {
-            if (_currentActiveHealthIndex == -1)
+            if (_currentActiveHealthIndex == 0)
             {
                 return;    
             }
             
-            _healthViews[_currentActiveHealthIndex].Activate();
             _currentActiveHealthIndex--;
+            _healthViews[_currentActiveHealthIndex].Activate();
         }
 
         public void Clear()

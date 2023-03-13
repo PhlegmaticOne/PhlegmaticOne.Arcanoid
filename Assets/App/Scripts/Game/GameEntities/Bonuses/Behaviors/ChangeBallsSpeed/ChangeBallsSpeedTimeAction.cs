@@ -29,9 +29,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
         {
             foreach (var ball in _ballsOnField.All)
             {
-                var ballSpeed = ball.GetSpeed();
-                var speedToAdd = ballSpeed.normalized * speed;
-                ball.SetSpeed(ballSpeed + speedToAdd);
+                ball.AddDeltaSpeed(speed);
             }
         }
     }

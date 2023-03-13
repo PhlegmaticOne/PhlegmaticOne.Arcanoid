@@ -27,12 +27,11 @@ namespace Game.GameEntities.Blocks.View
             _blockCracksConfiguration = blockCracksConfiguration;
         }
 
-        public void Damage(int blockHealth)
+        public void Damage(int stage)
         {
             var crackSprites = _blockCracksConfiguration.CrackSprites;
-            var stageFloat = (float)blockHealth / crackSprites.Count;
-            var stage = (int)Mathf.Ceil(stageFloat);
-            var crackSprite = crackSprites[stage];
+            var spriteIndex = stage % crackSprites.Count;
+            var crackSprite = crackSprites[spriteIndex];
             AddSprite(crackSprite);
         }
 
