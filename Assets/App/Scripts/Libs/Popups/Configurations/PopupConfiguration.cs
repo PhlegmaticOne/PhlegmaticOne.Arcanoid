@@ -2,7 +2,6 @@
 using System.Reflection;
 using Libs.Popups.Animations.Types;
 using Sirenix.OdinInspector;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Libs.Popups.Configurations
@@ -11,7 +10,7 @@ namespace Libs.Popups.Configurations
     public class PopupConfiguration : ScriptableObject
     {
         [SerializeField]
-        [ValueDropdown(nameof(GetSortingLayerNames))]
+        // [ValueDropdown(nameof(GetSortingLayerNames))]
         private string _sortingLayerName;
         
         [SerializeField] private PopupAnimationConfiguration _popupAnimationConfiguration;
@@ -21,13 +20,13 @@ namespace Libs.Popups.Configurations
         public Popup Popup => _popup;
         public PopupAnimationConfiguration PopupAnimationConfiguration => _popupAnimationConfiguration;
         
-        public static string[] GetSortingLayerNames()
-        {
-            var internalEditorUtilityType = typeof(InternalEditorUtility);
-            var sortingLayersProperty = internalEditorUtilityType.GetProperty("sortingLayerNames",
-                BindingFlags.Static | BindingFlags.NonPublic);
-            return (string[])sortingLayersProperty.GetValue(null, new object[0]);
-        }
+        // public static string[] GetSortingLayerNames()
+        // {
+        //     var internalEditorUtilityType = typeof(InternalEditorUtility);
+        //     var sortingLayersProperty = internalEditorUtilityType.GetProperty("sortingLayerNames",
+        //         BindingFlags.Static | BindingFlags.NonPublic);
+        //     return (string[])sortingLayersProperty.GetValue(null, new object[0]);
+        // }
     }
 
     [Serializable]

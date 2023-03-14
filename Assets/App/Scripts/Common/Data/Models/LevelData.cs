@@ -17,20 +17,6 @@ namespace Common.Data.Models
         public int Width => width;
         public int Height => height;
         public int[] BlocksData => blocksData;
-
-        public static LevelData Create(int levelId, int lifesCount, int width, int height, int[] blockData)
-        {
-            var result = new LevelData
-            {
-                levelId = levelId,
-                lifesCount = lifesCount,
-                width = width,
-                height = height,
-                blocksData = blockData
-            };
-
-            return result;
-        }
     }
 }
 

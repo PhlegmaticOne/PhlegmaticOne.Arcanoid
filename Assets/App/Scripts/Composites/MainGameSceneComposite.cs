@@ -2,6 +2,7 @@
 using Common.Bag;
 using Common.Data.Repositories.Base;
 using Common.Scenes;
+using Composites.Helpers;
 using Composites.Seeding;
 using Game;
 using Game.Base;
@@ -26,7 +27,7 @@ namespace Composites
         
         private void Awake()
         {
-            ServiceProviderAccessor.SetPrefabPath("App/ServiceProvider/ServiceProviderAccessor");
+            ServiceProviderAccessor.SetPrefabPath(ServiceProviderPrefabPath.Instance);
             var serviceProvider = ServiceProviderAccessor.Global;
             ServiceProviderAccessor.Instance.AddSceneServiceProvider(SceneIndexes.GameScene, _gameServices);
             

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Common.Configurations.Packs;
+using Common.Data.Models;
 using Libs.Localization.Base;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,22 +15,22 @@ namespace Popups.PackChoose.Views
         [SerializeField] private PackPreview _packPreview;
 
         private readonly List<PackPreview> _previews = new List<PackPreview>();
-        private readonly List<PackConfiguration> _packConfigurations = new List<PackConfiguration>();
-        public event UnityAction<PackConfiguration> PackClicked; 
+        private readonly List<PackGameData> _packConfigurations = new List<PackGameData>();
+        public event UnityAction<PackGameData> PackClicked; 
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents() => 
             _previews.Select(x => x.PackNameTextBindableComponent);
 
-        public void ShowPacks(IEnumerable<PackConfiguration> packConfigurations)
+        public void ShowPacks(IEnumerable<PackGameData> packGameData)
         {
             var i = 0;
-            foreach (var packConfiguration in packConfigurations)
+            foreach (var packData in packGameData)
             {
                 var packPreview = Instantiate(_packPreview, _viewsTransform);
                 packPreview.Clicked += PackPreviewOnClicked;
-                packPreview.UpdateView(i, packConfiguration);
+                packPreview.UpdateView(i, packData);
                 _previews.Add(packPreview);
-                _packConfigurations.Add(packConfiguration);
+                _packConfigurations.Add(packData);
                 ++i;
             }
         }

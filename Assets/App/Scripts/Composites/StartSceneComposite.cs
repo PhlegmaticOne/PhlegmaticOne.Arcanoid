@@ -1,4 +1,4 @@
-﻿using Composites.Seeding;
+﻿using Composites.Helpers;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
 using Libs.Services;
@@ -9,12 +9,11 @@ namespace Composites
     public class StartSceneComposite : MonoBehaviour
     {
         [SerializeField] private PopupSystemConfiguration _popupSystemConfiguration;
-    
+
         private void Awake()
         {
-            ServiceProviderAccessor.SetPrefabPath("App/ServiceProvider/ServiceProviderAccessor");
+            ServiceProviderAccessor.SetPrefabPath(ServiceProviderPrefabPath.Instance);
             var serviceProvider = ServiceProviderAccessor.Global;
-            PacksSeed.TrySeedPacks();
             TrySpawnStartPopup(serviceProvider);
         }
         

@@ -1,4 +1,5 @@
-﻿using Common.Bag;
+﻿using System;
+using Common.Bag;
 using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Libs.Services;
@@ -22,20 +23,16 @@ namespace Composites.Seeding
             var packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             var defaultPackConfiguration = packRepository.DefaultPackConfiguration;
             var defaultPack = defaultPackConfiguration.DefaultPack;
-            var levelCollection = packRepository.GetLevels(defaultPackConfiguration.DefaultPack.Name);
-            var levelId = defaultPackConfiguration.DefaultLevelId;
-            var levelIndex = levelCollection.GetLevelOrderInPack(levelId);
 
-            if (levelIndex == -1)
-            {
-                defaultPack.ResetPassedLevelsCount();
-            }
-            else
-            {
-                defaultPack.SetPassedLevelsCount(levelIndex);
-            }
+            var packPersistentData = packRepository.GetPersistentDataForPack(defaultPack);
+            var packLevels = packRepository.GetLevelsForPack(packPersistentData);
+            var levelId = defaultPackConfiguration.DefaultLevelId;
+            var levelIndex = packLevels.GetIndexOfLevel(levelId);
             
-            gameData = new GameData(defaultPackConfiguration.DefaultPack, levelCollection, new LevelPreviewData(levelId, false));
+            packPersistentData.passedLevelsCount = levelIndex == -1 ? 0 : levelIndex;
+            packPersistentData.currentLevelId = levelIndex == -1 ? packLevels.levelIds[0] : packLevels.levelIds[levelIndex];
+            
+            gameData = new GameData(new PackGameData(defaultPack, packPersistentData), packLevels);
             objectBag.Set(gameData);
         }
     }

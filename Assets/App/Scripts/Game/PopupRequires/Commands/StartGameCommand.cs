@@ -24,7 +24,7 @@ namespace Game.PopupRequires.Commands
         public void Execute()
         {
             var gameData = _objectBag.Get<GameData>();
-            var levelData = _levelRepository.GetLevelData(gameData.PackLevelCollection, gameData.LevelPreviewData);
+            var levelData = _levelRepository.GetLevelData(gameData.PackGameData.PackPersistentData);
             _objectBag.Set(levelData);
             _mainGame.StartGame(new MainGameData(levelData));
         }

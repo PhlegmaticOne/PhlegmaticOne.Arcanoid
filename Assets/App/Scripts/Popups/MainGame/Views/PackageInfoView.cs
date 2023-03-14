@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Common.Configurations.Packs;
+using Common.Data.Models;
 using Libs.Localization.Components;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -26,14 +27,15 @@ namespace Popups.MainGame.Views
 
         public TextMeshProLocalizationComponent PackNameLocalizationComponent => _packNameLocalizationComponent;
 
-        public void SetPackInfo(PackConfiguration packConfiguration)
+        public void SetPackInfo(PackGameData packGameData)
         {
-            _levelsInfoText.text = FormatLevelsInfo(packConfiguration);
+            var packConfiguration = packGameData.PackConfiguration;
+            _levelsInfoText.text = FormatLevelsInfo(packGameData.PackPersistentData);
             _packIconImage.sprite = packConfiguration.PackImage;
             
             if (_hasPackNameView)
             {
-                //_packNameText.text = packConfiguration.Name;
+                _packNameText.text = packConfiguration.Name;
                 _packNameLocalizationComponent.SetBindingData<string>(packConfiguration.Name);
             }
 
@@ -45,8 +47,8 @@ namespace Popups.MainGame.Views
                 }
             }
         }
-        
-        private static string FormatLevelsInfo(PackConfiguration packConfiguration) => 
-            (packConfiguration.PassedLevelsCount + 1) + "/" + packConfiguration.LevelsCount;
+
+        private static string FormatLevelsInfo(PackPersistentData packPersistentData) => 
+            packPersistentData.passedLevelsCount + 1 + "/" + packPersistentData.levelsCount;
     }
 }

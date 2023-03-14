@@ -12,7 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9fe3177c8b41cda717d28edfe4b13b, type: 3}
   m_Name: PackCollectionConfiguration
   m_EditorClassIdentifier: 
-  _packCollectionSourcePath: Assets/Resources/App/MainGame/Packs
-  _levelsSubfolderName: Levels
-  _packsInitialized: 1
-  _defaultPackConfiguration: {fileID: 11400000, guid: bb8163f4ea695aa49b472e4472b55098, type: 2}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _packConfigurations
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Common.Configurations.Packs.PackConfiguration,
+        Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Common.Configurations.Packs.PackConfiguration,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _packsFileAttributes:
+    _packsInResourcesDirectoryPath: App/MainGame/Packs
+    _packsInPersistentDirectoryPath: PackSaves
+    _levelsSubfolderName: Levels
+    _dataSubfolderName: Data
+    _packDataFilePostfix: Data
+    _packPreviewFilePostfix: Preview
+  _defaultPackConfiguration:
+    _defaultPack: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
+    _defaultLevelId: 0
+  _isUpdatePacksInEditor: 0
+  _isUpdateAllPacks: 0

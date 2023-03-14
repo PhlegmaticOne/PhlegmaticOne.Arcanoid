@@ -73,28 +73,29 @@ namespace Popups.PackChoose
                 .Refresh();
         }
 
-        private void PackCollectionViewOnPackClicked(PackConfiguration packConfiguration)
+        private void PackCollectionViewOnPackClicked(PackGameData packGameData)
         {
-            SetGameData(packConfiguration);
+            SetGameData(packGameData);
             PopupManager.CloseAllPopupsInstant();
             SceneManager.LoadScene(1);
         }
 
-        private void SetGameData(PackConfiguration packConfiguration)
+        private void SetGameData(PackGameData packGameData)
         {
-            var packLevelCollection = _packRepository.GetLevels(packConfiguration.Name);
-            var currentLevelIdIndex = packConfiguration.PassedLevelsCount;
-
-            if (packConfiguration.IsPassed)
+            var packPersistentData = packGameData.PackPersistentData;
+            var packLevelCollection = _packRepository.GetLevelsForPack(packPersistentData);
+            var currentLevelIdIndex = packPersistentData.passedLevelsCount;
+            
+            if (packPersistentData.IsPassed)
             {
-                packConfiguration.ResetPassedLevelsCount();
-                _packRepository.Save(packLevelCollection);
-                _packRepository.Save();
+                packPersistentData.passedLevelsCount = 0;
+                _packRepository.Save(packPersistentData);
                 currentLevelIdIndex = 0;
             }
             
-            var currentLevel = packLevelCollection.LevelPreviews[currentLevelIdIndex];
-            var gameData = new GameData(packConfiguration, packLevelCollection, currentLevel);
+            var currentLevel = packLevelCollection.levelIds[currentLevelIdIndex];
+            packPersistentData.currentLevelId = currentLevel;
+            var gameData = new GameData(packGameData, packLevelCollection);
             _objectBag.Set(gameData);
         }
 

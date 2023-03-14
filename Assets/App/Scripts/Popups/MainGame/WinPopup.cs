@@ -47,7 +47,9 @@ namespace Popups.MainGame
 
         public void OnShowing()
         {
-            UpdatePackInfoView(_objectBag.Get<GameData>().PackConfiguration);
+            var gameData = _objectBag.Get<GameData>();
+            
+            UpdatePackInfoView(gameData.PackGameData);
             _localizationContext = LocalizationContext
                 .Create(_localizationManager)
                 .BindLocalizable(this)
@@ -85,9 +87,9 @@ namespace Popups.MainGame
         {
             _nextLevelButton.onClick.AddListener(() =>
             {
-                var pack = _objectBag.Get<GameData>().PackConfiguration;
+                var pack = _objectBag.Get<GameData>().PackGameData.PackPersistentData;
                 
-                _onCloseCommand = pack.PassedLevelsCount == pack.LevelsCount - 1 ? 
+                _onCloseCommand = pack.passedLevelsCount == pack.levelsCount - 1 ? 
                     _winMenuViewModel.OnLastClosedCommand :
                     _winMenuViewModel.OnClosedCommand;
                 
@@ -97,9 +99,9 @@ namespace Popups.MainGame
             });
         }
         
-        private void UpdatePackInfoView(PackConfiguration packConfiguration)
+        private void UpdatePackInfoView(PackGameData packGameData)
         {
-            _packageInfoView.SetPackInfo(packConfiguration);
+            _packageInfoView.SetPackInfo(packGameData);
         }
     }
 }

@@ -1,23 +1,14 @@
-﻿using Common.Configurations.Packs;
-
-namespace Common.Data.Models
+﻿namespace Common.Data.Models
 {
     public class GameData
     {
-        public GameData(PackConfiguration packConfiguration, PackLevelCollection packLevelCollection, LevelPreviewData levelPreviewData)
+        public GameData(PackGameData packGameData, PackLevelsData packLevelsData)
         {
-            PackConfiguration = packConfiguration;
-            PackLevelCollection = packLevelCollection;
-            LevelPreviewData = levelPreviewData;
+            PackLevelsData = packLevelsData;
+            PackGameData = packGameData;
         }
 
-        public LevelPreviewData LevelPreviewData { get; private set; }
-        public PackLevelCollection PackLevelCollection { get; }
-        public PackConfiguration PackConfiguration { get; }
-
-        public void SetNewLevel(LevelPreviewData levelPreviewData)
-        {
-            LevelPreviewData = levelPreviewData;
-        }
+        public PackLevelsData PackLevelsData { get; }
+        public PackGameData PackGameData { get; }
     }
 }

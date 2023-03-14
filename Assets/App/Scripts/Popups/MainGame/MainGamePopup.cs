@@ -65,13 +65,14 @@ namespace Popups.MainGame
 
         public void UpdateHeader()
         {
-            UpdatePackInfoView(_objectBag.Get<GameData>().PackConfiguration);
+            var gameData = _objectBag.Get<GameData>();
+            UpdatePackInfoView(gameData.PackGameData);
             UpdateLevelPassPercentageView(0);
         }
 
-        public void UpdatePackInfoView(PackConfiguration packConfiguration)
+        public void UpdatePackInfoView(PackGameData packGameData)
         {
-            _packageInfoView.SetPackInfo(packConfiguration);
+            _packageInfoView.SetPackInfo(packGameData);
         }
         
         public void UpdateLevelPassPercentageView(float normalizedPercentage)

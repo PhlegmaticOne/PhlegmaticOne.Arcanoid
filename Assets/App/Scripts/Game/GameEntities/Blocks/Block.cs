@@ -26,6 +26,11 @@ namespace Game.GameEntities.Blocks
             _health = configuration.LifesCount;
             StartHealth = configuration.LifesCount;
             IsDestroyed = false;
+
+            if (configuration.LifesCount == 1)
+            {
+                _readyToDestroy = true;
+            }
             
             _blockView.Initialize(configuration, blockCracksConfiguration);
         }

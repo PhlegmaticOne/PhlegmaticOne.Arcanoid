@@ -1,4 +1,5 @@
-﻿using Common.Bag;
+﻿using System.Linq;
+using Common.Bag;
 using Common.Data.Models;
 using Common.Data.Repositories.Base;
 using Game.PopupRequires.Commands.Base;
@@ -19,19 +20,23 @@ namespace Game.PopupRequires.Commands
         public void Execute()
         {
             var gameData = _objectBag.Get<GameData>();
-            var passedLevelId = gameData.LevelPreviewData.LevelId;
-            var packConfiguration = gameData.PackConfiguration;
-            var packLevels = gameData.PackLevelCollection;
+            var packPersistentData = gameData.PackGameData.PackPersistentData;
             
-            packLevels.PassLevel(passedLevelId);
-            packLevels.GetNextLevel(passedLevelId);
-            packConfiguration.IncreasePassedLevelsCount();
-            _packRepository.Save(packConfiguration);
-            _packRepository.Save(packLevels);
-            _packRepository.Save();
+            var passedLevelId = packPersistentData.currentLevelId;
+            var packLevels = gameData.PackLevelsData;
+
+            if (passedLevelId == packLevels.levelIds.Last())
+            {
+                packPersistentData.passedLevelsCount = packPersistentData.levelsCount;
+                packPersistentData.currentLevelId = PackPersistentData.Passed;
+            }
+            else
+            {
+                packPersistentData.passedLevelsCount++;
+                packPersistentData.currentLevelId = packLevels.levelIds[packPersistentData.passedLevelsCount];
+            }
             
-            var nextLevel = gameData.PackLevelCollection.GetNextLevel(passedLevelId);
-            gameData.SetNewLevel(nextLevel);
+            _packRepository.Save(packPersistentData);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Libs.Localization.Tables.FromJson.Base;
-using UnityEditor;
 using UnityEngine;
 
 namespace Libs.Localization.Tables.FromJson
@@ -14,7 +13,7 @@ namespace Libs.Localization.Tables.FromJson
             if (DeserializedObject.TryGetValue(key, out var value))
             {
                 var spritePath = value;
-                var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(spritePath);
+                var sprite = Resources.Load<Sprite>(spritePath);
                 return sprite;
             }
 
