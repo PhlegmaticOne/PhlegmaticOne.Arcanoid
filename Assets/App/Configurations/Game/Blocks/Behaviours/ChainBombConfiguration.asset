@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 438b6ad9b67046d79370a3d24a426994, type: 3}
+  m_Script: {fileID: 11500000, guid: b710b0de46b847528fc38c5211f03fd8, type: 3}
   m_Name: ChainBombConfiguration
   m_EditorClassIdentifier: 
   _blockAffecting: 1

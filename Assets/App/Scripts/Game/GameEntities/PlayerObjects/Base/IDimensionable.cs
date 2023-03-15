@@ -5,6 +5,6 @@ namespace Game.GameEntities.PlayerObjects.Base
     public interface IDimensionable
     {
         Transform GetTransform();
-        Bounds GetBounds();
+        Collider2D GetCollider();
     }
 }

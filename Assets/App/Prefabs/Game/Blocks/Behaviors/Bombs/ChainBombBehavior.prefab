@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480020f6173f48158d0da25617f7a8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chainBombConfiguration: {fileID: 11400000, guid: 6292c77b39600cd4aa0f5a8120e1ffdd, type: 2}
+  _bombConfiguration: {fileID: 11400000, guid: 6292c77b39600cd4aa0f5a8120e1ffdd, type: 2}

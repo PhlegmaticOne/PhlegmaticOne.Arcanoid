@@ -1,4 +1,5 @@
-﻿using Game.GameEntities.PlayerObjects.Base;
+﻿using System;
+using Game.GameEntities.PlayerObjects.Base;
 using Libs.Behaviors;
 using UnityEngine;
 
@@ -7,32 +8,27 @@ namespace Game.GameEntities.PlayerObjects.BallObject
     public class Ball : BehaviorObject<Ball>, IStartMovable
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        //[SerializeField] private BoxCollider2D _boxCollider2D;
         [SerializeField] private CircleCollider2D _circleCollider2D;
 
         private float _startSpeed;
         private Vector2 _direction = Vector2.up;
-        private float _initialSpeed;
-
-        private void Start() => ToStatic();
 
         public void Initialize(float initialSpeed)
         {
-            _initialSpeed = initialSpeed;
+            ToStatic();
             _startSpeed = initialSpeed;
         }
 
-        public float GetInitialSpeed() => _initialSpeed;
+        public Collider2D GetCollider() => _circleCollider2D;
         public void StartMove()
         {
             _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             SetSpeed(_direction * _startSpeed);
         }
-
+        
         public Transform GetTransform() => transform;
-        public Bounds GetBounds() => _circleCollider2D.bounds;
+
         public Vector2 GetSpeed() => _rigidbody2D.velocity;
-        public float GetStartSpeed() => _startSpeed;
         public void SetStartSpeed(float startSpeed) => _startSpeed = startSpeed;
         public void SetDirection(Vector2 direction) => _direction = direction;
         public void SetSpeed(Vector2 speed)

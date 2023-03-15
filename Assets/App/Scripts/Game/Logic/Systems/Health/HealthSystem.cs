@@ -12,6 +12,8 @@ namespace Game.Logic.Systems.Health
         public event UnityAction HealthLost;
         public event UnityAction HealthAdded;
 
+        public int CurrentHealth => _currentHealthCount;
+
         public void Initialize(int startHealthCount)
         {
             _startHealthCount = startHealthCount;
@@ -20,6 +22,11 @@ namespace Game.Logic.Systems.Health
 
         public void LoseHealth()
         {
+            if (_currentHealthCount == 0)
+            {
+                return;
+            }
+            
             _currentHealthCount--;
             HealthLost?.Invoke();
 

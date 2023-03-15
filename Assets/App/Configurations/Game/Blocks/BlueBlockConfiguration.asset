@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: BlueBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 4
-  _dropBlockId: -1
-  _lifesCount: 3
+  _lifesCount: 2
+  _activeOnPlay: 1
+  _isExtraBlock: 0
   _blockSprite: {fileID: 21300000, guid: 0d7b2eda19e6016418b282a0769e8aa5, type: 3}
   _additionalSprites: []
-  _gravitable: 0
-  _activeOnPlay: 1

@@ -13,16 +13,13 @@ namespace Libs.Behaviors
         private readonly BehaviorsCollection<TSelf> _onDestroyBehaviours = new BehaviorsCollection<TSelf>();
 
         public void AddOnCollisionBehaviour(string colliderTag, IObjectBehavior<TSelf> behaviour) => 
-            _onCollisionBehaviours.AddBehaviour(colliderTag, behaviour);
+            _onCollisionBehaviours.AddBehavior(colliderTag, behaviour);
 
         public void AddOnDestroyBehaviour(string colliderTag, IObjectBehavior<TSelf> behaviour) => 
-            _onDestroyBehaviours.AddBehaviour(colliderTag, behaviour);
+            _onDestroyBehaviours.AddBehavior(colliderTag, behaviour);
 
-        public void RemoveOnCollisionBehaviour(string colliderTag, IObjectBehavior<TSelf> behaviour) => 
-            _onCollisionBehaviours.RemoveBehaviour(colliderTag, behaviour);
-
-        public void RemoveOnDestroyBehaviour(string colliderTag, IObjectBehavior<TSelf> behaviour) => 
-            _onCollisionBehaviours.AddBehaviour(colliderTag, behaviour);
+        public BehaviorsCollection<TSelf> OnCollisionBehaviors => _onCollisionBehaviours;
+        public BehaviorsCollection<TSelf> OnDestroyBehaviors => _onDestroyBehaviours;
 
         public void MarkToDestroy() => _markedToDestroy = true;
         
@@ -37,8 +34,8 @@ namespace Libs.Behaviors
 
             foreach (var colliderTag in behaviorObjectTags.ColliderTags)
             {
-                var collisionBehaviours = _onCollisionBehaviours.GetBehaviours(colliderTag.Tag);
-                var destroyBehaviours = _onDestroyBehaviours.GetBehaviours(colliderTag.Tag);
+                var collisionBehaviours = _onCollisionBehaviours.GetAllBehaviors(colliderTag.Tag);
+                var destroyBehaviours = _onDestroyBehaviours.GetAllBehaviors(colliderTag.Tag);
             
                 if ((CanBeDestroyedOnDestroyCollision() || _markedToDestroy) && destroyBehaviours.Count != 0)
                 {
@@ -55,18 +52,18 @@ namespace Libs.Behaviors
 
         public void DestroyWithTag(string colliderTag)
         {
-            ExecuteBehaviours(_onDestroyBehaviours.GetBehaviours(colliderTag), null);
+            ExecuteBehaviours(_onDestroyBehaviours.GetAllBehaviors(colliderTag), null);
         }
         
         public void CollideWithTag(string colliderTag)
         {
-            ExecuteBehaviours(_onCollisionBehaviours.GetBehaviours(colliderTag), null);
+            ExecuteBehaviours(_onCollisionBehaviours.GetAllBehaviors(colliderTag), null);
         }
 
         public void Reset()
         {
-            _onCollisionBehaviours.Clear();
-            _onDestroyBehaviours.Clear();
+            _onCollisionBehaviours.ClearAll();
+            _onDestroyBehaviours.ClearAll();
             ResetProtected();
         }
         

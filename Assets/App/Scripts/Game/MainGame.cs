@@ -120,8 +120,14 @@ namespace Game
             SetTimeScale(1);
         }
         
-        private void HealthSystemOnAllHealthLost() => Lost?.Invoke();
-
+        private void BallsOnFieldOnBallRemoved(Ball ball)
+        {
+            if (_ballsOnField.All.Count == 0 && _healthSystem.CurrentHealth == 0)
+            {
+                Lost?.Invoke();
+            }
+        }
+        
         private void HealthSystemOnHealthLost() => Events.OnLoseHealth();
 
         private void HealthSystemOnHealthAdded() => Events.OnAddHealth();
@@ -149,16 +155,16 @@ namespace Game
             _gameField.BlockRemoved += GameFieldOnBlockRemoved;
             _healthSystem.HealthAdded += HealthSystemOnHealthAdded;
             _healthSystem.HealthLost += HealthSystemOnHealthLost;
-            _healthSystem.AllHealthLost += HealthSystemOnAllHealthLost;
+            _ballsOnField.BallRemoved += BallsOnFieldOnBallRemoved;
         }
-        
+
         private void Unsubscribe()
         {
             _stateCheckSystem.ActiveBlocksDestroyed -= StateCheckSystemOnActiveBlocksDestroyed;
             _gameField.BlockRemoved -= GameFieldOnBlockRemoved;
             _healthSystem.HealthAdded -= HealthSystemOnHealthAdded;
             _healthSystem.HealthLost -= HealthSystemOnHealthLost;
-            _healthSystem.AllHealthLost -= HealthSystemOnAllHealthLost;
+            _ballsOnField.BallRemoved -= BallsOnFieldOnBallRemoved;
         }
     }
 }

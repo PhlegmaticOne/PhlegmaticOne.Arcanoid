@@ -10,10 +10,10 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
     {
         public override IObjectBehavior<Ball> CreateBehaviour()
         {
-            var game = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
-            
-            var controlSystemAccessor = game.GetRequiredService<ControlSystem>();
-            return new ReturnToPlatformCommand(controlSystemAccessor);
+            var gameService = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var controlSystem = gameService.GetRequiredService<ControlSystem>();
+            var ballsOnField = gameService.GetRequiredService<BallsOnField>();
+            return new ReturnToPlatformCommand(controlSystem, ballsOnField);
         }
     }
 }

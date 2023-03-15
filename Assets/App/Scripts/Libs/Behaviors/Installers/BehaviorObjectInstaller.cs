@@ -12,22 +12,28 @@ namespace Libs.Behaviors.Installer
 
         public void InstallCollisionBehaviours(T item)
         {
+            var onCollisionBehaviors = item.OnCollisionBehaviors;
+            
             foreach (var behaviourInstallerItem in _onCollisionBehaviourInstallers)
             {
                 foreach (var behaviourInstaller in behaviourInstallerItem.BehaviourInstallers)
                 {
-                    item.AddOnCollisionBehaviour(behaviourInstallerItem.ColliderTag.Tag, behaviourInstaller.CreateBehaviour());
+                    onCollisionBehaviors
+                        .AddBehavior(behaviourInstallerItem.ColliderTag.Tag, behaviourInstaller.CreateBehaviour());
                 }
             }
         }
         
         public void InstallDestroyBehaviours(T item)
         {
+            var onDestroyBehaviors = item.OnDestroyBehaviors;
+            
             foreach (var behaviourInstallerItem in _onDestroyBehaviourInstallers)
             {
                 foreach (var behaviourInstaller in behaviourInstallerItem.BehaviourInstallers)
                 {
-                    item.AddOnDestroyBehaviour(behaviourInstallerItem.ColliderTag.Tag, behaviourInstaller.CreateBehaviour());
+                    onDestroyBehaviors
+                        .AddBehavior(behaviourInstallerItem.ColliderTag.Tag, behaviourInstaller.CreateBehaviour());
                 }
             }
         }

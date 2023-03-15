@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: RedBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 2
-  _dropBlockId: -1
-  _lifesCount: 3
+  _lifesCount: 2
+  _activeOnPlay: 1
+  _isExtraBlock: 0
   _blockSprite: {fileID: 21300000, guid: 1bbeed175074fa642aeeeaf33d441fe7, type: 3}
   _additionalSprites: []
-  _gravitable: 0
-  _activeOnPlay: 1

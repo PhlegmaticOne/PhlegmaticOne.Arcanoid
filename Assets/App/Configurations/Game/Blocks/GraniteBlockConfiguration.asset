@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: GraniteBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 0
-  _dropBlockId: -1
   _lifesCount: -1
+  _activeOnPlay: 0
+  _isExtraBlock: 0
   _blockSprite: {fileID: 21300000, guid: 3fc8b21fc6955c1429938c59c3693d92, type: 3}
   _additionalSprites: []
-  _gravitable: 0
-  _activeOnPlay: 0

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: YellowBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 3
-  _dropBlockId: -1
-  _lifesCount: 3
+  _lifesCount: 2
+  _activeOnPlay: 1
+  _isExtraBlock: 0
   _blockSprite: {fileID: 21300000, guid: 285f301bce51b2a45a51c65e0609c6dc, type: 3}
   _additionalSprites: []
-  _gravitable: 0
-  _activeOnPlay: 1

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Libs.TimeActions.Base;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace Libs.TimeActions
             _timeActions.Add(timeAction);
             timeAction.OnStart();
         }
+
+        public bool ContainsAction<TAction>() where TAction : ITimeAction => _timeActions.Any(x => x is TAction);
 
         public void StopAllActions()
         {

@@ -6,13 +6,11 @@ namespace Game.GameEntities.PlayerObjects.ShipObject
     public class Ship : MonoBehaviour, IDimensionable
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        [SerializeField] private BoxCollider2D _boxCollider2D;
+        [SerializeField] private PolygonCollider2D _collider2D;
 
         public Transform GetTransform() => transform;
-        public Bounds GetBounds() => _boxCollider2D.bounds;
-        public void Enable()
-        {
-            gameObject.SetActive(true);
-        }
+        public Collider2D GetCollider() => _collider2D;
+
+        public void Enable() => gameObject.SetActive(true);
     }
 }

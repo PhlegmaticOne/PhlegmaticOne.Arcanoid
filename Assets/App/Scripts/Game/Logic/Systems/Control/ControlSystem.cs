@@ -31,8 +31,11 @@ namespace Game.Logic.Systems.Control
 
         public void AddObjectToFollow(IStartMovable startMovable)
         {
-            var basePosition = _baseObjectToMove.GetTransform().position;
-            basePosition += new Vector3(0, _baseObjectToMove.GetBounds().extents.y + startMovable.GetBounds().size.y);
+            var baseCollider = _baseObjectToMove.GetCollider();
+            var basePosition = (Vector2)_baseObjectToMove.GetTransform().position +
+                               baseCollider.offset;
+            
+            basePosition += new Vector2(0, baseCollider.bounds.extents.y + startMovable.GetCollider().bounds.size.y);
             startMovable.GetTransform().position = basePosition;
             _followingObjects.Add(startMovable);
         }
