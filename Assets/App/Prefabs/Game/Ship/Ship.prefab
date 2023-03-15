@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8987583453948060865
 Transform:
   m_ObjectHideFlags: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 8987583453948060867}
   _collider2D: {fileID: 7830550128286878932}
+  _shipConfiguration: {fileID: 11400000, guid: a621c528654338649a98624949a37868, type: 2}
 --- !u!114 &5090016438525540947
 MonoBehaviour:
   m_ObjectHideFlags: 0

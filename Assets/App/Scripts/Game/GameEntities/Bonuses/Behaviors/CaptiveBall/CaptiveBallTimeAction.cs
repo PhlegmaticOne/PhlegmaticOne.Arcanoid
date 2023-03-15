@@ -2,11 +2,9 @@
 using System.Linq;
 using Game.GameEntities.PlayerObjects.BallObject;
 using Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom;
-using Game.GameEntities.PlayerObjects.BallObject.Spawners;
 using Libs.Behaviors;
 using Libs.Pooling.Base;
 using Libs.TimeActions.Base;
-using UnityEngine;
 
 namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 {
@@ -67,7 +65,6 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
         {
             if (_shouldStopOnTimeEnd == false)
             {
-                Debug.Log("Stop");
                 return;
             }
 

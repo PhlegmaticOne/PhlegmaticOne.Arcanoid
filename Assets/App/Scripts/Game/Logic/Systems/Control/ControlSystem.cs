@@ -7,18 +7,17 @@ namespace Game.Logic.Systems.Control
 {
     public class ControlSystem : MonoBehaviour
     {
-        [SerializeField] private ControlSystemConfiguration _controlSystemConfiguration;
         [SerializeField] private Camera _camera;
         
         private readonly List<IStartMovable> _followingObjects = new List<IStartMovable>();
-        private IDimensionable _baseObjectToMove;
+        private IControlable _baseObjectToMove;
         private Bounds _interactableBounds;
         
         private IInputSystem _inputSystem;
         private InputData _inputData;
         private Vector3 _startPosition;
         
-        public void Initialize(IInputSystem inputSystem, IDimensionable baseObjectToMove)
+        public void Initialize(IInputSystem inputSystem, IControlable baseObjectToMove)
         {
             _inputSystem = inputSystem;
             _inputSystem.Reset();
@@ -100,7 +99,7 @@ namespace Game.Logic.Systems.Control
             var objTransform = _baseObjectToMove.GetTransform();
             var racketPosition = objTransform.transform.position;
             newPosition.y = racketPosition.y;
-            var lerp = Vector3.Lerp(racketPosition, newPosition, _controlSystemConfiguration.Lerp);
+            var lerp = Vector3.Lerp(racketPosition, newPosition, _baseObjectToMove.ControlLerp);
             objTransform.transform.position = lerp;
             return lerp;
         }

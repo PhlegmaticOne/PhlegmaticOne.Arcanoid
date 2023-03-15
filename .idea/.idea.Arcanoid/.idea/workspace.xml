@@ -2,206 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehaviorInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorInstallerBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorInstallerBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallBehaviorInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallBehaviorInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallTimeAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallTimeAction.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallBonusBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallBonusBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallBonusBehaviorInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallBonusBehaviorInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallTimeAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallTimeAction.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/RemoveFromBallsOnFieldBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/RemoveFromBallsOnFieldBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/RemoveFromBallsOnFieldBehaviorInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/RemoveFromBallsOnFieldBehaviorInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnBallToPoolBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnBallToPoolBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnBallToPoolBehaviorInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnBallToPoolBehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedBehavior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedBehaviorInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedBehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedTimeAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/Base/IControlable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/Base/IControlable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/ShipObject/ShipConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/ShipObject/ShipConfiguration.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Built In Data.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Built In Data.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Asset-Tables-English (en).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Asset-Tables-English (en).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Asset-Tables-Russian (Russia) (ru-RU).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Asset-Tables-Russian (Russia) (ru-RU).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Assets-English (en).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Assets-English (en).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Assets-Russian (Russia) (ru-RU).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Assets-Russian (Russia) (ru-RU).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Assets-Shared.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Assets-Shared.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Locales.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-Locales.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-String-Tables-English (en).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-String-Tables-English (en).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-String-Tables-Russian (Russia) (ru-RU).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Localization-String-Tables-Russian (Russia) (ru-RU).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Built In Data_PlayerDataGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Built In Data_PlayerDataGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-English (en)_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-English (en)_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-English (en)_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-English (en)_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-Russian (Russia) (ru-RU)_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-Russian (Russia) (ru-RU)_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-Russian (Russia) (ru-RU)_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Asset-Tables-Russian (Russia) (ru-RU)_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-English (en)_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-English (en)_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-English (en)_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-English (en)_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Russian (Russia) (ru-RU)_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Russian (Russia) (ru-RU)_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Russian (Russia) (ru-RU)_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Russian (Russia) (ru-RU)_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Shared_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Shared_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Shared_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Assets-Shared_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Locales_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Locales_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Locales_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-Locales_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-English (en)_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-English (en)_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-English (en)_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-English (en)_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-Russian (Russia) (ru-RU)_BundledAssetGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-Russian (Russia) (ru-RU)_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-Russian (Russia) (ru-RU)_ContentUpdateGroupSchema.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Localization-String-Tables-Russian (Russia) (ru-RU)_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptFastMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptPackedPlayMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptVirtualMode.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DataBuilders/BuildScriptVirtualMode.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DefaultObject.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/DefaultObject.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/Behaviours/BombBlockConfiguration.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/Behaviours/BombBlockConfiguration.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/Behaviours/ChainBombConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/Behaviours/ChainBombConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/BlueBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/BlueBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/BombBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/BombBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/ChainBombConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/ChainBombConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/DecreaseBallsSpeedBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/DecreaseBallsSpeedBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/GraniteBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/GraniteBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/GreenBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/GreenBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/RedBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/RedBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/SourceOfLifeBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/SourceOfLifeBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/YellowBlockConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Blocks/YellowBlockConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/BombDestroyBehavior.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/BombDestroyBehavior.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/ChainBombBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/ChainBombBehavior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Common/BallSpeedIncreaseBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Common/BallSpeedIncreaseBehavior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Systems.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Systems/ControlSystemConfiguration.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Systems/ControlSystemConfiguration.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Ship.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Ship.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb/BombBlockConfiguration.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb/BombBlockConfiguration.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombConfiguration.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb/BombBlockDestroyBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehaviorInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb/BombBlockDestroyBehaviorInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehaviorInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb/BombBlocksDestroyBehavior.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bomb/BombBlocksDestroyBehavior.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/BlockAffectingType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BlockAffectingType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/BlockAffectingType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BlockAffectingType.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/ChainBombConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/ChainBombConfiguration.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/ChainBombDestroyBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/ChainBombDestroyBehavior.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/ChainBombDestroyBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombDestroyBehaviorInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/ChainBombDestroyBehaviorInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombDestroyBehaviorInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/Insfrastructure.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/Insfrastructure.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/Insfrastructure/HashQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/Insfrastructure/HashQueue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/ChainBomb/Insfrastructure/HashQueue.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/Insfrastructure/HashQueue.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/BallsOnField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/BallsOnField.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Bottom/ReturnToPlatformBehaviorInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/Base/IDimensionable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/Base/IDimensionable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallTimeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/CaptiveBall/CaptiveBallTimeAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/ShipObject/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/ShipObject/Ship.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Systems/Control/ControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Systems/Control/ControlSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Systems/Health/HealthSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Systems/Health/HealthSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/BehaviorObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/BehaviorObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/BehaviorsCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/BehaviorsCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/IObjectBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/IObjectBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/Installers/BehaviorObjectInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Behaviors/Installers/BehaviorObjectInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/TimeActionsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/TimeActionsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/AppLocalization.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/AppLocalization.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/English (en).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/English (en).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable Shared Data.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable Shared Data.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable_en.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable_en.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable_ru-RU.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/LanguageSelection/LanguageSelectionSpritesTable_ru-RU.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/Media.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/Media/Selector.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/Russian (Russia) (ru-RU).asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/Russian (Russia) (ru-RU).asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI Shared Data.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI Shared Data.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI_en.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI_en.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI_ru-RU.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Localization/UI_ru-RU.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/1.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Systems/Control/ControlSystemConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Systems/Control/ControlSystemConfiguration.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,7 +180,7 @@
       <workItem from="1678773567594" duration="820000" />
       <workItem from="1678777487346" duration="19921000" />
       <workItem from="1678858268852" duration="10266000" />
-      <workItem from="1678886655346" duration="10199000" />
+      <workItem from="1678886655346" duration="12472000" />
     </task>
     <servers />
   </component>
