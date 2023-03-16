@@ -13,10 +13,9 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
             
             if (collision2D.collider.gameObject.TryGetComponent<Block>(out var block))
             {
-                block.DestroyWithTag(ballTag.Tag);
+                block.DestroyWithTag(ballTag.Tag, collision2D);
             }
             
-
             var normal = collision2D.contacts[0].normal;
             var ballVelocity = entity.GetSpeed();
             var velocity = Vector3.Reflect(ballVelocity, normal);

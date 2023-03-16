@@ -2,6 +2,8 @@
 using System.IO;
 using Common.Configurations.Packs;
 using Common.Data.Models;
+using UnityEditor;
+using UnityEngine;
 
 namespace Common.Data.Repositories.PersistentRepositories.Helpers
 {
@@ -52,6 +54,8 @@ namespace Common.Data.Repositories.PersistentRepositories.Helpers
                 PersistentRepositoriesHelper.SaveToTextFile(packPreviewData, dataDirectoryPath,
                     PersistentRepositoriesHelper.FormatPreviewFileName(packConfiguration.Name, _packsFileAttributes));
             }
+
+            AssetDatabase.Refresh();
         }
 
         private ICollection<PackConfiguration> GetPacksToUpdate()

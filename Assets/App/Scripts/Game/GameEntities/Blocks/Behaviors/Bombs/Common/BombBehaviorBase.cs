@@ -28,12 +28,12 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
             }
 
             var positions = GetAffectingPositions(bombPosition);
-            ApplyBombToPositions(positions);
+            ApplyBombToPositions(positions, collision2D);
         }
 
         protected abstract List<FieldPosition> GetAffectingPositions(in FieldPosition bombPosition);
 
-        protected virtual void ApplyBombToPositions(List<FieldPosition> positions)
+        protected virtual void ApplyBombToPositions(List<FieldPosition> positions, Collision2D original)
         {
             foreach (var fieldPosition in positions)
             {
@@ -48,13 +48,13 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
                 {
                     if (CheckConfiguration(BombConfiguration.DamageAffectsOnBlocks, block))
                     {
-                        TryDamageBlock(block);
+                        TryDamageBlock(block, original);
                         continue;
                     }
 
                     if (CheckConfiguration(BombConfiguration.DestroyAffectsOnBlocks, block))
                     {
-                        DestroyBlock(block);
+                        DestroyBlock(block, original);
                         continue;
                     }
                 }
@@ -62,55 +62,55 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
                 if (BombConfiguration.IsAffectsOnAllBlocks &&
                     BombConfiguration.BlockAffecting == BlockAffectingType.Damage)
                 {
-                    TryDamageBlock(block);
+                    TryDamageBlock(block, original);
                     continue;
                 }
 
                 if (BombConfiguration.IsAffectsOnAllBlocks &&
                     BombConfiguration.BlockAffecting == BlockAffectingType.Destroying)
                 {
-                    DestroyBlock(block);
+                    DestroyBlock(block, original);
                     continue;
                 }
                 
                 if (CheckAffectingTypeAndConfiguration(BlockAffectingType.Damage, 
                         BombConfiguration.DamageAffectsOnBlocks, block))
                 {
-                    TryDamageBlock(block);
+                    TryDamageBlock(block, original);
                     continue;
                 }
 
                 if (CheckAffectingTypeAndConfiguration(BlockAffectingType.Destroying,
                         BombConfiguration.DestroyAffectsOnBlocks, block))
                 {
-                    DestroyBlock(block);
+                    DestroyBlock(block, original);
                 }
             }
         }
 
-        private void TryDamageBlock(Block block)
+        private void TryDamageBlock(Block block, Collision2D original)
         {
             if (block.CurrentHealth > BombConfiguration.RemovesLifesCount)
             {
-                DamageBlock(block);
+                DamageBlock(block, original);
             }
             else
             {
-                DestroyBlock(block);
+                DestroyBlock(block, original);
             }
         }
 
-        private void DamageBlock(Block block)
+        private void DamageBlock(Block block, Collision2D original)
         {
             for (var i = 0; i < BombConfiguration.RemovesLifesCount; i++)
             {
-                block.CollideWithTag(BombConfiguration.ColliderTag.Tag);
+                block.CollideWithTag(BombConfiguration.ColliderTag.Tag, original);
             }
         }
         
-        private void DestroyBlock(Block block)
+        private void DestroyBlock(Block block, Collision2D original)
         {
-            block.DestroyWithTag(BombConfiguration.ColliderTag.Tag);
+            block.DestroyWithTag(BombConfiguration.ColliderTag.Tag, original);
         }
 
         protected Block GetBlockAtPosition(in FieldPosition fieldPosition)

@@ -35,7 +35,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
         public void Behave(Block entity, Collision2D collision2D)
         {
-            if (collision2D.collider.gameObject.TryGetComponent<Ball>(out var ball))
+            if (TryGetBallFromCollision(collision2D, out var ball))
             {
                 AddNewBalls(ball);
 
@@ -47,6 +47,21 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
                 _timeActionsManager.AddTimeAction(new CaptiveBallTimeAction(_actionTime,
                     _poolProvider, _ballsOnField, _bottomColliderTag));
             }
+        }
+
+        private bool TryGetBallFromCollision(Collision2D collision2D, out Ball ball)
+        {
+            if(collision2D.collider.gameObject.TryGetComponent(out ball))
+            {
+                return true;
+            }
+            
+            if(collision2D.otherCollider.gameObject.TryGetComponent<Ball>(out ball))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void AddNewBalls(Ball original)

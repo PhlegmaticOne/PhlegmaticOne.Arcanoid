@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Libs.Pooling.Base;
 using UnityEngine;
 
@@ -11,15 +12,23 @@ namespace Libs.Behaviors
         
         private readonly BehaviorsCollection<TSelf> _onCollisionBehaviours = new BehaviorsCollection<TSelf>();
         private readonly BehaviorsCollection<TSelf> _onDestroyBehaviours = new BehaviorsCollection<TSelf>();
-
-        public void AddOnCollisionBehaviour(string colliderTag, IObjectBehavior<TSelf> behaviour) => 
-            _onCollisionBehaviours.AddBehavior(colliderTag, behaviour);
-
-        public void AddOnDestroyBehaviour(string colliderTag, IObjectBehavior<TSelf> behaviour) => 
-            _onDestroyBehaviours.AddBehavior(colliderTag, behaviour);
-
+        
         public BehaviorsCollection<TSelf> OnCollisionBehaviors => _onCollisionBehaviours;
         public BehaviorsCollection<TSelf> OnDestroyBehaviors => _onDestroyBehaviours;
+
+        public void InstallOnCollisionBehaviorsTo(BehaviorObject<TSelf> newObject)
+        {
+            var behaviors = newObject.OnCollisionBehaviors;
+            behaviors.ClearAll();
+
+            foreach (var onCollisionBehaviour in _onCollisionBehaviours)
+            {
+                foreach (var behavior in onCollisionBehaviour.Value)
+                {
+                    behaviors.AddBehavior(onCollisionBehaviour.Key, behavior);
+                }
+            }
+        }
 
         public void MarkToDestroy() => _markedToDestroy = true;
         
@@ -50,14 +59,14 @@ namespace Libs.Behaviors
             }
         }
 
-        public void DestroyWithTag(string colliderTag)
+        public void DestroyWithTag(string colliderTag, Collision2D originalCollision)
         {
-            ExecuteBehaviours(_onDestroyBehaviours.GetAllBehaviors(colliderTag), null);
+            ExecuteBehaviours(_onDestroyBehaviours.GetAllBehaviors(colliderTag), originalCollision);
         }
         
-        public void CollideWithTag(string colliderTag)
+        public void CollideWithTag(string colliderTag, Collision2D originalCollision)
         {
-            ExecuteBehaviours(_onCollisionBehaviours.GetAllBehaviors(colliderTag), null);
+            ExecuteBehaviours(_onCollisionBehaviours.GetAllBehaviors(colliderTag), originalCollision);
         }
 
         public void Reset()
@@ -71,7 +80,7 @@ namespace Libs.Behaviors
 
         private void ExecuteBehaviours(List<IObjectBehavior<TSelf>> behaviours, Collision2D collision2D)
         {
-            foreach (var behaviour in behaviours)
+            foreach (var behaviour in behaviours.ToList())
             {
                 behaviour.Behave(Self(), collision2D);
             }

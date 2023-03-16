@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Libs.Behaviors
 {
-    public class BehaviorsCollection<T> where T : BehaviorObject<T>
+    public class BehaviorsCollection<T> : IEnumerable<KeyValuePair<string, List<IObjectBehavior<T>>>> where T : BehaviorObject<T>
     {
         private readonly Dictionary<string, List<IObjectBehavior<T>>> _behaviours;
 
@@ -91,5 +92,8 @@ namespace Libs.Behaviors
         }
         
         public void ClearAll() => _behaviours.Clear();
+        
+        public IEnumerator<KeyValuePair<string, List<IObjectBehavior<T>>>> GetEnumerator() => _behaviours.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

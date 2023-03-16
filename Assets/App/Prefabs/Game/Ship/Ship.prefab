@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837736328482808524}
   - component: {fileID: 3878707171344090116}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: UnactivePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8987583453948060867}
   - component: {fileID: 8987583453948060866}
   - component: {fileID: 5090016438525540947}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Ship
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7701142570827426297}
   - component: {fileID: 410741292467645968}
   - component: {fileID: 2053837344483421897}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ActivePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
