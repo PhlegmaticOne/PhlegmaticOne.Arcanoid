@@ -96,6 +96,8 @@ namespace Common.Data.Repositories.PersistentRepositories
         {
             var previewData = GetPackPreviewData(packConfiguration);
             
+            Debug.Log(previewData.levelsCount);
+            
             var persistentData = new PackPersistentData
             {
                 name = previewData.name,

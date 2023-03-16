@@ -18,13 +18,9 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: 53357f165683cbd4abd1af932c6aff82, type: 2}
     - {fileID: 11400000, guid: 18c26bd7e8df8334e9abf50280a11ca6, type: 2}
-    - {fileID: 11400000, guid: 074d232854b97b44da9f46fd393e18ca, type: 2}
-    - {fileID: 11400000, guid: 1cdcecc9dc0b74144b82249a4fd6c1ba, type: 2}
     - {fileID: 11400000, guid: 5fdf2acf58cacc4408f320190ad22d38, type: 2}
     - {fileID: 11400000, guid: a29db11728568aa44bb42f4b7f79dfab, type: 2}
     - {fileID: 11400000, guid: 49f30cb4d2eddef49bc140750f9aceb7, type: 2}
-    - {fileID: 11400000, guid: e2fd8490cd3278e448df63fdc8698fae, type: 2}
-    - {fileID: 11400000, guid: c85e81f71d76d0042bee86bfa7a35d0d, type: 2}
     - {fileID: 11400000, guid: 5b349e57fb8925444ab593ba87861482, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -58,19 +54,13 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 2
     - Name: 
       Entry: 10
       Data: 1
     - Name: 
       Entry: 10
       Data: 2
-    - Name: 
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 10
-      Data: 4
     - Name: 
       Entry: 13
       Data: 
@@ -85,26 +75,20 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 10
-      Data: 5
+      Data: 3
     - Name: $v
       Entry: 7
       Data: 3|System.Collections.Generic.List`1[[Libs.Localization.Installers.Base.LocalizationTableInstallerBase,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 10
       Data: 4
     - Name: 
       Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 10
-      Data: 8
-    - Name: 
-      Entry: 10
-      Data: 9
+      Data: 5
     - Name: 
       Entry: 13
       Data: 

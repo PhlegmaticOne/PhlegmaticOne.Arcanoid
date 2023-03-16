@@ -19,7 +19,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Chain
         public ChainBombBehavior(GameField gameField, BombConfiguration bombBlockConfiguration) : 
             base(gameField, bombBlockConfiguration) { }
 
-        protected override List<FieldPosition> GetAffectingPositions(GameField gameField, in FieldPosition bombPosition)
+        protected override List<FieldPosition> GetAffectingPositions(in FieldPosition bombPosition)
         {
             return FindLongestChain(bombPosition);
         }

@@ -9,7 +9,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Default
         public DefaultBombBehavior(GameField gameField, BombConfiguration bombBlockConfiguration) : 
             base(gameField, bombBlockConfiguration) { }
 
-        protected override List<FieldPosition> GetAffectingPositions(GameField gameField, in FieldPosition bombPosition)
+        protected override List<FieldPosition> GetAffectingPositions(in FieldPosition bombPosition)
         {
             var result = new List<FieldPosition>
             {

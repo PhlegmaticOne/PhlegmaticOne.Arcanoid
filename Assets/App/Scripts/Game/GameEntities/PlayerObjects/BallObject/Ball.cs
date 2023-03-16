@@ -1,5 +1,4 @@
-﻿using System;
-using Game.GameEntities.PlayerObjects.Base;
+﻿using Game.GameEntities.PlayerObjects.Base;
 using Libs.Behaviors;
 using UnityEngine;
 
@@ -13,21 +12,10 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         private float _startSpeed;
         private Vector2 _direction = Vector2.up;
 
-        public void Initialize(float initialSpeed)
-        {
-            ToStatic();
-            _startSpeed = initialSpeed;
-        }
-
+        public void Initialize(float initialSpeed) => _startSpeed = initialSpeed;
         public Collider2D GetCollider() => _circleCollider2D;
-        public void StartMove()
-        {
-            _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-            SetSpeed(_direction * _startSpeed);
-        }
-        
+        public void StartMove() => SetSpeed(_direction * _startSpeed);
         public Transform GetTransform() => transform;
-
         public Vector2 GetSpeed() => _rigidbody2D.velocity;
         public void SetStartSpeed(float startSpeed) => _startSpeed = startSpeed;
         public void SetDirection(Vector2 direction) => _direction = direction;
@@ -51,11 +39,8 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         {
             _startSpeed = 0;
             SetSpeed(Vector2.zero);
-            ToStatic();
         }
 
         protected override bool CanBeDestroyedOnDestroyCollision() => true;
-
-        private void ToStatic() => _rigidbody2D.bodyType = RigidbodyType2D.Static;
     }
 }

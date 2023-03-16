@@ -12,7 +12,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
         protected readonly GameField GameField;
         protected readonly BombConfiguration BombConfiguration;
 
-        public BombBehaviorBase(GameField gameField, BombConfiguration bombBlockConfiguration)
+        protected BombBehaviorBase(GameField gameField, BombConfiguration bombBlockConfiguration)
         {
             GameField = gameField;
             BombConfiguration = bombBlockConfiguration;
@@ -27,11 +27,11 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
                 return;
             }
 
-            var positions = GetAffectingPositions(GameField, bombPosition);
+            var positions = GetAffectingPositions(bombPosition);
             ApplyBombToPositions(positions);
         }
 
-        protected abstract List<FieldPosition> GetAffectingPositions(GameField gameField, in FieldPosition bombPosition);
+        protected abstract List<FieldPosition> GetAffectingPositions(in FieldPosition bombPosition);
 
         protected virtual void ApplyBombToPositions(List<FieldPosition> positions)
         {
@@ -57,6 +57,20 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
                         DestroyBlock(block);
                         continue;
                     }
+                }
+
+                if (BombConfiguration.IsAffectsOnAllBlocks &&
+                    BombConfiguration.BlockAffecting == BlockAffectingType.Damage)
+                {
+                    TryDamageBlock(block);
+                    continue;
+                }
+
+                if (BombConfiguration.IsAffectsOnAllBlocks &&
+                    BombConfiguration.BlockAffecting == BlockAffectingType.Destroying)
+                {
+                    DestroyBlock(block);
+                    continue;
                 }
                 
                 if (CheckAffectingTypeAndConfiguration(BlockAffectingType.Damage, 

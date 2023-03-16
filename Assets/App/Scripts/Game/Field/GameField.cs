@@ -66,7 +66,7 @@ namespace Game.Field
             
             var row = 0;
 
-            while (index > Width)
+            while (index >= Width)
             {
                 row++;
                 index -= Width;

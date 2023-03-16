@@ -13,7 +13,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Axis
 
         public void SetBehaviorParameters(AxisType axisType) => _axisType = axisType;
 
-        protected override List<FieldPosition> GetAffectingPositions(GameField gameField, in FieldPosition bombPosition)
+        protected override List<FieldPosition> GetAffectingPositions(in FieldPosition bombPosition)
         {
             var movePositions = GetMovePositions();
             var result = new List<FieldPosition>();
