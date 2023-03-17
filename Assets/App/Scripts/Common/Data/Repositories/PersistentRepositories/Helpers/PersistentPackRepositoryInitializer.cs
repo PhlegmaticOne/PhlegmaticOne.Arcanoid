@@ -55,7 +55,9 @@ namespace Common.Data.Repositories.PersistentRepositories.Helpers
                     PersistentRepositoriesHelper.FormatPreviewFileName(packConfiguration.Name, _packsFileAttributes));
             }
 
-            AssetDatabase.Refresh();
+            #if UNITY_EDITOR
+                AssetDatabase.Refresh();
+            #endif
         }
 
         private ICollection<PackConfiguration> GetPacksToUpdate()
