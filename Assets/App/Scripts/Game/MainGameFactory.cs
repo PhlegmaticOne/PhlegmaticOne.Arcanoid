@@ -7,6 +7,7 @@ using Game.GameEntities.PlayerObjects.BallObject.Spawners;
 using Game.GameEntities.PlayerObjects.ShipObject;
 using Game.Logic.Systems.Control;
 using Game.Logic.Systems.Health;
+using Game.ObjectParticles;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
 using Libs.TimeActions;
@@ -19,6 +20,7 @@ namespace Game
         private readonly ControlSystem _controlSystem;
         private readonly CaptiveBallsSystem _captiveBallsSystem;
         private readonly HealthSystem _healthSystem;
+        private readonly ParticleManager _particleManager;
         private readonly BallsOnField _ballsOnField;
         private readonly BonusesOnField _bonusesOnField;
         private readonly Ship _ship;
@@ -27,11 +29,18 @@ namespace Game
         private readonly TimeActionsManager _timeActionsManager;
         private readonly IBallSpawner _ballSpawner;
 
-        public MainGameFactory(IFieldBuilder fieldBuilder, IPoolProvider poolProvider,
+        public MainGameFactory(IFieldBuilder fieldBuilder, 
+            IPoolProvider poolProvider,
             TimeActionsManager timeActionsManager,
-            IBallSpawner ballSpawner, IInputSystem inputSystem,
-            ControlSystem controlSystem, CaptiveBallsSystem captiveBallsSystem, HealthSystem healthSystem,
-            BallsOnField ballsOnField, BonusesOnField bonusesOnField, Ship ship)
+            IBallSpawner ballSpawner,
+            IInputSystem inputSystem,
+            ControlSystem controlSystem,
+            CaptiveBallsSystem captiveBallsSystem,
+            HealthSystem healthSystem,
+            ParticleManager particleManager,
+            BallsOnField ballsOnField,
+            BonusesOnField bonusesOnField,
+            Ship ship)
         {
             _fieldBuilder = fieldBuilder;
             _poolProvider = poolProvider;
@@ -41,6 +50,7 @@ namespace Game
             _controlSystem = controlSystem;
             _captiveBallsSystem = captiveBallsSystem;
             _healthSystem = healthSystem;
+            _particleManager = particleManager;
             _ballsOnField = ballsOnField;
             _bonusesOnField = bonusesOnField;
             _ship = ship;
@@ -51,7 +61,7 @@ namespace Game
             _controlSystem.Initialize(_inputSystem, _ship);
             return new MainGame(_poolProvider, _fieldBuilder, _timeActionsManager,
                 _healthSystem, _ballsOnField, _bonusesOnField,
-                _controlSystem, _captiveBallsSystem, _ballSpawner, _ship);
+                _controlSystem, _captiveBallsSystem, _particleManager, _ballSpawner, _ship);
         }
     }
 }

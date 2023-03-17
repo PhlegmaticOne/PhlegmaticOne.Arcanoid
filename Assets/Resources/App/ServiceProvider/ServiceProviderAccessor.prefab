@@ -86,6 +86,10 @@ PrefabInstance:
       value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _blockParticlesPoolInstaller._prefab
+      value: 
+      objectReference: {fileID: -516291321961074510, guid: 39a835ef55a242e4a998b9a633cd814f, type: 3}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _blockPoolInstaller._initialCapacity
       value: 49
       objectReference: {fileID: 0}
@@ -95,6 +99,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._destroyOnOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _blockParticlesPoolInstaller._maxCapacity
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _blockParticlesPoolInstaller._initialCapacity
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _blockParticlesPoolInstaller._destroyOnOverflow
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004454, guid: 02404d9e30c043243892bca9d12276d1, type: 3}

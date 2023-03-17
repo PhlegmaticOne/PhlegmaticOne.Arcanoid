@@ -11,6 +11,7 @@ using Game.GameEntities.PlayerObjects.ShipObject;
 using Game.Logic.Systems.Control;
 using Game.Logic.Systems.Health;
 using Game.Logic.Systems.StateCheck;
+using Game.ObjectParticles;
 using Libs.Pooling.Base;
 using Libs.TimeActions;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace Game
         private readonly Ship _ship;
         private readonly TimeActionsManager _timeActionsManager;
         private readonly CaptiveBallsSystem _captiveBallsSystem;
+        private readonly ParticleManager _particleManager;
 
         private GameField _gameField;
         private StateCheckSystem _stateCheckSystem;
@@ -41,6 +43,7 @@ namespace Game
             BonusesOnField bonusesOnField,
             ControlSystem controlSystem,
             CaptiveBallsSystem captiveBallsSystem,
+            ParticleManager particleManager,
             IBallSpawner ballSpawner, 
             Ship ship)
         {
@@ -52,6 +55,7 @@ namespace Game
             _bonusesOnField = bonusesOnField;
             _controlSystem = controlSystem;
             _captiveBallsSystem = captiveBallsSystem;
+            _particleManager = particleManager;
             _ballSpawner = ballSpawner;
             _ship = ship;
             Events = new MainGameEvents();
@@ -120,6 +124,7 @@ namespace Game
             _gameField.Clear();
             
             
+            _particleManager.Disable();
             _timeActionsManager.StopAllActions();
             _controlSystem.Disable();
             _captiveBallsSystem.Disable();

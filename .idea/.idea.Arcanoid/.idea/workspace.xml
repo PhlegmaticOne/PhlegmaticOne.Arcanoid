@@ -2,33 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Particles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Particles/SpawnBlockParticleBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Particles/SpawnBlockParticleBehavior.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Particles/SpawnBlockParticleBehaviorInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Particles/SpawnBlockParticleBehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/ParticleManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/ParticleManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/BlockParticle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/BlockParticle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/BombParticle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/BombParticle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/ParticleBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/ParticleBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/ParticleManagerInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/ParticleManagerInstaller.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Ball.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/AdditionalRenderer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/AdditionalRenderer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Block.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Block.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Bonuses/Bonus.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Bonuses/Bonus.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Ship.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Ship.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/StartPopup/Elements/StartGameButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/StartPopup/Elements/StartGameButton.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Localization/Tables/FromJson/Base/JsonLocalizationTableBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Localization/Tables/FromJson/Base/JsonLocalizationTableBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Services/ServiceCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/Services/ServiceCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Editor/LocalizationSupport.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Editor/LocalizationSupport.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Editor/Sirenix.OdinInspector.Modules.UnityLocalization.Editor.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Editor/Sirenix.OdinInspector.Modules.UnityLocalization.Editor.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Runtime.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Runtime/LocalizedStringFormatter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Runtime/LocalizedStringFormatter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Runtime/Sirenix.OdinInspector.Modules.UnityLocalization.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/Runtime/Sirenix.OdinInspector.Modules.UnityLocalization.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/manifest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization/manifest.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/PoolProviderInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/PoolProviderInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/MainGameFactoryInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ServiceInstallers/MainGameFactoryInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/ServiceProviderAccessor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/ServiceProviderAccessor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +187,7 @@
       <workItem from="1678945482359" duration="8729000" />
       <workItem from="1678962458141" duration="8859000" />
       <workItem from="1679030349717" duration="5651000" />
+      <workItem from="1679066371546" duration="3644000" />
     </task>
     <servers />
   </component>
