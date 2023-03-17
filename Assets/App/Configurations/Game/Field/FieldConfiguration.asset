@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FieldConfiguration
   m_EditorClassIdentifier: 
   _fieldMargin:
-    _fromTop: 15
+    _fromTop: 20.7
     _fromBottom: 25
     _fromLeft: 1.5
     _fromRight: 1.5
+  _interactableTopLineMargin: 10
   _blockMarginTop: 0.5
   _blockMarginRight: 0.5

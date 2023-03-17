@@ -7,11 +7,13 @@ namespace Game.Field.Configurations
     public class GameFieldConfiguration : ScriptableObject
     {
         [SerializeField] private MarginInPercentage _fieldMargin;
+        [SerializeField] [Range(0f, 100f)] private float _interactableTopLineMargin;
         [SerializeField] private float _blockMarginTop;
         [SerializeField] private float _blockMarginRight;
         
         public float BlockMarginTop => MarginInPercentage.Normalize(_blockMarginTop);
         public float BlockMarginRight => MarginInPercentage.Normalize(_blockMarginRight);
+        public float InteractableTopLineMargin => MarginInPercentage.Normalize(_interactableTopLineMargin);
         public MarginInPercentage FieldMargin => _fieldMargin;
     }
 

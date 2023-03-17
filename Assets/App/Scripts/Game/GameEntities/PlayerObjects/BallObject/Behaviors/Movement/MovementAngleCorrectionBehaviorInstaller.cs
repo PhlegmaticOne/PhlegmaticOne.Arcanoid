@@ -2,16 +2,16 @@
 using Libs.Behaviors.Installer;
 using UnityEngine;
 
-namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Blocks
+namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Movement
 {
-    public class BlockAngleCorrectionInstaller : BehaviorInstaller<Ball>
+    public class MovementAngleCorrectionBehaviorInstaller : BehaviorInstaller<Ball>
     {
         [SerializeField] private float _minSideAngle;
         [SerializeField] private float _minTopBottomAngle;
         public override IObjectBehavior<Ball> CreateBehaviour()
         {
-            var behavior = new BlockAngleCorrectionBehavior();
-            behavior.SetBehaviorParameters(_minSideAngle, _minTopBottomAngle);
+            var behavior = new MovementAngleCorrectionBehavior();
+            behavior.SetBehaviorParameters(_minTopBottomAngle, _minSideAngle);
             return behavior;
         }
     }

@@ -35,7 +35,7 @@ namespace Game.Field.Helpers
             
             var fieldMargin = _gameFieldConfiguration.FieldMargin;
             
-            var topMargin = HeightFromPercentage(fieldMargin.FromTop);
+            var topMargin = HeightFromPercentage(_gameFieldConfiguration.InteractableTopLineMargin);
             var bottomMargin = HeightFromPercentage(fieldMargin.FromBottom);
             var rightMargin = WidthFromPercentage(fieldMargin.FromRight);
             var leftMargin = WidthFromPercentage(fieldMargin.FromLeft);

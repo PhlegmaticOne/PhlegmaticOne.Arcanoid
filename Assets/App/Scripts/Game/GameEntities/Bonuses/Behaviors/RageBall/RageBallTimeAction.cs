@@ -1,5 +1,5 @@
 ﻿using Game.GameEntities.PlayerObjects.BallObject;
-using Game.GameEntities.PlayerObjects.BallObject.Behaviors.Blocks;
+using Game.GameEntities.PlayerObjects.BallObject.Behaviors.Movement;
 using Libs.Behaviors;
 using Libs.TimeActions.Base;
 
@@ -9,6 +9,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
     {
         private readonly BallsOnField _ballsOnField;
         private readonly ColliderTag _blockColliderTag;
+
+        private MovementAngleCorrectionBehavior _tempAction;
 
         public RageBallTimeAction(BallsOnField ballsOnField, ColliderTag blockColliderTag, float executionTime) : 
             base(executionTime)
@@ -20,12 +22,15 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
         public override void OnStart()
         {
             var colliderTag = _blockColliderTag.Tag;
+
+            _tempAction = _ballsOnField.MainBall
+                .OnCollisionBehaviors.GetBehavior<MovementAngleCorrectionBehavior>(colliderTag);
             
             foreach (var ball in _ballsOnField.All)
             {
                 var onCollisionBehaviors = ball.OnCollisionBehaviors;
                 onCollisionBehaviors
-                    .SubstituteBehavior<BlockAngleCorrectionBehavior>(colliderTag, new RageBallBehavior());
+                    .SubstituteBehavior<MovementAngleCorrectionBehavior>(colliderTag, new RageBallBehavior());
             }
         }
 
@@ -39,8 +44,10 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
             {
                 var onCollisionBehaviors = ball.OnCollisionBehaviors;
                 onCollisionBehaviors
-                    .SubstituteBehavior<RageBallBehavior>(colliderTag, new BlockAngleCorrectionBehavior());
+                    .SubstituteBehavior<RageBallBehavior>(colliderTag, _tempAction);
             }
+
+            _tempAction = null;
         }
     }
 }

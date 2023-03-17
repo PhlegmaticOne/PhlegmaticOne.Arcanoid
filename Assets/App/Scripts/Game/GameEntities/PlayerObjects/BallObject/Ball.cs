@@ -1,4 +1,5 @@
-﻿using Game.GameEntities.PlayerObjects.Base;
+﻿using System;
+using Game.GameEntities.PlayerObjects.Base;
 using Libs.Behaviors;
 using UnityEngine;
 
@@ -14,7 +15,9 @@ namespace Game.GameEntities.PlayerObjects.BallObject
 
         public void Initialize(float initialSpeed) => _startSpeed = initialSpeed;
         public Collider2D GetCollider() => _circleCollider2D;
+
         public void StartMove() => SetSpeed(_direction * _startSpeed);
+
         public Transform GetTransform() => transform;
         public Vector2 GetSpeed() => _rigidbody2D.velocity;
         public void SetStartSpeed(float startSpeed) => _startSpeed = startSpeed;

@@ -5348,10 +5348,10 @@ MonoBehaviour:
     _onCollisionBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: f6da2a22db19abc499679c231c09c563, type: 2}
       _behaviourInstallers:
-      - {fileID: 5312849988516696098, guid: 809af3d386cf479439c7c12039437bac, type: 3}
+      - {fileID: 1313371051663835552, guid: 3e3c364854931b74d9cc3ef430eed5b8, type: 3}
     - _colliderTag: {fileID: 11400000, guid: 8f63d5a3356d7ae46aa9cff295f139f2, type: 2}
       _behaviourInstallers:
-      - {fileID: 6205405281534719565, guid: 8399fca2684aa73498d69d1b393ed5de, type: 3}
+      - {fileID: 1313371051663835552, guid: 3e3c364854931b74d9cc3ef430eed5b8, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: f89e86bd10b359e409435b58710265d3, type: 2}
       _behaviourInstallers:

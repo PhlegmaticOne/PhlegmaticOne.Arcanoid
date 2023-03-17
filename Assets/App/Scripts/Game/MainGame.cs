@@ -71,6 +71,7 @@ namespace Game
             _stateCheckSystem = new StateCheckSystem(_gameField);
             _controlSystem.Enable();
             _ship.Enable();
+            
             var ball = _ballSpawner.CreateBall(new BallCreationContext
             {
                 Position = Vector2.zero,
@@ -78,6 +79,7 @@ namespace Game
             });
             _ballsOnField.AddBall(ball);
             _controlSystem.AddObjectToFollow(ball);
+            
             _healthSystem.Initialize(data.LevelData.LifesCount);
             _captiveBallsSystem.Initialize(_poolProvider, _ballsOnField);
             Subscribe();
