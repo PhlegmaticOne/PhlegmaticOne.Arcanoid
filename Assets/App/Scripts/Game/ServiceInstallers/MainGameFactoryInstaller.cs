@@ -1,6 +1,7 @@
 ﻿using Game.Base;
 using Game.Field.Builder;
 using Game.GameEntities.Bonuses;
+using Game.GameEntities.Bonuses.Behaviors.CaptiveBall;
 using Game.GameEntities.PlayerObjects.BallObject;
 using Game.GameEntities.PlayerObjects.BallObject.Spawners;
 using Game.GameEntities.PlayerObjects.ShipObject;
@@ -31,8 +32,9 @@ namespace Game.ServiceInstallers
                 var ship = x.GetRequiredService<Ship>();
                 var poolProvider = global.GetRequiredService<IPoolProvider>();
                 var timeActionsManager = x.GetRequiredService<TimeActionsManager>();
+                var captiveBallsSystem = x.GetRequiredService<CaptiveBallsSystem>();
                 return new MainGameFactory(fieldBuilder, poolProvider, timeActionsManager, ballSpawner, inputSystem,
-                    controlSystem, healthSystem, balls, bonuses, ship);
+                    controlSystem, captiveBallsSystem, healthSystem, balls, bonuses, ship);
             });
         }
     }

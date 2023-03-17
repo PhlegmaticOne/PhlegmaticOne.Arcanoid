@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 574a3f950b544860abdba44350f4a7f8, type: 3}
-  m_Name: HorizontalBlockConfiguration
+  m_Name: HorizontalBombConfiguration
   m_EditorClassIdentifier: 
   _blockId: 102
   _lifesCount: 3

@@ -74,12 +74,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6723961344206063078, guid: eca51518686ed7c468bac21771519c4d, type: 3}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _ballPoolInstaller._maxCapacity
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._maxCapacity
-      value: 30
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _ballPoolInstaller._initialCapacity
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _blockPoolInstaller._initialCapacity
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._initialCapacity
-      value: 10
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._destroyOnOverflow

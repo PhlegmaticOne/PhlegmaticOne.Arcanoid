@@ -4,6 +4,7 @@ using Game.Field;
 using Game.Field.Builder;
 using Game.GameEntities.Blocks;
 using Game.GameEntities.Bonuses;
+using Game.GameEntities.Bonuses.Behaviors.CaptiveBall;
 using Game.GameEntities.PlayerObjects.BallObject;
 using Game.GameEntities.PlayerObjects.BallObject.Spawners;
 using Game.GameEntities.PlayerObjects.ShipObject;
@@ -27,6 +28,7 @@ namespace Game
         private readonly IBallSpawner _ballSpawner;
         private readonly Ship _ship;
         private readonly TimeActionsManager _timeActionsManager;
+        private readonly CaptiveBallsSystem _captiveBallsSystem;
 
         private GameField _gameField;
         private StateCheckSystem _stateCheckSystem;
@@ -38,6 +40,7 @@ namespace Game
             BallsOnField ballsOnField,
             BonusesOnField bonusesOnField,
             ControlSystem controlSystem,
+            CaptiveBallsSystem captiveBallsSystem,
             IBallSpawner ballSpawner, 
             Ship ship)
         {
@@ -48,6 +51,7 @@ namespace Game
             _ballsOnField = ballsOnField;
             _bonusesOnField = bonusesOnField;
             _controlSystem = controlSystem;
+            _captiveBallsSystem = captiveBallsSystem;
             _ballSpawner = ballSpawner;
             _ship = ship;
             Events = new MainGameEvents();
@@ -71,6 +75,7 @@ namespace Game
             _ballsOnField.AddBall(ball);
             _controlSystem.AddObjectToFollow(ball);
             _healthSystem.Initialize(data.LevelData.LifesCount);
+            _captiveBallsSystem.Initialize(_poolProvider, _ballsOnField);
             Subscribe();
         }
 
@@ -114,8 +119,10 @@ namespace Game
             _bonusesOnField.Clear();
             _gameField.Clear();
             
+            
             _timeActionsManager.StopAllActions();
             _controlSystem.Disable();
+            _captiveBallsSystem.Disable();
             Unsubscribe();
             SetTimeScale(1);
         }

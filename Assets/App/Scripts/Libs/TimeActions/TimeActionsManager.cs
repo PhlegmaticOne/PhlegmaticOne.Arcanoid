@@ -17,6 +17,12 @@ namespace Libs.TimeActions
 
         public bool ContainsAction<TAction>() where TAction : ITimeAction => _timeActions.Any(x => x is TAction);
 
+        public bool TryGetAction<TAction>(out TAction action) where TAction : ITimeAction
+        {
+            action = (TAction)_timeActions.SingleOrDefault(x => x is TAction);
+            return action != null;
+        }
+
         public void StopAllActions()
         {
             foreach (var timeAction in _timeActions)

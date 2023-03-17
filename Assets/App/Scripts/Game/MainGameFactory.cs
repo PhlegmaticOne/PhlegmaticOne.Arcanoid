@@ -1,6 +1,7 @@
 ﻿using Game.Base;
 using Game.Field.Builder;
 using Game.GameEntities.Bonuses;
+using Game.GameEntities.Bonuses.Behaviors.CaptiveBall;
 using Game.GameEntities.PlayerObjects.BallObject;
 using Game.GameEntities.PlayerObjects.BallObject.Spawners;
 using Game.GameEntities.PlayerObjects.ShipObject;
@@ -16,6 +17,7 @@ namespace Game
     {
         private readonly IInputSystem _inputSystem;
         private readonly ControlSystem _controlSystem;
+        private readonly CaptiveBallsSystem _captiveBallsSystem;
         private readonly HealthSystem _healthSystem;
         private readonly BallsOnField _ballsOnField;
         private readonly BonusesOnField _bonusesOnField;
@@ -28,7 +30,7 @@ namespace Game
         public MainGameFactory(IFieldBuilder fieldBuilder, IPoolProvider poolProvider,
             TimeActionsManager timeActionsManager,
             IBallSpawner ballSpawner, IInputSystem inputSystem,
-            ControlSystem controlSystem, HealthSystem healthSystem,
+            ControlSystem controlSystem, CaptiveBallsSystem captiveBallsSystem, HealthSystem healthSystem,
             BallsOnField ballsOnField, BonusesOnField bonusesOnField, Ship ship)
         {
             _fieldBuilder = fieldBuilder;
@@ -37,6 +39,7 @@ namespace Game
             _ballSpawner = ballSpawner;
             _inputSystem = inputSystem;
             _controlSystem = controlSystem;
+            _captiveBallsSystem = captiveBallsSystem;
             _healthSystem = healthSystem;
             _ballsOnField = ballsOnField;
             _bonusesOnField = bonusesOnField;
@@ -48,7 +51,7 @@ namespace Game
             _controlSystem.Initialize(_inputSystem, _ship);
             return new MainGame(_poolProvider, _fieldBuilder, _timeActionsManager,
                 _healthSystem, _ballsOnField, _bonusesOnField,
-                _controlSystem, _ballSpawner, _ship);
+                _controlSystem, _captiveBallsSystem, _ballSpawner, _ship);
         }
     }
 }

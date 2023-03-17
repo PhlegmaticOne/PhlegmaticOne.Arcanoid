@@ -7,19 +7,19 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
     {
         private readonly Ship _ship;
         private readonly float _changeBy;
-        private readonly bool _isIncrease;
 
         public ChangePlatformSpeedTimeAction(Ship ship, float changeBy, bool isIncrease, float executionTime) :
             base(executionTime)
         {
+            IsIncrease = isIncrease;
             _ship = ship;
             _changeBy = changeBy;
-            _isIncrease = isIncrease;
         }
+        public bool IsIncrease { get; }
 
         public override void OnStart()
         {
-            if (_isIncrease)
+            if (IsIncrease)
             {
                 _ship.IncreaseLerpBy(_changeBy);
             }
@@ -33,7 +33,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
 
         public override void OnEnd()
         {
-            if (_isIncrease)
+            if (IsIncrease)
             {
                 _ship.DecreaseLerpBy(_changeBy);
             }

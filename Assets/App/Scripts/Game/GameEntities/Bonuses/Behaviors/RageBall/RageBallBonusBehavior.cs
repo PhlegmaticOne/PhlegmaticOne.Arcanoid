@@ -26,7 +26,15 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
 
         public void Behave(Bonus entity, Collision2D collision2D)
         {
-            _timeActionsManager.AddTimeAction(new RageBallTimeAction(_ballsOnField, _blockColliderTag, _actionTime));
+            if (_timeActionsManager.TryGetAction<RageBallTimeAction>(out var action))
+            {
+                action.Restart();
+            }
+            else
+            {
+                _timeActionsManager.AddTimeAction(new
+                    RageBallTimeAction(_ballsOnField, _blockColliderTag, _actionTime));
+            }
         }
     }
 }

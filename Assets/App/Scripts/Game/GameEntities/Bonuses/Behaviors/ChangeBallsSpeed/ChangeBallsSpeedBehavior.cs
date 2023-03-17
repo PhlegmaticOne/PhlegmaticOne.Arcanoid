@@ -1,6 +1,7 @@
 ﻿using Game.GameEntities.PlayerObjects.BallObject;
 using Libs.Behaviors;
 using Libs.TimeActions;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
@@ -28,8 +29,16 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
 
         public void Behave(Bonus entity, Collision2D collision2D)
         {
-            _timeActionsManager.AddTimeAction(
-                new ChangeBallSpeedTimeAction(_executionTime, _ballsOnField, _speedToChange, _isAdding));
+            if (_timeActionsManager.TryGetAction<ChangeBallSpeedTimeAction>(out var action) &&
+                action.IsAdding == _isAdding)
+            {
+                action.Restart();
+            }
+            else
+            {
+                _timeActionsManager.AddTimeAction(
+                    new ChangeBallSpeedTimeAction(_executionTime, _ballsOnField, _speedToChange, _isAdding)); 
+            }
         }
     }
 }

@@ -1,51 +1,31 @@
-﻿using Game.GameEntities.Blocks;
+﻿using System.Collections.Generic;
+using Game.GameEntities.Blocks;
 using Game.GameEntities.PlayerObjects.BallObject;
 using Game.GameEntities.PlayerObjects.BallObject.Spawners;
 using Libs.Behaviors;
-using Libs.Pooling.Base;
-using Libs.TimeActions;
 using UnityEngine;
 
 namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 {
     public class CaptiveBallBehavior : IObjectBehavior<Block>
     {
-        private readonly TimeActionsManager _timeActionsManager;
         private readonly IBallSpawner _ballSpawner;
-        private readonly IPoolProvider _poolProvider;
         private readonly BallsOnField _ballsOnField;
-        private readonly ColliderTag _bottomColliderTag;
+        private readonly CaptiveBallsSystem _captiveBallsSystem;
 
-        private float _actionTime;
-
-        public CaptiveBallBehavior(TimeActionsManager timeActionsManager,
-            IBallSpawner ballSpawner,
-            IPoolProvider poolProvider, 
-            BallsOnField ballsOnField,
-            ColliderTag bottomColliderTag)
+        public CaptiveBallBehavior(IBallSpawner ballSpawner, BallsOnField ballsOnField, 
+            CaptiveBallsSystem captiveBallsSystem)
         {
-            _timeActionsManager = timeActionsManager;
             _ballSpawner = ballSpawner;
-            _poolProvider = poolProvider;
             _ballsOnField = ballsOnField;
-            _bottomColliderTag = bottomColliderTag;
+            _captiveBallsSystem = captiveBallsSystem;
         }
-
-        public void SetBehaviorParameters(float actionTime) => _actionTime = actionTime;
 
         public void Behave(Block entity, Collision2D collision2D)
         {
             if (TryGetBallFromCollision(collision2D, out var ball))
             {
-                AddNewBalls(ball);
-
-                if (_timeActionsManager.ContainsAction<CaptiveBallTimeAction>())
-                {
-                    return;
-                }
-                
-                _timeActionsManager.AddTimeAction(new CaptiveBallTimeAction(_actionTime,
-                    _poolProvider, _ballsOnField, _bottomColliderTag));
+                _captiveBallsSystem.AddNewBalls(CreateBalls(ball));
             }
         }
 
@@ -56,7 +36,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
                 return true;
             }
             
-            if(collision2D.otherCollider.gameObject.TryGetComponent<Ball>(out ball))
+            if(collision2D.otherCollider.gameObject.TryGetComponent(out ball))
             {
                 return true;
             }
@@ -64,10 +44,12 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
             return false;
         }
 
-        private void AddNewBalls(Ball original)
+        private List<Ball> CreateBalls(Ball original)
         {
             var count = _ballsOnField.All.Count;
             var speed = original.GetSpeed();
+
+            var result = new List<Ball>();
             
             for (var i = 0; i < count; i++)
             {
@@ -81,7 +63,10 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
                 newBall.SetDirection(speed.normalized);
                 newBall.StartMove();
                 _ballsOnField.AddBall(newBall);
+                result.Add(newBall);
             }
+
+            return result;
         }
     }
 }

@@ -7,23 +7,23 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
     {
         private readonly BallsOnField _ballsOnField;
         private readonly float _speedToChange;
-        private readonly bool _isAdding;
 
         public ChangeBallSpeedTimeAction(float executionTime, 
             BallsOnField ballsOnField,
             float speedToChange,
             bool isAdding) : base(executionTime)
         {
+            IsAdding = isAdding;
             _ballsOnField = ballsOnField;
             _speedToChange = speedToChange;
-            _isAdding = isAdding;
         }
+        public bool IsAdding { get; }
 
-        public override void OnStart() => ChangeSpeeds(_isAdding ? _speedToChange : -_speedToChange);
+        public override void OnStart() => ChangeSpeeds(IsAdding ? _speedToChange : -_speedToChange);
 
         public override void OnUpdate(float deltaTime) { }
 
-        public override void OnEnd() => ChangeSpeeds(_isAdding ? -_speedToChange : _speedToChange);
+        public override void OnEnd() => ChangeSpeeds(IsAdding ? -_speedToChange : _speedToChange);
 
         private void ChangeSpeeds(float speed)
         {

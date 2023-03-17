@@ -27,7 +27,7 @@ namespace Game.GameEntities.Blocks
             StartHealth = configuration.LifesCount;
             IsDestroyed = false;
 
-            if (configuration.LifesCount == 1)
+            if (configuration.LifesCount == 1 && configuration.ActiveOnPlay)
             {
                 _readyToDestroy = true;
             }

@@ -31,8 +31,16 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangePlatformScale
         
         public void Behave(Bonus entity, Collision2D collision2D)
         {
-            _timeActionsManager.AddTimeAction(new ChangePlatformScaleTimeAction(
-                _ship, _scaleBy, _changingTime, _isIncrease, _actionTime));
+            if (_timeActionsManager.TryGetAction<ChangePlatformScaleTimeAction>(out var action) &&
+                action.IsIncrease == _isIncrease)
+            {
+                action.Restart();
+            }
+            else
+            {
+                _timeActionsManager.AddTimeAction(new ChangePlatformScaleTimeAction(
+                    _ship, _scaleBy, _changingTime, _isIncrease, _actionTime));
+            }
         }
     }
 }

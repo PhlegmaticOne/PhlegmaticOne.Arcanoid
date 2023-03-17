@@ -680,6 +680,7 @@ Transform:
   m_Children:
   - {fileID: 1608641639}
   - {fileID: 128405191}
+  - {fileID: 1681056271}
   m_Father: {fileID: 914941573}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1207,6 +1208,7 @@ Transform:
   - {fileID: 190784374}
   - {fileID: 1959356268}
   - {fileID: 5210425773351093059}
+  - {fileID: 1697300050}
   m_Father: {fileID: 934005459}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1385,6 +1387,7 @@ MonoBehaviour:
   - {fileID: 1533534217}
   - {fileID: 65189265}
   - {fileID: 1615701962}
+  - {fileID: 1697300049}
 --- !u!4 &797919460
 Transform:
   m_ObjectHideFlags: 0
@@ -3444,6 +3447,50 @@ MonoBehaviour:
       _behaviourInstallers:
       - {fileID: 6510303263033164637, guid: 72477234cccc1b343a0fa1f1ce3c6193, type: 3}
       - {fileID: 1820726261}
+--- !u!1 &1681056270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1681056271}
+  - component: {fileID: 1681056272}
+  m_Layer: 0
+  m_Name: CaptiveBallsSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1681056271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681056270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 271144866}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681056272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681056270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c445774c344586931b4c70d2b71a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bottomColliderTag: {fileID: 11400000, guid: f89e86bd10b359e409435b58710265d3, type: 2}
 --- !u!1 &1693771550
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,6 +3546,50 @@ MonoBehaviour:
     - _colliderTag: {fileID: 11400000, guid: f89e86bd10b359e409435b58710265d3, type: 2}
       _behaviourInstallers:
       - {fileID: 2680509290851092447, guid: 10d8d17fb0b38b14f928474de1065616, type: 3}
+--- !u!1 &1697300048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697300050}
+  - component: {fileID: 1697300049}
+  m_Layer: 0
+  m_Name: CaptiveBallsSystemInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1697300049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697300048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e330029b5a6e4921883afd64b3bd41c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _captiveBallsSystem: {fileID: 1681056272}
+--- !u!4 &1697300050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697300048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 669131432}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725998318
 GameObject:
   m_ObjectHideFlags: 0

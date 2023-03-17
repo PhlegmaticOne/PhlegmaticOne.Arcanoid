@@ -1,4 +1,5 @@
-﻿using Game.GameEntities.PlayerObjects.ShipObject;
+﻿using Game.GameEntities.Bonuses.Behaviors.ChangePlatformScale;
+using Game.GameEntities.PlayerObjects.ShipObject;
 using Libs.Behaviors;
 using Libs.TimeActions;
 using UnityEngine;
@@ -29,8 +30,16 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
         
         public void Behave(Bonus entity, Collision2D collision2D)
         {
-            _timeActionsManager.AddTimeAction(new ChangePlatformSpeedTimeAction(_ship,
-                _changeBy, _isIncrease, _actionTime));
+            if (_timeActionsManager.TryGetAction<ChangePlatformScaleTimeAction>(out var action) &&
+                action.IsIncrease == _isIncrease)
+            {
+                action.Restart();
+            }
+            else
+            {
+                _timeActionsManager.AddTimeAction(new ChangePlatformSpeedTimeAction(_ship,
+                    _changeBy, _isIncrease, _actionTime));
+            }
         }
     }
 }
