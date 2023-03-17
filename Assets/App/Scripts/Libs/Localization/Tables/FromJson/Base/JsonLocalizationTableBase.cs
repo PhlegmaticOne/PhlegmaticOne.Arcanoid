@@ -8,8 +8,10 @@ namespace Libs.Localization.Tables.FromJson.Base
     {
         protected readonly TType DeserializedObject;
         
-        protected JsonLocalizationTableBase(string json) => 
+        protected JsonLocalizationTableBase(string json)
+        {
             DeserializedObject = JsonConvert.DeserializeObject<TType>(json);
+        }
 
         public object GetLocalizedValue(string key, Type valueType)
         {
