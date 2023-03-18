@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Common.Bag;
-using Common.Configurations.Packs;
-using Common.Data.Models;
+using Common.Packs.Data.Models;
 using Game.PopupRequires.ViewModels;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;

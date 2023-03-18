@@ -24,11 +24,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _packConfigurations
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Common.Configurations.Packs.PackConfiguration,
+      Data: 0|System.Collections.Generic.Dictionary`2[[Common.Packs.Configurations.PackConfiguration,
         Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Common.Configurations.Packs.PackConfiguration,
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Common.Packs.Configurations.PackConfiguration,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
@@ -63,6 +63,6 @@ MonoBehaviour:
     _packPreviewFilePostfix: Preview
   _defaultPackConfiguration:
     _defaultPack: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
-    _defaultLevelId: 1
+    _defaultLevelId: 0
   _isUpdatePacksInEditor: 0
   _isUpdateAllPacks: 0

@@ -1,5 +1,5 @@
 ﻿using Common.Bag;
-using Common.Data.Models;
+using Common.Packs.Data.Models;
 using Game.Base;
 using Game.PopupRequires.Commands.Base;
 

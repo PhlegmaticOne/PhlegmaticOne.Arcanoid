@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Configurations.Packs;
-using Common.Data.Models;
+using Common.Packs.Data.Models;
 using Common.Positioning;
 using Libs.Localization.Base;
 using UnityEngine;

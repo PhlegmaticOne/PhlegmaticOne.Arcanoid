@@ -1,5 +1,4 @@
-﻿using Common.Configurations.Packs;
-using Common.Data.Models;
+﻿using Common.Packs.Data.Models;
 using Libs.Localization.Components.Base;
 using TMPro;
 using UnityEngine;
@@ -15,6 +14,8 @@ namespace Popups.PackChoose.Views
         [SerializeField] private TextMeshProUGUI _packNameText;
         [SerializeField] private TextMeshProUGUI _levelInfoText;
         [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private TextMeshProUGUI _startLevelEnergyText;
+        [SerializeField] private TextMeshProUGUI _winLevelEnergyText;
 
         [SerializeField] private LocalizationBindableComponent _packNameTextBindableComponent;
         public LocalizationBindableComponent PackNameTextBindableComponent => _packNameTextBindableComponent;
@@ -30,6 +31,8 @@ namespace Popups.PackChoose.Views
             _packSpriteImage.sprite = packConfiguration.PackImage;
             _previewOuterImage.color = packConfiguration.PackColor;
             _packNameText.text = packConfiguration.Name;
+            _startLevelEnergyText.text = packConfiguration.StartLevelEnergy.ToString();
+            _winLevelEnergyText.text = packConfiguration.WinLevelEnergy.ToString();
             _levelInfoText.text = FormatLevelsInfo(packGameData.PackPersistentData);
             _packNameTextBindableComponent.SetBindingData<string>(packConfiguration.Name);
         }

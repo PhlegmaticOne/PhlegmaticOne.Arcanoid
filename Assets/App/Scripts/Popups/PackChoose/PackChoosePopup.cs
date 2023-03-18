@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Common.Bag;
-using Common.Configurations.Packs;
-using Common.Data.Models;
-using Common.Data.Repositories.Base;
+using Common.Energy;
+using Common.Packs.Data.Models;
+using Common.Packs.Data.Repositories.Base;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
@@ -22,11 +22,13 @@ namespace Popups.PackChoose
         [SerializeField] private PackCollectionView _packCollectionView;
         [SerializeField] private Button _backButton;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
+        [SerializeField] private EnergyView _energyView;
 
         private IPackRepository _packRepository;
         private IObjectBag _objectBag;
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
+        private EnergyController _energyController;
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents()
         {
@@ -38,6 +40,10 @@ namespace Popups.PackChoose
             _packRepository = serviceProvider.GetRequiredService<IPackRepository>();
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _objectBag = serviceProvider.GetRequiredService<IObjectBag>();
+
+            var energyManager = serviceProvider.GetRequiredService<EnergyManager>();
+            _energyController = new EnergyController(energyManager, _energyView);
+            
             ConfigureBackButton();
             ShowPacks();
         }
@@ -55,6 +61,8 @@ namespace Popups.PackChoose
         public override void Reset()
         {
             _localizationContext.Flush();
+            _energyController.Disable();
+            _energyController = null;
             _localizationContext = null;
             RemoveAllListeners(_backButton);
             _packCollectionView.PackClicked -= PackCollectionViewOnPackClicked;
@@ -75,9 +83,13 @@ namespace Popups.PackChoose
 
         private void PackCollectionViewOnPackClicked(PackGameData packGameData)
         {
-            SetGameData(packGameData);
-            PopupManager.CloseAllPopupsInstant();
-            SceneManager.LoadScene(1);
+            var configuration = packGameData.PackConfiguration;
+            _energyController.SpendEnergy(configuration.StartLevelEnergy, () =>
+            {
+                SetGameData(packGameData);
+                PopupManager.CloseAllPopupsInstant();
+                SceneManager.LoadScene(1);
+            });
         }
 
         private void SetGameData(PackGameData packGameData)

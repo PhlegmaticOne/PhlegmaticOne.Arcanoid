@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Common.Data.Models;
+using Common.Packs.Data.Models;
 using Game.Field.Helpers;
 using Game.GameEntities.Blocks;
 using Game.GameEntities.Blocks.Spawners;

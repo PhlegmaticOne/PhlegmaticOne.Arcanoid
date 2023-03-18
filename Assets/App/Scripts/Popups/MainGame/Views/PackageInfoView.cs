@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Common.Configurations.Packs;
-using Common.Data.Models;
+using Common.Packs.Data.Models;
 using Libs.Localization.Components;
 using Sirenix.OdinInspector;
 using TMPro;

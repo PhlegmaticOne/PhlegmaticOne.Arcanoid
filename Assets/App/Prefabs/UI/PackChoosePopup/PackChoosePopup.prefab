@@ -454,6 +454,7 @@ MonoBehaviour:
   _backButton: {fileID: 1937220973483858518}
   _bindableComponents:
   - {fileID: 4855125169098436441}
+  _energyView: {fileID: 1765808687897883618}
 --- !u!1001 &2890420760837488073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -592,5 +593,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2148c5002ad4e4da88e61cb155e7fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1765808687897883618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3503167171839807019, guid: 3124e7ef6c69fa64dbfc6572dcd78b93, type: 3}
+  m_PrefabInstance: {fileID: 2890420760837488073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618e76ade74e4807b9c10ccd51c6c684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

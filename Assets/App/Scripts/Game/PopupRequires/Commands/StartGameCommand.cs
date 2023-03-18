@@ -1,6 +1,6 @@
 ﻿using Common.Bag;
-using Common.Data.Models;
-using Common.Data.Repositories.Base;
+using Common.Packs.Data.Models;
+using Common.Packs.Data.Repositories.Base;
 using Game.Base;
 using Game.PopupRequires.Commands.Base;
 

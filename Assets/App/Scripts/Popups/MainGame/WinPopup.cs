@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Common.Bag;
-using Common.Configurations.Packs;
-using Common.Data.Models;
+using Common.Energy;
+using Common.Packs.Data.Models;
 using Game.PopupRequires.Commands.Base;
 using Game.PopupRequires.ViewModels;
 using Libs.Localization.Base;
@@ -21,6 +21,7 @@ namespace Popups.MainGame
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
         [SerializeField] private PackageInfoView _packageInfoView;
+        [SerializeField] private EnergyView _energyView;
 
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
@@ -29,6 +30,7 @@ namespace Popups.MainGame
         private WinMenuViewModel _winMenuViewModel;
         private ICommand _onCloseCommand;
         private Action _onCloseAction;
+        private EnergyController _energyController;
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents()
         {
@@ -40,6 +42,9 @@ namespace Popups.MainGame
         {
             _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _objectBag = serviceProvider.GetRequiredService<IObjectBag>();
+
+            var energyManager = serviceProvider.GetRequiredService<EnergyManager>();
+            _energyController = new EnergyController(energyManager, _energyView);
             ConfigureNextLevelButton();
         }
 
@@ -55,6 +60,13 @@ namespace Popups.MainGame
                 .BindLocalizable(this)
                 .Refresh();
             _winMenuViewModel.OnShowingCommand.Execute();
+        }
+
+        protected override void OnShowed()
+        {
+            var packData = _objectBag.Get<GameData>().PackGameData;
+            var configuration = packData.PackConfiguration;
+            _energyController.AddEnergy(configuration.WinLevelEnergy);
         }
 
         public void OnClose(Action action) => _onCloseAction = action;
@@ -79,6 +91,8 @@ namespace Popups.MainGame
         {
             _localizationContext.Flush();
             _localizationContext = null;
+            _energyController.Disable();
+            _energyController = null;
             _onCloseAction = null;
             RemoveAllListeners(_nextLevelButton);
         }
@@ -87,15 +101,18 @@ namespace Popups.MainGame
         {
             _nextLevelButton.onClick.AddListener(() =>
             {
-                var pack = _objectBag.Get<GameData>().PackGameData.PackPersistentData;
-                
-                _onCloseCommand = pack.passedLevelsCount == pack.levelsCount - 1 ? 
+                var packData = _objectBag.Get<GameData>().PackGameData;
+                var packPersistentData = packData.PackPersistentData;
+                var configuration = packData.PackConfiguration;
+                _onCloseCommand = packPersistentData.passedLevelsCount == packPersistentData.levelsCount - 1 ? 
                     _winMenuViewModel.OnLastClosedCommand :
                     _winMenuViewModel.OnClosedCommand;
                 
-                _winMenuViewModel.OnNextButtonClickCommand.Execute();
-                
-                PopupManager.CloseLastPopup();
+                _energyController.SpendEnergy(configuration.StartLevelEnergy, () =>
+                {
+                    _winMenuViewModel.OnNextButtonClickCommand.Execute();
+                    PopupManager.CloseLastPopup();
+                });
             });
         }
         

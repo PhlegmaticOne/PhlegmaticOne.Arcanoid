@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Data.Models;
 using UnityEngine;
 
 namespace Game.GameEntities.Blocks.Spawners.Configurations

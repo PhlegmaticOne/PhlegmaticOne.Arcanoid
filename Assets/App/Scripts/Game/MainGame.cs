@@ -105,7 +105,7 @@ namespace Game
             
             foreach (var block in _gameField.Blocks)
             {
-                if (block.IsDestroyed == false)
+                if (block != null && block.IsDestroyed == false)
                 {
                     blocksPool.ReturnToPool(block);
                 }

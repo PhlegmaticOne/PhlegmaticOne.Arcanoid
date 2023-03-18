@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Common.Bag;
-using Common.Data.Models;
-using Common.Data.Repositories.Base;
+using Common.Packs.Data.Models;
+using Common.Packs.Data.Repositories.Base;
 using Game.PopupRequires.Commands.Base;
 
 namespace Game.PopupRequires.Commands

@@ -1,5 +1,5 @@
-﻿using Common.Configurations.Packs;
-using Common.Data.Repositories.PersistentRepositories.Helpers;
+﻿using Common.Packs.Configurations;
+using Common.Packs.Data.Repositories.PersistentRepositories.Helpers;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;

@@ -1,6 +1,6 @@
-﻿using Common.Configurations.Packs;
-using Common.Data.Repositories.Base;
-using Common.Data.Repositories.PersistentRepositories;
+﻿using Common.Packs.Configurations;
+using Common.Packs.Data.Repositories.Base;
+using Common.Packs.Data.Repositories.PersistentRepositories;
 using Libs.Services;
 using UnityEngine;
 
