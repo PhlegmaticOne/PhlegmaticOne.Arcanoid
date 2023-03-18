@@ -7,6 +7,7 @@ namespace Common.Positioning
         [SerializeField] private RectTransform _viewPortTransform;
         [SerializeField] private RectTransform _canvasTransform;
         [SerializeField] private RectTransform _headerTransform;
+        public float Width => _viewPortTransform.rect.width;
 
         private void Start()
         {

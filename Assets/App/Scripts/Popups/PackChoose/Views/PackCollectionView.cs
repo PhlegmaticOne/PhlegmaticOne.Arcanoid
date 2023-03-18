@@ -2,6 +2,7 @@
 using System.Linq;
 using Common.Configurations.Packs;
 using Common.Data.Models;
+using Common.Positioning;
 using Libs.Localization.Base;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,8 +12,10 @@ namespace Popups.PackChoose.Views
     public class PackCollectionView : MonoBehaviour, ILocalizable
     {
         //ObjectPool for PackPreview
+        [SerializeField] [Range(0f, 1f)] private float _marginSide;
         [SerializeField] private RectTransform _viewsTransform;
         [SerializeField] private PackPreview _packPreview;
+        [SerializeField] private ViewportResizer _viewportResizer;
 
         private readonly List<PackPreview> _previews = new List<PackPreview>();
         private readonly List<PackGameData> _packConfigurations = new List<PackGameData>();
@@ -29,6 +32,7 @@ namespace Popups.PackChoose.Views
                 var packPreview = Instantiate(_packPreview, _viewsTransform);
                 packPreview.Clicked += PackPreviewOnClicked;
                 packPreview.UpdateView(i, packData);
+                packPreview.SetWidth((1 - 2 * _marginSide) * _viewportResizer.Width);
                 _previews.Add(packPreview);
                 _packConfigurations.Add(packData);
                 ++i;

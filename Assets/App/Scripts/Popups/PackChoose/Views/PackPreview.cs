@@ -14,6 +14,7 @@ namespace Popups.PackChoose.Views
         [SerializeField] private Image _previewOuterImage;
         [SerializeField] private TextMeshProUGUI _packNameText;
         [SerializeField] private TextMeshProUGUI _levelInfoText;
+        [SerializeField] private RectTransform _rectTransform;
 
         [SerializeField] private LocalizationBindableComponent _packNameTextBindableComponent;
         public LocalizationBindableComponent PackNameTextBindableComponent => _packNameTextBindableComponent;
@@ -31,6 +32,11 @@ namespace Popups.PackChoose.Views
             _packNameText.text = packConfiguration.Name;
             _levelInfoText.text = FormatLevelsInfo(packGameData.PackPersistentData);
             _packNameTextBindableComponent.SetBindingData<string>(packConfiguration.Name);
+        }
+
+        public void SetWidth(float width)
+        {
+            _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         }
 
         private void OnMouseDown() => Clicked?.Invoke(_index);

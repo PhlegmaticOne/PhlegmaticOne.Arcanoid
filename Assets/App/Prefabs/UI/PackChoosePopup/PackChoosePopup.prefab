@@ -121,8 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd13ae21f3e44bf2a5ecde9355a30265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _marginSide: 0.1
   _viewsTransform: {fileID: 106245233923397430}
   _packPreview: {fileID: 5479881059525561470, guid: 638c0ac5442d6134abdfcfb96274593c, type: 3}
+  _viewportResizer: {fileID: 90281377}
 --- !u!114 &90281377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ MonoBehaviour:
     m_Top: 30
     m_Bottom: 30
   m_ChildAlignment: 7
-  m_Spacing: 35.61
+  m_Spacing: 45
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0

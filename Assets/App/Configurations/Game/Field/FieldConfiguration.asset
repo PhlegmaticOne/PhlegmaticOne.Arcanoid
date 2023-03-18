@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FieldConfiguration
   m_EditorClassIdentifier: 
   _fieldMargin:
-    _fromTop: 20.7
+    _fromTop: 17
     _fromBottom: 25
     _fromLeft: 1.5
     _fromRight: 1.5
