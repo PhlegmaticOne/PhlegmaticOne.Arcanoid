@@ -3,7 +3,7 @@ using Libs.TimeActions.Base;
 
 namespace Game.GameEntities.Bonuses.Behaviors.ChangePlatformScale
 {
-    public class ChangePlatformScaleTimeAction : TimeActionBase
+    public class ChangePlatformScaleTimeAction : EndsOfIntervalTimeAction
     {
         public bool IsIncrease { get; }
         private readonly Ship _ship;
@@ -31,8 +31,6 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangePlatformScale
                 _ship.DecreaseScaleBy(_scaleBy, _changingTime);
             }
         }
-
-        public override void OnUpdate(float deltaTime) { }
 
         public override void OnEnd()
         {

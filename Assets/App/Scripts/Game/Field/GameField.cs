@@ -42,6 +42,8 @@ namespace Game.Field
             return block != null && block.IsDestroyed == false;
         }
 
+        public bool ContainsBlockAtPosition(in FieldPosition fieldPosition) => TryGetBlock(fieldPosition, out _);
+
         public void Clear()
         {
             _blocks.Clear();

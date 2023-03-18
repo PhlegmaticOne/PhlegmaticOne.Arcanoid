@@ -3,7 +3,7 @@ using Libs.TimeActions.Base;
 
 namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
 {
-    public class ChangePlatformSpeedTimeAction : TimeActionBase
+    public class ChangePlatformSpeedTimeAction : EndsOfIntervalTimeAction
     {
         private readonly Ship _ship;
         private readonly float _changeBy;
@@ -15,6 +15,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
             _ship = ship;
             _changeBy = changeBy;
         }
+        
         public bool IsIncrease { get; }
 
         public override void OnStart()
@@ -28,8 +29,6 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
                 _ship.DecreaseLerpBy(_changeBy);
             }
         }
-
-        public override void OnUpdate(float deltaTime) { }
 
         public override void OnEnd()
         {

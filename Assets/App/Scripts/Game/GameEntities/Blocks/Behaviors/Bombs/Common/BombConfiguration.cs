@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Game.GameEntities.Blocks.Behaviors.ChainBomb;
 using Game.GameEntities.Blocks.Configurations;
 using Libs.Behaviors;
 using Sirenix.OdinInspector;

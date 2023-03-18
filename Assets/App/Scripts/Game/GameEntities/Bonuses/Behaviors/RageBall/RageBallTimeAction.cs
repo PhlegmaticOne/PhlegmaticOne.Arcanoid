@@ -5,7 +5,7 @@ using Libs.TimeActions.Base;
 
 namespace Game.GameEntities.Bonuses.Behaviors.RageBall
 {
-    public class RageBallTimeAction : TimeActionBase
+    public class RageBallTimeAction : EndsOfIntervalTimeAction
     {
         private readonly BallsOnField _ballsOnField;
         private readonly ColliderTag _blockColliderTag;
@@ -33,8 +33,6 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
                     .SubstituteBehavior<MovementAngleCorrectionBehavior>(colliderTag, new RageBallBehavior());
             }
         }
-
-        public override void OnUpdate(float deltaTime) { }
 
         public override void OnEnd()
         {

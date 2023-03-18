@@ -9,15 +9,22 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Movement
         private const float Tolerance = 0.01f;
         private float _minTopBottomBounceAngle;
         private float _minSideBounceAngle;
+        private bool _isCorrectMovement;
 
-        public void SetBehaviorParameters(float minTopBottomBounceAngle, float minSideBounceAngle)
+        public void SetBehaviorParameters(float minTopBottomBounceAngle, float minSideBounceAngle, bool isCorrectMovement)
         {
             _minTopBottomBounceAngle = minTopBottomBounceAngle;
             _minSideBounceAngle = minSideBounceAngle;
+            _isCorrectMovement = isCorrectMovement;
         }
 
         public void Behave(Ball entity, Collision2D collision2D)
         {
+            if (_isCorrectMovement == false)
+            {
+                return;
+            }
+            
             var normal = collision2D.contacts[0].normal;
             var ballVelocity = entity.GetSpeed();
             var velocityAngle = Vector3.Angle(ballVelocity, normal);

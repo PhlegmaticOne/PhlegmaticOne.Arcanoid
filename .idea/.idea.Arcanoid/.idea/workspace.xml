@@ -2,39 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehavior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehaviorInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombPositionsSearcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombPositionsSearcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombPositionsSearcherInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombPositionsSearcherInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombPositionsSearcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombPositionsSearcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombPositionsSearcherInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombPositionsSearcherInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/AffectStrategies.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/AffectStrategies/BlockAffectStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/AffectStrategies/BlockAffectStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/AffectStrategies/IBlockAffectStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/AffectStrategies/IBlockAffectStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/PositionsStrategies.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/PositionsStrategies/IBombPositionsSearcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/PositionsStrategies/IBombPositionsSearcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/PositionsStrategies/Installers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/PositionsStrategies/Installers/BombPositionsSearcherInstallerBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/PositionsStrategies/Installers/BombPositionsSearcherInstallerBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Base/IBombTimeAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/FixedIntervalBombTimeAction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/FixedIntervalBombTimeAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Installer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Installer/BombTimeActionInstallerBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Installer/BombTimeActionInstallerBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Installer/FixedIntervalBombTimeActionInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/TimeActions/Installer/FixedIntervalBombTimeActionInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombPositionsSearcher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombPositionsSearcher.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombPositionsSearcherInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombPositionsSearcherInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/Base/EndsOfIntervalTimeAction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/Base/EndsOfIntervalTimeAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/Base/FixedIntervalTimeAction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/Base/FixedIntervalTimeAction.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Game/Field/FieldConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Game/Field/FieldConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Behaviors/BlockAngleCorrection.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Behaviors/BlockAngleCorrection.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Behaviors/WallsAngleCorrection.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Behaviors/WallsAngleCorrection.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Behaviors/MovementAngleCorrectionBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ball/Behaviors/MovementAngleCorrectionBehavior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/AxisBombBehavior.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/AxisBombBehavior.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/ChainBombBehavior.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/ChainBombBehavior.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/DefaultBombBehavior.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Bombs/DefaultBombBehavior.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Configurations/GameFieldConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Configurations/GameFieldConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/InteractableZoneSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Helpers/InteractableZoneSetter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/GameField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehavior.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehavior.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehaviorInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Axis/AxisBombBehaviorInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombBehavior.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombBehavior.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombDestroyBehaviorInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Chain/ChainBombDestroyBehaviorInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehavior.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorInstallerBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorInstallerBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombBehaviorInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Common/BombConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehavior.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehavior.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehaviorInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Bombs/Default/DefaultBombBehaviorInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/ChangeBallsSpeed/ChangeBallsSpeedTimeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/ChangeBallsSpeed/ChangeBallsSpeedTimeAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/ChangePlatformScale/ChangePlatformScaleTimeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/ChangePlatformScale/ChangePlatformScaleTimeAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedTimeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/PlatformSpeed/ChangePlatformSpeedTimeAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallTimeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Bonuses/Behaviors/RageBall/RageBallTimeAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Base.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Base/MovementAngleCorrectionBehaviorBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Base/MovementAngleCorrectionBehaviorBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Blocks.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Blocks/BlockAngleCorrectionBehavior.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Blocks/BlockAngleCorrectionBehavior.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Blocks/BlockAngleCorrectionInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Blocks/BlockAngleCorrectionInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Ship.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Ship/ShipCollisionAngleCorrectionBehavior.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Ship/ShipCollisionAngleCorrectionBehavior.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Ship/ShipCollisionAngleCorrectionBehaviorInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Ship/ShipCollisionAngleCorrectionBehaviorInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Walls.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Walls/WallCollisionAngleCorrectionBehavior.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Walls/WallCollisionAngleCorrectionBehavior.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Walls/WallCollisionAngleCorrectionBehaviorInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Walls/WallCollisionAngleCorrectionBehaviorInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Movement/MovementAngleCorrectionBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/Base/TimeActionBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Libs/TimeActions/Base/TimeActionBase.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/0.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/0.json" afterDir="false" />
     </list>
@@ -138,10 +180,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="72576">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="72576" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -196,7 +238,8 @@
       <workItem from="1678962458141" duration="8859000" />
       <workItem from="1679030349717" duration="5651000" />
       <workItem from="1679066371546" duration="10045000" />
-      <workItem from="1679076745115" duration="4607000" />
+      <workItem from="1679076745115" duration="4643000" />
+      <workItem from="1679126185501" duration="7820000" />
     </task>
     <servers />
   </component>

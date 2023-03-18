@@ -8,10 +8,11 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Movement
     {
         [SerializeField] private float _minSideAngle;
         [SerializeField] private float _minTopBottomAngle;
+        [SerializeField] private bool _isCorrectMovement = true;
         public override IObjectBehavior<Ball> CreateBehaviour()
         {
             var behavior = new MovementAngleCorrectionBehavior();
-            behavior.SetBehaviorParameters(_minTopBottomAngle, _minSideAngle);
+            behavior.SetBehaviorParameters(_minTopBottomAngle, _minSideAngle, _isCorrectMovement);
             return behavior;
         }
     }
