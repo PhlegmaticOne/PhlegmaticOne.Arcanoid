@@ -7,12 +7,14 @@ namespace Common.Packs.Configurations
     {
         [SerializeField] private string _name;
         [SerializeField] private int _startLevelEnergy;
+        [SerializeField] private int _continueLevelEnergy;
         [SerializeField] private int _winLevelEnergy;
         [SerializeField] private Sprite _packImage;
         [SerializeField] private Color _packColor;
 
         public string Name => _name;
         public int StartLevelEnergy => _startLevelEnergy;
+        public int ContinueLevelEnergy => _continueLevelEnergy;
         public int WinLevelEnergy => _winLevelEnergy;
         public Sprite PackImage => _packImage;
         public Color PackColor => _packColor;

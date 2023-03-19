@@ -68,7 +68,7 @@ namespace Game.GameEntities.Controllers
             var popup = _popupManager.SpawnPopup<LosePopup>();
             popup.SetupViewModel(_losePopupViewModel);
             popup.OnShowing();
-            popup.OnClose(() =>
+            popup.OnRestart(() =>
             {
                 _mainGamePopup.UpdateHeader();
                 _mainGamePopup.InitializeHealthBar();

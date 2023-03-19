@@ -57,6 +57,8 @@ namespace Common.Energy
             return OnEnergyChanged();
         }
 
+        public bool CanSpendEnergy(int energy) => _energyModel.currentEnergy >= energy;
+
         public EnergyChangedModel SpendEnergy(int energy)
         {
             _energyModel.SpendEnergy(energy);

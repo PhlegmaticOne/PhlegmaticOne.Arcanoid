@@ -2,102 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Configurations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Configurations/EnergyConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Configurations/EnergyConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Events.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Events/EnergyChangedModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Events/EnergyChangedModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Events/TimeChangedModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Events/TimeChangedModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Models.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Models/EnergyModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Models/EnergyModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Repositories.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Repositories/IEnergyRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Repositories/IEnergyRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Repositories/PersistentEnergyRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/Repositories/PersistentEnergyRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/EnergyManagerInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/EnergyManagerInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/DeleteEnergySavesHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/DeleteEnergySavesHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/AddLifeCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/AddLifeCommand.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/Energy.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/Energy/EnergyPopup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/Energy/EnergyPopup.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/UI/Common/Sprites/EnergyBar/EnergyBarFill.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/UI/Common/Sprites/EnergyBar/EnergyBarFill.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Media/UI/MainGamePopup/HeadMenu/PackLevelPlace.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Media/UI/MainGamePopup/HeadMenu/PackLevelPlace.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/Common/EnergyBar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/Common/EnergyBar.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/WinPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/WinPopup.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/PackChoosePopup/Elements/PackPreview.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/PackChoosePopup/Elements/PackPreview.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/Common/EnergyConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/Common/EnergyConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/PopupSystemConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Configurations/PopupSystem/PopupSystemConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Media/UI/MainGamePopup/LosePopup/LosePopup.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Media/UI/MainGamePopup/LosePopup/LosePopup.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/LosePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/MainGamePopup/LosePopup.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/PackChoosePopup/PackChoosePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/PackChoosePopup/PackChoosePopup.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations/PackConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PackConfiguration.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations/PackConfiguration.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PacksConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations/PacksConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Configurations/Packs/PacksConfiguration.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations/PacksConfiguration.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/GameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/GameData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/GameData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/LevelData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/LevelData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/LevelData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackGameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackGameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackGameData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackGameData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackLevelsData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackLevelsData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackLevelsData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackLevelsData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackPersistentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackPersistentData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackPersistentData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackPersistentData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackPreviewData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackPreviewData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Models/PackPreviewData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Models/PackPreviewData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/Base.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/ILevelRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/Base/ILevelRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/ILevelRepository.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/Base/ILevelRepository.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/IPackRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/Base/IPackRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/Base/IPackRepository.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/Base/IPackRepository.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/Helpers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/Helpers.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/Helpers/PersistentPackRepositoryInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/Helpers/PersistentPackRepositoryInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/Helpers/PersistentPackRepositoryInitializer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/Helpers/PersistentPackRepositoryInitializer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/Helpers/PersistentRepositoriesHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/Helpers/PersistentRepositoriesHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/Helpers/PersistentRepositoriesHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/Helpers/PersistentRepositoriesHelper.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/PersistentLevelsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/PersistentLevelsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/PersistentLevelsRepository.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/PersistentLevelsRepository.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/PersistentPackRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/PersistentPackRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Data/Repositories/PersistentRepositories/PersistentPackRepository.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Data/Repositories/PersistentRepositories/PersistentPackRepository.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/RepositoriesInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/ServiceInstallers/RepositoriesInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Energy/EnergyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations/PackConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Common/Packs/Configurations/PackConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/MainGameSceneComposite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/GameDataSeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Composites/Seeding/GameDataSeed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/FieldBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/IFieldBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Builder/IFieldBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Spawners/Configurations/BlockSpawnSystemConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Spawners/Configurations/BlockSpawnSystemConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/RestartGameCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/RestartGameCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/SetNextLevelDataCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/SetNextLevelDataCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/StartGameCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/Commands/StartGameCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/DeleteSavesHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/DeletePackSavesHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/DeleteSavesHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/DeletePackSavesHelper.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/SynchronizePacksDataPreprocess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Helpers/Editor/SynchronizePacksDataPreprocess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/MainGamePopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/PackageInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/Views/PackageInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/WinPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/WinPopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/Logic/Controllers/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/ViewModels/LosePopupViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/PopupRequires/ViewModels/LosePopupViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/LosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/MainGame/LosePopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/PackChoosePopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/Views/PackCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/Views/PackCollectionView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/Views/PackPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Popups/PackChoose/Views/PackPreview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/0.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/Levels/0.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/Localization/English/EnglishLocalization.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/Localization/English/EnglishLocalization.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/Localization/Russian/RussianLocalization.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/Localization/Russian/RussianLocalization.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/Tutorial/TutorialPackConfiguration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/ServiceProviderAccessor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/ServiceProvider/ServiceProviderAccessor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +33,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/00/28ec8f7a/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/19/1440b2fb/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/1b/44dc1fad/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -201,10 +128,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="72576">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="72576" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -260,7 +187,8 @@
       <workItem from="1679030349717" duration="5651000" />
       <workItem from="1679066371546" duration="10045000" />
       <workItem from="1679076745115" duration="4643000" />
-      <workItem from="1679126185501" duration="26998000" />
+      <workItem from="1679126185501" duration="27093000" />
+      <workItem from="1679210065441" duration="6212000" />
     </task>
     <servers />
   </component>
@@ -282,24 +210,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs</url>
-          <line>123</line>
-          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Game\MainGame.cs" initialLine="123" containingFunctionPresentation="method 'Stop'">
-            <startOffsets>
-              <option value="4213" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4235" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

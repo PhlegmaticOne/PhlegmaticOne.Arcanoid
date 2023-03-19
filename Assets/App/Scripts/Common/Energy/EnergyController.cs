@@ -39,6 +39,8 @@ namespace Common.Energy
                 onAnimationPlayed);
         }
 
+        public bool CanSpendEnergy(int energy) => _energyManager.CanSpendEnergy(energy);
+
         public void AddEnergy(int energy, Action onAnimationPlayed = null)
         {
             var energyChangedModel = _energyManager.AddEnergy(energy);

@@ -10,6 +10,10 @@
   "YouLose": "You lose!",
   "YouWin": "You win!",
   "Next": "Next",
+  "BuyLife": "Buy life",
+  "Ok": "Ok",
+  "NotEnoughEnergyToStartLevel": "Not enough energy to start level",
+  "NotEnoughEnergyToContinueLevel": "Not enough energy to continue level",
 
   "Tutorial": "Tutorial"
 }

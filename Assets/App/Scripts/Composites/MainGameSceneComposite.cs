@@ -7,6 +7,7 @@ using Composites.Seeding;
 using Game;
 using Game.Base;
 using Game.GameEntities.Controllers;
+using Game.Logic.Systems.Health;
 using Game.PopupRequires.Commands;
 using Game.PopupRequires.Commands.Base;
 using Game.PopupRequires.ViewModels;
@@ -50,6 +51,7 @@ namespace Composites
             var packRepository = global.GetRequiredService<IPackRepository>();
             var objectBag = global.GetRequiredService<IObjectBag>();
             var factory = gameServices.GetRequiredService<IGameFactory<MainGame>>();
+            var healthSystem = gameServices.GetRequiredService<HealthSystem>();
             
             var game = factory.CreateGame();
             var mainPopup = popupManager.SpawnPopup<MainGamePopup>();
@@ -90,6 +92,17 @@ namespace Composites
             _gameController.SetupLoseViewModel(new LosePopupViewModel
             {
                 RestartButtonCommand = new RestartMainGameCommand(game, objectBag),
+                BuyLifeButtonCommand = new CompositeCommand(new ICommand[]
+                {
+                    new ContinueGameCommand(game),
+                    new AddLifeCommand(healthSystem)
+                }),
+                BackButtonCommand = new CompositeCommand(new ICommand[]
+                {
+                    new StopGameCommand(game),
+                    new CloseAllPopupsCommand(popupManager),
+                    new BackToPacksMenuCommand(popupManager),
+                }),
                 OnShowingCommand = new PauseGameCommand(game)
             });
         }

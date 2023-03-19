@@ -10,6 +10,10 @@
   "YouLose": "Вы проиграли!",
   "YouWin": "Вы выиграли!",
   "Next": "Следующий",
+  "BuyLife": "Купить жизнь",
+  "Ok": "Ок",
+  "NotEnoughEnergyToStartLevel": "Не хватает энергии для начала уровня",
+  "NotEnoughEnergyToContinueLevel": "Не хватает энергии для продолжения уровня",
   
   "Tutorial": "Обучение"
 }

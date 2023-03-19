@@ -9,6 +9,7 @@ using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Services;
+using Popups.Energy;
 using Popups.PackChoose.Views;
 using Popups.Start;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Popups.PackChoose
         [SerializeField] private Button _backButton;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
         [SerializeField] private EnergyView _energyView;
+        [SerializeField] private string _reasonPhraseKey;
 
         private IPackRepository _packRepository;
         private IObjectBag _objectBag;
@@ -51,11 +53,13 @@ namespace Popups.PackChoose
         public override void EnableInput()
         {
             EnableBehaviour(_backButton);
+            _packCollectionView.Enable();
         }
         
         public override void DisableInput()
         {
             DisableBehaviour(_backButton);
+            _packCollectionView.Disable();
         }
 
         public override void Reset()
@@ -84,6 +88,14 @@ namespace Popups.PackChoose
         private void PackCollectionViewOnPackClicked(PackGameData packGameData)
         {
             var configuration = packGameData.PackConfiguration;
+            
+            if (_energyController.CanSpendEnergy(configuration.StartLevelEnergy) == false)
+            {
+                var popup = PopupManager.SpawnPopup<EnergyPopup>();
+                popup.ShowWithReasonPhraseKey(_reasonPhraseKey);
+                return;
+            }
+            
             _energyController.SpendEnergy(configuration.StartLevelEnergy, () =>
             {
                 SetGameData(packGameData);

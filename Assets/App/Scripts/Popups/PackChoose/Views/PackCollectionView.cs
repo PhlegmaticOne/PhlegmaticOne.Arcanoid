@@ -5,6 +5,7 @@ using Common.Positioning;
 using Libs.Localization.Base;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Popups.PackChoose.Views
 {
@@ -12,9 +13,11 @@ namespace Popups.PackChoose.Views
     {
         //ObjectPool for PackPreview
         [SerializeField] [Range(0f, 1f)] private float _marginSide;
+        [SerializeField] private ScrollRect _scrollRect;
         [SerializeField] private RectTransform _viewsTransform;
         [SerializeField] private PackPreview _packPreview;
         [SerializeField] private ViewportResizer _viewportResizer;
+        private bool _isEnabled = true;
 
         private readonly List<PackPreview> _previews = new List<PackPreview>();
         private readonly List<PackGameData> _packConfigurations = new List<PackGameData>();
@@ -38,8 +41,24 @@ namespace Popups.PackChoose.Views
             }
         }
 
+        public void Disable()
+        {
+            _isEnabled = false;
+            _scrollRect.vertical = false;
+        }
+
+        public void Enable()
+        {
+            _isEnabled = true;
+            _scrollRect.vertical = true;
+        }
+
         private void PackPreviewOnClicked(int index)
         {
+            if (_isEnabled == false)
+            {
+                return;
+            }
             PackClicked?.Invoke(_packConfigurations[index]);
         }
 
