@@ -1,5 +1,4 @@
-﻿using System;
-using Game.GameEntities.PlayerObjects.Base;
+﻿using Game.GameEntities.PlayerObjects.Base;
 using Libs.Behaviors;
 using UnityEngine;
 
@@ -9,6 +8,10 @@ namespace Game.GameEntities.PlayerObjects.BallObject
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private CircleCollider2D _circleCollider2D;
+        [SerializeField] private TrailRenderer _trailRenderer;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Color _rageColor;
+        private bool _isRage;
 
         private float _startSpeed;
         private Vector2 _direction = Vector2.up;
@@ -38,10 +41,29 @@ namespace Game.GameEntities.PlayerObjects.BallObject
             SetSpeed(newSpeed);
         }
 
+        public void CopyToBall(Ball ball)
+        {
+            InstallOnCollisionBehaviorsTo(ball);
+            ball.ChangeRageMode(_isRage);
+        }
+
+        public void ChangeRageMode(bool isRage)
+        {
+            _isRage = isRage;
+            _trailRenderer.gameObject.SetActive(isRage);
+            var color = isRage ? _rageColor : Color.white;
+            _spriteRenderer.color = color;
+        }
+
         protected override void ResetProtected()
         {
             _startSpeed = 0;
             SetSpeed(Vector2.zero);
+
+            if (_isRage)
+            {
+                ChangeRageMode(false);
+            }
         }
 
         protected override bool CanBeDestroyedOnDestroyCollision() => true;

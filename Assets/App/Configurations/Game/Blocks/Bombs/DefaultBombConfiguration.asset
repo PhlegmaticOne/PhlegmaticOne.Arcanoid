@@ -16,10 +16,23 @@ MonoBehaviour:
   _isAffectsOnAllBlocks: 0
   _removesLifesCount: 1
   _damageAffectsOnBlocks:
+  - {fileID: 11400000, guid: b30f8cdc81740c3428696f46764015d4, type: 2}
+  - {fileID: 11400000, guid: 89a89183759b942408291dfea9dd1176, type: 2}
   - {fileID: 11400000, guid: aa9e37254f482e345b3b3cbe51c55c5e, type: 2}
   - {fileID: 11400000, guid: fbc6b758a2bcf7f42808b91f7e8727c2, type: 2}
+  - {fileID: 11400000, guid: 275b0b9154a61484495a20e1d9914eab, type: 2}
+  - {fileID: 11400000, guid: 904c40bae890274418e40ae6cce50f15, type: 2}
+  - {fileID: 11400000, guid: e986ca9587d640d489748404435ba306, type: 2}
+  - {fileID: 11400000, guid: d1ccf968a3ff2b9459de60b1c6482e54, type: 2}
   - {fileID: 11400000, guid: c81544df85cb0cb4a85fa994f9f5e587, type: 2}
+  - {fileID: 11400000, guid: e9372f34ae7609f4c82614ea8937314d, type: 2}
+  - {fileID: 11400000, guid: 12e6984b521a6af42a9ee235f1387ec2, type: 2}
+  - {fileID: 11400000, guid: cc3a5418ff764e44a9059a2b914f3099, type: 2}
+  - {fileID: 11400000, guid: 7d8559e443d136d4ea9f65c24ec314d5, type: 2}
   - {fileID: 11400000, guid: d2a4d24cd8ca1c743a176f5719377e67, type: 2}
+  - {fileID: 11400000, guid: cb80a93fbff33b24ebb152694fc1da7d, type: 2}
+  - {fileID: 11400000, guid: 5a76cba868b7ffb4fa5c265e1c7152f3, type: 2}
+  - {fileID: 11400000, guid: a263280a17f75ee4680bc039d280cd85, type: 2}
   - {fileID: 11400000, guid: 61be861b1c7765e48899483a615626dd, type: 2}
   _destroyAffectsOnBlocks:
   - {fileID: 11400000, guid: 0f99fa1f5dcfc2448ae0691960ee8846, type: 2}

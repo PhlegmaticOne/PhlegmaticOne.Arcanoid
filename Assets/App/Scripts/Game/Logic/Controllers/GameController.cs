@@ -1,6 +1,7 @@
 ﻿using Common.Bag;
 using Common.Packs.Data.Models;
 using Game.Base;
+using Game.ObjectParticles;
 using Libs.Popups.Base;
 using Popups.Lose;
 using Popups.MainGame;
@@ -58,8 +59,15 @@ namespace Game.GameEntities.Controllers
             _mainGamePopup.UpdateLevelPassPercentageView(normalizedPercentage);
         }
 
-        private void MainGameOnLost() => _popupManager.SpawnPopup<LosePopup>();
-        private void MainGameOnWon() => _popupManager.SpawnPopup<WinPopup>();
+        private void MainGameOnLost()
+        {
+            _popupManager.SpawnPopup<LosePopup>();
+        }
+        
+        private void MainGameOnWon()
+        {
+            _popupManager.SpawnPopup<WinPopup>();
+        }
 
         private void OnDisable()
         {

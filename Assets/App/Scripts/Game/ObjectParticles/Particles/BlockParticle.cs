@@ -6,7 +6,7 @@ namespace Game.ObjectParticles.Particles
     {
         public void SetColor(Color color)
         {
-            var main = ParticleSystem.main;
+            var main = MainParticleSystem.main;
             main.startColor = color;
         }
     }

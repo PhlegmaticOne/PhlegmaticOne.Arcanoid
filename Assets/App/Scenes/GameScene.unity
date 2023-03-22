@@ -1709,6 +1709,7 @@ MonoBehaviour:
       _behaviourInstallers:
       - {fileID: 6510303263033164637, guid: 72477234cccc1b343a0fa1f1ce3c6193, type: 3}
       - {fileID: 1418725601}
+      - {fileID: 6906821821885365195, guid: dbe24a896e8ad2046917f4fbe2bd94a2, type: 3}
 --- !u!1 &797919458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1917,7 @@ MonoBehaviour:
       _behaviourInstallers:
       - {fileID: 6510303263033164637, guid: 72477234cccc1b343a0fa1f1ce3c6193, type: 3}
       - {fileID: 1621852600}
+      - {fileID: 6906821821885365195, guid: dbe24a896e8ad2046917f4fbe2bd94a2, type: 3}
 --- !u!1 &867700213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2421,7 @@ MonoBehaviour:
       _behaviourInstallers:
       - {fileID: 6510303263033164637, guid: 72477234cccc1b343a0fa1f1ce3c6193, type: 3}
       - {fileID: 2025454959}
+      - {fileID: 6906821821885365195, guid: dbe24a896e8ad2046917f4fbe2bd94a2, type: 3}
 --- !u!1 &1284002875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,6 +4925,7 @@ MonoBehaviour:
       _behaviourInstallers:
       - {fileID: 6510303263033164637, guid: 72477234cccc1b343a0fa1f1ce3c6193, type: 3}
       - {fileID: 494011245}
+      - {fileID: 6906821821885365195, guid: dbe24a896e8ad2046917f4fbe2bd94a2, type: 3}
 --- !u!1001 &1988151227
 PrefabInstance:
   m_ObjectHideFlags: 0

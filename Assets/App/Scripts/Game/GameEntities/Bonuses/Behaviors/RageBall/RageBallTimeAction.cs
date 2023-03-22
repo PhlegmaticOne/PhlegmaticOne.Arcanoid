@@ -31,6 +31,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
                 var onCollisionBehaviors = ball.OnCollisionBehaviors;
                 onCollisionBehaviors
                     .SubstituteBehavior<MovementAngleCorrectionBehavior>(colliderTag, new RageBallBehavior());
+                ball.ChangeRageMode(true);
             }
         }
 
@@ -43,6 +44,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
                 var onCollisionBehaviors = ball.OnCollisionBehaviors;
                 onCollisionBehaviors
                     .SubstituteBehavior<RageBallBehavior>(colliderTag, _tempAction);
+                ball.ChangeRageMode(false);
             }
 
             _tempAction = null;

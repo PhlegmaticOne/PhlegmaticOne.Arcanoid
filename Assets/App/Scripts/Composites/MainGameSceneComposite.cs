@@ -6,6 +6,7 @@ using Composites.Seeding;
 using Game;
 using Game.Base;
 using Game.GameEntities.Controllers;
+using Game.ObjectParticles;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
 using Libs.Services;

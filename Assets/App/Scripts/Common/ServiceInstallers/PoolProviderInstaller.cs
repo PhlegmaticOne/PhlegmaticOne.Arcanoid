@@ -16,6 +16,7 @@ namespace Common.ServiceInstallers
         [SerializeField] private UnityObjectPoolInstaller<Block> _blockPoolInstaller;
         [SerializeField] private UnityObjectPoolInstaller<Bonus> _bonusPoolInstaller;
         [SerializeField] private UnityObjectPoolInstaller<BlockParticle> _blockParticlesPoolInstaller;
+        [SerializeField] private UnityObjectPoolInstaller<BombParticle> _bombParticlesPoolInstaller;
         [SerializeField] private PopupComposite _popupComposite;
         [SerializeField] private PopupContainer _popupContainer;
         [SerializeField] private PooledObjectsContainer _pooledObjectsContainer;
@@ -31,6 +32,7 @@ namespace Common.ServiceInstallers
             poolBuilder.AddPool(_blockPoolInstaller.CreateObjectPool(poolContainer.transform));
             poolBuilder.AddPool(_bonusPoolInstaller.CreateObjectPool(poolContainer.transform));
             poolBuilder.AddPool(_blockParticlesPoolInstaller.CreateObjectPool(poolContainer.transform));
+            poolBuilder.AddPool(_bombParticlesPoolInstaller.CreateObjectPool(poolContainer.transform));
             
             var poolProvider = poolBuilder.BuildProvider();
 

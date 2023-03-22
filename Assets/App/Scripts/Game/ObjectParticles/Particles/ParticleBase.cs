@@ -4,20 +4,25 @@ using UnityEngine.Events;
 
 namespace Game.ObjectParticles.Particles
 {
-    public class ParticleBase : MonoBehaviour, IPoolable
+    public abstract class ParticleBase : MonoBehaviour, IPoolable
     {
-        [SerializeField] protected ParticleSystem ParticleSystem;
+        [SerializeField] protected ParticleSystem MainParticleSystem;
 
-        public void Play() => ParticleSystem.Play();
+        public virtual void Play() => MainParticleSystem.Play();
         
         public event UnityAction<ParticleBase> OnEnd;
         private void OnParticleSystemStopped() => OnEnd?.Invoke(this);
 
-        public void Reset() 
+        public virtual void Reset() 
         {
-            if (ParticleSystem.isStopped == false)
+            StopParticle(MainParticleSystem);
+        }
+
+        protected void StopParticle(ParticleSystem particle)
+        {
+            if (particle.isStopped == false)
             {
-                ParticleSystem.Stop();
+                particle.Stop();
             }
         }
     }

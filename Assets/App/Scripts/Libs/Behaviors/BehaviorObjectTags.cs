@@ -7,5 +7,6 @@ namespace Libs.Behaviors
     {
         [SerializeField] private List<ColliderTag> _colliderTags;
         public IReadOnlyList<ColliderTag> ColliderTags => _colliderTags;
+        public ColliderTag this[int index] => _colliderTags[index];
     }
 }

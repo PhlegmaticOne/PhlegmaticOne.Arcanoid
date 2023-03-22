@@ -8,6 +8,7 @@ namespace Libs.Behaviors
     public abstract class BehaviorObject<TSelf> : MonoBehaviour, IPoolable
         where TSelf : BehaviorObject<TSelf>
     {
+        [SerializeField] private BehaviorObjectTags _behaviorObjectTags;
         private bool _markedToDestroy;
         
         private readonly BehaviorsCollection<TSelf> _onCollisionBehaviours = new BehaviorsCollection<TSelf>();
@@ -15,6 +16,7 @@ namespace Libs.Behaviors
         
         public BehaviorsCollection<TSelf> OnCollisionBehaviors => _onCollisionBehaviours;
         public BehaviorsCollection<TSelf> OnDestroyBehaviors => _onDestroyBehaviours;
+        public BehaviorObjectTags BehaviorObjectTags => _behaviorObjectTags;
 
         public void InstallOnCollisionBehaviorsTo(BehaviorObject<TSelf> newObject)
         {

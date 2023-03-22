@@ -45,7 +45,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
             foreach (var ball in balls)
             {
-                mainBall.InstallOnCollisionBehaviorsTo(ball);
+                mainBall.CopyToBall(ball);
                 AddNewBehaviorsToBall(ball, _behaviorsToReplace);
             }
         }
