@@ -151,18 +151,18 @@ MonoBehaviour:
   _bindableComponents:
   - {fileID: 3717352239997752112}
   - {fileID: 5354806522953298922}
-  _showAnimationInfo:
+  _fadeAnimationInfo:
     _animationTime: 0.5
     _ease: 1
   _closeAnimationInfo:
     _animationTime: 0.5
     _ease: 1
   _buttonAppearAnimationInfo:
-    _animationTime: 0.5
-    _ease: 9
+    _animationTime: 0.3
+    _ease: 32
   _buttonDisappearAnimationInfo:
-    _animationTime: 0.5
-    _ease: 17
+    _animationTime: 0.3
+    _ease: 32
 --- !u!1001 &1335806006668610816
 PrefabInstance:
   m_ObjectHideFlags: 0

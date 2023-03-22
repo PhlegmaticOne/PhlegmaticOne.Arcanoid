@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Libs.Popups.Animations
+namespace Libs.Popups.Animations.Helpers
 {
     public static class PositionsHelper
     {

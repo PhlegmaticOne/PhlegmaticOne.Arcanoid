@@ -27,9 +27,9 @@ namespace Libs.Popups
         
         public abstract void DisableInput();
         
-        protected virtual IPopupAnimation CreateCustomAppearAnimation() => DefaultAnimations.None();
+        protected virtual IPopupAnimation CreateCustomAppearAnimation() => Animate.None();
 
-        protected virtual IPopupAnimation CreateCustomDisappearAnimation() => DefaultAnimations.None();
+        protected virtual IPopupAnimation CreateCustomDisappearAnimation() => Animate.None();
 
 
         public void Show(int sortingOrder)

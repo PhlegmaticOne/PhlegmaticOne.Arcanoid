@@ -11,6 +11,8 @@ using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Extensions;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Libs.Popups.ViewModels.Collections;
 using Popups.PackChoose.Views;
@@ -61,18 +63,16 @@ namespace Popups.PackChoose
         
         protected override void SetupViewModel(PackChoosePopupViewModel viewModel)
         {
-            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.FromLeft(RectTransform, ParentTransform, _showAnimationInfo);
-            }));
-            
-            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToRight(RectTransform, ParentTransform, _closeAnimationInfo);
-            }));
-            
-            SetAnimation(viewModel.BackControlAction, DefaultAnimations.None());
-            SetAnimation(viewModel.PackClickedAction, DefaultAnimations.None());
+            SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .FromLeft(_showAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .ToRight(_closeAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.BackControlAction, Animate.None());
+            SetAnimation(viewModel.PackClickedAction, Animate.None());
             
             BindToActionWithValue(_backControl, viewModel.BackControlAction, viewModel);
         }
@@ -85,14 +85,17 @@ namespace Popups.PackChoose
                 return;
             }
             
-            BindToAction(view, ViewModel.PackClickedAction);
             SetAnimation(ViewModel.PackClickedAction, new DoTweenSequenceAnimation(s =>
             {
-                s.AppendCallback(() => 
-                    _energyView.ChangeEnergyAnimate(-data.PackConfiguration.StartLevelEnergy, _energyAnimationTime));
-                s.AppendInterval(_energyAnimationTime);
-                s.Append(DefaultAnimations.ToRight(view.RectTransform, RectTransform, _packClickAnimationInfo));
+                var energyToChange = -data.PackConfiguration.StartLevelEnergy;
+                
+                _energyView.AppendAnimationToSequence(s, energyToChange, _energyAnimationTime);
+                s.Append(Animate.RectTransform(view.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .ToRight(_packClickAnimationInfo));
             }));
+            
+            BindToAction(view, ViewModel.PackClickedAction);
             ViewModel.PackClickedAction.Execute(data);
         }
 

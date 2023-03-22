@@ -2,7 +2,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Libs.Popups.Animations
+namespace Libs.Popups.Animations.Info
 {
     [Serializable]
     public class TweenAnimationInfo

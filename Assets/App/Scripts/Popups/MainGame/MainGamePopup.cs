@@ -7,7 +7,8 @@ using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
-using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Extensions;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Popups.MainGame.Views;
 using UnityEngine;
@@ -41,16 +42,16 @@ namespace Popups.MainGame
         
         protected override void SetupViewModel(MainGamePopupViewModel viewModel)
         {
-            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.FromBottom(RectTransform, ParentTransform, _showAnimationInfo);
-            }));
-            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToBottom(RectTransform, ParentTransform, _closeAnimationInfo);
-            }));
-            SetAnimation(viewModel.MenuControlAction, DefaultAnimations.None());
-            SetAnimation(viewModel.WinControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .FromBottom(_showAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .ToBottom(_closeAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.MenuControlAction, Animate.None());
+            SetAnimation(viewModel.WinControlAction, Animate.None());
             
             BindToAction(_menuControl, viewModel.MenuControlAction);
             BindToAction(_winControl, viewModel.WinControlAction);
@@ -90,12 +91,10 @@ namespace Popups.MainGame
         public void UpdateHeader(GameData gameData)
         {
             _packageInfoView.SetPackInfo(gameData.PackGameData);
-            UpdateLevelPassPercentageView(0);
+            _levelPassPercentageView.SetInNormalizedPercentageInstant(0);
         }
 
-        public void UpdateLevelPassPercentageView(float normalizedPercentage)
-        {
-            _levelPassPercentageView.SetInNormalizedPercentage(normalizedPercentage);
-        }
+        public void UpdateLevelPassPercentageView(float normalizedPercentage) => 
+            _levelPassPercentageView.SetInNormalizedPercentageAnimate(normalizedPercentage);
     }
 }

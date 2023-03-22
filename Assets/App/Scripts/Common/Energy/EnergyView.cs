@@ -33,6 +33,12 @@ namespace Common.Energy
             StartCoroutine(UpdateCoroutine(energyChanged, time));
         }
 
+        public void AppendAnimationToSequence(Sequence s, int energyToChange, float time)
+        {
+            s.AppendCallback(() => ChangeEnergyAnimate(energyToChange, time));
+            s.AppendInterval(time);
+        }
+
         private IEnumerator UpdateCoroutine(int energyChanged, float time)
         {
             var toAdd = (int)Mathf.Sign(energyChanged);

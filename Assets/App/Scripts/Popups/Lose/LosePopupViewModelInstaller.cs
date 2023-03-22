@@ -17,8 +17,6 @@ namespace Popups.Lose
 {
     public class LosePopupViewModelInstaller : ServiceInstaller
     {
-        [SerializeField] private string _restartReasonPhraseKey;
-        [SerializeField] private string _continueReasonPhraseKey;
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient(x =>
@@ -34,20 +32,15 @@ namespace Popups.Lose
                 var backControlCommand = new BackControlCommand(game, popupManager);
                 
                 var restartControlCommand = new RestartControlCommand(energyManager, objectBag, game, popupManager);
-                var restartControlCantExecuteHandler =
-                    new ShowEnergyPopupCommand(popupManager, _restartReasonPhraseKey);
-                
                 var buyLifeControlCommand = new BuyLifeControlCommand(energyManager, healthSystem, objectBag, game, popupManager);
-                var buyLifeControlCantExecuteHandler =
-                    new ShowEnergyPopupCommand(popupManager, _continueReasonPhraseKey);
-                
+
                 return new LosePopupViewModel
                 {
                     CloseAction = PopupAction.Empty,
                     ShowAction = new PopupAction(pauseGameCommand, NoneCommand.New),
                     BackControlAction = new ControlAction(backControlCommand),
-                    BuyLifeControlAction = new ControlAction(buyLifeControlCommand, buyLifeControlCantExecuteHandler),
-                    RestartControlAction = new ControlAction(restartControlCommand, restartControlCantExecuteHandler),
+                    BuyLifeControlAction = new ControlAction(buyLifeControlCommand),
+                    RestartControlAction = new ControlAction(restartControlCommand),
                     CurrentPack = objectBag.Get<GameData>().PackGameData
                 };
             });

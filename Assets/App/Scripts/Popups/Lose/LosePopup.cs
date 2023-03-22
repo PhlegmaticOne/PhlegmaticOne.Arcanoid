@@ -8,6 +8,7 @@ using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Popups.Common.Controls;
 using Popups.Common.Elements;
@@ -57,27 +58,21 @@ namespace Popups.Lose
         {
             SetAnimation(viewModel.ShowAction, new DoTweenSequenceAnimation(s =>
             {
-                s.Append(DefaultAnimations.FadeIn(PopupView.CanvasGroup, _fadeAnimationInfo));
-                s.Append(DefaultAnimations.FromLeft(_mainPopupElement.RectTransform, RectTransform, _mainPopupAnimationInfo));
+                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup).FadeIn(_fadeAnimationInfo));
+                s.Append(Animate.RectTransform(_mainPopupElement.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .FromLeft(_mainPopupAnimationInfo));
             }));
             SetAnimation(viewModel.CloseAction, new DoTweenSequenceAnimation(s =>
             {
-                s.Append(DefaultAnimations.ToRight(_mainPopupElement.RectTransform, RectTransform, _mainPopupAnimationInfo));
-                s.Append(DefaultAnimations.FadeOut(PopupView.CanvasGroup, _fadeAnimationInfo));
+                s.Append(Animate.RectTransform(_mainPopupElement.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .ToRight(_mainPopupAnimationInfo));
+                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup).FadeOut(_fadeAnimationInfo));
             }));
-            SetAnimation(viewModel.BuyLifeControlAction, new DoTweenSequenceAnimation(s =>
-            {
-                s.AppendCallback(() => _energyView
-                    .ChangeEnergyAnimate(-GetContinueLevelEnergy(), _energyAnimationTime));
-                s.AppendInterval(_energyAnimationTime);
-            }));
-            SetAnimation(viewModel.RestartControlAction, new DoTweenSequenceAnimation(s =>
-            {
-                s.AppendCallback(() => _energyView
-                    .ChangeEnergyAnimate(-GetStartLevelEnergy(), _energyAnimationTime));
-                s.AppendInterval(_energyAnimationTime);
-            }));
-            SetAnimation(viewModel.BackControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.BuyLifeControlAction, GetOnCloseAnimation(-GetContinueLevelEnergy()));
+            SetAnimation(viewModel.RestartControlAction, GetOnCloseAnimation(-GetStartLevelEnergy()));
+            SetAnimation(viewModel.BackControlAction, Animate.None());
             
             BindToAction(_backControl, viewModel.BackControlAction);
             BindToActionWithValue(_buyLifeControl, viewModel.BuyLifeControlAction, viewModel);
@@ -122,6 +117,12 @@ namespace Popups.Lose
             _restartControl.SetEnergy(GetStartLevelEnergy());
             _buyLifeControl.SetEnergy(GetContinueLevelEnergy());
         }
+
+        private DoTweenSequenceAnimation GetOnCloseAnimation(int energyToSpend) =>
+            new DoTweenSequenceAnimation(s =>
+            {
+                _energyView.AppendAnimationToSequence(s, energyToSpend, _energyAnimationTime);
+            });
 
         private int GetStartLevelEnergy() => ViewModel.CurrentPack.PackConfiguration.StartLevelEnergy;
         private int GetContinueLevelEnergy() => ViewModel.CurrentPack.PackConfiguration.ContinueLevelEnergy;

@@ -1,4 +1,5 @@
-﻿using Libs.Popups.ViewModels;
+﻿using Common.Packs.Data.Models;
+using Libs.Popups.ViewModels;
 using Libs.Popups.ViewModels.Actions;
 
 namespace Popups.MainGameMenu
@@ -10,5 +11,6 @@ namespace Popups.MainGameMenu
         public IControlAction BackControlAction { get; set; }
         public IControlAction ContinueControlAction { get; set; }
         public IControlAction RestartControlAction { get; set; }
+        public PackGameData CurrentPackGameData { get; set; }
     }
 }

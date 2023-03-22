@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using Common.Packs.Configurations;
 using Common.Packs.Data.Models;
+using DG.Tweening;
 using Libs.Localization.Components;
+using Libs.Popups.Animations;
+using Libs.Popups.Animations.Info;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -21,9 +25,9 @@ namespace Popups.MainGame.Views
         [SerializeField] [ShowIf(nameof(_hasPackNameView))] 
         private TextMeshProLocalizationComponent _packNameLocalizationComponent;
         
-        [SerializeField] private bool _hasColorBindableComponents;
-        [SerializeField] [ShowIf(nameof(_hasColorBindableComponents))]
-        private List<ColorBindableComponent> _colorBindableComponents;
+        [SerializeField] private bool _hasColorBindableComponent;
+        [SerializeField] [ShowIf(nameof(_hasColorBindableComponent))]
+        private Image _colorBindableComponent;
 
         private int _levelsCount;
         private int _passedLevelsCount;
@@ -43,6 +47,33 @@ namespace Popups.MainGame.Views
             _levelsInfoText.text = FormatLevelsInfo();
         }
 
+        public void AppendShowAnimationToSequence(Sequence s, TweenAnimationInfo showAnimationInfo)
+        {
+            s.Append(Animate.Transform(_packIconImage.transform).GrowFromZero(showAnimationInfo));
+            s.Append(Animate.Transform(_packNameText.transform).GrowFromZero(showAnimationInfo));
+        }
+
+        public void UpdatePackDataAnimate(PackGameData packGameData, Sequence s,
+            TweenAnimationInfo scaleAnimationInfo,
+            TweenAnimationInfo colorAnimationInfo,
+            Action insertActionOnPackDataSet)
+        {
+            var packConfiguration = packGameData.PackConfiguration;
+            var packPersistentData = packGameData.PackPersistentData;
+            
+            s.Append(Animate.Transform(_packIconImage.transform).ScaleToZeroX(scaleAnimationInfo));
+            s.Append(Animate.Transform(_packNameText.transform).ScaleToZeroX(scaleAnimationInfo));
+            s.AppendCallback(() =>
+            {
+                _packIconImage.sprite = packConfiguration.PackImage;
+                _packNameLocalizationComponent.SetBindingData<string>(packConfiguration.Name);
+                UpdateLevels(packPersistentData);
+                insertActionOnPackDataSet?.Invoke();
+            });
+            AppendShowAnimationToSequence(s, scaleAnimationInfo);
+            s.Append(Animate.Image(_colorBindableComponent).Color(packConfiguration.PackColor, colorAnimationInfo));
+        }
+
         public void SetPackInfo(PackGameData packGameData)
         {
             _levelsCount = packGameData.PackPersistentData.levelsCount;
@@ -57,15 +88,12 @@ namespace Popups.MainGame.Views
                 _packNameLocalizationComponent.SetBindingData<string>(packConfiguration.Name);
             }
 
-            if (_hasColorBindableComponents)
+            if (_hasColorBindableComponent)
             {
-                foreach (var colorBindableComponent in _colorBindableComponents)
-                {
-                    colorBindableComponent.BindColor(packConfiguration.PackColor);
-                }
+                _colorBindableComponent.color = packConfiguration.PackColor;
             }
         }
-
+        
         private string FormatLevelsInfo()
         {
             var passedLevelsCount = _appendOneToLevelIndex ? _passedLevelsCount + 1 : _passedLevelsCount;

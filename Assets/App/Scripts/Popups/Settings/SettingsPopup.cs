@@ -3,6 +3,8 @@ using Libs.Localization.Base;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Extensions;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using UnityEngine;
 
@@ -24,15 +26,15 @@ namespace Popups.Settings
 
         protected override void SetupViewModel(SettingsPopupViewModel viewModel)
         {
-            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.FromTop(RectTransform, ParentTransform, _showAnimationInfo);
-            }));
-            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToTop(RectTransform, ParentTransform, _closeAnimationInfo);
-            }));
-            SetAnimation(viewModel.CloseControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .FromTop(_showAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .ToTop(_closeAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.CloseControlAction, Animate.None());
             
             BindToAction(_closeControl, viewModel.CloseControlAction);
         }

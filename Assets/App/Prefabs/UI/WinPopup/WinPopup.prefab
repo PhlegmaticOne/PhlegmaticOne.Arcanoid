@@ -282,8 +282,6 @@ MonoBehaviour:
   _nextControl: {fileID: 8838851004428260419}
   _backControl: {fileID: 8838800832301949681}
   _packageInfoView: {fileID: 7426264599289754611}
-  _packNameText: {fileID: 1749782099444701541}
-  _packImage: {fileID: 5421216365989928229}
   _energyView: {fileID: 8766462170482688027}
   _bindableComponents:
   - {fileID: 516961552658731967}
@@ -299,9 +297,14 @@ MonoBehaviour:
   _nextControlAnimationInfo:
     _animationTime: 0.3
     _ease: 1
+  _scaleAnimationInfo:
+    _animationTime: 0.3
+    _ease: 32
+  _colorAnimationInfo:
+    _animationTime: 0.15
+    _ease: 1
   _energyAnimationTime: 0.3
   _lightsCircleAnimationTime: 10
-  _scaleAnimationDuration: 0.3
 --- !u!1 &3500148935065305172
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,9 +402,8 @@ MonoBehaviour:
   _hasPackNameView: 1
   _packNameText: {fileID: 5956490536364998048}
   _packNameLocalizationComponent: {fileID: 1749782099444701541}
-  _hasColorBindableComponents: 1
-  _colorBindableComponents:
-  - {fileID: 1784855683414404572}
+  _hasColorBindableComponent: 1
+  _colorBindableComponent: {fileID: 3185226336831619167}
 --- !u!1 &3620762141384255195
 GameObject:
   m_ObjectHideFlags: 0

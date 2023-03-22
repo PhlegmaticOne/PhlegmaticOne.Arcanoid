@@ -4,7 +4,8 @@ using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
-using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Extensions;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using UnityEngine;
 
@@ -12,9 +13,9 @@ namespace Popups.Energy
 {
     public class EnergyPopup : ViewModelPopup<EnergyPopupViewModel>, ILocalizable
     {
-        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
-        [SerializeField] private LocalizationBindableComponent _reasonText;
         [SerializeField] private ButtonControl _okControl;
+        [SerializeField] private LocalizationBindableComponent _reasonText;
+        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
         [SerializeField] private TweenAnimationInfo _showAnimationInfo;
         [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
@@ -23,20 +24,22 @@ namespace Popups.Energy
         private LocalizationContext _localizationContext;
 
         [PopupConstructor]
-        public void Initialize(ILocalizationManager localizationManager) => 
+        public void Initialize(ILocalizationManager localizationManager)
+        {
             _localizationManager = localizationManager;
+        }
 
         protected override void SetupViewModel(EnergyPopupViewModel viewModel)
         {
-            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.FromLeft(RectTransform, ParentTransform, _showAnimationInfo);
-            }));
-            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToRight(RectTransform, ParentTransform, _closeAnimationInfo);
-            }));
-            SetAnimation(viewModel.OkControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .FromLeft(_showAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .ToRight(_closeAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.OkControlAction, Animate.None());
             
             BindToAction(_okControl, viewModel.OkControlAction);
         }

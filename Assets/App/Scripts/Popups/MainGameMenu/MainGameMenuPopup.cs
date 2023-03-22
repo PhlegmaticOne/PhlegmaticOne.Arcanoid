@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using Common.Bag;
 using Common.Energy;
 using Common.Energy.Events;
-using Common.Packs.Data.Models;
 using DG.Tweening;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
@@ -10,6 +8,7 @@ using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Popups.Common.Controls;
 using Popups.Common.Elements;
@@ -34,21 +33,16 @@ namespace Popups.MainGameMenu
         private LocalizationContext _localizationContext;
         private EnergyController _energyController;
         private EnergyManager _energyManager;
-        private PackGameData _currentPackData;
 
         [PopupConstructor]
-        public void Initialize(ILocalizationManager localizationManager,
-            IObjectBag objectBag,
-            EnergyManager energyManager)
+        public void Initialize(ILocalizationManager localizationManager, EnergyManager energyManager)
         {
             _localizationContext = LocalizationContext
                 .Create(localizationManager)
                 .BindLocalizable(this)
                 .Refresh();
             _energyManager = energyManager;
-            _currentPackData = objectBag.Get<GameData>().PackGameData;
             _energyController = new EnergyController(energyManager, _energyView);
-            _restartControl.SetEnergy(_currentPackData.PackConfiguration.StartLevelEnergy);
             _energyManager.EnergyChangedFromTime += EnergyManagerOnEnergyChangedFromTime;
         }
 
@@ -61,26 +55,31 @@ namespace Popups.MainGameMenu
         {
             SetAnimation(viewModel.ShowAction, new DoTweenSequenceAnimation(s =>
             {
-                s.Append(DefaultAnimations.FadeIn(PopupView.CanvasGroup, _fadeAnimationInfo));
-                s.Append(DefaultAnimations.FromLeft(_mainPopupTransform.RectTransform, RectTransform, _mainPopupAnimationInfo));
+                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup).FadeIn(_fadeAnimationInfo));
+                s.Append(Animate.RectTransform(_mainPopupTransform.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .FromLeft(_mainPopupAnimationInfo));
             }));
             SetAnimation(viewModel.CloseAction, new DoTweenSequenceAnimation(s =>
             {
-                s.Append(DefaultAnimations.ToRight(_mainPopupTransform.RectTransform, RectTransform, _mainPopupAnimationInfo));
-                s.Append(DefaultAnimations.FadeOut(PopupView.CanvasGroup, _fadeAnimationInfo));
+                s.Append(Animate.RectTransform(_mainPopupTransform.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .ToRight(_mainPopupAnimationInfo));
+                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup).FadeOut(_fadeAnimationInfo));
             }));
             SetAnimation(viewModel.RestartControlAction, new DoTweenSequenceAnimation(s =>
             {
-                s.AppendCallback(() => _energyView
-                    .ChangeEnergyAnimate(-_currentPackData.PackConfiguration.StartLevelEnergy, _energyAnimationTime));
-                s.AppendInterval(_energyAnimationTime);
+                var energyToChange = -GetStartLevelEnergy();
+                _energyView.AppendAnimationToSequence(s, energyToChange, _energyAnimationTime);
             }));
-            SetAnimation(viewModel.BackControlAction, DefaultAnimations.None());
-            SetAnimation(viewModel.ContinueControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.BackControlAction, Animate.None());
+            SetAnimation(viewModel.ContinueControlAction, Animate.None());
             
             BindToActionWithValue(_restartControl, viewModel.RestartControlAction, viewModel);
             BindToActionWithValue(_continueControl, viewModel.ContinueControlAction, viewModel);
             BindToAction(_backControl, viewModel.BackControlAction);
+            
+            _restartControl.SetEnergy(GetStartLevelEnergy());
         }
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
@@ -113,5 +112,7 @@ namespace Popups.MainGameMenu
             Unbind(ViewModel.ContinueControlAction);
             Unbind(ViewModel.RestartControlAction);
         }
+
+        private int GetStartLevelEnergy() => ViewModel.CurrentPackGameData.PackConfiguration.StartLevelEnergy;
     }
 }

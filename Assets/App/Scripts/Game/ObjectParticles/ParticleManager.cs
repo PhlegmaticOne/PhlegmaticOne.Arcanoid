@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.ObjectParticles.Particles;
 using Libs.Pooling.Base;
 using UnityEngine;
@@ -13,8 +12,6 @@ namespace Game.ObjectParticles
         private readonly Transform _spawnTransform;
 
         private readonly List<ParticleBase> _particles;
-        public int ParticlesCount => _particles.Count;
-        public event Action ParticlesEnd;
 
         public ParticleManager(IPoolProvider poolProvider, Transform spawnTransform)
         {

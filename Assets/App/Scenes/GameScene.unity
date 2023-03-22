@@ -651,8 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e6d23828744b3e8216d63be8365347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _restartReasonPhraseKey: NotEnoughEnergyToStartLevel
-  _continueReasonPhraseKey: NotEnoughEnergyToContinueLevel
 --- !u!1 &240702691
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,7 +3538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6163a7305241cfaa705dac2d11c179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _restartReasonPhraseKey: NotEnoughEnergyToStartLevel
 --- !u!4 &1586878095
 Transform:
   m_ObjectHideFlags: 0

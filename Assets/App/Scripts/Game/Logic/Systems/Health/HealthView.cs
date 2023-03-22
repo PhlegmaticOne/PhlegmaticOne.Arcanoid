@@ -20,6 +20,6 @@ namespace Game.Logic.Systems.Health
 
         public void Deactivate() => ToColor(_disabledColor);
 
-        private void ToColor(in Color color) => _healthImage.DOColor(color, _animationDuration).SetUpdate(true);
+        private void ToColor(in Color color) => _healthImage.DOColor(color, _animationDuration).SetUpdate(true).Play();
     }
 }

@@ -6,6 +6,8 @@ using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Animations.Extensions;
+using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using UnityEngine;
 
@@ -18,7 +20,7 @@ namespace Popups.Start
         [SerializeField] private ButtonControl _startGameControl;
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
-        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
+        [SerializeField] private TweenAnimationInfo _fadeAnimationInfo;
         [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
         [SerializeField] private TweenAnimationInfo _buttonAppearAnimationInfo;
         [SerializeField] private TweenAnimationInfo _buttonDisappearAnimationInfo;
@@ -40,26 +42,25 @@ namespace Popups.Start
         {
             SetAnimation(viewModel.ShowAction, new DoTweenSequenceAnimation(s =>
             {
-                s.Append(DefaultAnimations
-                    .FadeIn(PopupView.CanvasGroup, _showAnimationInfo));
-                s.Append(DefaultAnimations
-                    .FromRight(_startGameControl.RectTransform, RectTransform, _buttonAppearAnimationInfo));
-                s.Append(DefaultAnimations
-                    .FromRight(_exitControl.RectTransform, RectTransform, _buttonAppearAnimationInfo));
+                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup).FadeIn(_fadeAnimationInfo));
+                s.Append(Animate.RectTransform(_startGameControl.RectTransform).RelativeTo(RectTransform)
+                    .FromRight(_buttonAppearAnimationInfo));
+                s.Append(Animate.RectTransform(_exitControl.RectTransform).RelativeTo(RectTransform)
+                    .FromRight(_buttonAppearAnimationInfo));
             }));
-            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToRight(RectTransform, ParentTransform, _closeAnimationInfo);
-            }));
-            SetAnimation(viewModel.ExitControlAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToRight(_exitControl.RectTransform, RectTransform, _buttonDisappearAnimationInfo);
-            }));
-            SetAnimation(viewModel.PlayControlAction, new DoTweenCallbackAnimation(() =>
-            {
-                return DefaultAnimations.ToRight(_startGameControl.RectTransform, RectTransform, _buttonDisappearAnimationInfo);
-            }));
-            SetAnimation(viewModel.SettingsControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
+                .RelativeTo(ParentTransform)
+                .ToRight(_closeAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.ExitControlAction, Animate.RectTransform(_exitControl.RectTransform)
+                .RelativeTo(RectTransform)
+                .ToRight(_buttonDisappearAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.PlayControlAction, Animate.RectTransform(_startGameControl.RectTransform)
+                .RelativeTo(RectTransform)
+                .ToRight(_buttonDisappearAnimationInfo)
+                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.SettingsControlAction, Animate.None());
 
             BindToActionWithValue(_startGameControl, viewModel.PlayControlAction, viewModel);
             BindToAction(_settingsControl, viewModel.SettingsControlAction);
