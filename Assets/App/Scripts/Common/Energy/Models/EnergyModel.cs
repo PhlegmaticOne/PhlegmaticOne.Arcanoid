@@ -23,7 +23,7 @@ namespace Common.Energy.Models
             }
         }
 
-        public bool IsFull() => currentEnergy == maxEnergy;
+        public bool IsFull() => currentEnergy >= maxEnergy;
 
         public void IncreaseFromTime()
         {

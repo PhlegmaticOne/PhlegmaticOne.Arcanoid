@@ -1,33 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Libs.Pooling.Base;
-using Libs.Popups.Animations.Base;
-using Libs.Popups.Animations.Types;
 using Libs.Popups.Configurations;
+using Libs.Services;
 using UnityEngine;
-using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Libs.Popups.Factory
 {
     public class PopupFactory : IPopupFactory
     {
         private readonly IAbstractObjectPool<Popup> _popupsPool;
-        private readonly IPopupAnimationsFactory<AppearAnimationType> _appearAnimationsFactory;
-        private readonly IPopupAnimationsFactory<DisappearAnimationType> _disappearAnimationsFactory;
-        private readonly Func<IServiceProvider> _serviceProvider;
         private readonly PopupSystemConfiguration _popupSystemConfiguration;
         private readonly RectTransform _mainCanvasTransform;
 
         public PopupFactory(IPoolProvider poolProvider, 
-            IPopupAnimationsFactory<AppearAnimationType> appearAnimationsFactory,
-            IPopupAnimationsFactory<DisappearAnimationType> disappearAnimationsFactory,
-            Func<IServiceProvider> serviceProvider,
             RectTransform mainCanvasTransform,
             PopupSystemConfiguration popupSystemConfiguration)
         {
             _popupsPool = poolProvider.GetAbstractPool<Popup>();
-            _appearAnimationsFactory = appearAnimationsFactory;
-            _disappearAnimationsFactory = disappearAnimationsFactory;
-            _serviceProvider = serviceProvider;
             _mainCanvasTransform = mainCanvasTransform;
             _popupSystemConfiguration = popupSystemConfiguration;
         }
@@ -47,12 +39,60 @@ namespace Libs.Popups.Factory
         private Popup InitializePopup(Popup popup)
         {
             var popupConfiguration = _popupSystemConfiguration.FindConfigurationForPrefab(popup);
-            var serviceProvider = _serviceProvider();
-            popup.Initialize(serviceProvider);
+            Initialize(popup);
             popup.SetParentTransform(_mainCanvasTransform);
-            popup.SetAnimationFactories(_appearAnimationsFactory, _disappearAnimationsFactory);
             popup.SetPopupConfiguration(popupConfiguration);
             return popup;
+        }
+
+        private void Initialize(Popup popup)
+        {
+            var type = popup.GetType();
+            InjectConstructor(popup, type);
+            InjectProperties(popup, type);
+        }
+
+        private void InjectProperties(Popup popup, Type type)
+        {
+            var propertiesToInject = type.GetProperties()
+                .Where(x => x.GetCustomAttribute<PopupPropertyAttribute>() != null)
+                .ToList();
+
+            foreach (var propertyInfo in propertiesToInject)
+            {
+                InjectProperty(propertyInfo, popup);
+            }
+        }
+
+        private void InjectConstructor(Popup popup, Type type)
+        {
+            var constructor = type.GetMethods()
+                .SingleOrDefault(x => x.GetCustomAttribute<PopupConstructorAttribute>() != null);
+
+            if (constructor == null)
+            {
+                return;
+            }
+            
+            constructor.Invoke(popup, GetConstructorDependencies(constructor).ToArray());
+        }
+
+        private void InjectProperty(PropertyInfo propertyInfo, Popup popup)
+        {
+            var dependency = ServiceProviderAccessor.SearchService(propertyInfo.PropertyType);
+            propertyInfo.SetValue(popup, dependency);
+        }
+
+        private List<object> GetConstructorDependencies(MethodInfo constructor)
+        {
+            var result = new List<object>();
+
+            foreach (var dependency in constructor.GetParameters())
+            {
+                result.Add(ServiceProviderAccessor.SearchService(dependency.ParameterType));
+            }
+
+            return result;
         }
     }
 }

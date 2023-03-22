@@ -64,7 +64,8 @@ namespace Game
         public MainGameEvents Events { get; }
         public event Action Won;
         public event Action Lost;
-        
+        public event Action Started;
+
         public void StartGame(MainGameData data)
         {
             _gameField = _fieldBuilder.BuildField(data.LevelData);
@@ -83,6 +84,7 @@ namespace Game
             _healthSystem.Initialize(data.LevelData.LifesCount);
             _captiveBallsSystem.Initialize(_poolProvider, _ballsOnField);
             Subscribe();
+            Started?.Invoke();
         }
 
         public void Pause()

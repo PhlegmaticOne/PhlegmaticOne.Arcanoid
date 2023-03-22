@@ -12,7 +12,12 @@ namespace Common.Packs.Data.Models
         [SerializeField] public int levelsCount;
         [SerializeField] public int passedLevelsCount;
         [SerializeField] public int currentLevelId;
-        
-        public bool IsPassed => levelsCount == passedLevelsCount;
+        [SerializeField] public bool isPassed;
+        [SerializeField] public bool isOpened;
+
+        public bool HasNextLevel() => passedLevelsCount < levelsCount - 1;
+        public bool IsCurrentlyPassed() => passedLevelsCount == levelsCount - 1;
+        public bool IsPassedFirstTime() => IsCurrentlyPassed() && isPassed == false;
+        public bool IsPassedNotFirstTime() => IsCurrentlyPassed() && isPassed;
     }
 }

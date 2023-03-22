@@ -6,31 +6,34 @@ namespace Libs.Popups.Animations.Concrete.Default
 {
     public class PopupMoveAnimation : PopupAnimationBase
     {
+        private readonly RectTransform _rectTransform;
+        private readonly float _duration;
         private readonly Vector3 _from;
         private readonly Vector3 _to;
 
-        public PopupMoveAnimation(Vector3 from, Vector3 to)
+        public PopupMoveAnimation(RectTransform transform, float duration, Vector3 from, Vector3 to)
         {
+            _rectTransform = transform;
+            _duration = duration;
             _from = from;
             _to = to;
         }
 
-        public static PopupMoveAnimation ToZeroFrom(Vector3 from) =>
-            new PopupMoveAnimation(from, Vector3.zero);
+        public static PopupMoveAnimation ToZeroFrom(RectTransform transform, float duration, Vector3 from) =>
+            new PopupMoveAnimation(transform, duration, from, Vector3.zero);
 
-        public static PopupMoveAnimation FromZeroTo(Vector3 to) =>
-            new PopupMoveAnimation(Vector3.zero, to);
+        public static PopupMoveAnimation FromZeroTo(RectTransform transform, float duration, Vector3 to) =>
+            new PopupMoveAnimation(transform, duration, Vector3.zero, to);
         
-        public override void Play(Popup popup, float duration)
+        public override void Play()
         {
-            var popupTransform = popup.RectTransform;
-            popupTransform.localPosition = _from;
-            popupTransform.DOLocalMove(_to, duration)
+            _rectTransform.localPosition = _from;
+            _rectTransform.DOLocalMove(_to, _duration)
                 .SetEase(Ease.Linear)
                 .SetUpdate(true)
                 .OnComplete(OnAnimationPlayed);
         }
 
-        public override void Stop(Popup popup) => popup.RectTransform.DOKill();
+        public override void Stop() => _rectTransform.DOKill();
     }
 }

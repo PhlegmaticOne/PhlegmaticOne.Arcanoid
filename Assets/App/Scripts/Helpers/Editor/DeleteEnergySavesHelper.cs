@@ -7,7 +7,7 @@ namespace Helpers.Editor
 {
     public static class DeleteEnergySavesHelper
     {
-        private const string EnergyConfigurationAssetPath = "Assets/App/Configurations/Common/EnergyConfiguration.asset";
+        private const string EnergyConfigurationAssetPath = "Assets/App/Configurations/Energy/EnergyConfiguration.asset";
 
         [MenuItem("Tools/Custom/Delete energy saves")]
         

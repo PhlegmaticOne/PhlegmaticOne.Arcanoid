@@ -13,23 +13,32 @@ namespace Common.Packs.Configurations
         [SerializeField] private DefaultPackConfiguration _defaultPackConfiguration;
         [SerializeField] private bool _isUpdatePacksInEditor;
         [SerializeField] private bool _isUpdateAllPacks;
-        [SerializeField] private Dictionary<PackConfiguration, bool> _packConfigurations;
+        [SerializeField] private List<UpdatePackInfo> _packConfigurations;
         public PacksFileAttributes PacksFileAttributes => _packsFileAttributes;
         public bool IsUpdatePacksInEditor => _isUpdatePacksInEditor;
         public bool IsUpdateAllPacks => _isUpdateAllPacks;
-        public Dictionary<PackConfiguration, bool> PackConfigurations => _packConfigurations;
-        public ICollection<PackConfiguration> RegisteredPackConfigurations => _packConfigurations.Keys;
+        public List<UpdatePackInfo> PackConfigurations => _packConfigurations;
+        public List<PackConfiguration> RegisteredPackConfigurations { get; private set; }
         public DefaultPackConfiguration DefaultPackConfiguration => _defaultPackConfiguration;
         public bool IsInitialized { get; private set; }
+
+        private void OnEnable()
+        {
+            if (RegisteredPackConfigurations == null ||
+                RegisteredPackConfigurations.Count != _packConfigurations.Count)
+            {
+                RegisteredPackConfigurations = PackConfigurations.Select(x => x.PackConfiguration).ToList();
+            }
+        }
 
         public void MarkAsInitialized()
         {
             _isUpdateAllPacks = false;
             _isUpdatePacksInEditor = false;
             
-            foreach (var key in _packConfigurations.Keys.ToList())
+            foreach (var key in _packConfigurations.ToList())
             {
-                _packConfigurations[key] = false;
+                key.IsUpdate = false;
             }
 
             IsInitialized = true;
@@ -69,5 +78,19 @@ namespace Common.Packs.Configurations
 
         public PackConfiguration DefaultPack => _defaultPack;
         public int DefaultLevelId => _defaultLevelId;
+    }
+
+    [Serializable]
+    public class UpdatePackInfo
+    {
+        [SerializeField] private PackConfiguration _packConfiguration;
+        [SerializeField] private bool _isUpdate;
+        public PackConfiguration PackConfiguration => _packConfiguration;
+
+        public bool IsUpdate
+        {
+            get => _isUpdate;
+            set => _isUpdate = value;
+        }
     }
 }

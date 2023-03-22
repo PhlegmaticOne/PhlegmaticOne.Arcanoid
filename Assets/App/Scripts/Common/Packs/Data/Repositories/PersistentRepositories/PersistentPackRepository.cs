@@ -31,11 +31,12 @@ namespace Common.Packs.Data.Repositories.PersistentRepositories
         {
             var result = new List<PackGameData>();
             
-            foreach (var packConfiguration in _packsConfiguration.RegisteredPackConfigurations)
+            foreach (var p in _packsConfiguration.PackConfigurations)
             {
+                var packConfiguration = p.PackConfiguration;
                 #if UNITY_EDITOR
                     if (_packsConfiguration.IsUpdatePacksInEditor &&
-                        (_packsConfiguration.IsUpdateAllPacks || _packsConfiguration.PackConfigurations[packConfiguration]))
+                        (_packsConfiguration.IsUpdateAllPacks || p.IsUpdate))
                     {
                         var editorPersistentData = CreatePackPersistentData(packConfiguration);
                         result.Add(new PackGameData(packConfiguration, editorPersistentData));
@@ -57,6 +58,14 @@ namespace Common.Packs.Data.Repositories.PersistentRepositories
             #endif
 
             return result;
+        }
+
+        public PackConfiguration GetNextPackConfiguration(PackConfiguration current)
+        {
+            var registered = _packsConfiguration.RegisteredPackConfigurations;
+            var index = registered.IndexOf(current);
+            var next = ++index;
+            return next == registered.Count ? null : registered[next];
         }
 
 
@@ -93,14 +102,18 @@ namespace Common.Packs.Data.Repositories.PersistentRepositories
         
         private PackPersistentData CreatePackPersistentData(PackConfiguration packConfiguration)
         {
+            var allPacks = _packsConfiguration.RegisteredPackConfigurations;
             var previewData = GetPackPreviewData(packConfiguration);
+            var isOpened = allPacks.IndexOf(packConfiguration) == 0;
             
             var persistentData = new PackPersistentData
             {
                 name = previewData.name,
                 levelsCount = previewData.levelsCount,
                 currentLevelId = previewData.startLevelId,
-                passedLevelsCount = 0
+                passedLevelsCount = 0,
+                isOpened = isOpened,
+                isPassed = false
             };
 
             Save(persistentData);

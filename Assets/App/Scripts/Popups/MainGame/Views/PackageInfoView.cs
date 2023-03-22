@@ -12,6 +12,7 @@ namespace Popups.MainGame.Views
     {
         [SerializeField] private TextMeshProUGUI _levelsInfoText;
         [SerializeField] private Image _packIconImage;
+        [SerializeField] private bool _appendOneToLevelIndex = true;
 
         [SerializeField] private bool _hasPackNameView;
 
@@ -24,12 +25,30 @@ namespace Popups.MainGame.Views
         [SerializeField] [ShowIf(nameof(_hasColorBindableComponents))]
         private List<ColorBindableComponent> _colorBindableComponents;
 
+        private int _levelsCount;
+        private int _passedLevelsCount;
+
         public TextMeshProLocalizationComponent PackNameLocalizationComponent => _packNameLocalizationComponent;
+
+        public void IncreaseLevel()
+        {
+            _passedLevelsCount++;
+            _levelsInfoText.text = FormatLevelsInfo();
+        }
+        
+        public void UpdateLevels(PackPersistentData packPersistentData)
+        {
+            _passedLevelsCount = packPersistentData.passedLevelsCount;
+            _levelsCount = packPersistentData.levelsCount;
+            _levelsInfoText.text = FormatLevelsInfo();
+        }
 
         public void SetPackInfo(PackGameData packGameData)
         {
+            _levelsCount = packGameData.PackPersistentData.levelsCount;
+            _passedLevelsCount = packGameData.PackPersistentData.passedLevelsCount;
             var packConfiguration = packGameData.PackConfiguration;
-            _levelsInfoText.text = FormatLevelsInfo(packGameData.PackPersistentData);
+            _levelsInfoText.text = FormatLevelsInfo();
             _packIconImage.sprite = packConfiguration.PackImage;
             
             if (_hasPackNameView)
@@ -47,7 +66,10 @@ namespace Popups.MainGame.Views
             }
         }
 
-        private static string FormatLevelsInfo(PackPersistentData packPersistentData) => 
-            packPersistentData.passedLevelsCount + 1 + "/" + packPersistentData.levelsCount;
+        private string FormatLevelsInfo()
+        {
+            var passedLevelsCount = _appendOneToLevelIndex ? _passedLevelsCount + 1 : _passedLevelsCount;
+            return passedLevelsCount + "/" + _levelsCount;
+        }
     }
 }

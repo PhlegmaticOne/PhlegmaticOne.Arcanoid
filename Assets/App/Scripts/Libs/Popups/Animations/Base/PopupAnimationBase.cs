@@ -7,9 +7,9 @@ namespace Libs.Popups.Animations.Base
     {
         public event Action AnimationPlayed;
         
-        public abstract void Play(Popup popup, float duration);
+        public abstract void Play();
 
-        public abstract void Stop(Popup popup);
+        public abstract void Stop();
 
         protected void OnAnimationPlayed() => AnimationPlayed?.Invoke();
     }

@@ -2,13 +2,11 @@
 {
     public class EnergyChangedModel
     {
-        public EnergyChangedModel(int maxEnergy, int currentEnergy)
-        {
-            MaxEnergy = maxEnergy;
-            CurrentEnergy = currentEnergy;
-        }
+        public int EnergyChanged { get; }
 
-        public int MaxEnergy { get; }
-        public int CurrentEnergy { get; }
+        public EnergyChangedModel(int energyChanged)
+        {
+            EnergyChanged = energyChanged;
+        }
     }
 }

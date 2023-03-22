@@ -16,6 +16,8 @@ namespace Common.Scenes
 
         public void ChangeScene(int sceneId) => SceneManager.LoadScene(sceneId);
 
+        public static void ChangeSceneSimple(int sceneIndex) => SceneManager.LoadScene(sceneIndex);
+
         private void SceneManagerOnsceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             _popupManager.SpawnPopup<T>();

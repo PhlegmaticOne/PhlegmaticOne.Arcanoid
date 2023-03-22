@@ -70,9 +70,9 @@ namespace Common.Packs.Data.Repositories.PersistentRepositories.Helpers
             
             foreach (var packConfiguration in _packsConfiguration.PackConfigurations)
             {
-                var configuration = packConfiguration.Key;
+                var configuration = packConfiguration.PackConfiguration;
 
-                if (packConfiguration.Value)
+                if (packConfiguration.IsUpdate)
                 {
                     packsToUpdate.Add(configuration);
                     continue;

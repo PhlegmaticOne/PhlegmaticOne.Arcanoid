@@ -1,5 +1,4 @@
-﻿using System;
-using Common.Energy.Events;
+﻿using Common.Energy.Events;
 
 namespace Common.Energy
 {
@@ -12,7 +11,9 @@ namespace Common.Energy
         {
             _energyManager = energyManager;
             _energyView = energyView;
-            
+
+            var energyModel = energyManager.EnergyViewModel;
+            _energyView.Init(energyModel.CurrentEnergy, energyModel.MaxEnergy);
             _energyManager.TimeChanged += EnergyManagerOnTimeChanged;
             _energyManager.EnergyChangedFromTime += EnergyManagerOnEnergyChangedFromTime;
             _energyManager.Raise();
@@ -24,30 +25,19 @@ namespace Common.Energy
             {
                 _energyView.SetIsFull();
             }
-            _energyView.SetEnergyInstant(args.CurrentEnergy, args.MaxEnergy);
+            _energyView.ChangeEnergyInstant(args.EnergyChanged);
         }
 
         private void EnergyManagerOnTimeChanged(TimeChangedModel timeChangedEventArgs)
         {
+            if (_energyManager.IsTimeRegenerating == false)
+            {
+                _energyView.SetIsFull();
+                return;
+            }
             _energyView.SetTime(timeChangedEventArgs.TimeToNextEnergyInSeconds);
         }
-
-        public void SpendEnergy(int energy, Action onAnimationPlayed = null)
-        {
-            var energyChangedModel = _energyManager.SpendEnergy(energy);
-            _energyView.SetEnergyAnimate(energyChangedModel.CurrentEnergy, energyChangedModel.MaxEnergy,
-                onAnimationPlayed);
-        }
-
-        public bool CanSpendEnergy(int energy) => _energyManager.CanSpendEnergy(energy);
-
-        public void AddEnergy(int energy, Action onAnimationPlayed = null)
-        {
-            var energyChangedModel = _energyManager.AddEnergy(energy);
-            _energyView.SetEnergyAnimate(energyChangedModel.CurrentEnergy, energyChangedModel.MaxEnergy,
-                onAnimationPlayed);
-        }
-
+        
         public void Disable()
         {
             _energyManager.TimeChanged -= EnergyManagerOnTimeChanged;

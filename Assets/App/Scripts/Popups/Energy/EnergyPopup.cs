@@ -3,27 +3,46 @@ using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
-using Libs.Services;
+using Libs.Popups.Animations;
+using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Controls;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Popups.Energy
 {
-    public class EnergyPopup : Popup, ILocalizable
+    public class EnergyPopup : ViewModelPopup<EnergyPopupViewModel>, ILocalizable
     {
         [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
         [SerializeField] private LocalizationBindableComponent _reasonText;
-        [SerializeField] private Button _okButton;
-        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
+        [SerializeField] private ButtonControl _okControl;
 
+        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
+        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
+        
         private ILocalizationManager _localizationManager;
         private LocalizationContext _localizationContext;
-        protected override void InitializeProtected(IServiceProvider serviceProvider)
+
+        [PopupConstructor]
+        public void Initialize(ILocalizationManager localizationManager) => 
+            _localizationManager = localizationManager;
+
+        protected override void SetupViewModel(EnergyPopupViewModel viewModel)
         {
-            _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
-            ConfigureOkButton();
+            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
+            {
+                return DefaultAnimations.FromLeft(RectTransform, ParentTransform, _showAnimationInfo);
+            }));
+            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
+            {
+                return DefaultAnimations.ToRight(RectTransform, ParentTransform, _closeAnimationInfo);
+            }));
+            SetAnimation(viewModel.OkControlAction, DefaultAnimations.None());
+            
+            BindToAction(_okControl, viewModel.OkControlAction);
         }
 
+        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
+        
         public void ShowWithReasonPhraseKey(string reasonPhraseKey)
         {
             _reasonText.SetBindingData<string>(reasonPhraseKey);
@@ -33,23 +52,15 @@ namespace Popups.Energy
                 .Refresh();
         }
 
-        public override void EnableInput() => EnableBehaviour(_okButton);
-
-        public override void DisableInput() => DisableBehaviour(_okButton);
+        public override void EnableInput() => _okControl.Enable();
+        public override void DisableInput() => _okControl.Disable();
 
         public override void Reset()
         {
+            ToZeroPosition();
             _localizationContext.Flush();
-            _localizationContext = null;
-            RemoveAllListeners(_okButton);
-        }
-
-        private void ConfigureOkButton()
-        {
-            _okButton.onClick.AddListener(() =>
-            {
-                PopupManager.CloseLastPopup();
-            });
+            _okControl.Reset();
+            Unbind(ViewModel.OkControlAction);
         }
     }
 }

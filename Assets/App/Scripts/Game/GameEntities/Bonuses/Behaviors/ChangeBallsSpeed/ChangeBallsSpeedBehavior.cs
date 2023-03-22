@@ -28,8 +28,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
 
         public void Behave(Bonus entity, Collision2D collision2D)
         {
-            if (_timeActionsManager.TryGetAction<ChangeBallSpeedTimeAction>(out var action) &&
-                action.IsAdding == _isAdding)
+            if (_timeActionsManager
+                    .TryGetAction<ChangeBallSpeedTimeAction>(x => x.IsAdding == _isAdding, out var action))
             {
                 action.Restart();
             }

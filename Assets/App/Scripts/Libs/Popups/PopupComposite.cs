@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Libs.Pooling;
 using Libs.Pooling.Base;
 using Libs.Pooling.Implementation;
-using Libs.Popups.Animations;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
 using Libs.Popups.Factory;
 using UnityEngine;
-using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Libs.Popups
 {
@@ -28,12 +25,9 @@ namespace Libs.Popups
             poolBuilder.AddAbstractPool(new UnityAbstractObjectPool<Popup>(CreatePopupPrefabInfos(), parent));
         }
 
-        public IPopupManager CreatePopupManager(IPoolProvider poolProvider, Func<IServiceProvider> serviceProvider)
+        public IPopupManager CreatePopupManager(IPoolProvider poolProvider)
         {
             var popupFactory = new PopupFactory(poolProvider,
-                new AppearanceAnimationsFactory(),
-                new DisappearanceAnimationsFactory(),
-                serviceProvider,
                 _parent,
                 _popupSystemConfiguration); 
             

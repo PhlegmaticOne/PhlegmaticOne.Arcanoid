@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
+using Libs.Popups.Animations;
 using TMPro;
 using UnityEngine;
 using Slider = UnityEngine.UI.Slider;
@@ -16,22 +18,40 @@ namespace Common.Energy
 
         [SerializeField] private float _animationTime;
 
-        public void SetEnergyAnimate(int currentEnergy, int maxEnergy, Action onAnimationPlayed = null)
+        private int _maxEnergy;
+        private int _currentEnergy;
+
+        public void Init(int currentEnergy, int maxEnergy)
         {
-            _energyText.text = FormatEnergy(currentEnergy, maxEnergy);
-            _slider.DOValue(CalculateValue(currentEnergy, maxEnergy), _animationTime)
-                .SetUpdate(true)
-                .OnComplete(() =>
-                {
-                    onAnimationPlayed?.Invoke();
-                    _slider.DOKill();
-                });
+            _currentEnergy = currentEnergy;
+            _maxEnergy = maxEnergy;
+            ChangeEnergyInstant(0);
+        }
+        
+        public void ChangeEnergyAnimate(int energyChanged, float time)
+        {
+            StartCoroutine(UpdateCoroutine(energyChanged, time));
         }
 
-        public void SetEnergyInstant(int currentEnergy, int maxEnergy)
+        private IEnumerator UpdateCoroutine(int energyChanged, float time)
         {
-            _energyText.text = FormatEnergy(currentEnergy, maxEnergy);
-            _slider.value = CalculateValue(currentEnergy, maxEnergy);
+            var toAdd = (int)Mathf.Sign(energyChanged);
+            var delta = time / (toAdd * energyChanged);
+            var currentTime = 0f;
+
+            while (currentTime < time)
+            {
+                ChangeEnergyInstant(toAdd);
+                currentTime += delta;
+                yield return new WaitForSecondsRealtime(delta);
+            }
+        }
+
+        public void ChangeEnergyInstant(int energyChanged)
+        {
+            _currentEnergy += energyChanged;
+            _energyText.text = FormatEnergy(_currentEnergy, _maxEnergy);
+            _slider.value = CalculateValue(_currentEnergy, _maxEnergy);
         }
 
         public void SetTime(int timeInSeconds) => _timeText.text = FormatTime(timeInSeconds);

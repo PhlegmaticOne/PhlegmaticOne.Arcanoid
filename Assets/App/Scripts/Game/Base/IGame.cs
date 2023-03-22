@@ -6,6 +6,7 @@ namespace Game.Base
     {
         event Action Won;
         event Action Lost;
+        event Action Started;
         void Pause();
         void Unpause();
         void Stop();

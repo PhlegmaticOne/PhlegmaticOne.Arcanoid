@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Libs.TimeActions.Base;
 using UnityEngine;
@@ -20,6 +21,13 @@ namespace Libs.TimeActions
         public bool TryGetAction<TAction>(out TAction action) where TAction : ITimeAction
         {
             action = (TAction)_timeActions.SingleOrDefault(x => x is TAction);
+            return action != null;
+        }
+
+        public bool TryGetAction<TAction>(Func<TAction, bool> predicate, out TAction action) 
+            where TAction : ITimeAction
+        {
+            action = (TAction)_timeActions.FirstOrDefault(x => x is TAction action && predicate(action));
             return action != null;
         }
 

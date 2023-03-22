@@ -5,6 +5,7 @@
   "Play": "Play",
   "Back": "Back",
   "Menu": "Menu",
+  "Win": "Win",
   "Restart": "Restart",
   "Continue": "Continue",
   "YouLose": "You lose!",
@@ -12,8 +13,12 @@
   "Next": "Next",
   "BuyLife": "Buy life",
   "Ok": "Ok",
+  "Exit": "Exit",
   "NotEnoughEnergyToStartLevel": "Not enough energy to start level",
   "NotEnoughEnergyToContinueLevel": "Not enough energy to continue level",
+  "YouPassedAllPacks" : "You passed all packs!",
+  "GalaxyNotFound" : "Galaxy not found yet",
 
-  "Tutorial": "Tutorial"
+  "Tutorial": "Tutorial",
+  "Tutorial1": "Tutorial1"
 }

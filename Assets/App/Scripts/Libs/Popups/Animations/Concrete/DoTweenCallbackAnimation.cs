@@ -6,16 +6,23 @@ namespace Libs.Popups.Animations.Concrete
 {
     public class DoTweenCallbackAnimation : PopupAnimationBase
     {
-        private readonly Func<Tween> _animationCallback;
-        private readonly Action _onStopAction;
+        private Func<Tween> _animationCallback;
 
-        public DoTweenCallbackAnimation(Func<Tween> animationCallback, Action onStopAction)
+        private Tween _tween;
+
+        public DoTweenCallbackAnimation(Func<Tween> animationCallback) => _animationCallback = animationCallback;
+
+        public override void Play()
         {
-            _animationCallback = animationCallback;
-            _onStopAction = onStopAction;
+            _tween = _animationCallback.Invoke();   
+            _tween.OnComplete(OnAnimationPlayed);
         }
-        
-        public override void Play(Popup popup, float duration) => _animationCallback().OnComplete(OnAnimationPlayed);
-        public override void Stop(Popup popup) => _onStopAction?.Invoke();
+
+        public override void Stop()
+        {
+            _animationCallback = null;
+            _tween.Kill();
+            _tween = null;
+        }
     }
 }

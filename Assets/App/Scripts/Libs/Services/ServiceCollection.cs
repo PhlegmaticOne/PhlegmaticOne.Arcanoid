@@ -10,6 +10,9 @@ namespace Libs.Services
         private readonly Dictionary<Type, Func<IServiceProvider, object>> _factoryFuncs =
             new Dictionary<Type, Func<IServiceProvider, object>>();
 
+        private readonly Dictionary<Type, Func<IServiceProvider, object>> _transientFuncs =
+            new Dictionary<Type, Func<IServiceProvider, object>>();
+
         public IServiceCollection AddSingleton<TService>(TService service)
         {
             _services.Add(typeof(TService), service);
@@ -22,6 +25,12 @@ namespace Libs.Services
             return this;
         }
 
-        public IServiceProvider BuildServiceProvider() => new ServiceProvider(_services, _factoryFuncs);
+        public IServiceCollection AddTransient<TService>(Func<IServiceProvider, TService> factoryFunc)
+        {
+            _transientFuncs.Add(typeof(TService), s => factoryFunc(s));
+            return this;
+        }
+
+        public IServiceProvider BuildServiceProvider() => new ServiceProvider(_services, _factoryFuncs, _transientFuncs);
     }
 }

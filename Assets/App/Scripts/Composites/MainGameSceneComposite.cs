@@ -1,16 +1,11 @@
 ﻿using System.Collections.Generic;
 using Common.Bag;
-using Common.Packs.Data.Repositories.Base;
 using Common.Scenes;
 using Composites.Helpers;
 using Composites.Seeding;
 using Game;
 using Game.Base;
 using Game.GameEntities.Controllers;
-using Game.Logic.Systems.Health;
-using Game.PopupRequires.Commands;
-using Game.PopupRequires.Commands.Base;
-using Game.PopupRequires.ViewModels;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
 using Libs.Services;
@@ -36,81 +31,22 @@ namespace Composites
             MarkNotToSpawnStartPopup();
             SetupGame(serviceProvider);
         }
-
-        private void OnDestroy()
-        {
-            ServiceProviderAccessor.Instance.RemoveSceneServiceProvider(SceneIndexes.GameScene);
-        }
-
+        
         private void SetupGame(IServiceProvider global)
         {
             var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
-            
             var popupManager = global.GetRequiredService<IPopupManager>();
-            var levelRepository = global.GetRequiredService<ILevelRepository>();
-            var packRepository = global.GetRequiredService<IPackRepository>();
             var objectBag = global.GetRequiredService<IObjectBag>();
-            var factory = gameServices.GetRequiredService<IGameFactory<MainGame>>();
-            var healthSystem = gameServices.GetRequiredService<HealthSystem>();
-            
-            var game = factory.CreateGame();
+            var game = gameServices.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
             var mainPopup = popupManager.SpawnPopup<MainGamePopup>();
-            
-            mainPopup.SetupViewModel(new MainGameViewModel
-            {
-                PauseCommand = new PauseGameCommand(game),
-                StartCommand = new StartGameCommand(objectBag, levelRepository, game),
-                MainMenuViewModel = new MainMenuViewModel
-                {
-                    ContinueCommand = new ContinueGameCommand(game),
-                    RestartCommand = new RestartMainGameCommand(game, objectBag),
-                    BackToPackMenuCommand = new CompositeCommand(new ICommand[]
-                    {
-                        new StopGameCommand(game),
-                        new BackToPacksMenuCommand(popupManager)
-                    })
-                }
-            });
-            
-            _gameController.Initialize(popupManager, game);
-            _gameController.SetupWinViewModel(new WinMenuViewModel
-            {
-                OnShowingCommand = new PauseGameCommand(game),
-                OnClosedCommand = new StartGameCommand(objectBag, levelRepository, game),
-                OnLastClosedCommand = new CompositeCommand(new ICommand[]
-                    {
-                        new CloseAllPopupsCommand(popupManager),
-                        new BackToPacksMenuCommand(popupManager),
-                    }),
-                OnNextButtonClickCommand = new CompositeCommand(new ICommand[]
-                {
-                    new StopGameCommand(game),
-                    new SetNextLevelDataCommand(objectBag, packRepository)
-                })
-            });
-            
-            _gameController.SetupLoseViewModel(new LosePopupViewModel
-            {
-                RestartButtonCommand = new RestartMainGameCommand(game, objectBag),
-                BuyLifeButtonCommand = new CompositeCommand(new ICommand[]
-                {
-                    new ContinueGameCommand(game),
-                    new AddLifeCommand(healthSystem)
-                }),
-                BackButtonCommand = new CompositeCommand(new ICommand[]
-                {
-                    new StopGameCommand(game),
-                    new CloseAllPopupsCommand(popupManager),
-                    new BackToPacksMenuCommand(popupManager),
-                }),
-                OnShowingCommand = new PauseGameCommand(game)
-            });
+            _gameController.Initialize(mainPopup, objectBag, popupManager, game);
         }
 
-        private void MarkNotToSpawnStartPopup()
-        {
+        private void MarkNotToSpawnStartPopup() => 
             _popupSystemConfiguration.DisableStartPopupSpawn();
-        }
+        
+        private void OnDestroy() => 
+            ServiceProviderAccessor.Instance.RemoveSceneServiceProvider(SceneIndexes.GameScene);
     }
 }
 

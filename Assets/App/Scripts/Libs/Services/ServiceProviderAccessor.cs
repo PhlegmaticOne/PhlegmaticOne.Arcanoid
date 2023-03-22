@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Libs.Services
@@ -27,6 +28,29 @@ namespace Libs.Services
             }
         }
 
+        public static object SearchService(Type serviceType)
+        {
+            var result = Global.GetService(serviceType);
+            
+            if (result != null)
+            {
+                return result;
+            }
+
+            foreach (var sceneServiceProvider in Instance._sceneServiceProviders)
+            {
+                var serviceProvider = sceneServiceProvider.Value;
+                result = serviceProvider.GetService(serviceType);
+
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+
+            return null;
+        }
+        
         public static ServiceProviderAccessor Instance => _accessor;
 
         public static void SetPrefabPath(string path) => _prefabPath = path;

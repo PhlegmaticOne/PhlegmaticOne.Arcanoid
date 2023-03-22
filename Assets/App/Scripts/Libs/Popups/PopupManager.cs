@@ -14,10 +14,6 @@ namespace Libs.Popups
 
         private int _currentSortingOrder;
 
-        public event UnityAction<Popup> PopupShowed;
-        public event UnityAction<Popup> PopupClosed;
-        public event UnityAction AllPopupsClosed;
-
         public PopupManager(IPopupFactory popupFactory,
             IPoolProvider poolProvider,
             int startFromSortingOrder)
@@ -27,6 +23,8 @@ namespace Libs.Popups
             _currentSortingOrder = startFromSortingOrder;
             _popups = new StackList<Popup>();
         }
+
+        public Popup CurrentPopup { get; private set; }
 
         public T SpawnPopup<T>() where T : Popup
         {
@@ -95,6 +93,7 @@ namespace Libs.Popups
         private Popup ShowPopup(Popup popup)
         {
             ++_currentSortingOrder;
+            CurrentPopup = popup;
             
             if (_popups.Count != 0)
             {
@@ -102,52 +101,36 @@ namespace Libs.Popups
             }
 
             _popups.Push(popup);
-            
-            popup.Show(_currentSortingOrder, () =>
-            {
-                OnPopupShowed(popup);
-            });
-
+            popup.Show(_currentSortingOrder);
             return popup;
         }
 
         private void CloseAnimate(Popup popup)
         {
             --_currentSortingOrder;
-            popup.Close(() => OnClosedActions(popup));
+            CurrentPopup = _popups.Count != 0 ? _popups.Peek() : null;
+            popup.Close(() =>
+            {
+                _popupsPool.ReturnToPool(popup);
+                
+                if (_popups.Count != 0)
+                {
+                    _popups.Peek().EnableInput();
+                }
+            });
         }
 
         private void CloseInstant(Popup popup)
         {
             --_currentSortingOrder;
+            CurrentPopup = _popups.Count != 0 ? _popups.Peek() : null;
             popup.CloseInstant();
-            OnClosedActions(popup);
-        }
-
-        private void OnClosedActions(Popup popup)
-        {
             _popupsPool.ReturnToPool(popup);
-            
+
             if (_popups.Count != 0)
             {
                 _popups.Peek().EnableInput();
             }
-            
-            OnClosed(popup);
         }
-        
-        private void OnClosed(Popup popup)
-        {
-            OnPopupClosed(popup);
-
-            if (_popups.Count == 0)
-            {
-                OnAllPopupsClosed();
-            }
-        }
-        
-        private void OnPopupShowed(Popup popup) => PopupShowed?.Invoke(popup);
-        private void OnPopupClosed(Popup popup) => PopupClosed?.Invoke(popup);
-        private void OnAllPopupsClosed() => AllPopupsClosed?.Invoke();
     }
 }

@@ -6,6 +6,7 @@ namespace Libs.Services
     {
         IServiceCollection AddSingleton<TService>(TService service);
         IServiceCollection AddSingleton<TService>(Func<IServiceProvider, TService> factoryFunc);
+        IServiceCollection AddTransient<TService>(Func<IServiceProvider, TService> factoryFunc);
         IServiceProvider BuildServiceProvider();
     }
 }

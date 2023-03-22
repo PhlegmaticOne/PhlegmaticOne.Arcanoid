@@ -1,48 +1,100 @@
-﻿using Common.Packs.Data.Models;
+﻿using System;
+using Common.Packs.Configurations;
+using Common.Packs.Data.Models;
 using Libs.Localization.Components.Base;
+using Libs.Popups.Controls.Base;
+using Popups.PackChoose.Views.Configurations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Popups.PackChoose.Views
 {
-    public class PackPreview : MonoBehaviour
+    public class PackPreview : ControlBase
     {
-        [SerializeField] private Image _packSpriteImage;
-        [SerializeField] private Image _previewOuterImage;
+        [SerializeField] private Image _innerImage;
+        [SerializeField] private Image _outerImage;
+        [SerializeField] private Image _glowImage;
+        [SerializeField] private Image _packIconImage;
         [SerializeField] private TextMeshProUGUI _packNameText;
         [SerializeField] private TextMeshProUGUI _levelInfoText;
-        [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private TextMeshProUGUI _startLevelEnergyText;
-        [SerializeField] private TextMeshProUGUI _winLevelEnergyText;
+        [SerializeField] private EnergyCountView _startLevelEnergy;
+        [SerializeField] private EnergyCountView _winLevelEnergy;
 
         [SerializeField] private LocalizationBindableComponent _packNameTextBindableComponent;
+        private bool _isEnabled = true;
+        private Action<ControlBase> _onClick;
         public LocalizationBindableComponent PackNameTextBindableComponent => _packNameTextBindableComponent;
 
-        private int _index;
+        public override void OnClick(Action<ControlBase> action) => _onClick = action;
 
-        public event UnityAction<int> Clicked;
-        
-        public void UpdateView(int index, PackGameData packGameData)
+        public override void Enable() => _isEnabled = true;
+
+        public override void Disable() => _isEnabled = false;
+
+        protected override void ResetProtected() => _onClick = null;
+
+        public void ApplyPackGameData(PackGameData packGameData)
         {
-            _index = index;
             var packConfiguration = packGameData.PackConfiguration;
-            _packSpriteImage.sprite = packConfiguration.PackImage;
-            _previewOuterImage.color = packConfiguration.PackColor;
+            SetPackIconSprite(packConfiguration.PackImage);
+            UpdateLevelsInfo(packGameData.PackPersistentData);
+            SetLocalizationKey(packConfiguration.Name);
+            SetEnergyInfo(packGameData.PackConfiguration);
+            _glowImage.color = packConfiguration.PackColor;
+            _outerImage.color = packConfiguration.PackColor;
             _packNameText.text = packConfiguration.Name;
-            _startLevelEnergyText.text = packConfiguration.StartLevelEnergy.ToString();
-            _winLevelEnergyText.text = packConfiguration.WinLevelEnergy.ToString();
-            _levelInfoText.text = FormatLevelsInfo(packGameData.PackPersistentData);
-            _packNameTextBindableComponent.SetBindingData<string>(packConfiguration.Name);
+        }
+
+        public void SetEnergyInfo(PackConfiguration packConfiguration)
+        {
+            _startLevelEnergy.SetEnergy(packConfiguration.StartLevelEnergy);
+            _winLevelEnergy.SetEnergy(packConfiguration.WinLevelEnergy);
+        }
+
+        public void SetLocalizationKey(string localizationKey)
+        {
+            _packNameTextBindableComponent.SetBindingData<string>(localizationKey);
+        }
+
+        public void ApplyPackPreviewConfiguration(PackPreviewConfiguration packPreviewConfiguration)
+        {
+            _glowImage.color = packPreviewConfiguration.GlowColor;
+            _outerImage.color = packPreviewConfiguration.OuterColor;
+            _innerImage.color = packPreviewConfiguration.InnerColor;
+            _levelInfoText.color = packPreviewConfiguration.LevelTextColor;
+            _packNameText.color = packPreviewConfiguration.MainTextColor;
+        }
+
+        public void SetPackIconSprite(Sprite sprite) => _packIconImage.sprite = sprite;
+
+        public void UpdateLevelsInfo(PackPersistentData packPersistentData)
+        {
+            _levelInfoText.text = FormatLevelsInfo(packPersistentData);
+        }
+
+        public void HideEnergyInfo()
+        {
+            _startLevelEnergy.Hide();
+            _winLevelEnergy.Hide();
         }
 
         public void SetWidth(float width)
         {
-            _rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+            RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         }
 
-        private void OnMouseDown() => Clicked?.Invoke(_index);
+        private void OnMouseDown()
+        {
+            if (_isEnabled == false || IsInteractable == false)
+            {
+                return;
+            }
+            
+            _onClick?.Invoke(this);
+        }
+
+        protected override void OnInteractableSet(bool isInteractable) => SetInteractableDirect(true);
 
         private static string FormatLevelsInfo(PackPersistentData packPersistentData) => 
             packPersistentData.passedLevelsCount + "/" + packPersistentData.levelsCount;

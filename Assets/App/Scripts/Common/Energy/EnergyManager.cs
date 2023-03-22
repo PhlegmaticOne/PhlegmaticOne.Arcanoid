@@ -25,6 +25,9 @@ namespace Common.Energy
             UpdateIsUpdating();
         }
 
+        public EnergyViewModel EnergyViewModel =>
+            new EnergyViewModel(_energyModel.maxEnergy, _energyModel.currentEnergy);
+
         public bool IsTimeRegenerating => _isUpdating;
 
         public event UnityAction<EnergyChangedModel> EnergyChangedFromTime;
@@ -51,35 +54,30 @@ namespace Common.Energy
             }
         }
 
-        public EnergyChangedModel AddEnergy(int energy)
+        public void AddEnergy(int energy)
         {
             _energyModel.AddEnergy(energy);
-            return OnEnergyChanged();
+            OnEnergyChanged();
         }
 
         public bool CanSpendEnergy(int energy) => _energyModel.currentEnergy >= energy;
 
-        public EnergyChangedModel SpendEnergy(int energy)
+        public void SpendEnergy(int energy)
         {
             _energyModel.SpendEnergy(energy);
-            return OnEnergyChanged();
+            OnEnergyChanged();
         }
 
-        public void Raise()
-        {
-            RaiseTime();
-            RaiseModel();
-        }
+        public void Raise() => RaiseTime();
 
         public void DisableUpdating() => _isUpdating = false;
 
         public void EnableUpdating() => UpdateIsUpdating();
 
-        private EnergyChangedModel OnEnergyChanged()
+        private void OnEnergyChanged()
         {
             _energyRepository.Save(_energyModel);
             UpdateIsUpdating();
-            return new EnergyChangedModel(_energyModel.maxEnergy, _energyModel.currentEnergy);
         }
 
         private void ResetTime()
@@ -93,7 +91,7 @@ namespace Common.Energy
             _energyModel.IncreaseFromTime();
             _energyRepository.Save(_energyModel);
             UpdateIsUpdating();
-            RaiseModel();
+            RaiseModel(_energyModel.increaseEnergyFromTimeCount);
         }
 
         private void IncreaseSecondsPassed()
@@ -104,8 +102,8 @@ namespace Common.Energy
 
         private void RaiseTime() => 
             TimeChanged?.Invoke(new TimeChangedModel(_regenerationTimeInSeconds - _secondsPassed));
-        private void RaiseModel() => 
-            EnergyChangedFromTime?.Invoke(new EnergyChangedModel(_energyModel.maxEnergy, _energyModel.currentEnergy));
+        private void RaiseModel(int energyChanged) => 
+            EnergyChangedFromTime?.Invoke(new EnergyChangedModel(energyChanged));
 
         private void UpdateIsUpdating() => _isUpdating = _energyModel.IsFull() == false;
     }

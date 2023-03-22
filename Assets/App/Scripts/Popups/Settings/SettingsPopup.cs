@@ -1,38 +1,60 @@
 ﻿using Libs.Localization;
 using Libs.Localization.Base;
 using Libs.Popups;
-using Libs.Services;
+using Libs.Popups.Animations;
+using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Controls;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Popups.Settings
 {
-    public class SettingsPopup : Popup
+    public class SettingsPopup : ViewModelPopup<SettingsPopupViewModel>
     {
         [SerializeField] private LocalizationSelector _localizationSelector;
-        [SerializeField] private Button _closeButton;
-        
-        private ILocalizationManager _localizationManager;
+        [SerializeField] private ButtonControl _closeControl;
 
-        protected override void InitializeProtected(IServiceProvider serviceProvider)
+        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
+        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
+        
+        [PopupConstructor]
+        public void Initialize(ILocalizationManager localizationManager)
         {
-            _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
-            
-            _localizationSelector.Initialize(_localizationManager);
-            ConfigureCloseButton();
+            _localizationSelector.Initialize(localizationManager);
         }
 
-        public override void EnableInput() => _localizationSelector.Enable();
-        public override void DisableInput() => _localizationSelector.Disable();
+        protected override void SetupViewModel(SettingsPopupViewModel viewModel)
+        {
+            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
+            {
+                return DefaultAnimations.FromTop(RectTransform, ParentTransform, _showAnimationInfo);
+            }));
+            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
+            {
+                return DefaultAnimations.ToTop(RectTransform, ParentTransform, _closeAnimationInfo);
+            }));
+            SetAnimation(viewModel.CloseControlAction, DefaultAnimations.None());
+            
+            BindToAction(_closeControl, viewModel.CloseControlAction);
+        }
+
+        public override void EnableInput()
+        {
+            _localizationSelector.Enable();
+            _closeControl.Enable();
+        }
+
+        public override void DisableInput()
+        {
+            _localizationSelector.Disable();
+            _closeControl.Disable();
+        }
+
         public override void Reset()
         {
+            ToZeroPosition();
             _localizationSelector.Reset();
-            RemoveAllListeners(_closeButton);
-        }
-        
-        private void ConfigureCloseButton()
-        {
-            _closeButton.onClick.AddListener(PopupManager.CloseLastPopup);
+            _closeControl.Reset();
+            Unbind(ViewModel.CloseControlAction);
         }
     }
 }

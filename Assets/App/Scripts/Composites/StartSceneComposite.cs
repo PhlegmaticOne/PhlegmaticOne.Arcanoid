@@ -1,8 +1,11 @@
-﻿using Composites.Helpers;
+﻿using System;
+using System.Collections;
+using Composites.Helpers;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
 using Libs.Services;
 using UnityEngine;
+using IServiceProvider = Libs.Services.IServiceProvider;
 
 namespace Composites
 {
@@ -16,7 +19,7 @@ namespace Composites
             var serviceProvider = ServiceProviderAccessor.Global;
             TrySpawnStartPopup(serviceProvider);
         }
-        
+
         private void TrySpawnStartPopup(IServiceProvider serviceProvider)
         {
             var popupManager = serviceProvider.GetRequiredService<IPopupManager>();

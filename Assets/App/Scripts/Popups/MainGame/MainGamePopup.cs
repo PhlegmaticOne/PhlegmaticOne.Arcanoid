@@ -1,99 +1,101 @@
 ﻿using System.Collections.Generic;
 using Common.Bag;
 using Common.Packs.Data.Models;
-using Game.PopupRequires.ViewModels;
+using Game.Logic.Systems.Health;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
 using Libs.Localization.Context;
 using Libs.Popups;
-using Libs.Services;
+using Libs.Popups.Animations;
+using Libs.Popups.Animations.Concrete;
+using Libs.Popups.Controls;
 using Popups.MainGame.Views;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Popups.MainGame
 {
-    public class MainGamePopup : Popup, ILocalizable
+    public class MainGamePopup : ViewModelPopup<MainGamePopupViewModel>, ILocalizable
     {
-        [SerializeField] private Button _menuButton;
-        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
+        [SerializeField] private ButtonControl _menuControl;
+        [SerializeField] private ButtonControl _winControl;
         [SerializeField] private PackageInfoView _packageInfoView;
         [SerializeField] private LevelPassPercentageView _levelPassPercentageView;
         [SerializeField] private HealthBarView _healthBarView;
+        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
+        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
+        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
         private LocalizationContext _localizationContext;
-        private ILocalizationManager _localizationManager;
         private IObjectBag _objectBag;
 
-        private MainGameViewModel _mainGameViewModel;
-
         public HealthBarView HealthBarView => _healthBarView;
-
-        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
-
-        protected override void InitializeProtected(IServiceProvider serviceProvider)
+            
+        [PopupConstructor]
+        public void Initialize(ILocalizationManager localizationManager)
         {
-            _objectBag = serviceProvider.GetRequiredService<IObjectBag>();
-            _localizationManager = serviceProvider.GetRequiredService<ILocalizationManager>();
             _localizationContext = LocalizationContext
-                .Create(_localizationManager)
+                .Create(localizationManager)
                 .BindLocalizable(this)
                 .Refresh();
-            ConfigureMenuButton();
+        }
+        
+        protected override void SetupViewModel(MainGamePopupViewModel viewModel)
+        {
+            SetAnimation(viewModel.ShowAction, new DoTweenCallbackAnimation(() =>
+            {
+                return DefaultAnimations.FromBottom(RectTransform, ParentTransform, _showAnimationInfo);
+            }));
+            SetAnimation(viewModel.CloseAction, new DoTweenCallbackAnimation(() =>
+            {
+                return DefaultAnimations.ToBottom(RectTransform, ParentTransform, _closeAnimationInfo);
+            }));
+            SetAnimation(viewModel.MenuControlAction, DefaultAnimations.None());
+            SetAnimation(viewModel.WinControlAction, DefaultAnimations.None());
+            
+            BindToAction(_menuControl, viewModel.MenuControlAction);
+            BindToAction(_winControl, viewModel.WinControlAction);
+        }
+        
+        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
+
+        public override void EnableInput()
+        {
+            _menuControl.Enable();
+            _winControl.Enable();
         }
 
-        public void SetupViewModel(MainGameViewModel mainGameViewModel) => _mainGameViewModel = mainGameViewModel;
-
-        public override void EnableInput() => EnableBehaviour(_menuButton);
-
-        public override void DisableInput() => DisableBehaviour(_menuButton);
-
-        protected override void OnShowed()
+        public override void DisableInput()
         {
-            UpdateHeader();
-            _mainGameViewModel.StartCommand.Execute();
-            InitializeHealthBar();
+            _menuControl.Disable();
+            _winControl.Disable();
         }
 
         public override void Reset()
         {
+            ToZeroPosition();
             _localizationContext.Flush();
-            _localizationContext = null;
-            RemoveAllListeners(_menuButton);
+            _menuControl.Reset();
+            _winControl.Reset();
+            
+            Unbind(ViewModel.MenuControlAction);
+            Unbind(ViewModel.WinControlAction);
         }
-
-        public void UpdateHeader()
+        
+        public void InitializeHealthBar(int lifesCount)
         {
-            var gameData = _objectBag.Get<GameData>();
-            UpdatePackInfoView(gameData.PackGameData);
+            _healthBarView.Clear();
+            _healthBarView.Initialize(lifesCount);
+        }
+        
+        public void UpdateHeader(GameData gameData)
+        {
+            _packageInfoView.SetPackInfo(gameData.PackGameData);
             UpdateLevelPassPercentageView(0);
         }
 
-        public void UpdatePackInfoView(PackGameData packGameData)
-        {
-            _packageInfoView.SetPackInfo(packGameData);
-        }
-        
         public void UpdateLevelPassPercentageView(float normalizedPercentage)
         {
             _levelPassPercentageView.SetInNormalizedPercentage(normalizedPercentage);
-        }
-
-        public void InitializeHealthBar()
-        {
-            _healthBarView.Clear();
-            _healthBarView.Initialize(_objectBag.Get<LevelData>().LifesCount);
-        }
-
-        private void ConfigureMenuButton()
-        {
-            _menuButton.onClick.AddListener(() =>
-            {
-                _mainGameViewModel.PauseCommand.Execute();
-                var menuPopup = PopupManager.SpawnPopup<MainGameMenuPopup>();
-                menuPopup.SetupViewModel(_mainGameViewModel.MainMenuViewModel);
-                menuPopup.OnRestartSubmit(() => UpdateLevelPassPercentageView(0));
-            });
         }
     }
 }
