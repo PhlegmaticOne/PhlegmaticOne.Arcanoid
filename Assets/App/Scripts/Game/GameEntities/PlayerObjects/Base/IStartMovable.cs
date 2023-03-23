@@ -1,7 +1,9 @@
-﻿namespace Game.GameEntities.PlayerObjects.Base
+﻿using UnityEngine;
+
+namespace Game.GameEntities.PlayerObjects.Base
 {
     public interface IStartMovable : IDimensionable
     {
-        void StartMove();
+        void StartMove(Vector2 direction);
     }
 }

@@ -60,8 +60,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
                     SetSpecifiedStartSpeed = true
                 });
             
-                newBall.SetDirection(speed.normalized);
-                newBall.StartMove();
+                newBall.StartMove(speed.normalized);
                 _ballsOnField.AddBall(newBall);
                 result.Add(newBall);
             }

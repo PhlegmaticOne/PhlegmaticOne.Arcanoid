@@ -910,6 +910,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4719939897535502297}
     m_Modifications:
+    - target: {fileID: 1439884225273124522, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
+      propertyPath: _bindingKey
+      value: BuyLife
+      objectReference: {fileID: 0}
     - target: {fileID: 1741099269235916636, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -993,6 +997,14 @@ PrefabInstance:
     - target: {fileID: 1741099269235916636, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980048777024133221, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980048777024133221, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3594682794033229632, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
       propertyPath: m_Name

@@ -14,17 +14,15 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         private bool _isRage;
 
         private float _startSpeed;
-        private Vector2 _direction = Vector2.up;
 
         public void Initialize(float initialSpeed) => _startSpeed = initialSpeed;
         public Collider2D GetCollider() => _circleCollider2D;
 
-        public void StartMove() => SetSpeed(_direction * _startSpeed);
+        public void StartMove(Vector2 direction) => SetSpeed(direction * _startSpeed);
 
         public Transform GetTransform() => transform;
         public Vector2 GetSpeed() => _rigidbody2D.velocity;
         public void SetStartSpeed(float startSpeed) => _startSpeed = startSpeed;
-        public void SetDirection(Vector2 direction) => _direction = direction;
         public void SetSpeed(Vector2 speed)
         {
             if (_rigidbody2D.bodyType != RigidbodyType2D.Static)

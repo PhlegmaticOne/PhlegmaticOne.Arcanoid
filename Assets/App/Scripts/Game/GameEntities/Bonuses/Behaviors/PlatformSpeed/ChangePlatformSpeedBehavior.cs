@@ -30,8 +30,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
         
         public void Behave(Bonus entity, Collision2D collision2D)
         {
-            if (_timeActionsManager.TryGetAction<ChangePlatformSpeedTimeAction>(out var action) &&
-                action.IsIncrease == _isIncrease)
+            if (_timeActionsManager
+                .TryGetAction<ChangePlatformSpeedTimeAction>(x => x.IsIncrease == _isIncrease, out var action))
             {
                 action.Restart();
             }

@@ -78,14 +78,17 @@ namespace Game.Logic.Systems.Control
         
         private void InputSystemOnEnded()
         {
-            if (NotInBounds(ToWorldPoint()) || NotValid())
+            var inputPosition = ToWorldPoint();
+            
+            if (NotInBounds(inputPosition) || NotValid())
             {
                 return;
             }
             
             foreach (var followingObject in _followingObjects)
             {
-                followingObject.StartMove();
+                var direction = (inputPosition - followingObject.GetTransform().position).normalized;
+                followingObject.StartMove(direction);
             }
             
             _followingObjects.Clear();

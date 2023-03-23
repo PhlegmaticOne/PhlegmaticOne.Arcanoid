@@ -8,7 +8,7 @@ namespace Game.GameEntities.PlayerObjects.ShipObject
         public void ScaleBy(float scaleBy, float time)
         {
             var endValue = transform.localScale.x * scaleBy;
-            transform.DOScaleX(endValue, time);
+            transform.DOScaleX(endValue, time).Play();
         }
     }
 }
