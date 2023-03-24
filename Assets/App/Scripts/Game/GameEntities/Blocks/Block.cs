@@ -10,11 +10,12 @@ namespace Game.GameEntities.Blocks
         [SerializeField] private BlockView _blockView;
         [SerializeField] private BoxCollider2D _boxCollider;
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        private int _health;
+        private float _health;
+        private int _previousHealth;
         private bool _readyToDestroy;
         
         public int StartHealth { get; private set; }
-        public int CurrentHealth => _health;
+        public float CurrentHealth => _health;
         public bool IsDestroyed { get; private set; }
         public bool IsActive { get; private set; }
         public BlockConfiguration BlockConfiguration { get; private set; }
@@ -26,12 +27,7 @@ namespace Game.GameEntities.Blocks
             _health = configuration.LifesCount;
             StartHealth = configuration.LifesCount;
             IsDestroyed = false;
-
-            if (configuration.LifesCount == 1 && configuration.ActiveOnPlay)
-            {
-                _readyToDestroy = true;
-            }
-            
+            _previousHealth = StartHealth;
             _blockView.Initialize(configuration, blockCracksConfiguration);
         }
 
@@ -43,14 +39,20 @@ namespace Game.GameEntities.Blocks
             _boxCollider.size = _blockView.Size;
         }
 
-        public void Damage()
+        public void Damage(float damage)
         {
-            _blockView.Damage(StartHealth - CurrentHealth);
-            --_health;
-            
-            if (_health == 1)
+            if (IsActive == false)
             {
-                _readyToDestroy = true;
+                return;
+            }
+            
+            _health -= damage;
+            var rounded = (int)_health;
+            
+            if (_health > 0 && rounded != _previousHealth)
+            {
+                _previousHealth = rounded;
+                _blockView.Damage(rounded);
             }
         }
 

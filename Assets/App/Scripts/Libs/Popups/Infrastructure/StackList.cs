@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Libs.Popups.Infrastructure
 {
@@ -19,5 +20,6 @@ namespace Libs.Popups.Infrastructure
 
         public void Push(T item) => _items.Add(item);
         public void Remove(T item) => _items.Remove(item);
+        public List<T> ToList() => _items.ToList();
     }
 }

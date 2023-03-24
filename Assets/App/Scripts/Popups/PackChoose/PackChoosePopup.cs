@@ -14,6 +14,7 @@ using Libs.Popups.Animations.Concrete;
 using Libs.Popups.Animations.Extensions;
 using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
+using Libs.Popups.ViewModels.Actions;
 using Libs.Popups.ViewModels.Collections;
 using Popups.PackChoose.Views;
 using Popups.PackChoose.Views.Factory;
@@ -63,6 +64,8 @@ namespace Popups.PackChoose
         
         protected override void SetupViewModel(PackChoosePopupViewModel viewModel)
         {
+            ViewModel.CloseAction = PopupAction.Empty;
+            
             SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
                 .FromLeft(_showAnimationInfo)

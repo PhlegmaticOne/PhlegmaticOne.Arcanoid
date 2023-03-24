@@ -61,7 +61,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
                 });
             
                 newBall.StartMove(speed.normalized);
-                _ballsOnField.AddBall(newBall);
+                _ballsOnField.Add(newBall);
                 result.Add(newBall);
             }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Game.GameEntities.PlayerObjects.Base;
 using UnityEngine;
 
@@ -10,8 +11,10 @@ namespace Game.GameEntities.PlayerObjects.ShipObject
         [SerializeField] private PolygonCollider2D _collider2D;
         [SerializeField] private ShipConfiguration _shipConfiguration;
         [SerializeField] private ActiveShipPart _activeShipPart;
+        [SerializeField] private List<Transform> _shotgunTransforms;
 
         private float _currentControlLerp;
+        public List<Transform> ShotgunTransforms => _shotgunTransforms;
 
         private void Start() => _currentControlLerp = _shipConfiguration.StartControlLerp;
         public void IncreaseLerpBy(float multiplier) => _currentControlLerp *= multiplier;

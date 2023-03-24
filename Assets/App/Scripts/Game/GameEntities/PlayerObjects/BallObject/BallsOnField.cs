@@ -1,43 +1,31 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using Game.GameEntities.Base;
 using UnityEngine.Events;
 
 namespace Game.GameEntities.PlayerObjects.BallObject
 {
-    public class BallsOnField : MonoBehaviour
+    public class BallsOnField : EntitiesOnField<Ball>
     {
-        private readonly List<Ball> _balls = new List<Ball>();
-        
-        public IReadOnlyList<Ball> All => _balls;
-        public Ball MainBall { get; private set; }
-        public event UnityAction<Ball> BallAdded; 
-        public event UnityAction<Ball> BallRemoved; 
-
-        public void AddBall(Ball ball)
+        protected override void OnAdded(Ball behaviorObject)
         {
             if (MainBall == null)
             {
-                MainBall = ball;
+                MainBall = behaviorObject;
             }
-            
-            _balls.Add(ball);
-            BallAdded?.Invoke(ball);
         }
 
-        public void RemoveBall(Ball ball)
+        protected override void OnRemoved(Ball behaviorObject)
         {
-            _balls.Remove(ball);
-
-            MainBall = _balls.Count switch
+            MainBall = _all.Count switch
             {
-                1 => _balls[0],
+                1 => _all[0],
                 0 => null,
                 _ => MainBall
             };
 
-            BallRemoved?.Invoke(ball);
+            BallRemoved?.Invoke(behaviorObject);
         }
 
-        public void Clear() => _balls.Clear();
+        public Ball MainBall { get; private set; }
+        public event UnityAction<Ball> BallRemoved;
     }
 }

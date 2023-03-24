@@ -338,12 +338,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6723961344206063078, guid: eca51518686ed7c468bac21771519c4d, type: 3}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bulletPoolInstaller._prefab
+      value: 
+      objectReference: {fileID: 316914792528453252, guid: 85468626283ec58448d7c97b2bc3a51f, type: 3}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _ballPoolInstaller._maxCapacity
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._maxCapacity
       value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bulletPoolInstaller._maxCapacity
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _ballPoolInstaller._initialCapacity
@@ -366,7 +374,15 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bulletPoolInstaller._initialCapacity
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._destroyOnOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
+      propertyPath: _bulletPoolInstaller._destroyOnOverflow
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}

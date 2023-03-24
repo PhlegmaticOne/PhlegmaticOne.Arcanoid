@@ -75,7 +75,8 @@ namespace Popups.Win
             BindToActionWithValue(_nextControl, viewModel.NextControlAction, viewModel);
             
             UpdatePackInfoView();
-            _nextControl.ChangeEnergyViewEnabled(viewModel.WinState != WinState.AllPacksPassed);
+            _nextControl.ChangeEnergyViewEnabled(viewModel.WinState != WinState.AllPacksPassed && 
+                                                 viewModel.WinState != WinState.PackPassedMultipleTime);
         }
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents()
@@ -160,6 +161,7 @@ namespace Popups.Win
                     _packageInfoView.UpdatePackDataAnimate(GetNextPackGameData(), s,
                         _scaleAnimationInfo, _colorAnimationInfo, () => _localizationContext.Refresh());
                 }
+                
 
                 s.AppendCallback(() => _nextControl.SetEnergy(GetStartNextLevelEnergy()));
             });

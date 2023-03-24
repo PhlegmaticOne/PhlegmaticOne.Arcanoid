@@ -19,7 +19,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
         {
             entity.SetStartSpeed(entity.GetSpeed().magnitude);
             entity.SetSpeed(Vector2.zero);
-            _ballsOnField.AddBall(entity);
+            _ballsOnField.Add(entity);
             _controlSystem.AddObjectToFollow(entity);
         }
     }

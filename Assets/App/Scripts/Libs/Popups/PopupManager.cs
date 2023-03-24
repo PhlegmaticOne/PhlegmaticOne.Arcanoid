@@ -84,9 +84,12 @@ namespace Libs.Popups
 
         public void CloseAllPopupsInstant()
         {
-            while (_popups.Count != 0)
+            var count = _popups.Count;
+            
+            while (count != 0)
             {
                 CloseLastPopupInstant();
+                count--;
             }
         }
 

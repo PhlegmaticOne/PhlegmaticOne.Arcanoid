@@ -64,9 +64,9 @@ namespace Libs.Popups
             {
                 disappearAnimation.AnimationPlayed -= _onAnimationPlayedAction;
                 disappearAnimation.Stop();
-                CloseInstant();
                 onClose?.Invoke();
                 _onAnimationPlayedAction = null;
+                CloseInstant();
             };
             
             disappearAnimation.AnimationPlayed += _onAnimationPlayedAction;

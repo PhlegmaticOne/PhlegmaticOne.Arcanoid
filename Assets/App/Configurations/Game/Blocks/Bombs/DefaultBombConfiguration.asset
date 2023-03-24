@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockAffecting: 2
   _isAffectsOnAllBlocks: 0
+  _damage: 1
   _removesLifesCount: 1
   _damageAffectsOnBlocks:
   - {fileID: 11400000, guid: b30f8cdc81740c3428696f46764015d4, type: 2}

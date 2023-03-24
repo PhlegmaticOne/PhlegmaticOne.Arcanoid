@@ -10,7 +10,7 @@ namespace Game.GameEntities.Blocks.View
         
         [SerializeField] private SpriteRenderer _mainSpriteRenderer;
         [SerializeField] private AdditionalRenderer _additionalRenderer;
-        
+
         private readonly Stack<AdditionalRenderer> _additionalRenderers = new Stack<AdditionalRenderer>();
         private BlockCracksConfiguration _blockCracksConfiguration;
         public Vector2 Size => _mainSpriteRenderer.size;
@@ -31,6 +31,12 @@ namespace Game.GameEntities.Blocks.View
         {
             var crackSprites = _blockCracksConfiguration.CrackSprites;
             var spriteIndex = stage % crackSprites.Count;
+            
+            if (spriteIndex < 0 || spriteIndex >= crackSprites.Count)
+            {
+                return;
+            }
+            
             var crackSprite = crackSprites[spriteIndex];
             AddSprite(crackSprite);
         }

@@ -35,9 +35,12 @@ namespace Libs.Popups.Controls.Base
         public abstract void Enable();
         public abstract void Disable();
 
-        public void Reset()
+        public void Reset(bool complete = true)
         {
-            _rectTransform.localPosition = _awakePosition;
+            if (complete)
+            {
+                _rectTransform.localPosition = _awakePosition;
+            }
             _controlAction = null;
             ResetProtected();
         }

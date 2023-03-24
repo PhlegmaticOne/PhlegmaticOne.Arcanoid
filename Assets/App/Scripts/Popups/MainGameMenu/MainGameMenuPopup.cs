@@ -104,9 +104,11 @@ namespace Popups.MainGameMenu
             _mainPopupTransform.Reset();
             _energyController.Disable();
             _localizationContext.Flush();
+            
             _continueControl.Reset();
             _restartControl.Reset();
-            _continueControl.Reset();
+            _backControl.Reset();
+            
             _energyManager.EnergyChangedFromTime -= EnergyManagerOnEnergyChangedFromTime;
             Unbind(ViewModel.BackControlAction);
             Unbind(ViewModel.ContinueControlAction);

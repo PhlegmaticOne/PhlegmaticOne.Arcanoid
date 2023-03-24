@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Game.Field;
 using Game.GameEntities.Blocks.Configurations;
+using Game.GameEntities.Common;
+using Game.GameEntities.PlayerObjects.BallObject;
 using UnityEngine;
 
 namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common.AffectStrategies
@@ -9,11 +11,13 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common.AffectStrategies
     {
         private readonly BombConfiguration _bombConfiguration;
         private readonly GameField _gameField;
+        private readonly DamageBlockBehavior _damageBlockBehavior;
 
         public BlockAffectStrategy(BombConfiguration bombConfiguration, GameField gameField)
         {
             _bombConfiguration = bombConfiguration;
             _gameField = gameField;
+            _damageBlockBehavior = new DamageBlockBehavior();
         }
         
         public void AffectBlockAtPosition(FieldPosition fieldPosition, Collision2D original)
@@ -70,7 +74,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common.AffectStrategies
         
         private void TryDamageBlock(Block block, Collision2D original)
         {
-            if (block.CurrentHealth > _bombConfiguration.RemovesLifesCount)
+            if (block.CurrentHealth > _bombConfiguration.Damage)
             {
                 DamageBlock(block, original);
             }
@@ -82,10 +86,8 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common.AffectStrategies
 
         private void DamageBlock(Block block, Collision2D original)
         {
-            for (var i = 0; i < _bombConfiguration.RemovesLifesCount; i++)
-            {
-                block.CollideWithTag(_bombConfiguration.ColliderTag.Tag, original);
-            }
+            _damageBlockBehavior.Damage(block, _bombConfiguration.Damage,
+                _bombConfiguration.ColliderTag.Tag, original);
         }
         
         private void DestroyBlock(Block block, Collision2D original)

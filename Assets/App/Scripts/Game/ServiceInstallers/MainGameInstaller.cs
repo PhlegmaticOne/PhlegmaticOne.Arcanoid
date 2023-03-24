@@ -1,12 +1,7 @@
 ﻿using Game.Base;
+using Game.Composites;
 using Game.Field.Builder;
-using Game.GameEntities.Bonuses;
-using Game.GameEntities.Bonuses.Behaviors.CaptiveBall;
-using Game.GameEntities.PlayerObjects.BallObject;
 using Game.GameEntities.PlayerObjects.BallObject.Spawners;
-using Game.GameEntities.PlayerObjects.ShipObject;
-using Game.Logic.Systems.Control;
-using Game.Logic.Systems.Health;
 using Game.ObjectParticles;
 using Libs.InputSystem;
 using Libs.Pooling.Base;
@@ -22,32 +17,25 @@ namespace Game.ServiceInstallers
             serviceCollection.AddSingleton<IGame<MainGameData, MainGameEvents>>(x =>
             {
                 var global = ServiceProviderAccessor.Global;
+
+                var gameSystems = x.GetRequiredService<GameSystems>();
+                var entitiesOnField = x.GetRequiredService<EntitiesOnFieldCollection>();
                 
                 var ballSpawner = x.GetRequiredService<IBallSpawner>();
                 var fieldBuilder = x.GetRequiredService<IFieldBuilder>();
                 var inputSystem = x.GetRequiredService<IInputSystem>();
-                var healthSystem = x.GetRequiredService<HealthSystem>();
-                var controlSystem = x.GetRequiredService<ControlSystem>();
-                var balls = x.GetRequiredService<BallsOnField>();
-                var bonuses = x.GetRequiredService<BonusesOnField>();
-                var ship = x.GetRequiredService<Ship>();
                 var poolProvider = global.GetRequiredService<IPoolProvider>();
                 var timeActionsManager = x.GetRequiredService<TimeActionsManager>();
-                var captiveBallsSystem = x.GetRequiredService<CaptiveBallsSystem>();
                 var particleManager = x.GetRequiredService<ParticleManager>();
                 
-                controlSystem.Initialize(inputSystem, ship);
+                gameSystems.ControlSystem.Initialize(inputSystem, entitiesOnField.Ship);
                 return new MainGame(poolProvider,
+                    entitiesOnField,
+                    gameSystems,
                     fieldBuilder,
                     timeActionsManager,
-                    healthSystem,
-                    balls,
-                    bonuses,
-                    controlSystem,
-                    captiveBallsSystem,
                     particleManager,
-                    ballSpawner,
-                    ship);
+                    ballSpawner);
             });
         }
     }

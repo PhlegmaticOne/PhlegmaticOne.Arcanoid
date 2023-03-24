@@ -24,12 +24,14 @@ namespace Libs.Popups
 
         protected void BindToAction(ControlBase controlBase, IControlAction controlAction)
         {
+            controlBase.Reset(false);
             controlBase.BindToAction(controlAction);
             controlAction.IsExecutingChanged += ControlActionOnIsExecutingChanged;
         }
         
         protected void BindToActionWithValue(ControlBase controlBase, IControlAction controlAction, object value)
         {
+            controlBase.Reset(false);
             controlBase.BindToActionWithValue(controlAction, value);
             controlAction.IsExecutingChanged += ControlActionOnIsExecutingChanged;
         }

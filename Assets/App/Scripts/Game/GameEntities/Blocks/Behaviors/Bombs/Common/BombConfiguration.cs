@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.GameEntities.Base;
 using Game.GameEntities.Blocks.Configurations;
 using Libs.Behaviors;
 using Sirenix.OdinInspector;
@@ -7,10 +8,11 @@ using UnityEngine;
 namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
 {
     [CreateAssetMenu(menuName = "Game/Blocks/Behaviors/Create bomb configuration")]
-    public class BombConfiguration : ScriptableObject
+    public class BombConfiguration : ScriptableObject, IDamageable
     {
         [SerializeField] private BlockAffectingType _blockAffecting;
         [SerializeField] private bool _isAffectsOnAllBlocks;
+        [SerializeField] private float _damage;
         
         [SerializeField] 
         [ShowIf("@(this._blockAffecting == BlockAffectingType.Damage || " +
@@ -38,5 +40,6 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
         public List<BlockConfiguration> DamageAffectsOnBlocks => _damageAffectsOnBlocks;
         public List<BlockConfiguration> DestroyAffectsOnBlocks => _destroyAffectsOnBlocks;
         public ColliderTag ColliderTag => _colliderTag;
+        public float Damage => _damage;
     }
 }

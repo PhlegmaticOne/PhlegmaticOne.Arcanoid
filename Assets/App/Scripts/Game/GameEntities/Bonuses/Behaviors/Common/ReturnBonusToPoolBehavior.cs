@@ -19,7 +19,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.Common
         {
             var pool = _poolProvider.GetPool<Bonus>();
             pool.ReturnToPool(entity);
-            _bonusesOnField.RemoveBonus(entity);
+            _bonusesOnField.Remove(entity);
         }
     }
 }

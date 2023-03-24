@@ -1,8 +1,7 @@
-﻿using System;
-using Common.Packs.Configurations;
+﻿using Common.Packs.Configurations;
 using Common.Packs.Data.Models;
 using Libs.Localization.Components.Base;
-using Libs.Popups.Controls.Base;
+using Libs.Popups.Controls;
 using Popups.PackChoose.Views.Configurations;
 using TMPro;
 using UnityEngine;
@@ -10,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Popups.PackChoose.Views
 {
-    public class PackPreview : ControlBase
+    public class PackPreview : ButtonControl
     {
         [SerializeField] private Image _innerImage;
         [SerializeField] private Image _outerImage;
@@ -22,17 +21,8 @@ namespace Popups.PackChoose.Views
         [SerializeField] private EnergyCountView _winLevelEnergy;
 
         [SerializeField] private LocalizationBindableComponent _packNameTextBindableComponent;
-        private bool _isEnabled = true;
-        private Action<ControlBase> _onClick;
         public LocalizationBindableComponent PackNameTextBindableComponent => _packNameTextBindableComponent;
 
-        public override void OnClick(Action<ControlBase> action) => _onClick = action;
-
-        public override void Enable() => _isEnabled = true;
-
-        public override void Disable() => _isEnabled = false;
-
-        protected override void ResetProtected() => _onClick = null;
 
         public void ApplyPackGameData(PackGameData packGameData)
         {
@@ -84,15 +74,25 @@ namespace Popups.PackChoose.Views
             RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         }
 
-        private void OnMouseDown()
-        {
-            if (_isEnabled == false || IsInteractable == false)
-            {
-                return;
-            }
-            
-            _onClick?.Invoke(this);
-        }
+        // private void OnMouseUp()
+        // {
+        //     if (_isEnabled == false || IsInteractable == false)
+        //     {
+        //         return;
+        //     }
+        //     
+        //     _onClick?.Invoke(this);
+        // }
+
+        // private void OnMouseDown()
+        // {
+        //     if (_isEnabled == false || IsInteractable == false)
+        //     {
+        //         return;
+        //     }
+        //     
+        //     _onClick?.Invoke(this);
+        // }
 
         protected override void OnInteractableSet(bool isInteractable) => SetInteractableDirect(true);
 

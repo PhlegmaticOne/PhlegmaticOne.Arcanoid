@@ -1,6 +1,4 @@
-﻿using UnityEngine.Events;
-
-namespace Libs.Popups.Base
+﻿namespace Libs.Popups.Base
 {
     public interface IPopupManager
     {

@@ -5,9 +5,11 @@
         private readonly float _fixedInterval;
         private float _currentIntervalTime;
         private int _currentInterval;
+        private int _actionsCount;
 
         protected FixedIntervalTimeAction(float fixedInterval, int actionsCount)
         {
+            _actionsCount = actionsCount;
             _fixedInterval = fixedInterval;
             CalculateExecutionTime(actionsCount);
         }
@@ -20,6 +22,13 @@
         public abstract void OnStart();
         public abstract void OnEnd();
         protected abstract void OnInterval(int interval);
+
+        public void Reset()
+        {
+            _currentInterval = 0;
+            _currentIntervalTime = 0;
+            CalculateExecutionTime(_actionsCount);
+        }
 
         public void OnUpdate(float deltaTime)
         {

@@ -9,6 +9,9 @@ namespace Popups.Common
         private readonly IPopupManager _popupManager;
         public SpawnPopupCommand(IPopupManager popupManager) => _popupManager = popupManager;
         public bool CanExecute(object parameter) => true;
-        public void Execute(object parameter) => _popupManager.SpawnPopup<T>();
+        public void Execute(object parameter)
+        {
+            _popupManager.SpawnPopup<T>();
+        }
     }
 }

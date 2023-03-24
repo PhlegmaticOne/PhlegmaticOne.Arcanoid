@@ -6,7 +6,7 @@ namespace Game.Field.Helpers
 {
     public class InteractableZoneSetter : MonoBehaviour
     {
-        private const float NonDependentColliderSize = 0.5f;
+        private const float NonDependentColliderSize = 1f;
         private float _screenWidth;
         private float _screenHeight;
         

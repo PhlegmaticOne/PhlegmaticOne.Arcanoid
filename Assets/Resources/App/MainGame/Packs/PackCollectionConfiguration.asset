@@ -30,7 +30,7 @@ MonoBehaviour:
     _packPreviewFilePostfix: Preview
   _defaultPackConfiguration:
     _defaultPack: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
-    _defaultLevelId: 4
+    _defaultLevelId: 7
   _isUpdatePacksInEditor: 0
   _isUpdateAllPacks: 0
   _packConfigurations:

@@ -28,7 +28,7 @@ namespace Game.GameEntities.Blocks.Behaviors.SpawnBonus
                 Position = entity.transform.position
             });
             
-            _bonusesOnField.AddBonus(bonus);
+            _bonusesOnField.Add(bonus);
             bonus.StartMove();
         }
     }
