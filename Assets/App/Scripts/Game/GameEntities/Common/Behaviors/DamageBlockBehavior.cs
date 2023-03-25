@@ -32,6 +32,8 @@ namespace Game.GameEntities.Common
             _damageBlockBehavior = new DamageBlockBehavior();
         }
         
+        public bool IsDefault => true;
+        
         public void Behave(T entity, Collision2D collision2D)
         {
             if (collision2D.collider.TryGetComponent<Block>(out var block) == false)

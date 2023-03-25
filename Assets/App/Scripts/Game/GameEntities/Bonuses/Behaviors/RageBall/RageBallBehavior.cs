@@ -7,6 +7,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
 {
     public class RageBallBehavior : IObjectBehavior<Ball>
     {
+        public bool IsDefault => false;
         public void Behave(Ball entity, Collision2D collision2D)
         {
             if (collision2D.collider.gameObject.TryGetComponent<Block>(out var block))

@@ -17,6 +17,8 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.IncreaseBallSpeed
             _ballsOnField = ballsOnField;
         }
         
+        public bool IsDefault => true;
+        
         public void SetBehaviorParameters(float increaseSpeed) => _increaseSpeed = increaseSpeed;
 
         public void Behave(Block entity, Collision2D collision2D)

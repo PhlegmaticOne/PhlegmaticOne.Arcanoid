@@ -20,6 +20,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangePlatformScale
             _timeActionsManager = timeActionsManager;
             _ship = ship;
         }
+        
+        public bool IsDefault => false;
 
         public void SetBehaviorParameters(float actionTime, float changingTime, float scaleBy, bool isIncrease)
         {

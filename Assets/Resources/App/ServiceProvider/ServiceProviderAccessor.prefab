@@ -371,11 +371,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._initialCapacity
-      value: 16
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bulletPoolInstaller._initialCapacity
-      value: 16
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bonusPoolInstaller._destroyOnOverflow
@@ -399,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _blockParticlesPoolInstaller._initialCapacity
-      value: 16
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8897685100109004453, guid: 02404d9e30c043243892bca9d12276d1, type: 3}
       propertyPath: _bombParticlesPoolInstaller._destroyOnOverflow

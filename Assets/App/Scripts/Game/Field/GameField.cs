@@ -79,7 +79,6 @@ namespace Game.Field
 
         public void RemoveBlock(Block block)
         {
-            //_blocks.Remove(block);
             BlockRemoved?.Invoke(block);
         }
 
@@ -90,6 +89,13 @@ namespace Game.Field
         }
         
         public int GetDefaultBlocksCount() => _blocks.Count(x => x != null && x.IsDefaultBlock());
+        public IEnumerable<Block> GetNotActiveBlocks() => _blocks.Where(x => x != null &&
+                                                                             x.IsDestroyed == false && 
+                                                                             x.IsActive == false);
+        
+        public IEnumerable<Block> GetActiveBlocks() => _blocks.Where(x => x != null &&
+                                                                             x.IsDestroyed == false && 
+                                                                             x.IsActive);
 
         private int CalculateIndex(int row, int col) => row * Width + col;
     }

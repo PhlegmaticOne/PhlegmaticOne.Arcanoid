@@ -19,6 +19,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeHealth
             _healthToChange = healthToChange;
             _isAdding = isAdding;
         }
+        public bool IsDefault => false;
         
         public void Behave(Bonus entity, Collision2D collision2D)
         {

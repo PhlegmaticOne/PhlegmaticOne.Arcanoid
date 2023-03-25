@@ -15,6 +15,8 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Particles
             _particleManager = particleManager;
         }
         
+        public bool IsDefault => true;
+        
         public void Behave(Block entity, Collision2D collision2D)
         {
             var particle = _particleManager.SpawnParticle<BombParticle>(p =>

@@ -12,7 +12,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Particles
         
         public SpawnBlockParticleBehavior(ParticleManager particleManager) => _particleManager = particleManager;
         
-
+        public bool IsDefault => true;
         public void SetBehaviorParameters(Color particleColor) => _particleColor = particleColor;
 
         public void Behave(Block entity, Collision2D collision2D)

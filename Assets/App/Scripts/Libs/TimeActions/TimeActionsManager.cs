@@ -16,8 +16,6 @@ namespace Libs.TimeActions
             timeAction.OnStart();
         }
 
-        public bool ContainsAction<TAction>() where TAction : ITimeAction => _timeActions.Any(x => x is TAction);
-
         public bool TryGetAction<TAction>(out TAction action) where TAction : ITimeAction
         {
             action = (TAction)_timeActions.SingleOrDefault(x => x is TAction);
@@ -31,14 +29,35 @@ namespace Libs.TimeActions
             return action != null;
         }
 
+        public void StopAllExcept(ITimeAction timeAction)
+        {
+            for (var i = _timeActions.Count - 1; i >= 0; i--)
+            {
+                var action = _timeActions[i];
+
+                if (action == timeAction)
+                {
+                    continue;
+                }
+
+                EndAction(action);
+                _timeActions.Remove(action);
+            }
+        }
+
         public void StopAllActions()
         {
             foreach (var timeAction in _timeActions)
             {
-                timeAction.RemainTime = 0;
-                timeAction.OnEnd();
+                EndAction(timeAction);
             }
             _timeActions.Clear();
+        }
+
+        private void EndAction(ITimeAction timeAction)
+        {
+            timeAction.RemainTime = 0;
+            timeAction.OnEnd();
         }
 
         private void Update()

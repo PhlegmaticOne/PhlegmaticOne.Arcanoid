@@ -9,8 +9,6 @@ namespace Libs.Behaviors
         where TSelf : BehaviorObject<TSelf>
     {
         [SerializeField] private BehaviorObjectTags _behaviorObjectTags;
-        private bool _markedToDestroy;
-        
         private readonly BehaviorsCollection<TSelf> _onCollisionBehaviours = new BehaviorsCollection<TSelf>();
         private readonly BehaviorsCollection<TSelf> _onDestroyBehaviours = new BehaviorsCollection<TSelf>();
         
@@ -32,8 +30,6 @@ namespace Libs.Behaviors
             }
         }
 
-        public void MarkToDestroy() => _markedToDestroy = true;
-        
         protected abstract bool CanBeDestroyedOnDestroyCollision();
 
         private void OnCollisionEnter2D(Collision2D col)
@@ -48,7 +44,7 @@ namespace Libs.Behaviors
                 var collisionBehaviours = _onCollisionBehaviours.GetAllBehaviors(colliderTag.Tag);
                 var destroyBehaviours = _onDestroyBehaviours.GetAllBehaviors(colliderTag.Tag);
             
-                if ((CanBeDestroyedOnDestroyCollision() || _markedToDestroy) && destroyBehaviours.Count != 0)
+                if (CanBeDestroyedOnDestroyCollision() && destroyBehaviours.Count != 0)
                 {
                     ExecuteBehaviours(destroyBehaviours, col);
                     return;

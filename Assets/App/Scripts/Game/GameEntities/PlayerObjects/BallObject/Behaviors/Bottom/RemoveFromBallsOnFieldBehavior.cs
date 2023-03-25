@@ -8,6 +8,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
         private readonly BallsOnField _ballsOnField;
 
         public RemoveFromBallsOnFieldBehavior(BallsOnField ballsOnField) => _ballsOnField = ballsOnField;
+        public bool IsDefault => true;
         public void Behave(Ball entity, Collision2D collision2D) => _ballsOnField.Remove(entity);
     }
 }

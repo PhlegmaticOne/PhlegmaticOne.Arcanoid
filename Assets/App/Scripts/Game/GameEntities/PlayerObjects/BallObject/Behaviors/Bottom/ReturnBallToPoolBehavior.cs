@@ -9,6 +9,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
         private readonly IPoolProvider _poolProvider;
 
         public ReturnBallToPoolBehavior(IPoolProvider poolProvider) => _poolProvider = poolProvider;
+        public bool IsDefault => true;
 
         public void Behave(Ball entity, Collision2D collision2D)
         {

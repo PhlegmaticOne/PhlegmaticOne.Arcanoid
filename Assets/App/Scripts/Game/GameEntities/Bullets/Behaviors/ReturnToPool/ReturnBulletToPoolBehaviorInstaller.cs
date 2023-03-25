@@ -1,4 +1,5 @@
-﻿using Libs.Behaviors;
+﻿using Common.Scenes;
+using Libs.Behaviors;
 using Libs.Behaviors.Installer;
 using Libs.Pooling.Base;
 using Libs.Services;
@@ -10,7 +11,9 @@ namespace Game.GameEntities.Bullets.Behaviors.ReturnToPool
         public override IObjectBehavior<Bullet> CreateBehaviour()
         {
             var poolProvider = ServiceProviderAccessor.Global.GetRequiredService<IPoolProvider>();
-            return new ReturnBulletToPoolBehavior(poolProvider);
+            var bullets = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene)
+                .GetRequiredService<BulletsOnField>();
+            return new ReturnBulletToPoolBehavior(poolProvider, bullets);
         }
     }
 }

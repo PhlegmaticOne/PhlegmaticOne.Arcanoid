@@ -17,6 +17,8 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Movement
             _minSideBounceAngle = minSideBounceAngle;
             _isCorrectMovement = isCorrectMovement;
         }
+        
+        public bool IsDefault => true;
 
         public void Behave(Ball entity, Collision2D collision2D)
         {

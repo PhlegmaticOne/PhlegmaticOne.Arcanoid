@@ -41,6 +41,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
             if (_isInitialState)
             {
                 AddNewBehaviorsToBall(mainBall, _behaviorsToReplace);
+                _isInitialState = false;
             }
 
             foreach (var ball in balls)

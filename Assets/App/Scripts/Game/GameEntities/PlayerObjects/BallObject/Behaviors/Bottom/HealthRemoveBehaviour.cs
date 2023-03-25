@@ -10,6 +10,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
         private float _healthToRemove;
 
         public HealthRemoveBehaviour(HealthSystem healthSystem) => _healthSystem = healthSystem;
+        public bool IsDefault => true;
 
         public void SetBehaviourParameters(int healthToRemove) => _healthToRemove = healthToRemove;
 

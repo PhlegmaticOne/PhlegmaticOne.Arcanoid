@@ -26,6 +26,8 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
             _bombTimeAction = bombTimeAction;
         }
         
+        public bool IsDefault => false;
+        
         public void Behave(Block entity, Collision2D collision2D)
         {
             var bombPosition = _gameField.GetBlockPosition(entity);

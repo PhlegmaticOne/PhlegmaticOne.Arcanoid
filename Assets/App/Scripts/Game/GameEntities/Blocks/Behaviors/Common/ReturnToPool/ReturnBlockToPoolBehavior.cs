@@ -16,6 +16,8 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
             _gameField = gameField;
         }
         
+        public bool IsDefault => true;
+        
         public void Behave(Block entity, Collision2D collision2D)
         {
             var pool = _poolProvider.GetPool<Block>();

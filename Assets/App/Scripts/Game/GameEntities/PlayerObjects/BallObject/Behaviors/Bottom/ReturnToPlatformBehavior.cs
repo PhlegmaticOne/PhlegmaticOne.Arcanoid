@@ -14,6 +14,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
             _controlSystem = controlSystem;
             _ballsOnField = ballsOnField;
         }
+        public bool IsDefault => true;
 
         public void Behave(Ball entity, Collision2D collision2D)
         {

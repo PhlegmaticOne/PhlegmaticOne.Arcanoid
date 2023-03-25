@@ -18,6 +18,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
             _ballsOnField = ballsOnField;
             _timeActionsManager = timeActionsManager;
         }
+        
+        public bool IsDefault => false;
 
         public void SetBehaviorParameters(float speedToChange, float executionTime, bool isAdding)
         {

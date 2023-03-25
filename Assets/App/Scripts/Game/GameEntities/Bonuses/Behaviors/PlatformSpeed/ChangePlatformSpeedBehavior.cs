@@ -20,6 +20,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
             _timeActionsManager = timeActionsManager;
             _ship = ship;
         }
+        
+        public bool IsDefault => false;
 
         public void SetBehaviorParameters(float actionTime, float changeBy, bool isIncrease)
         {

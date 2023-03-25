@@ -27,6 +27,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.Shotgun
             _bulletSpawner = bulletSpawner;
             _ship = ship;
         }
+        
+        public bool IsDefault => false;
 
         public void SetBehaviorParameters(float actionTime, float shootInterval)
         {

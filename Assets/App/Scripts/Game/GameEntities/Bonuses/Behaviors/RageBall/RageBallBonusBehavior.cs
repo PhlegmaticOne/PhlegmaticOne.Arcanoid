@@ -21,6 +21,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
             _ballsOnField = ballsOnField;
             _blockColliderTag = blockColliderTag;
         }
+        
+        public bool IsDefault => false;
 
         public void SetBehaviorParameters(float actionTime) => _actionTime = actionTime;
 

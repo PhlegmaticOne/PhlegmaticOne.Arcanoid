@@ -796,8 +796,8 @@ MonoBehaviour:
   _hasPackNameView: 0
   _packNameText: {fileID: 0}
   _packNameLocalizationComponent: {fileID: 0}
-  _hasColorBindableComponents: 0
-  _colorBindableComponents: []
+  _hasColorBindableComponent: 0
+  _colorBindableComponent: {fileID: 0}
 --- !u!1 &4672484507149802456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,6 +1149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _percentageText: {fileID: 4672484507758867467}
+  _updateDuration: 0.5
+  _minStep: 0.01
 --- !u!1 &4672484507869124410
 GameObject:
   m_ObjectHideFlags: 0

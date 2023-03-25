@@ -90,6 +90,22 @@ namespace Libs.Behaviors
                 _behaviours[colliderTag].Clear();
             }
         }
+
+        public void RemoveNotDefaultBehaviors(string colliderTag)
+        {
+            if (_behaviours.TryGetValue(colliderTag, out var behaviors))
+            {
+                for (var i = behaviors.Count - 1; i >= 0; i--)
+                {
+                    var behavior = behaviors[i];
+                    
+                    if (behavior.IsDefault == false)
+                    {
+                        behaviors.Remove(behavior);
+                    }
+                }
+            }
+        }
         
         public void ClearAll() => _behaviours.Clear();
         

@@ -15,6 +15,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.Common
             _bonusesOnField = bonusesOnField;
         }
         
+        public bool IsDefault => true;
+        
         public void Behave(Bonus entity, Collision2D collision2D)
         {
             var pool = _poolProvider.GetPool<Bonus>();

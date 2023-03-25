@@ -28,6 +28,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
                 _captiveBallsSystem.AddNewBalls(CreateBalls(ball));
             }
         }
+        
+        public bool IsDefault => false;
 
         private bool TryGetBallFromCollision(Collision2D collision2D, out Ball ball)
         {

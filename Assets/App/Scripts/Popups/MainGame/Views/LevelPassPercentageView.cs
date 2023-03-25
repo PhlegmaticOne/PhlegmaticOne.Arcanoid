@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -9,20 +10,16 @@ namespace Popups.MainGame.Views
         private const string Percentage = "%";
         [SerializeField] private TextMeshProUGUI _percentageText;
         [SerializeField] private float _updateDuration = 0.5f;
+        [SerializeField] private float _minStep;
+        private bool _isUpdate;
 
         private int _currentPercentage;
         private float _previousPercentage;
-        private Coroutine _updateRoutine;
 
         public void SetInNormalizedPercentageAnimate(float percentage)
         {
-            if (_updateRoutine != null)
-            {
-                StopCoroutine(_updateRoutine);
-            }
-
+            _isUpdate = true;
             _currentPercentage = GetPercentage(percentage);
-            _updateRoutine = StartCoroutine(UpdatePercentage());
         }
         
         public void SetInNormalizedPercentageInstant(float percentage)
@@ -32,23 +29,30 @@ namespace Popups.MainGame.Views
             _previousPercentage = calculated;
             _currentPercentage = calculated;
         }
-        
-        private IEnumerator UpdatePercentage()
+
+        private void Update()
         {
-            var fps = 1.0f / Time.deltaTime;
+            if (_isUpdate == false)
+            {
+                return;
+            }
+            
+            var fps = 1.0f / Time.unscaledDeltaTime;
             var step = (_currentPercentage - _previousPercentage) / (fps * _updateDuration);
             
-            while(_previousPercentage < _currentPercentage)
+            if(_previousPercentage < _currentPercentage)
             {
-                _previousPercentage += step;
-                
-                if (_previousPercentage > _currentPercentage)
+                if (step <= _minStep)
                 {
                     _previousPercentage = _currentPercentage;
+                    _isUpdate = false;
+                }
+                else
+                {
+                    _previousPercentage += step;
                 }
 
-                _percentageText.text = Format((int)_previousPercentage);
-                yield return new WaitForSeconds(Time.deltaTime);
+                _percentageText.text = Format((int)Math.Ceiling(_previousPercentage));
             }
         }
         

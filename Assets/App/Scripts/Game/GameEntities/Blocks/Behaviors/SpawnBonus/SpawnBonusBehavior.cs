@@ -18,6 +18,8 @@ namespace Game.GameEntities.Blocks.Behaviors.SpawnBonus
             _bonusSpawner = bonusSpawner;
             _bonusesOnField = bonusesOnField;
         }
+        
+        public bool IsDefault => false;
 
         public void SetBehaviorParameters(BonusConfiguration bonusConfiguration) => _bonusConfiguration = bonusConfiguration;
 
