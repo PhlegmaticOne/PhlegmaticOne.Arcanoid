@@ -5,7 +5,6 @@ using Common.Packs.Data.Repositories.Base;
 using Common.Scenes;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Commands;
-using UnityEngine.SceneManagement;
 
 namespace Popups.PackChoose.Commands
 {
@@ -14,16 +13,19 @@ namespace Popups.PackChoose.Commands
         private readonly EnergyManager _energyManager;
         private readonly IPopupManager _popupManager;
         private readonly IObjectBag _objectBag;
+        private readonly ISceneChanger _sceneChanger;
         private readonly IPackRepository _packRepository;
 
         public PackClickedCommand(EnergyManager energyManager, 
             IPopupManager popupManager,
             IObjectBag objectBag, 
+            ISceneChanger sceneChanger,
             IPackRepository packRepository)
         {
             _energyManager = energyManager;
             _popupManager = popupManager;
             _objectBag = objectBag;
+            _sceneChanger = sceneChanger;
             _packRepository = packRepository;
         }
         
@@ -31,10 +33,9 @@ namespace Popups.PackChoose.Commands
         {
             SetGameData(parameter);
             _energyManager.SpendEnergy(parameter.PackConfiguration.StartLevelEnergy);
-            _popupManager.CloseAllPopupsInstant();
-            SceneManager.LoadScene(SceneIndexes.GameScene);
+            _sceneChanger.ChangeScene(SceneIndexes.GameScene);
         }
-        
+
         private void SetGameData(PackGameData packGameData)
         {
             var packPersistentData = packGameData.PackPersistentData;

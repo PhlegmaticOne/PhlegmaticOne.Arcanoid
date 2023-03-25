@@ -42,10 +42,11 @@ namespace Popups.MainGame
         
         protected override void SetupViewModel(MainGamePopupViewModel viewModel)
         {
-            SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
-                .RelativeTo(ParentTransform)
-                .FromBottom(_showAnimationInfo)
-                .ToPopupCallbackAnimation());
+            // SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
+            //     .RelativeTo(ParentTransform)
+            //     .FromBottom(_showAnimationInfo)
+            //     .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.ShowAction, Animate.None());
             SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
                 .ToBottom(_closeAnimationInfo)

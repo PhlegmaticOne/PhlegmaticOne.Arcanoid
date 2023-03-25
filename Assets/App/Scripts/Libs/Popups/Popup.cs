@@ -19,6 +19,8 @@ namespace Libs.Popups
         private Action _onAnimationPlayedAction;
         
         protected RectTransform ParentTransform;
+        public event Action<Popup> Showed;
+        public event Action<Popup> Closed;
 
         public PopupView PopupView => _popupView;
         public RectTransform RectTransform => transform as RectTransform;
@@ -46,6 +48,7 @@ namespace Libs.Popups
                 appearAnimation.AnimationPlayed -= _onAnimationPlayedAction;
                 appearAnimation.Stop();
                 OnShowed();
+                Showed?.Invoke(this);
                 EnableInput();
                 _onAnimationPlayedAction = null;
             };
@@ -65,6 +68,7 @@ namespace Libs.Popups
                 disappearAnimation.AnimationPlayed -= _onAnimationPlayedAction;
                 disappearAnimation.Stop();
                 onClose?.Invoke();
+                Closed?.Invoke(this);
                 _onAnimationPlayedAction = null;
                 CloseInstant();
             };

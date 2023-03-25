@@ -1,6 +1,7 @@
 ﻿using Common.Bag;
 using Common.Energy;
 using Common.Packs.Data.Models;
+using Common.Scenes;
 using Game;
 using Game.Base;
 using Game.Logic.Systems.Health;
@@ -27,9 +28,10 @@ namespace Popups.Lose
                 var energyManager = global.GetRequiredService<EnergyManager>();
                 var objectBag = global.GetRequiredService<IObjectBag>();
                 var healthSystem = x.GetRequiredService<HealthSystem>();
+                var sceneChanger = global.GetRequiredService<ISceneChanger>();
                 
                 var pauseGameCommand = new PauseGameCommand(game);
-                var backControlCommand = new BackControlCommand(game, popupManager);
+                var backControlCommand = new BackControlCommand(game, popupManager, sceneChanger);
                 
                 var restartControlCommand = new RestartControlCommand(energyManager, objectBag, game, popupManager);
                 var buyLifeControlCommand = new BuyLifeControlCommand(energyManager, healthSystem, objectBag, game, popupManager);

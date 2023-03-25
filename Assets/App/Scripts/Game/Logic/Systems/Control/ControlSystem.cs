@@ -39,11 +39,14 @@ namespace Game.Logic.Systems.Control
             _followingObjects.Add(startMovable);
         }
 
-        public void Enable()
+        public void Enable(bool returnToInitialPosition = true)
         {
             _inputSystem.Ended += InputSystemOnEnded;
             EnableInput();
-            _baseObjectToMove.GetTransform().position = _startPosition;
+            if (returnToInitialPosition)
+            {
+                ReturnToPosition();
+            }
         }
         
         public void Disable()
@@ -55,6 +58,7 @@ namespace Game.Logic.Systems.Control
 
         public void DisableInput() => _inputSystem.MakeInvalid();
         public void EnableInput() => _inputSystem.Reset();
+        public void ReturnToPosition() => _baseObjectToMove.GetTransform().position = _startPosition;
         
         private void Update() => _inputData = _inputSystem.ReadInput();
 

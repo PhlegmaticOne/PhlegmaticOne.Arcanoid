@@ -50,19 +50,20 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
         {
             var count = _ballsOnField.All.Count;
             var speed = original.GetSpeed();
-
             var result = new List<Ball>();
-            
+            var sign = Mathf.Sign(original.transform.position.x);
+
             for (var i = 0; i < count; i++)
             {
                 var newBall = _ballSpawner.CreateBall(new BallCreationContext
                 {
-                    Position = original.transform.position - (i + 1) * original.GetCollider().bounds.size,
+                    Position = original.transform.position + sign * (i + 1) * new Vector3(0.1f, 0f),
                     StartSpeed = speed.magnitude,
                     SetSpecifiedStartSpeed = true
                 });
             
-                newBall.StartMove(speed.normalized);
+                newBall.StartMove(Vector2.down);
+                original.CopyToBall(newBall);
                 _ballsOnField.Add(newBall);
                 result.Add(newBall);
             }

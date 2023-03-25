@@ -37,7 +37,7 @@ namespace Popups.Common.Commands
             var packConfiguration = _objectBag.Get<GameData>().PackGameData.PackConfiguration;
             _energyManager.SpendEnergy(packConfiguration.StartLevelEnergy);
             parameter.CloseAction.AfterActionCommand = new RestartMainGameCommand(_game, _objectBag);
-            _popupManager.CloseLastPopup();
+            _popupManager.CloseLastPopup(false);
         }
     }
     

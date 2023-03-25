@@ -1,8 +1,8 @@
-﻿using Libs.Pooling.Base;
+﻿using System.Collections.Generic;
+using Libs.Pooling.Base;
 using Libs.Popups.Base;
 using Libs.Popups.Factory;
 using Libs.Popups.Infrastructure;
-using UnityEngine.Events;
 
 namespace Libs.Popups
 {
@@ -24,6 +24,8 @@ namespace Libs.Popups
             _popups = new StackList<Popup>();
         }
 
+        public IList<Popup> GetAll() => _popups.ToList();
+
         public Popup CurrentPopup { get; private set; }
 
         public T SpawnPopup<T>() where T : Popup
@@ -38,7 +40,7 @@ namespace Libs.Popups
             return ShowPopup(popup);
         }
 
-        public void CloseLastPopup()
+        public void CloseLastPopup(bool enablePreviousPopupInput = true)
         {
             if (_popups.Count == 0)
             {
@@ -46,10 +48,10 @@ namespace Libs.Popups
             }
             
             var popup = _popups.Pop();
-            CloseAnimate(popup);
+            CloseAnimate(popup, enablePreviousPopupInput);
         }
 
-        public void ClosePopup(Popup popup)
+        public void ClosePopup(Popup popup, bool enablePreviousPopupInput = true)
         {
             if (_popups.Count == 0)
             {
@@ -57,7 +59,7 @@ namespace Libs.Popups
             }
             
             _popups.Remove(popup);
-            CloseAnimate(popup);
+            CloseAnimate(popup, enablePreviousPopupInput);
         }
 
         public void CloseLastPopupInstant()
@@ -108,7 +110,7 @@ namespace Libs.Popups
             return popup;
         }
 
-        private void CloseAnimate(Popup popup)
+        private void CloseAnimate(Popup popup, bool enablePreviousPopupInput)
         {
             --_currentSortingOrder;
             CurrentPopup = _popups.Count != 0 ? _popups.Peek() : null;
@@ -116,7 +118,7 @@ namespace Libs.Popups
             {
                 _popupsPool.ReturnToPool(popup);
                 
-                if (_popups.Count != 0)
+                if (_popups.Count != 0 && enablePreviousPopupInput)
                 {
                     _popups.Peek().EnableInput();
                 }
@@ -130,10 +132,10 @@ namespace Libs.Popups
             popup.CloseInstant();
             _popupsPool.ReturnToPool(popup);
 
-            if (_popups.Count != 0)
-            {
-                _popups.Peek().EnableInput();
-            }
+            // if (_popups.Count != 0)
+            // {
+            //     _popups.Peek().EnableInput();
+            // }
         }
     }
 }

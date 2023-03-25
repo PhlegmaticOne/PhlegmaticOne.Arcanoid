@@ -32,18 +32,15 @@ namespace Popups.MainGame
                 var field = x.GetRequiredService<GameField>();
                 var timeActionsManager = x.GetRequiredService<TimeActionsManager>();
                 var game = x.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
-                var objectBag = global.GetRequiredService<IObjectBag>();
-                var levelRepository = global.GetRequiredService<ILevelRepository>();
                 var popupManager = global.GetRequiredService<IPopupManager>();
                 
-                var startGameCommand = new MainGamePopupOnShowCommand(game, objectBag, levelRepository);
                 var menuControlCommand = new MenuControlCommand(game, popupManager);
                 var winControlCommand = new WinControlCommand(pool, popupManager, control, entitiesOnField, field, timeActionsManager);
                 winControlCommand.SetCommandParameters(_blockDestroyTime);
                 
                 return new MainGamePopupViewModel
                 {
-                    ShowAction = new PopupAction(NoneCommand.New, startGameCommand),
+                    ShowAction = PopupAction.Empty,
                     CloseAction = PopupAction.Empty,
                     MenuControlAction = new ControlAction(menuControlCommand),
                     WinControlAction = new ControlAction(winControlCommand)

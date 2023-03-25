@@ -3,6 +3,7 @@ using Common.Energy;
 using Common.Packs.Configurations;
 using Common.Packs.Data.Models;
 using Common.Packs.Data.Repositories.Base;
+using Common.Scenes;
 using Game;
 using Game.Base;
 using Libs.Popups.Base;
@@ -22,13 +23,15 @@ namespace Popups.Win.Factory
         private readonly ILevelRepository _levelRepository;
         private readonly IPackRepository _packRepository;
         private readonly EnergyManager _energyManager;
+        private readonly ISceneChanger _sceneChanger;
 
         public WinPopupViewModelFactory(IObjectBag objectBag, 
             IGame<MainGameData, MainGameEvents> game,
             IPopupManager popupManager,
             ILevelRepository levelRepository,
             IPackRepository packRepository,
-            EnergyManager energyManager)
+            EnergyManager energyManager,
+            ISceneChanger sceneChanger)
         {
             _objectBag = objectBag;
             _game = game;
@@ -36,6 +39,7 @@ namespace Popups.Win.Factory
             _levelRepository = levelRepository;
             _packRepository = packRepository;
             _energyManager = energyManager;
+            _sceneChanger = sceneChanger;
         }
         
         public WinPopupViewModel CreateWinPopupViewModel()
@@ -45,7 +49,7 @@ namespace Popups.Win.Factory
             
             var pauseGameCommand = new PauseGameCommand(_game);
             var addEnergyCommand = new WinMenuOnShowCommand(_energyManager, _packRepository, _objectBag);
-            var backAction = new BackControlCommand(_game, _popupManager);
+            var backAction = new BackControlCommand(_game, _popupManager, _sceneChanger);
 
             var result = new WinPopupViewModel
             {
@@ -83,7 +87,7 @@ namespace Popups.Win.Factory
         
         private WinPopupViewModel InitForAllPacksPassed(WinPopupViewModel result)
         {
-            var backAction = new BackControlCommand(_game, _popupManager);
+            var backAction = new BackControlCommand(_game, _popupManager, _sceneChanger);
             result.WinState = WinState.AllPacksPassed;
             result.NextControlAction = new ControlAction(backAction);
             return result;
@@ -102,7 +106,7 @@ namespace Popups.Win.Factory
         
         private WinPopupViewModel InitForPackPassedMultipleTimes(WinPopupViewModel result)
         {
-            var backAction = new BackControlCommand(_game, _popupManager);
+            var backAction = new BackControlCommand(_game, _popupManager, _sceneChanger);
             result.WinState = WinState.PackPassedMultipleTime;
             result.NextControlAction = new ControlAction(backAction);
             return result;

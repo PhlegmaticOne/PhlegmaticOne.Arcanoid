@@ -1,6 +1,7 @@
 ﻿using Common.Bag;
 using Common.Energy;
 using Common.Packs.Data.Models;
+using Common.Scenes;
 using Game;
 using Game.Base;
 using Libs.Popups.Base;
@@ -23,13 +24,13 @@ namespace Popups.MainGameMenu
                 var objectBag = global.GetRequiredService<IObjectBag>();
                 var energyManager = global.GetRequiredService<EnergyManager>();
                 var game = x.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
-                
+                var sceneChanger = global.GetRequiredService<ISceneChanger>();
                 
                 var pauseGameCommand = new PauseGameCommand(game);
                 var continueGameCommand = new ContinueGameCommand(game);
                 var changeCommand = new ChangeOnCloseControlCommand(popupManager, continueGameCommand);
                 var restartCommand = new RestartControlCommand(energyManager, objectBag, game, popupManager);
-                var backCommand = new BackControlCommand(game, popupManager);
+                var backCommand = new BackControlCommand(game, popupManager, sceneChanger);
                 
                 return new MainGameMenuViewModel
                 {

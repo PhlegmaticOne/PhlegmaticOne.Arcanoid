@@ -49,16 +49,12 @@ namespace Game
         public event Action Won;
         public event Action Lost;
         public event Action Started;
+        public event Action Initialized;
 
         public void StartGame(MainGameData data)
         {
             var controlSystem = _gameSystems.ControlSystem;
             var ballsOnField = _entitiesOnFieldCollection.BallsOnField;
-            
-            _gameField = _fieldBuilder.BuildField(data.LevelData);
-            _stateCheckSystem = new StateCheckSystem(_gameField);
-            controlSystem.Enable();
-            _entitiesOnFieldCollection.Ship.Enable();
             
             var ball = _ballSpawner.CreateBall(new BallCreationContext
             {
@@ -66,11 +62,28 @@ namespace Game
                 SetSpecifiedStartSpeed = false
             });
             ballsOnField.Add(ball);
+            controlSystem.ReturnToPosition();
             controlSystem.AddObjectToFollow(ball);
+            controlSystem.EnableInput();
             
             _gameSystems.HealthSystem.Initialize(data.LevelData.LifesCount);
             _gameSystems.CaptiveBallsSystem.Initialize(_poolProvider, ballsOnField);
+            Initialized?.Invoke();
+            BuildField(data);
+        }
+
+        private void BuildField(MainGameData data)
+        {
+            _gameField = _fieldBuilder.BuildField(data.LevelData);
+            _stateCheckSystem = new StateCheckSystem(_gameField);
+            _fieldBuilder.FieldBuilt += FieldBuilderOnFieldBuilt;
             Subscribe();
+        }
+
+        private void FieldBuilderOnFieldBuilt()
+        {
+            _gameSystems.ControlSystem.Enable(false);
+            _fieldBuilder.FieldBuilt -= FieldBuilderOnFieldBuilt;
             Started?.Invoke();
         }
 

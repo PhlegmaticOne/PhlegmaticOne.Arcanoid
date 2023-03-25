@@ -1,6 +1,7 @@
 ﻿using Common.Bag;
 using Common.Energy;
 using Common.Packs.Data.Repositories.Base;
+using Common.Scenes;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Actions;
 using Libs.Services;
@@ -23,10 +24,11 @@ namespace Popups.PackChoose
                 var energyManager = x.GetRequiredService<EnergyManager>();
                 var objectBag = x.GetRequiredService<IObjectBag>();
                 var packRepository = x.GetRequiredService<IPackRepository>();
+                var sceneChanger = x.GetRequiredService<ISceneChanger>();
                 
                 var spawnStartPopupCommand = new SpawnPopupCommand<StartPopup>(popupManager);
                 var backControlCommand = new ChangeOnCloseControlCommand(popupManager, spawnStartPopupCommand);
-                var packClickedCommand = new PackClickedCommand(energyManager, popupManager, objectBag, packRepository);
+                var packClickedCommand = new PackClickedCommand(energyManager, popupManager, objectBag, sceneChanger, packRepository);
                 var packClickedCantExecuteHandler = new ShowEnergyPopupCommand(popupManager, _reasonPhraseKey);
 
                 return new PackChoosePopupViewModel

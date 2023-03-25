@@ -41,7 +41,7 @@ namespace Popups.Win.Commands
             
             parameter.CloseAction.AfterActionCommand =
                 new MainGamePopupOnShowCommand(_game, _objectBag, _levelRepository);
-            _popupManager.CloseLastPopup();
+            _popupManager.CloseLastPopup(false);
         }
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CaptiveBallBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 1005
-  _lifesCount: 3
+  _lifesCount: 1
   _activeOnPlay: 1
   _isExtraBlock: 1
   _blockSprite: {fileID: 21300000, guid: 50e97a9cfa65dda49bef89aacfed069c, type: 3}

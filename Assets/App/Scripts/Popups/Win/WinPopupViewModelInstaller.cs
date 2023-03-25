@@ -1,6 +1,7 @@
 ﻿using Common.Bag;
 using Common.Energy;
 using Common.Packs.Data.Repositories.Base;
+using Common.Scenes;
 using Game;
 using Game.Base;
 using Libs.Popups.Base;
@@ -22,9 +23,10 @@ namespace Popups.Win
                 var levelsRepository = global.GetRequiredService<ILevelRepository>();
                 var packRepository = global.GetRequiredService<IPackRepository>();
                 var energyManager = global.GetRequiredService<EnergyManager>();
+                var sceneChanger = global.GetRequiredService<ISceneChanger>();
 
                 return new WinPopupViewModelFactory(objectBag, game, popupManager, levelsRepository,
-                    packRepository, energyManager);
+                    packRepository, energyManager, sceneChanger);
             });
 
             serviceCollection.AddTransient(x =>

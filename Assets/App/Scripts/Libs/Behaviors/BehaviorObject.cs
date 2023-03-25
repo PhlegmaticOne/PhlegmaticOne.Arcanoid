@@ -21,7 +21,7 @@ namespace Libs.Behaviors
             var behaviors = newObject.OnCollisionBehaviors;
             behaviors.ClearAll();
 
-            foreach (var onCollisionBehaviour in _onCollisionBehaviours)
+            foreach (var onCollisionBehaviour in _onCollisionBehaviours.ToList())
             {
                 foreach (var behavior in onCollisionBehaviour.Value)
                 {

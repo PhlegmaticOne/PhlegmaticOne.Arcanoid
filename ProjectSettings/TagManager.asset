@@ -20,7 +20,7 @@ TagManager:
   - Ship
   - DynamicBlocks
   - Walls
-  - 
+  - Transition
   - 
   - 
   - 
@@ -59,4 +59,7 @@ TagManager:
     locked: 0
   - name: UIParticles
     uniqueID: 864005647
+    locked: 0
+  - name: Transition
+    uniqueID: 1070481983
     locked: 0
