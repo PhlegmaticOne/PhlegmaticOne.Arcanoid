@@ -16,7 +16,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeBallsSpeed
         
         public override IObjectBehavior<Bonus> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var ballsOnField = gameServices.GetRequiredService<BallsOnField>();
             var timeActionsManager = gameServices.GetRequiredService<TimeActionsManager>();
             var behavior = new ChangeBallsSpeedBehavior(ballsOnField, timeActionsManager);

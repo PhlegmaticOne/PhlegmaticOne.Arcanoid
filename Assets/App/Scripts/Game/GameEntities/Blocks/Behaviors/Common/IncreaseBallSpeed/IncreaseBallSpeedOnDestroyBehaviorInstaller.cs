@@ -14,7 +14,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.IncreaseBallSpeed
         
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var serviceProvider = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var serviceProvider = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var gameField = serviceProvider.GetRequiredService<GameField>();
             var balls = serviceProvider.GetRequiredService<BallsOnField>();
             var behavior = new IncreaseBallSpeedOnDestroyBehavior(gameField, balls);

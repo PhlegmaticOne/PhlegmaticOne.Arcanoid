@@ -18,7 +18,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common
         
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var timeActionsManager = gameServices.GetRequiredService<TimeActionsManager>();
             var gameField = gameServices.GetRequiredService<GameField>();
             var bombTimeAction = _bombTimeActionInstaller.CreateBombTimeAction(_bombConfiguration, gameField);

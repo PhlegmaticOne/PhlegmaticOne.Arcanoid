@@ -16,7 +16,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.PlatformSpeed
         
         public override IObjectBehavior<Bonus> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var ship = gameServices.GetRequiredService<Ship>();
             var timeManager = gameServices.GetRequiredService<TimeActionsManager>();
 

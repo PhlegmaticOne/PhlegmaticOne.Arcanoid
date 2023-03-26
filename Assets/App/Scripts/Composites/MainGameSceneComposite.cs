@@ -27,18 +27,26 @@ namespace Composites
         {
             ServiceProviderAccessor.SetPrefabPath(ServiceProviderPrefabPath.Instance);
             var serviceProvider = ServiceProviderAccessor.Global;
-            ServiceProviderAccessor.Instance.AddSceneServiceProvider(SceneIndexes.GameScene, _gameServices);
+            ServiceProviderAccessor.Instance.AddSceneServiceProvider(SceneNames.Game, _gameServices);
             
-            _sceneChanger = serviceProvider.GetRequiredService<ISceneChanger>();
-            _sceneChanger.SceneChanged += StartGame;
             GameDataSeed.TrySeedGameData();
             MarkNotToSpawnStartPopup();
             SetupGame(serviceProvider);
+            
+            _sceneChanger = serviceProvider.GetRequiredService<ISceneChanger>();
+            if (_sceneChanger.CurrentScene != null)
+            {
+                _sceneChanger.SceneChanged += StartGame;
+            }
+            else
+            {
+                StartGame();
+            }
         }
 
         private void SetupGame(IServiceProvider global)
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var popupManager = global.GetRequiredService<IPopupManager>();
             var objectBag = global.GetRequiredService<IGameDataProvider>();
             var game = gameServices.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
@@ -55,18 +63,17 @@ namespace Composites
         {
             _sceneChanger.SceneChanged -= StartGame;
             var serviceProvider = ServiceProviderAccessor.Global;
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             
             var game = gameServices.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
             var objectBag = serviceProvider.GetRequiredService<IGameDataProvider>();
             game.StartGame(new MainGameData(objectBag.GetGameData().CurrentLevel));
         }
 
-        private void MarkNotToSpawnStartPopup() => 
-            _popupSystemConfiguration.DisableStartPopupSpawn();
+        private void MarkNotToSpawnStartPopup() => _popupSystemConfiguration.DisableStartPopupSpawn();
         
         private void OnDestroy() => 
-            ServiceProviderAccessor.Instance.RemoveSceneServiceProvider(SceneIndexes.GameScene);
+            ServiceProviderAccessor.Instance.RemoveSceneServiceProvider(SceneNames.Game);
     }
 }
 

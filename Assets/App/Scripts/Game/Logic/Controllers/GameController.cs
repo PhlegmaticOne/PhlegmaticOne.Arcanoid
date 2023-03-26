@@ -28,6 +28,7 @@ namespace Game.GameEntities.Controllers
             _popupManager = popupManager;
             
             _mainGame.Won += MainGameOnWon;
+            _mainGame.PreWon += MainGameOnPreWon;
             _mainGame.Lost += MainGameOnLost;
             _mainGame.Started += MainGameOnStarted;
             _mainGame.Initialized += MainGameOnInitialized;
@@ -36,6 +37,11 @@ namespace Game.GameEntities.Controllers
             _mainGame.Events.BlockDestroyed += EventsOnBlockDestroyed;
             
             UpdateInfo();
+        }
+
+        private void MainGameOnPreWon()
+        {
+            _mainGamePopup.DisableInput();
         }
 
         private void MainGameOnInitialized()
@@ -93,6 +99,7 @@ namespace Game.GameEntities.Controllers
         private void OnDisable()
         {
             _mainGame.Won -= MainGameOnWon;
+            _mainGame.PreWon -= MainGameOnPreWon;
             _mainGame.Lost -= MainGameOnLost;
             _mainGame.Started -= MainGameOnStarted;
             _mainGame.Initialized -= MainGameOnInitialized;

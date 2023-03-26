@@ -11,7 +11,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Particles
     {
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var behavior = new SpawnBlockParticleBehavior(gameServices.GetRequiredService<ParticleManager>());
             return behavior;
         }

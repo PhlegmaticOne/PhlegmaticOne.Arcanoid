@@ -10,7 +10,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Particles
     {
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var particleManager = gameServices.GetRequiredService<ParticleManager>();
             return new SpawnBombParticleBehavior(particleManager);
         }

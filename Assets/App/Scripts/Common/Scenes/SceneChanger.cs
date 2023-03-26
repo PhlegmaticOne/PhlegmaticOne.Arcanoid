@@ -10,19 +10,28 @@ namespace Common.Scenes
     public class SceneChanger : ISceneChanger
     {
         private readonly IPopupManager _popupManager;
+        private readonly IScenesProvider _scenesProvider;
 
         private IList<Popup> _spawnedPopups;
         private SceneTransitionPopup _transitionPopup;
-        private int _sceneIndex;
+        private SceneInfo _tempScene;
 
-        public SceneChanger(IPopupManager popupManager)
+        public SceneChanger(IPopupManager popupManager, IScenesProvider scenesProvider)
         {
             _popupManager = popupManager;
+            _scenesProvider = scenesProvider;
+            SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
         }
         
-        public void ChangeScene(int sceneIndex)
+        public event Action SceneChanged;
+        public event Action OnOverlay;
+        
+        public SceneInfo CurrentScene { get; private set; }
+
+        public void ChangeScene(string sceneKey)
         {
-            _sceneIndex = sceneIndex;
+            var scene = _scenesProvider.GetSceneByCustomKey(sceneKey);
+            _tempScene = scene;
             _spawnedPopups = _popupManager.GetAll();
             _transitionPopup = _popupManager.SpawnPopup<SceneTransitionPopup>();
             _transitionPopup.Showed += TransitionPopupOnShowed;
@@ -38,16 +47,22 @@ namespace Common.Scenes
             }
             
             OnOverlay?.Invoke();
-            
-            SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
-            SceneManager.LoadScene(_sceneIndex);
+            SceneManager.LoadScene(_tempScene.Scene.name);
         }
 
-        private void SceneManagerOnsceneLoaded(Scene arg0, LoadSceneMode arg1)
+        private void SceneManagerOnsceneLoaded(Scene scene, LoadSceneMode arg1)
         {
-            _transitionPopup.Closed += TransitionPopupOnClosed;
-            _popupManager.ClosePopup(_transitionPopup, false);
-            SceneManager.sceneLoaded -= SceneManagerOnsceneLoaded;
+            if (_tempScene == null)
+            {
+                CurrentScene = _scenesProvider.GetSceneBySceneName(scene.name);
+            }
+            else
+            {
+                CurrentScene = _scenesProvider.GetSceneByCustomKey(_tempScene.Key);
+                _tempScene = null;
+                _transitionPopup.Closed += TransitionPopupOnClosed;
+                _popupManager.ClosePopup(_transitionPopup, false);
+            }
         }
 
         private void TransitionPopupOnClosed(Popup popup)
@@ -55,8 +70,5 @@ namespace Common.Scenes
             _transitionPopup.Closed -= TransitionPopupOnClosed;
             SceneChanged?.Invoke();
         }
-
-        public event Action SceneChanged;
-        public event Action OnOverlay;
     }
 }

@@ -10,7 +10,7 @@ namespace Libs.Services
         private IServiceProvider _serviceProvider;
         private static string _prefabPath;
         private static ServiceProviderAccessor _accessor;
-        private Dictionary<int, IServiceProvider> _sceneServiceProviders = new Dictionary<int, IServiceProvider>();
+        private Dictionary<string, IServiceProvider> _sceneServiceProviders = new Dictionary<string, IServiceProvider>();
 
         public static IServiceProvider Global
         {
@@ -55,15 +55,15 @@ namespace Libs.Services
 
         public static void SetPrefabPath(string path) => _prefabPath = path;
 
-        public void AddSceneServiceProvider(int sceneIndex, List<ServiceInstaller> serviceInstallers)
+        public void AddSceneServiceProvider(string sceneKey, List<ServiceInstaller> serviceInstallers)
         {
             var serviceProvider = BuildServiceProvider(serviceInstallers);
-            _sceneServiceProviders.Add(sceneIndex, serviceProvider);
+            _sceneServiceProviders.Add(sceneKey, serviceProvider);
         }
 
-        public void RemoveSceneServiceProvider(int sceneIndex) => _sceneServiceProviders.Remove(sceneIndex);
+        public void RemoveSceneServiceProvider(string sceneKey) => _sceneServiceProviders.Remove(sceneKey);
 
-        public IServiceProvider ForScene(int sceneIndex) => _sceneServiceProviders[sceneIndex];
+        public IServiceProvider ForScene(string sceneKey) => _sceneServiceProviders[sceneKey];
 
         private void BuildServiceProvider() => _serviceProvider = BuildServiceProvider(_installers);
 

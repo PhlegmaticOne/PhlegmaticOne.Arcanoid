@@ -11,7 +11,7 @@ namespace Game.GameEntities.Bullets.Behaviors.ReturnToPool
         public override IObjectBehavior<Bullet> CreateBehaviour()
         {
             var poolProvider = ServiceProviderAccessor.Global.GetRequiredService<IPoolProvider>();
-            var bullets = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene)
+            var bullets = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game)
                 .GetRequiredService<BulletsOnField>();
             return new ReturnBulletToPoolBehavior(poolProvider, bullets);
         }

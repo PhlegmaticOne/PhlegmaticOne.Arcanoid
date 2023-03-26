@@ -14,7 +14,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.ChangeHealth
         
         public override IObjectBehavior<Bonus> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var healthSystem = gameServices.GetRequiredService<HealthSystem>();
             var behavior = new ChangeHealthBehavior(healthSystem);
             behavior.SetBehaviorParameters(_healthToChange, _isAdding);

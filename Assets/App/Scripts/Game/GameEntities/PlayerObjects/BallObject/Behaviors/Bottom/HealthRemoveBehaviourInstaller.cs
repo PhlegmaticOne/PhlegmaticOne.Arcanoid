@@ -13,7 +13,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
         
         public override IObjectBehavior<Ball> CreateBehaviour()
         {
-            var game = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var game = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var healthSystem = game.GetRequiredService<HealthSystem>();
             var behaviour = new HealthRemoveBehaviour(healthSystem);
             behaviour.SetBehaviourParameters(_healthToRemove);

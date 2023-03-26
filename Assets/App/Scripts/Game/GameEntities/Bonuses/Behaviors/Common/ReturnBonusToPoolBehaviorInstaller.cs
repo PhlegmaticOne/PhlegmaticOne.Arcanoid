@@ -11,7 +11,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.Common
     {
         public override IObjectBehavior<Bonus> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var global = ServiceProviderAccessor.Global;
 
             var poolProvider = global.GetRequiredService<IPoolProvider>();

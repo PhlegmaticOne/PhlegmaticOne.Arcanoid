@@ -35,7 +35,7 @@ namespace Common.Packs.Views.Commands
         {
             SetGameData(parameter);
             _energyManager.SpendEnergy(parameter.PackConfiguration.StartLevelEnergy);
-            _sceneChanger.ChangeScene(SceneIndexes.GameScene);
+            _sceneChanger.ChangeScene(SceneNames.Game);
         }
 
         private void SetGameData(PackGameData packGameData)

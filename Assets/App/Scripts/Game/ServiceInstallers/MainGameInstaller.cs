@@ -7,11 +7,13 @@ using Libs.InputSystem;
 using Libs.Pooling.Base;
 using Libs.Services;
 using Libs.TimeActions;
+using UnityEngine;
 
 namespace Game.ServiceInstallers
 {
     public class MainGameInstaller : ServiceInstaller
     {
+        [SerializeField] private float _slowDownTime;
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IGame<MainGameData, MainGameEvents>>(x =>
@@ -29,13 +31,15 @@ namespace Game.ServiceInstallers
                 var particleManager = x.GetRequiredService<ParticleManager>();
                 
                 gameSystems.ControlSystem.Initialize(inputSystem, entitiesOnField.Ship);
-                return new MainGame(poolProvider,
+                var game = new MainGame(poolProvider,
                     entitiesOnField,
                     gameSystems,
                     fieldBuilder,
                     timeActionsManager,
                     particleManager,
                     ballSpawner);
+                game.SetParameters(_slowDownTime);
+                return game;
             });
         }
     }

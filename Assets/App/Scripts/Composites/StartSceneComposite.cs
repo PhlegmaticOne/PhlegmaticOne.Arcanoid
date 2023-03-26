@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Common.Scenes;
 using Composites.Helpers;
 using Libs.Popups.Base;
 using Libs.Popups.Configurations;
@@ -17,6 +18,7 @@ namespace Composites
         {
             ServiceProviderAccessor.SetPrefabPath(ServiceProviderPrefabPath.Instance);
             var serviceProvider = ServiceProviderAccessor.Global;
+            serviceProvider.GetRequiredService<ISceneChanger>();
             TrySpawnStartPopup(serviceProvider);
         }
 

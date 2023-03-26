@@ -14,7 +14,7 @@ namespace Game.GameEntities.Blocks.Behaviors.SpawnBonus
         [SerializeField] private BonusConfiguration _bonusConfiguration;
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var bonusSpawner = gameServices.GetRequiredService<IBonusSpawner>();
             var bonusesOnField = gameServices.GetRequiredService<BonusesOnField>();
             var behavior = new SpawnBonusBehavior(bonusSpawner, bonusesOnField);

@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Game.Base;
 using Game.Composites;
 using Game.Field;
@@ -26,6 +27,7 @@ namespace Game
 
         private GameField _gameField;
         private StateCheckSystem _stateCheckSystem;
+        private float _slowDownTime;
 
         public MainGame(IPoolProvider poolProvider,
             EntitiesOnFieldCollection entitiesOnFieldCollection,
@@ -45,8 +47,11 @@ namespace Game
             Events = new MainGameEvents();
         }
 
+        public void SetParameters(float slowDownTime) => _slowDownTime = slowDownTime;
+
         public MainGameEvents Events { get; }
         public event Action Won;
+        public event Action PreWon;
         public event Action Lost;
         public event Action Started;
         public event Action Initialized;
@@ -71,22 +76,7 @@ namespace Game
             Initialized?.Invoke();
             BuildField(data);
         }
-
-        private void BuildField(MainGameData data)
-        {
-            _gameField = _fieldBuilder.BuildField(data.LevelData);
-            _stateCheckSystem = new StateCheckSystem(_gameField);
-            _fieldBuilder.FieldBuilt += FieldBuilderOnFieldBuilt;
-            Subscribe();
-        }
-
-        private void FieldBuilderOnFieldBuilt()
-        {
-            _gameSystems.ControlSystem.Enable(false);
-            _fieldBuilder.FieldBuilt -= FieldBuilderOnFieldBuilt;
-            Started?.Invoke();
-        }
-
+        
         public void Pause()
         {
             _gameSystems.ControlSystem.DisableInput();
@@ -98,7 +88,7 @@ namespace Game
             _gameSystems.ControlSystem.EnableInput();
             SetTimeScale(1);
         }
-
+        
         public void Stop()
         {
             var blocksPool = _poolProvider.GetPool<Block>();
@@ -119,7 +109,22 @@ namespace Game
             Unsubscribe();
             SetTimeScale(1);
         }
-        
+
+        private void BuildField(MainGameData data)
+        {
+            _gameField = _fieldBuilder.BuildField(data.LevelData);
+            _stateCheckSystem = new StateCheckSystem(_gameField);
+            _fieldBuilder.FieldBuilt += FieldBuilderOnFieldBuilt;
+            Subscribe();
+        }
+
+        private void FieldBuilderOnFieldBuilt()
+        {
+            _gameSystems.ControlSystem.Enable(false);
+            _fieldBuilder.FieldBuilt -= FieldBuilderOnFieldBuilt;
+            Started?.Invoke();
+        }
+
         private void BallsOnFieldOnBallRemoved(Ball ball)
         {
             if (_entitiesOnFieldCollection.BallsOnField.All.Count == 0 &&
@@ -142,7 +147,16 @@ namespace Game
             });
         }
 
-        private void StateCheckSystemOnActiveBlocksDestroyed() => Won?.Invoke();
+        private void StateCheckSystemOnActiveBlocksDestroyed()
+        {
+            PreWon?.Invoke();
+            DOVirtual
+                .Float(1f, 0f, _slowDownTime, SetTimeScale)
+                .SetUpdate(true)
+                .SetEase(Ease.OutSine)
+                .OnComplete(() => Won?.Invoke())
+                .Play();
+        }
 
         private void SetTimeScale(float scale)
         {

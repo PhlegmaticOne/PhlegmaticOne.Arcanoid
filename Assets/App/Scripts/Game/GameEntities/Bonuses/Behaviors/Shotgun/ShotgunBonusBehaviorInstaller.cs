@@ -17,7 +17,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.Shotgun
         
         public override IObjectBehavior<Bonus> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             var bulletSpawner = gameServices.GetRequiredService<IBulletSpawner>();
             var timeActionsManager = gameServices.GetRequiredService<TimeActionsManager>();
             var ship = gameServices.GetRequiredService<Ship>();

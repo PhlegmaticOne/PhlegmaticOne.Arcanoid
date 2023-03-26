@@ -5,6 +5,7 @@ namespace Game.Base
     public interface IGame
     {
         event Action Won;
+        event Action PreWon;
         event Action Lost;
         event Action Started;
         event Action Initialized;

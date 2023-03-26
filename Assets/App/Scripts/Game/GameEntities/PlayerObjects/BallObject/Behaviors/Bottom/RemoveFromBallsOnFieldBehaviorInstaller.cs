@@ -9,7 +9,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Bottom
     {
         public override IObjectBehavior<Ball> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             return new RemoveFromBallsOnFieldBehavior(gameServices.GetRequiredService<BallsOnField>());
         }
     }

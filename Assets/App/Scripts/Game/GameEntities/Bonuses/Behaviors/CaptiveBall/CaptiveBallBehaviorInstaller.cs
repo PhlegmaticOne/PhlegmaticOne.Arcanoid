@@ -12,7 +12,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
     {
         public override IObjectBehavior<Block> CreateBehaviour()
         {
-            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
 
             var balls = gameServices.GetRequiredService<BallsOnField>();
             var ballSpawner = gameServices.GetRequiredService<IBallSpawner>();

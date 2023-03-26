@@ -23,7 +23,7 @@ namespace Popups.Common
         {
             _sceneChanger.OnOverlay += SceneChangerOnOnOverlay;
             _sceneChanger.SceneChanged += SceneChangerOnSceneChanged;
-            _sceneChanger.ChangeScene(SceneIndexes.MenuScene);
+            _sceneChanger.ChangeScene(SceneNames.Menu);
         }
 
         private void SceneChangerOnOnOverlay()

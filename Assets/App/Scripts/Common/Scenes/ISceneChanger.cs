@@ -4,7 +4,8 @@ namespace Common.Scenes
 {
     public interface ISceneChanger
     {
-        void ChangeScene(int sceneIndex);
+        SceneInfo CurrentScene { get; }
+        void ChangeScene(string sceneKey);
         event Action SceneChanged;
         event Action OnOverlay;
     }

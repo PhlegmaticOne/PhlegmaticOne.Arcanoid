@@ -12,7 +12,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
         public override IObjectBehavior<Block> CreateBehaviour()
         {
             var global = ServiceProviderAccessor.Global;
-            var game = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
+            var game = ServiceProviderAccessor.Instance.ForScene(SceneNames.Game);
             
             var poolProvider = global.GetRequiredService<IPoolProvider>();
             var fieldAccessor = game.GetRequiredService<GameField>();
