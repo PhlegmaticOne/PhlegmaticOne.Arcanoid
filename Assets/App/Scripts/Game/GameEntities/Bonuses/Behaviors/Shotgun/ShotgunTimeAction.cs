@@ -2,13 +2,14 @@
 using Game.GameEntities.Bullets.Spawner;
 using Game.GameEntities.PlayerObjects.ShipObject;
 using Libs.TimeActions.Base;
+using UnityEngine;
 
 namespace Game.GameEntities.Bonuses.Behaviors.Shotgun
 {
     public class ShotgunTimeAction : FixedIntervalTimeAction
     {
         private readonly BulletsOnField _bulletsOnField;
-        private readonly IBulletSpawner _bulletSpawner;
+        private IBulletSpawner _bulletSpawner;
         private readonly Ship _ship;
 
         public ShotgunTimeAction(BulletsOnField bulletsOnField, IBulletSpawner bulletSpawner, Ship ship, 
@@ -22,12 +23,21 @@ namespace Game.GameEntities.Bonuses.Behaviors.Shotgun
 
         public override void OnStart() { }
 
-        public override void OnEnd() { }
+        public override void OnEnd()
+        {
+            _bulletSpawner = null;
+        }
 
         protected override void OnInterval(int interval)
         {
+            // if (_bulletSpawner == null)
+            // {
+            //     return;
+            // }
+            
             foreach (var shotgunTransform in _ship.ShotgunTransforms)
             {
+                Debug.Log("SSSs");
                 var bullet = _bulletSpawner.CreateBullet(new BulletCreationContext
                 {
                     Position = shotgunTransform.position

@@ -17,13 +17,16 @@ namespace Game.GameEntities.Blocks.View
 
         public void Initialize(BlockConfiguration blockConfiguration, BlockCracksConfiguration blockCracksConfiguration)
         {
-            SetMainSprite(blockConfiguration.BlockSprite);
-            
-            foreach (var additionalSprite in blockConfiguration.AdditionalSprites)
+            if (blockConfiguration.HasUnderlyingConfiguration && blockConfiguration.IsColorBlock == false)
             {
-                AddSprite(additionalSprite, true);
+                SetMainSprite(blockConfiguration.UnderlyingBlockConfiguration.Sprite);
+                AddSprite(blockConfiguration.MainSprite, true);
             }
-
+            else
+            {
+                SetMainSprite(blockConfiguration.MainSprite);
+            }
+            
             _blockCracksConfiguration = blockCracksConfiguration;
         }
 

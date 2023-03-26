@@ -9,16 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b710b0de46b847528fc38c5211f03fd8, type: 3}
+  m_Script: {fileID: 11500000, guid: e649d35c2abb4e209ee3d2012678dda7, type: 3}
   m_Name: AxisBombConfiguration
   m_EditorClassIdentifier: 
-  _blockAffecting: 1
-  _isAffectsOnAllBlocks: 1
-  _removesLifesCount: 0
-  _damageAffectsOnBlocks: []
-  _destroyAffectsOnBlocks:
-  - {fileID: 11400000, guid: aa9e37254f482e345b3b3cbe51c55c5e, type: 2}
-  - {fileID: 11400000, guid: c81544df85cb0cb4a85fa994f9f5e587, type: 2}
-  - {fileID: 11400000, guid: d2a4d24cd8ca1c743a176f5719377e67, type: 2}
-  - {fileID: 11400000, guid: 61be861b1c7765e48899483a615626dd, type: 2}
   _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+  _blockAffecting: 2
+  _damage: 0

@@ -69,31 +69,6 @@ namespace Popups.PackChoose.Views
             _winLevelEnergy.Hide();
         }
 
-        public void SetWidth(float width)
-        {
-            RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        }
-
-        // private void OnMouseUp()
-        // {
-        //     if (_isEnabled == false || IsInteractable == false)
-        //     {
-        //         return;
-        //     }
-        //     
-        //     _onClick?.Invoke(this);
-        // }
-
-        // private void OnMouseDown()
-        // {
-        //     if (_isEnabled == false || IsInteractable == false)
-        //     {
-        //         return;
-        //     }
-        //     
-        //     _onClick?.Invoke(this);
-        // }
-
         protected override void OnInteractableSet(bool isInteractable) => SetInteractableDirect(true);
 
         private static string FormatLevelsInfo(PackPersistentData packPersistentData) => 

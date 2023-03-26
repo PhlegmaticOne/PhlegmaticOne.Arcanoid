@@ -9,12 +9,10 @@ namespace Game.GameEntities.Blocks
     {
         [SerializeField] private BlockView _blockView;
         [SerializeField] private BoxCollider2D _boxCollider;
-        [SerializeField] private Rigidbody2D _rigidbody2D;
-        private float _health;
         private int _previousHealth;
+        private float _health;
         private bool _readyToDestroy;
         
-        public int StartHealth { get; private set; }
         public float CurrentHealth => _health;
         public bool IsDestroyed { get; private set; }
         public bool IsActive { get; private set; }
@@ -23,13 +21,28 @@ namespace Game.GameEntities.Blocks
         public void Initialize(BlockConfiguration configuration, BlockCracksConfiguration blockCracksConfiguration)
         {
             BlockConfiguration = configuration;
-            IsActive = configuration.ActiveOnPlay;
             _health = configuration.LifesCount;
-            StartHealth = configuration.LifesCount;
+            _previousHealth = configuration.LifesCount;
+            IsActive = configuration.IsActive;
             IsDestroyed = false;
-            _previousHealth = StartHealth;
             _blockView.Initialize(configuration, blockCracksConfiguration);
         }
+
+        public bool TryGetUnderlyingId(out int id)
+        {
+            id = -1;
+
+            if (BlockConfiguration.HasUnderlyingConfiguration == false)
+            {
+                return false;
+            }
+
+            var underlyingConfiguration = BlockConfiguration.UnderlyingBlockConfiguration;
+            id = underlyingConfiguration.Id;
+            return true;
+        }
+        
+        public int GetUnderlyingId() => BlockConfiguration.UnderlyingBlockConfiguration.Id;
 
         public void SetPosition(Vector3 position) => transform.position = position;
 
@@ -56,7 +69,7 @@ namespace Game.GameEntities.Blocks
             }
         }
 
-        public bool IsDefaultBlock() => BlockConfiguration.ActiveOnPlay && IsDestroyed == false;
+        public bool IsDefaultBlock() => BlockConfiguration.IsActive && IsDestroyed == false;
 
         public Vector2 GetBaseSize() => _boxCollider.size;
 
@@ -66,7 +79,6 @@ namespace Game.GameEntities.Blocks
         {
             _blockView.Reset();
             _health = 0;
-            StartHealth = 0;
             _readyToDestroy = false;
             IsDestroyed = true;
         }

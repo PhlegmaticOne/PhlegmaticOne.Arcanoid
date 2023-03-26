@@ -29,46 +29,18 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common.AffectStrategies
                 return;
             }
 
-            if (_bombConfiguration.BlockAffecting == BlockAffectingType.BothAndSeparate)
+            var affectingType = _bombConfiguration.GetAffectingType(block.BlockConfiguration);
+
+            switch (affectingType)
             {
-                if (CheckConfiguration(_bombConfiguration.DamageAffectsOnBlocks, block))
-                {
+                case BlockAffectingType.None:
+                    return;
+                case BlockAffectingType.Damage:
                     TryDamageBlock(block, original);
-                    return;
-                }
-
-                if (CheckConfiguration(_bombConfiguration.DestroyAffectsOnBlocks, block))
-                {
+                    break;
+                case BlockAffectingType.Destroying:
                     DestroyBlock(block, original);
-                    return;
-                }
-            }
-
-            if (_bombConfiguration.IsAffectsOnAllBlocks &&
-                _bombConfiguration.BlockAffecting == BlockAffectingType.Damage)
-            {
-                TryDamageBlock(block, original);
-                return;
-            }
-
-            if (_bombConfiguration.IsAffectsOnAllBlocks &&
-                _bombConfiguration.BlockAffecting == BlockAffectingType.Destroying)
-            {
-                DestroyBlock(block, original);
-                return;
-            }
-                
-            if (CheckAffectingTypeAndConfiguration(BlockAffectingType.Damage, 
-                    _bombConfiguration.DamageAffectsOnBlocks, block))
-            {
-                TryDamageBlock(block, original);
-                return;
-            }
-
-            if (CheckAffectingTypeAndConfiguration(BlockAffectingType.Destroying,
-                    _bombConfiguration.DestroyAffectsOnBlocks, block))
-            {
-                DestroyBlock(block, original);
+                    break;
             }
         }
         
@@ -99,13 +71,5 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Common.AffectStrategies
         {
             return _gameField.TryGetBlock(fieldPosition, out var block) == false || block.IsDestroyed ? null : block;
         }
-
-        protected bool CheckAffectingTypeAndConfiguration(BlockAffectingType blockAffectingType,
-            List<BlockConfiguration> blockConfigurations, Block block) =>
-            _bombConfiguration.BlockAffecting == blockAffectingType &&
-            CheckConfiguration(blockConfigurations, block);
-        
-        private static bool CheckConfiguration(List<BlockConfiguration> blockConfigurations, Block block) =>
-            blockConfigurations.Contains(block.BlockConfiguration);
     }
 }

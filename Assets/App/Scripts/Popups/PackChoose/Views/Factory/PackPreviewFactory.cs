@@ -29,7 +29,6 @@ namespace Popups.PackChoose.Views.Factory
         public PackPreview CreatePackPreview(PackGameData packGameData, PackPreviewCreationContext context)
         {
             var packPreview = Object.Instantiate(_previewPrefab, context.Transform);
-            packPreview.SetWidth(context.Width);
             
             if (packGameData.PackPersistentData.isOpened == false)
             {

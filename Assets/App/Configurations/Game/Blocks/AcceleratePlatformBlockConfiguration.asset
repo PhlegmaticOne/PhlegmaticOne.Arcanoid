@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockId: 1006
   _lifesCount: 2
-  _activeOnPlay: 1
-  _isExtraBlock: 1
-  _blockSprite: {fileID: 21300000, guid: 50e97a9cfa65dda49bef89aacfed069c, type: 3}
-  _additionalSprites:
-  - {fileID: 21300000, guid: 4560720c615a9044b818ac6d80874bc9, type: 3}
+  _mainSprite: {fileID: 21300000, guid: 4560720c615a9044b818ac6d80874bc9, type: 3}
+  _isActive: 1
+  _hasUnderlyingConfiguration: 1
+  _underlyingBlockConfiguration: {fileID: 11400000, guid: b8fecc46c16d37f4e829ee040c77d669, type: 2}
+  _isColorBlock: 0

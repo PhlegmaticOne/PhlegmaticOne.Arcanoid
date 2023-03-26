@@ -9,7 +9,6 @@ namespace Game.Field
     public class GameField : MonoBehaviour
     {
         private List<Block> _blocks;
-        public event UnityAction<Block> BlockAdded;
         public event UnityAction<Block> BlockRemoved; 
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -23,11 +22,7 @@ namespace Game.Field
             Width = width;
             Height = height;
         }
-
-        public int GetBlocksCountOnField(int blockId) =>
-            _blocks.Count(x => x != null && x.IsActive && x.IsDestroyed == false && x.BlockConfiguration.BlockId == blockId);
-
-        public Block this[int row, int col] => _blocks[CalculateIndex(row, col)];
+        
         public Block this[in FieldPosition fieldPosition] => _blocks[CalculateIndex(fieldPosition.Row, fieldPosition.Col)];
 
         public bool TryGetBlock(in FieldPosition fieldPosition, out Block block)
@@ -80,12 +75,6 @@ namespace Game.Field
         public void RemoveBlock(Block block)
         {
             BlockRemoved?.Invoke(block);
-        }
-
-        public void AddBlock(Block block)
-        {
-            _blocks.Add(block);
-            BlockAdded?.Invoke(block);
         }
         
         public int GetDefaultBlocksCount() => _blocks.Count(x => x != null && x.IsDefaultBlock());

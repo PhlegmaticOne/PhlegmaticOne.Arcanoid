@@ -137,7 +137,6 @@ namespace Popups.PackChoose
             var context = new PackPreviewCreationContext
             {
                 Transform = _itemsTransform,
-                Width = (1 - 2 * _marginSide) * _viewportResizer.Width
             };
             var collection = new ObservableCollection<PackGameData, PackPreview>(
                 bindingFunc: model => _packPreviewFactory.CreatePackPreview(model, context), 

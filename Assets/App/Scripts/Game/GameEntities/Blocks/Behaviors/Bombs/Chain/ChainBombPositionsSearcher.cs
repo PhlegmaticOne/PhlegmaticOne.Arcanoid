@@ -3,7 +3,6 @@ using Game.Field;
 using Game.GameEntities.Blocks.Behaviors.Bombs.Chain.Insfrastructure;
 using Game.GameEntities.Blocks.Behaviors.Bombs.Common;
 using Game.GameEntities.Blocks.Behaviors.Bombs.Common.PositionsStrategies;
-using Game.GameEntities.Blocks.Configurations;
 
 namespace Game.GameEntities.Blocks.Behaviors.Bombs.Chain
 {
@@ -63,16 +62,13 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Chain
                 return new List<FieldPosition>();
             }
 
-            if (CheckAffectingTypeAndConfiguration(BlockAffectingType.Damage,
-                    _bombBlockConfiguration.DamageAffectsOnBlocks, startBlock) == false &&
-                CheckAffectingTypeAndConfiguration(BlockAffectingType.Destroying,
-                    _bombBlockConfiguration.DestroyAffectsOnBlocks, startBlock) == false)
+            if (_bombBlockConfiguration.GetAffectingType(startBlock.BlockConfiguration) == BlockAffectingType.None)
             {
                 return new List<FieldPosition>();
             }
-
+            
             var chainPointsQueue = new HashQueue<FieldPosition>();
-            var startBlockId = startBlock.BlockConfiguration.BlockId;
+            var startUnderlyingId = startBlock.GetUnderlyingId();
             
             chainPointsQueue.Enqueue(startPosition);
             
@@ -84,7 +80,9 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Chain
                 {
                     var nextPoint = moveDirection + currentPoint;
 
-                    if (_gameField.TryGetBlock(nextPoint, out var block) && block.BlockConfiguration.BlockId == startBlockId)
+                    if (_gameField.TryGetBlock(nextPoint, out var block) && 
+                        block.TryGetUnderlyingId(out var underlyingId) && 
+                        underlyingId == startUnderlyingId)
                     {
                         chainPointsQueue.Enqueue(nextPoint);
                     }
@@ -93,10 +91,5 @@ namespace Game.GameEntities.Blocks.Behaviors.Bombs.Chain
 
             return chainPointsQueue.ToList();
         }
-
-        private bool CheckAffectingTypeAndConfiguration(BlockAffectingType blockAffectingType,
-            List<BlockConfiguration> blockConfigurations, Block block) =>
-            _bombBlockConfiguration.BlockAffecting == blockAffectingType &&
-            blockConfigurations.Contains(block.BlockConfiguration);
     }
 }

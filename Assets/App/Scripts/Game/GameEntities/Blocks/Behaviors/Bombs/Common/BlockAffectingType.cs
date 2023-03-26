@@ -2,8 +2,9 @@
 {
     public enum BlockAffectingType
     {
+        None,
         Damage,
         Destroying,
-        BothAndSeparate
+        Custom
     }
 }
