@@ -45,7 +45,6 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         {
             if (_rigidbody2D.bodyType != RigidbodyType2D.Static)
             {
-                _currentSpeed = speed.magnitude;
                 _rigidbody2D.velocity = speed;
             }
         }
@@ -61,6 +60,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject
             var ballSpeedMagnitude = ballSpeed.magnitude;
             var newSpeed = (deltaSpeed + ballSpeedMagnitude) * ballSpeed.normalized;
             SetSpeed(newSpeed);
+            _currentSpeed += deltaSpeed;
         }
 
         public void CopyToBall(Ball ball)

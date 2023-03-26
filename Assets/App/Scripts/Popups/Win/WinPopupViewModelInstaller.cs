@@ -1,6 +1,6 @@
-﻿using Common.Bag;
-using Common.Energy;
+﻿using Common.Energy;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
 using Common.Scenes;
 using Game;
 using Game.Base;
@@ -19,13 +19,13 @@ namespace Popups.Win
                 var global = ServiceProviderAccessor.Global;
                 var game = x.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
                 var popupManager = global.GetRequiredService<IPopupManager>();
-                var objectBag = global.GetRequiredService<IObjectBag>();
+                var gameDataProvider = global.GetRequiredService<IGameDataProvider>();
                 var levelsRepository = global.GetRequiredService<ILevelRepository>();
                 var packRepository = global.GetRequiredService<IPackRepository>();
                 var energyManager = global.GetRequiredService<EnergyManager>();
                 var sceneChanger = global.GetRequiredService<ISceneChanger>();
 
-                return new WinPopupViewModelFactory(objectBag, game, popupManager, levelsRepository,
+                return new WinPopupViewModelFactory(gameDataProvider, game, popupManager, levelsRepository,
                     packRepository, energyManager, sceneChanger);
             });
 

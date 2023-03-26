@@ -1,6 +1,5 @@
-﻿using Common.Bag;
-using Common.Energy;
-using Common.Packs.Data.Models;
+﻿using Common.Energy;
+using Common.Game.Providers.Providers;
 using Common.Scenes;
 using Game;
 using Game.Base;
@@ -9,7 +8,6 @@ using Libs.Popups.ViewModels.Actions;
 using Libs.Popups.ViewModels.Commands;
 using Libs.Services;
 using Popups.Common;
-using Popups.Common.Commands;
 
 namespace Popups.MainGameMenu
 {
@@ -21,7 +19,7 @@ namespace Popups.MainGameMenu
             {
                 var global = ServiceProviderAccessor.Global;
                 var popupManager = global.GetRequiredService<IPopupManager>();
-                var objectBag = global.GetRequiredService<IObjectBag>();
+                var gameDataProvider = global.GetRequiredService<IGameDataProvider>();
                 var energyManager = global.GetRequiredService<EnergyManager>();
                 var game = x.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
                 var sceneChanger = global.GetRequiredService<ISceneChanger>();
@@ -29,7 +27,7 @@ namespace Popups.MainGameMenu
                 var pauseGameCommand = new PauseGameCommand(game);
                 var continueGameCommand = new ContinueGameCommand(game);
                 var changeCommand = new ChangeOnCloseControlCommand(popupManager, continueGameCommand);
-                var restartCommand = new RestartControlCommand(energyManager, objectBag, game, popupManager);
+                var restartCommand = new RestartControlCommand(energyManager, gameDataProvider, game, popupManager);
                 var backCommand = new BackControlCommand(game, popupManager, sceneChanger);
                 
                 return new MainGameMenuViewModel
@@ -39,7 +37,7 @@ namespace Popups.MainGameMenu
                     ContinueControlAction = new ControlAction(changeCommand),
                     RestartControlAction = new ControlAction(restartCommand),
                     BackControlAction = new ControlAction(backCommand),
-                    CurrentPackGameData = objectBag.Get<GameData>().PackGameData
+                    CurrentPackGameData = gameDataProvider.GetGameData().PackGameData
                 };
             });
         }

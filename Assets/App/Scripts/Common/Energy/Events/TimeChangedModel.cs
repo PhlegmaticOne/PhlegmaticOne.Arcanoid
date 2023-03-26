@@ -2,10 +2,7 @@
 {
     public class TimeChangedModel
     {
-        public TimeChangedModel(int timeToNextEnergyInSeconds)
-        {
-            TimeToNextEnergyInSeconds = timeToNextEnergyInSeconds;
-        }
+        public TimeChangedModel(int timeToNextEnergyInSeconds) => TimeToNextEnergyInSeconds = timeToNextEnergyInSeconds;
 
         public int TimeToNextEnergyInSeconds { get; }
     }

@@ -30,14 +30,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.Shotgun
 
         protected override void OnInterval(int interval)
         {
-            // if (_bulletSpawner == null)
-            // {
-            //     return;
-            // }
-            
             foreach (var shotgunTransform in _ship.ShotgunTransforms)
             {
-                Debug.Log("SSSs");
                 var bullet = _bulletSpawner.CreateBullet(new BulletCreationContext
                 {
                     Position = shotgunTransform.position

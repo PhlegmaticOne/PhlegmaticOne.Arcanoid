@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Popups.PackChoose.Views.Configurations
+namespace Common.Packs.Views.Configurations
 {
     [CreateAssetMenu(menuName = "Packs/Views/Create pack preview configuration")]
     public class PackPreviewConfiguration : ScriptableObject

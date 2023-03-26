@@ -4,9 +4,6 @@
     {
         public int EnergyChanged { get; }
 
-        public EnergyChangedModel(int energyChanged)
-        {
-            EnergyChanged = energyChanged;
-        }
+        public EnergyChangedModel(int energyChanged) => EnergyChanged = energyChanged;
     }
 }

@@ -4,7 +4,7 @@ using Popups.Energy;
 
 namespace Popups.Common
 {
-    public class ShowEnergyPopupCommand : ICommand
+    public class ShowEnergyPopupCommand : EmptyCommandBase
     {
         private readonly IPopupManager _popupManager;
         private readonly string _reasonPhraseKey;
@@ -15,9 +15,7 @@ namespace Popups.Common
             _reasonPhraseKey = reasonPhraseKey;
         }
 
-        public bool CanExecute(object parameter) => true;
-
-        public void Execute(object parameter)
+        protected override void Execute()
         {
             var popup = _popupManager.SpawnPopup<EnergyPopup>();
             popup.ShowWithReasonPhraseKey(_reasonPhraseKey);

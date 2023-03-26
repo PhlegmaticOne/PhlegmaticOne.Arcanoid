@@ -1,16 +1,16 @@
-﻿using Common.Bag;
-using Common.Energy;
+﻿using Common.Energy;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
+using Common.Packs.Views.Commands;
 using Common.Scenes;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Actions;
 using Libs.Services;
 using Popups.Common;
-using Popups.PackChoose.Commands;
 using Popups.Start;
 using UnityEngine;
 
-namespace Popups.PackChoose
+namespace Common.Packs.Views
 {
     public class PackChoosePopupViewModelInstaller : ServiceInstaller
     {
@@ -22,13 +22,13 @@ namespace Popups.PackChoose
             {
                 var popupManager = x.GetRequiredService<IPopupManager>();
                 var energyManager = x.GetRequiredService<EnergyManager>();
-                var objectBag = x.GetRequiredService<IObjectBag>();
+                var gameDataProvider = x.GetRequiredService<IGameDataProvider>();
                 var packRepository = x.GetRequiredService<IPackRepository>();
                 var sceneChanger = x.GetRequiredService<ISceneChanger>();
                 
                 var spawnStartPopupCommand = new SpawnPopupCommand<StartPopup>(popupManager);
                 var backControlCommand = new ChangeOnCloseControlCommand(popupManager, spawnStartPopupCommand);
-                var packClickedCommand = new PackClickedCommand(energyManager, popupManager, objectBag, sceneChanger, packRepository);
+                var packClickedCommand = new PackClickedCommand(energyManager, gameDataProvider, sceneChanger, packRepository);
                 var packClickedCantExecuteHandler = new ShowEnergyPopupCommand(popupManager, _reasonPhraseKey);
 
                 return new PackChoosePopupViewModel

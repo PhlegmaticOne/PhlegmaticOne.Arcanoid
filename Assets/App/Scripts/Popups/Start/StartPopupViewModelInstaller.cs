@@ -3,7 +3,7 @@ using Libs.Popups.ViewModels.Actions;
 using Libs.Popups.ViewModels.Commands;
 using Libs.Services;
 using Popups.Common;
-using Popups.PackChoose;
+using Common.Packs.Views;
 using Popups.Settings;
 using Popups.Start.Commands;
 

@@ -43,18 +43,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b5e627e19e4e34bb84f096416cb515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popupComposite: {fileID: 0}
   _ballPoolInstaller:
     _prefab: {fileID: 2112609803767065368, guid: a929afad16afdbf42ba34b4273dc03ce, type: 3}
     _spawnTransform: {fileID: 0}
-    _initialCapacity: 4
-    _maxCapacity: 16
+    _initialCapacity: 32
+    _maxCapacity: 64
     _destroyOnOverflow: 1
   _blockPoolInstaller:
     _prefab: {fileID: 3769529678919385829, guid: 853e72ff148e7f840987584ce32a4714, type: 3}
     _spawnTransform: {fileID: 0}
-    _initialCapacity: 20
+    _initialCapacity: 49
     _maxCapacity: 100
     _destroyOnOverflow: 1
-  _pooledObjectsContainer: {fileID: 3364384971984429153, guid: cafdbb9cb47f3904d8c0f4a82d7da305, type: 3}
+  _bonusPoolInstaller:
+    _prefab: {fileID: -6723961344206063078, guid: eca51518686ed7c468bac21771519c4d, type: 3}
+    _spawnTransform: {fileID: 0}
+    _initialCapacity: 8
+    _maxCapacity: 32
+    _destroyOnOverflow: 1
+  _blockParticlesPoolInstaller:
+    _prefab: {fileID: -516291321961074510, guid: 39a835ef55a242e4a998b9a633cd814f, type: 3}
+    _spawnTransform: {fileID: 0}
+    _initialCapacity: 8
+    _maxCapacity: 32
+    _destroyOnOverflow: 1
+  _bombParticlesPoolInstaller:
+    _prefab: {fileID: 5548971876490705461, guid: 86105ecc5444eff4ca5e065513f0338a, type: 3}
+    _spawnTransform: {fileID: 0}
+    _initialCapacity: 4
+    _maxCapacity: 16
+    _destroyOnOverflow: 1
+  _bulletPoolInstaller:
+    _prefab: {fileID: 316914792528453252, guid: 85468626283ec58448d7c97b2bc3a51f, type: 3}
+    _spawnTransform: {fileID: 0}
+    _initialCapacity: 8
+    _maxCapacity: 128
+    _destroyOnOverflow: 1
+  _popupComposite: {fileID: 0}
   _popupContainer: {fileID: 8220277596374927489, guid: 37d96f18608ba65429493352562a3024, type: 3}
+  _pooledObjectsContainer: {fileID: 3364384971984429153, guid: cafdbb9cb47f3904d8c0f4a82d7da305, type: 3}

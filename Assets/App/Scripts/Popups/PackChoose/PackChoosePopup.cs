@@ -16,11 +16,11 @@ using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Libs.Popups.ViewModels.Actions;
 using Libs.Popups.ViewModels.Collections;
-using Popups.PackChoose.Views;
-using Popups.PackChoose.Views.Factory;
+using Common.ServiceInstallers;
+using Common.Packs.Views.Views;
 using UnityEngine;
 
-namespace Popups.PackChoose
+namespace Common.Packs.Views
 {
     public class PackChoosePopup : ViewModelPopup<PackChoosePopupViewModel>, ILocalizable
     {

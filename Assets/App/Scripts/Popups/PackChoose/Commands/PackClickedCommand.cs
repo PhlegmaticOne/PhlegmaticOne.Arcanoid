@@ -1,32 +1,34 @@
-﻿using Common.Bag;
-using Common.Energy;
+﻿using Common.Energy;
+using Common.Game.Providers;
 using Common.Packs.Data.Models;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
 using Common.Scenes;
-using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Commands;
 
-namespace Popups.PackChoose.Commands
+namespace Common.Packs.Views.Commands
 {
     public class PackClickedCommand : ParameterCommandBase<PackGameData>
     {
         private readonly EnergyManager _energyManager;
-        private readonly IPopupManager _popupManager;
-        private readonly IObjectBag _objectBag;
+        private readonly IGameDataProvider _gameDataProvider;
         private readonly ISceneChanger _sceneChanger;
         private readonly IPackRepository _packRepository;
 
         public PackClickedCommand(EnergyManager energyManager, 
-            IPopupManager popupManager,
-            IObjectBag objectBag, 
+            IGameDataProvider gameDataProvider, 
             ISceneChanger sceneChanger,
             IPackRepository packRepository)
         {
             _energyManager = energyManager;
-            _popupManager = popupManager;
-            _objectBag = objectBag;
+            _gameDataProvider = gameDataProvider;
             _sceneChanger = sceneChanger;
             _packRepository = packRepository;
+        }
+        
+        protected override bool CanExecute(PackGameData parameter)
+        {
+            return _energyManager.CanSpendEnergy(parameter.PackConfiguration.StartLevelEnergy);
         }
         
         protected override void Execute(PackGameData parameter)
@@ -51,13 +53,7 @@ namespace Popups.PackChoose.Commands
             
             var currentLevel = packLevelCollection.levelIds[currentLevelIdIndex];
             packPersistentData.currentLevelId = currentLevel;
-            var gameData = new GameData(packGameData, packLevelCollection);
-            _objectBag.Set(gameData);
-        }
-
-        protected override bool CanExecute(PackGameData parameter)
-        {
-            return _energyManager.CanSpendEnergy(parameter.PackConfiguration.StartLevelEnergy);
+            _gameDataProvider.Update(new GameData(packGameData, packLevelCollection));
         }
     }
 }

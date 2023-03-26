@@ -1,7 +1,8 @@
 ﻿using Common.Packs.Data.Models;
+using Common.Packs.Views.Views;
 using UnityEngine;
 
-namespace Popups.PackChoose.Views.Factory
+namespace Common.ServiceInstallers
 {
     public interface IPackPreviewFactory
     {
@@ -10,7 +11,6 @@ namespace Popups.PackChoose.Views.Factory
 
     public class PackPreviewCreationContext
     {
-        public float Width { get; set; }
         public Transform Transform { get; set; }
     }
 }

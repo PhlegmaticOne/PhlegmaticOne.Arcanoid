@@ -1,6 +1,5 @@
-﻿using Common.Bag;
-using Common.Energy;
-using Common.Packs.Data.Models;
+﻿using Common.Energy;
+using Common.Game.Providers.Providers;
 using Common.Scenes;
 using Game;
 using Game.Base;
@@ -10,9 +9,7 @@ using Libs.Popups.ViewModels.Actions;
 using Libs.Popups.ViewModels.Commands;
 using Libs.Services;
 using Popups.Common;
-using Popups.Common.Commands;
 using Popups.Lose.Commands;
-using UnityEngine;
 
 namespace Popups.Lose
 {
@@ -26,15 +23,15 @@ namespace Popups.Lose
                 var game = x.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
                 var popupManager = global.GetRequiredService<IPopupManager>();
                 var energyManager = global.GetRequiredService<EnergyManager>();
-                var objectBag = global.GetRequiredService<IObjectBag>();
+                var gameDataProvider = global.GetRequiredService<IGameDataProvider>();
                 var healthSystem = x.GetRequiredService<HealthSystem>();
                 var sceneChanger = global.GetRequiredService<ISceneChanger>();
                 
                 var pauseGameCommand = new PauseGameCommand(game);
                 var backControlCommand = new BackControlCommand(game, popupManager, sceneChanger);
                 
-                var restartControlCommand = new RestartControlCommand(energyManager, objectBag, game, popupManager);
-                var buyLifeControlCommand = new BuyLifeControlCommand(energyManager, healthSystem, objectBag, game, popupManager);
+                var restartControlCommand = new RestartControlCommand(energyManager, gameDataProvider, game, popupManager);
+                var buyLifeControlCommand = new BuyLifeControlCommand(energyManager, healthSystem, gameDataProvider, game, popupManager);
 
                 return new LosePopupViewModel
                 {
@@ -43,7 +40,7 @@ namespace Popups.Lose
                     BackControlAction = new ControlAction(backControlCommand),
                     BuyLifeControlAction = new ControlAction(buyLifeControlCommand),
                     RestartControlAction = new ControlAction(restartControlCommand),
-                    CurrentPack = objectBag.Get<GameData>().PackGameData
+                    CurrentPack = gameDataProvider.GetGameData().PackGameData
                 };
             });
         }

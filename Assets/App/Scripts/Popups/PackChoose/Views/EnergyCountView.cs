@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Popups.PackChoose.Views
+namespace Common.Packs.Views.Views
 {
     public class EnergyCountView : MonoBehaviour
     {

@@ -415,7 +415,6 @@ GameObject:
   - component: {fileID: 8824288891630397165}
   - component: {fileID: 2576187528370900149}
   - component: {fileID: 3185226336831619167}
-  - component: {fileID: 1784855683414404572}
   m_Layer: 5
   m_Name: LevelsInfo
   m_TagString: Untagged
@@ -481,19 +480,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1784855683414404572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3620762141384255195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed8d259300a459dba69b2b84bb5610c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _image: {fileID: 3185226336831619167}
 --- !u!1 &4201994999539134991
 GameObject:
   m_ObjectHideFlags: 0

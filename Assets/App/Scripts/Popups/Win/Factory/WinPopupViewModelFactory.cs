@@ -1,23 +1,21 @@
-﻿using Common.Bag;
-using Common.Energy;
+﻿using Common.Energy;
 using Common.Packs.Configurations;
 using Common.Packs.Data.Models;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
 using Common.Scenes;
 using Game;
 using Game.Base;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Actions;
 using Popups.Common;
-using Popups.Common.Commands;
 using Popups.Win.Commands;
-using UnityEngine;
 
 namespace Popups.Win.Factory
 {
     public class WinPopupViewModelFactory : IWinPopupViewModelFactory
     {
-        private readonly IObjectBag _objectBag;
+        private readonly IGameDataProvider _gameDataProvider;
         private readonly IGame<MainGameData, MainGameEvents> _game;
         private readonly IPopupManager _popupManager;
         private readonly ILevelRepository _levelRepository;
@@ -25,7 +23,7 @@ namespace Popups.Win.Factory
         private readonly EnergyManager _energyManager;
         private readonly ISceneChanger _sceneChanger;
 
-        public WinPopupViewModelFactory(IObjectBag objectBag, 
+        public WinPopupViewModelFactory(IGameDataProvider gameDataProvider, 
             IGame<MainGameData, MainGameEvents> game,
             IPopupManager popupManager,
             ILevelRepository levelRepository,
@@ -33,7 +31,7 @@ namespace Popups.Win.Factory
             EnergyManager energyManager,
             ISceneChanger sceneChanger)
         {
-            _objectBag = objectBag;
+            _gameDataProvider = gameDataProvider;
             _game = game;
             _popupManager = popupManager;
             _levelRepository = levelRepository;
@@ -44,11 +42,11 @@ namespace Popups.Win.Factory
         
         public WinPopupViewModel CreateWinPopupViewModel()
         {
-            var packGameData = _objectBag.Get<GameData>().PackGameData;
+            var packGameData = _gameDataProvider.GetGameData().PackGameData;
             var persistentData = packGameData.PackPersistentData;
             
             var pauseGameCommand = new PauseGameCommand(_game);
-            var addEnergyCommand = new WinMenuOnShowCommand(_energyManager, _packRepository, _objectBag);
+            var addEnergyCommand = new WinMenuOnShowCommand(_energyManager, _packRepository, _gameDataProvider);
             var backAction = new BackControlCommand(_game, _popupManager, _sceneChanger);
 
             var result = new WinPopupViewModel
@@ -80,7 +78,7 @@ namespace Popups.Win.Factory
         {
             result.WinState = WinState.NextLevelInCurrentPack;
             var nextLevelControlAction = new NextLevelControlCommand(_game, _energyManager,
-                _objectBag, _popupManager, _levelRepository);
+                _gameDataProvider, _popupManager, _levelRepository);
             result.NextControlAction = new ControlAction(nextLevelControlAction);
             return result;
         }
@@ -96,7 +94,7 @@ namespace Popups.Win.Factory
         private WinPopupViewModel InitForNextPack(WinPopupViewModel result, PackGameData nextPackGameData)
         {
             var nextCommand = new TransitToNextPackFirstLevelCommand(_game, _energyManager,
-                _objectBag, _popupManager, _packRepository, _levelRepository);
+                _gameDataProvider, _popupManager, _packRepository, _levelRepository);
             result.NextPackData = nextPackGameData;
             nextCommand.SetNextPackGameData(nextPackGameData);
             result.WinState = WinState.PackPassedFirstTime;

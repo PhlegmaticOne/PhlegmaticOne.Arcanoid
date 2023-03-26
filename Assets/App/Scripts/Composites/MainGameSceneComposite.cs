@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Common.Bag;
-using Common.Packs.Data.Models;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
 using Common.Scenes;
 using Composites.Helpers;
 using Composites.Seeding;
@@ -41,13 +40,13 @@ namespace Composites
         {
             var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
             var popupManager = global.GetRequiredService<IPopupManager>();
-            var objectBag = global.GetRequiredService<IObjectBag>();
+            var objectBag = global.GetRequiredService<IGameDataProvider>();
             var game = gameServices.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
             var mainPopup = popupManager.SpawnPopup<MainGamePopup>();
             var levelRepository = global.GetRequiredService<ILevelRepository>();
-            var levelData = levelRepository.GetLevelData(objectBag.Get<GameData>().PackGameData.PackPersistentData);
+            var levelData = levelRepository.GetLevelData(objectBag.GetGameData().PackGameData.PackPersistentData);
             
-            objectBag.Set(levelData);
+            objectBag.SetNewLevel(levelData);
             mainPopup.DisableInput();
             _gameController.Initialize(mainPopup, objectBag, popupManager, game);
         }
@@ -59,8 +58,8 @@ namespace Composites
             var gameServices = ServiceProviderAccessor.Instance.ForScene(SceneIndexes.GameScene);
             
             var game = gameServices.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
-            var objectBag = serviceProvider.GetRequiredService<IObjectBag>();
-            game.StartGame(new MainGameData(objectBag.Get<LevelData>()));
+            var objectBag = serviceProvider.GetRequiredService<IGameDataProvider>();
+            game.StartGame(new MainGameData(objectBag.GetGameData().CurrentLevel));
         }
 
         private void MarkNotToSpawnStartPopup() => 

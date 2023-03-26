@@ -9,6 +9,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 {
     public class CaptiveBallBehavior : IObjectBehavior<Block>
     {
+        private const float DeltaAngle = 1.5f;
         private readonly IBallSpawner _ballSpawner;
         private readonly BallsOnField _ballsOnField;
         private readonly CaptiveBallsSystem _captiveBallsSystem;
@@ -51,18 +52,18 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
             var count = _ballsOnField.All.Count;
             var speed = original.GetSpeed();
             var result = new List<Ball>();
-            var sign = Mathf.Sign(original.transform.position.x);
 
             for (var i = 0; i < count; i++)
             {
                 var newBall = _ballSpawner.CreateBall(new BallCreationContext
                 {
-                    Position = original.transform.position + sign * (i + 1) * new Vector3(0.1f, 0f),
+                    Position = original.transform.position,
                     StartSpeed = speed.magnitude,
                     SetSpecifiedStartSpeed = true
                 });
-            
-                newBall.StartMove(Vector2.down);
+
+                var direction = Quaternion.Euler(0, 0, DeltaAngle * i * Sign(i) / 2.0f) * Vector2.down;
+                newBall.StartMove(direction);
                 original.CopyToBall(newBall);
                 _ballsOnField.Add(newBall);
                 result.Add(newBall);
@@ -70,5 +71,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
             return result;
         }
+
+        private static int Sign(int index) => index % 2 == 0 ? 1 : -1;
     }
 }

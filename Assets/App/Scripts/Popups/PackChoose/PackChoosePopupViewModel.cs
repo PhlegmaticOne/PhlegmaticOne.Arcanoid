@@ -1,7 +1,7 @@
 ﻿using Libs.Popups.ViewModels;
 using Libs.Popups.ViewModels.Actions;
 
-namespace Popups.PackChoose
+namespace Common.Packs.Views
 {
     public class PackChoosePopupViewModel : IPopupViewModel
     {

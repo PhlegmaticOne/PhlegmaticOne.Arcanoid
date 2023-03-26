@@ -1,4 +1,6 @@
-﻿namespace Common.Packs.Data.Models
+﻿using Common.Packs.Data.Models;
+
+namespace Common.Game.Providers
 {
     public class GameData
     {
@@ -10,5 +12,7 @@
 
         public PackLevelsData PackLevelsData { get; }
         public PackGameData PackGameData { get; }
+        public LevelData CurrentLevel { get; private set; }
+        public void SetNewLevel(LevelData levelData) => CurrentLevel = levelData;
     }
 }

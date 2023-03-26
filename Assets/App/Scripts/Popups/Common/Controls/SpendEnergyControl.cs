@@ -1,5 +1,4 @@
-﻿using System;
-using Libs.Popups.Controls;
+﻿using Libs.Popups.Controls;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

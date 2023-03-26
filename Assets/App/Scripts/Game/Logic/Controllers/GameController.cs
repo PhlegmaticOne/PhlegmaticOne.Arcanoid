@@ -1,5 +1,4 @@
-﻿using Common.Bag;
-using Common.Packs.Data.Models;
+﻿using Common.Game.Providers.Providers;
 using Game.Base;
 using Libs.Popups.Base;
 using Popups.Lose;
@@ -12,18 +11,18 @@ namespace Game.GameEntities.Controllers
     public class GameController : MonoBehaviour
     {
         private IGame<MainGameData, MainGameEvents> _mainGame;
-        private IObjectBag _objectBag;
+        private IGameDataProvider _gameDataProvider;
         private IPopupManager _popupManager;
         private MainGamePopup _mainGamePopup;
 
         private bool _isUpdateForCurrentLevel;
 
         public void Initialize(MainGamePopup mainGamePopup,
-            IObjectBag objectBag,
+            IGameDataProvider gameDataProvider,
             IPopupManager popupManager,
             IGame<MainGameData, MainGameEvents> mainGame)
         {
-            _objectBag = objectBag;
+            _gameDataProvider = gameDataProvider;
             _mainGame = mainGame;
             _mainGamePopup = mainGamePopup;
             _popupManager = popupManager;
@@ -56,8 +55,8 @@ namespace Game.GameEntities.Controllers
                 return;
             }
             
-            var gameData = _objectBag.Get<GameData>();
-            var levelData = _objectBag.Get<LevelData>();
+            var gameData = _gameDataProvider.GetGameData();
+            var levelData = gameData.CurrentLevel;
             _mainGamePopup.UpdateHeader(gameData);
             _mainGamePopup.InitializeHealthBar(levelData.LifesCount);
             _isUpdateForCurrentLevel = true;
@@ -82,13 +81,13 @@ namespace Game.GameEntities.Controllers
         private void MainGameOnLost()
         {
             _isUpdateForCurrentLevel = false;
-            var losePopup = _popupManager.SpawnPopup<LosePopup>();
+            _popupManager.SpawnPopup<LosePopup>();
         }
         
         private void MainGameOnWon()
         {
             _isUpdateForCurrentLevel = false;
-            var winPopup = _popupManager.SpawnPopup<WinPopup>();
+            _popupManager.SpawnPopup<WinPopup>();
         }
 
         private void OnDisable()

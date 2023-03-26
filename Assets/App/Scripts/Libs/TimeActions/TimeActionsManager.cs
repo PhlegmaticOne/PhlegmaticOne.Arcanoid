@@ -62,12 +62,12 @@ namespace Libs.TimeActions
 
         private void Update()
         {
-            if (_timeActions.Count == 0)
+            var deltaTime = Time.deltaTime;
+            
+            if (_timeActions.Count == 0 || deltaTime == 0f)
             {
                 return;
             }
-            
-            var deltaTime = Time.deltaTime;
 
             for (var i = _timeActions.Count - 1; i >= 0; i--)
             {

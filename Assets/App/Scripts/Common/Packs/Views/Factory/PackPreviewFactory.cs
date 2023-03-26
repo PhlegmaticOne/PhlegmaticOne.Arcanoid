@@ -1,8 +1,9 @@
 ﻿using Common.Packs.Data.Models;
-using Popups.PackChoose.Views.Configurations;
+using Common.Packs.Views.Configurations;
+using Common.Packs.Views.Views;
 using UnityEngine;
 
-namespace Popups.PackChoose.Views.Factory
+namespace Common.ServiceInstallers
 {
     public class PackPreviewFactory : IPackPreviewFactory
     {

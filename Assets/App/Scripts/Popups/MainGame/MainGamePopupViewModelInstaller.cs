@@ -1,6 +1,4 @@
-﻿using Common.Bag;
-using Common.Packs.Data.Repositories.Base;
-using Game;
+﻿using Game;
 using Game.Base;
 using Game.Composites;
 using Game.Field;
@@ -8,12 +6,9 @@ using Game.Logic.Systems.Control;
 using Libs.Pooling.Base;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Actions;
-using Libs.Popups.ViewModels.Commands;
 using Libs.Services;
 using Libs.TimeActions;
-using Popups.Common;
 using Popups.MainGame.Commands;
-using Popups.Win;
 using UnityEngine;
 
 namespace Popups.MainGame

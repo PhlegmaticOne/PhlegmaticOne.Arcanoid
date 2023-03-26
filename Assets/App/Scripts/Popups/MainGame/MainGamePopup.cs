@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Common.Bag;
+using Common.Game.Providers;
 using Common.Packs.Data.Models;
 using Game.Logic.Systems.Health;
 using Libs.Localization.Base;
@@ -27,7 +27,6 @@ namespace Popups.MainGame
         [SerializeField] private TweenAnimationInfo _showAnimationInfo;
         [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
         private LocalizationContext _localizationContext;
-        private IObjectBag _objectBag;
 
         public HealthBarView HealthBarView => _healthBarView;
             
@@ -42,10 +41,6 @@ namespace Popups.MainGame
         
         protected override void SetupViewModel(MainGamePopupViewModel viewModel)
         {
-            // SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
-            //     .RelativeTo(ParentTransform)
-            //     .FromBottom(_showAnimationInfo)
-            //     .ToPopupCallbackAnimation());
             SetAnimation(viewModel.ShowAction, Animate.None());
             SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)

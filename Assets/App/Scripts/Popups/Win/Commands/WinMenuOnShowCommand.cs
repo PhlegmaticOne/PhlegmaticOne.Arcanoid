@@ -1,7 +1,8 @@
-﻿using Common.Bag;
-using Common.Energy;
+﻿using Common.Energy;
+using Common.Game.Providers;
 using Common.Packs.Data.Models;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
 using Libs.Popups.ViewModels.Commands;
 
 namespace Popups.Win.Commands
@@ -10,20 +11,20 @@ namespace Popups.Win.Commands
     {
         private readonly EnergyManager _energyManager;
         private readonly IPackRepository _packRepository;
-        private readonly IObjectBag _objectBag;
+        private readonly IGameDataProvider _gameDataProvider;
 
         public WinMenuOnShowCommand(EnergyManager energyManager,
             IPackRepository packRepository,
-            IObjectBag objectBag)
+            IGameDataProvider gameDataProvider)
         {
             _energyManager = energyManager;
             _packRepository = packRepository;
-            _objectBag = objectBag;
+            _gameDataProvider = gameDataProvider;
         }
         
         protected override void Execute()
         {
-            var gameData = _objectBag.Get<GameData>();
+            var gameData = _gameDataProvider.GetGameData();
             SetNextLevelData(gameData);
             _energyManager.AddEnergy(gameData.PackGameData.PackConfiguration.WinLevelEnergy);
         }

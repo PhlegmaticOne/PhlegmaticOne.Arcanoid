@@ -1,6 +1,5 @@
-﻿using Common.Bag;
-using Common.Energy;
-using Common.Packs.Data.Models;
+﻿using Common.Energy;
+using Common.Game.Providers.Providers;
 using Game;
 using Game.Base;
 using Game.Logic.Systems.Health;
@@ -15,32 +14,32 @@ namespace Popups.Lose.Commands
     {
         private readonly EnergyManager _energyManager;
         private readonly HealthSystem _healthSystem;
-        private readonly IObjectBag _objectBag;
+        private readonly IGameDataProvider _gameDataProvider;
         private readonly IGame<MainGameData, MainGameEvents> _game;
         private readonly IPopupManager _popupManager;
 
         public BuyLifeControlCommand(EnergyManager energyManager, 
             HealthSystem healthSystem,
-            IObjectBag objectBag,
+            IGameDataProvider gameDataProvider,
             IGame<MainGameData, MainGameEvents> game,
             IPopupManager popupManager)
         {
             _energyManager = energyManager;
             _healthSystem = healthSystem;
-            _objectBag = objectBag;
+            _gameDataProvider = gameDataProvider;
             _game = game;
             _popupManager = popupManager;
         }
         
         protected override bool CanExecute(IPopupViewModel parameter)
         {
-            var packConfiguration = _objectBag.Get<GameData>().PackGameData.PackConfiguration;
+            var packConfiguration = _gameDataProvider.GetGameData().PackGameData.PackConfiguration;
             return _energyManager.CanSpendEnergy(packConfiguration.WinLevelEnergy);
         }
 
         protected override void Execute(IPopupViewModel parameter)
         {
-            var packConfiguration = _objectBag.Get<GameData>().PackGameData.PackConfiguration;
+            var packConfiguration = _gameDataProvider.GetGameData().PackGameData.PackConfiguration;
             _energyManager.SpendEnergy(packConfiguration.ContinueLevelEnergy);
             _healthSystem.AddHealth();
             parameter.CloseAction.AfterActionCommand = new ContinueGameCommand(_game);

@@ -2,12 +2,12 @@
 using Common.Packs.Data.Models;
 using Libs.Localization.Components.Base;
 using Libs.Popups.Controls;
-using Popups.PackChoose.Views.Configurations;
+using Common.Packs.Views.Configurations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Popups.PackChoose.Views
+namespace Common.Packs.Views.Views
 {
     public class PackPreview : ButtonControl
     {

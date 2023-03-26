@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1840942436777206387}
   - component: {fileID: 1840942436777206384}
   m_Layer: 0
-  m_Name: ObjectAccessorsInstaller
+  m_Name: GameDataProvider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

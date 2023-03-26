@@ -2,9 +2,9 @@
 using Game.Base;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Commands;
-using Popups.PackChoose;
+using Common.Packs.Views;
 
-namespace Popups.Common.Commands
+namespace Popups.Common
 {
     public class BackControlCommand : EmptyCommandBase
     {

@@ -1,7 +1,8 @@
-﻿using Common.Bag;
-using Common.Energy;
+﻿using Common.Energy;
+using Common.Game.Providers;
 using Common.Packs.Data.Models;
 using Common.Packs.Data.Repositories.Base;
+using Common.Game.Providers.Providers;
 using Game;
 using Game.Base;
 using Libs.Popups.Base;
@@ -14,7 +15,7 @@ namespace Popups.Win.Commands
     {
         private readonly IGame<MainGameData, MainGameEvents> _game;
         private readonly EnergyManager _energyManager;
-        private readonly IObjectBag _objectBag;
+        private readonly IGameDataProvider _gameDataProvider;
         private readonly IPopupManager _popupManager;
         private readonly IPackRepository _packRepository;
         private readonly ILevelRepository _levelRepository;
@@ -23,14 +24,14 @@ namespace Popups.Win.Commands
 
         public TransitToNextPackFirstLevelCommand(IGame<MainGameData, MainGameEvents> game,
             EnergyManager energyManager,
-            IObjectBag objectBag,
+            IGameDataProvider gameDataProvider,
             IPopupManager popupManager, 
             IPackRepository packRepository,
             ILevelRepository levelRepository)
         {
             _game = game;
             _energyManager = energyManager;
-            _objectBag = objectBag;
+            _gameDataProvider = gameDataProvider;
             _popupManager = popupManager;
             _packRepository = packRepository;
             _levelRepository = levelRepository;
@@ -45,8 +46,8 @@ namespace Popups.Win.Commands
         protected override void Execute(IPopupViewModel parameter)
         {
             var levels = _packRepository.GetLevelsForPack(_packGameData.PackPersistentData);
-            _objectBag.Set(new GameData(_packGameData, levels));
-            var command = new NextLevelControlCommand(_game, _energyManager, _objectBag, _popupManager, _levelRepository);
+            _gameDataProvider.Update(new GameData(_packGameData, levels));
+            var command = new NextLevelControlCommand(_game, _energyManager, _gameDataProvider, _popupManager, _levelRepository);
             command.Execute(parameter);
         }
     }

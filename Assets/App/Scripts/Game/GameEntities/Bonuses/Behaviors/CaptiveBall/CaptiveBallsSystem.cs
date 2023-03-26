@@ -21,8 +21,8 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
         public void Initialize(IPoolProvider poolProvider, BallsOnField ballsOnField)
         {
+            _isInitialState = true;
             _ballsOnField = ballsOnField;
-            
             _behaviorsToReplace = new List<IObjectBehavior<Ball>>
             {
                 new ReturnBallToPoolBehavior(poolProvider),
@@ -30,7 +30,6 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
             };
 
             _startBallOnDestroyBehaviors = GetBottomOnDestroyBehaviors();
-            
             Subscribe();
         }
 
@@ -46,13 +45,14 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
             foreach (var ball in balls)
             {
-                //mainBall.CopyToBall(ball);
                 AddNewBehaviorsToBall(ball, _behaviorsToReplace);
             }
         }
         
-
-        public void Disable() => Unsubscribe();
+        public void Disable()
+        {
+            Unsubscribe();
+        }
 
         private void BallsOnFieldOnBallRemoved(Ball ball)
         {
