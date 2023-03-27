@@ -1,27 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using Libs.Localization;
 using Libs.Localization.Base;
 using Libs.Localization.Components.Base;
-using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Extensions;
-using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using UnityEngine;
 
 namespace Popups.Energy
 {
-    public class EnergyPopup : ViewModelPopup<EnergyPopupViewModel>, ILocalizable
+    public class EnergyPopup : ViewModelPopup<EnergyPopupViewModel>
     {
+        [SerializeField] private LocalizationComponent _localizationComponent;
         [SerializeField] private ButtonControl _okControl;
         [SerializeField] private LocalizationBindableComponent _reasonText;
-        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
-
-        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
+        [SerializeField] private EnergyPopupAnimationConfiguration _animationConfiguration;
         
         private ILocalizationManager _localizationManager;
-        private LocalizationContext _localizationContext;
 
         [PopupConstructor]
         public void Initialize(ILocalizationManager localizationManager)
@@ -33,26 +28,22 @@ namespace Popups.Energy
         {
             SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .FromLeft(_showAnimationInfo)
+                .Appear(_animationConfiguration.ShowAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .ToRight(_closeAnimationInfo)
+                .Disappear(_animationConfiguration.CloseAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.OkControlAction, Animate.None());
             
             BindToAction(_okControl, viewModel.OkControlAction);
         }
 
-        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
-        
         public void ShowWithReasonPhraseKey(string reasonPhraseKey)
         {
             _reasonText.SetBindingData<string>(reasonPhraseKey);
-            _localizationContext = LocalizationContext
-                .Create(_localizationManager)
-                .BindLocalizable(this)
-                .Refresh();
+            _localizationComponent.BindInitial(_localizationManager);
+            _localizationComponent.Refresh();
         }
 
         public override void EnableInput() => _okControl.Enable();
@@ -61,7 +52,7 @@ namespace Popups.Energy
         public override void Reset()
         {
             ToZeroPosition();
-            _localizationContext.Flush();
+            _localizationComponent.Unbind();
             _okControl.Reset();
             Unbind(ViewModel.OkControlAction);
         }

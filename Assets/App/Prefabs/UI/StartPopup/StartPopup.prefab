@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7411348904776707076}
   - component: {fileID: 7411348904776707077}
   - component: {fileID: 7411348904776707078}
+  - component: {fileID: 7017800686321332666}
   - component: {fileID: 7411348904776707079}
   m_Layer: 5
   m_Name: StartPopup
@@ -132,6 +133,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 7411348904776707077}
   _canvas: {fileID: 7411348904776707074}
+--- !u!114 &7017800686321332666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7411348904776707081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97a3b60e82401d8c1c9342080ff801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticLocalizedComponents:
+  - {fileID: 3717352239997752112}
+  - {fileID: 5354806522953298922}
 --- !u!114 &7411348904776707079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 7411348904776707078}
+  _localizationComponent: {fileID: 7017800686321332666}
+  _animationConfiguration: {fileID: 11400000, guid: 64f535dae42645d45a54cbb61ec25b5f, type: 2}
   _settingsControl: {fileID: 4264472918356047060}
   _exitControl: {fileID: 3582928218753950539}
   _startGameControl: {fileID: 5224094446774092689}

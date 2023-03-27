@@ -53,10 +53,10 @@ namespace Popups.MainGame.Views
             s.Append(Animate.Transform(_packNameText.transform).GrowFromZero(showAnimationInfo));
         }
 
-        public void UpdatePackDataAnimate(PackGameData packGameData, Sequence s,
+        public void UpdatePackDataAnimate(PackGameData packGameData, string nextPackName, 
+            Sequence s,
             TweenAnimationInfo scaleAnimationInfo,
-            TweenAnimationInfo colorAnimationInfo,
-            Action insertActionOnPackDataSet)
+            TweenAnimationInfo colorAnimationInfo)
         {
             var packConfiguration = packGameData.PackConfiguration;
             var packPersistentData = packGameData.PackPersistentData;
@@ -67,8 +67,8 @@ namespace Popups.MainGame.Views
             {
                 _packIconImage.sprite = packConfiguration.PackImage;
                 _packNameLocalizationComponent.SetBindingData<string>(packConfiguration.Name);
+                _packNameLocalizationComponent.SetLocalizedValue(nextPackName);
                 UpdateLevels(packPersistentData);
-                insertActionOnPackDataSet?.Invoke();
             });
             AppendShowAnimationToSequence(s, scaleAnimationInfo);
             s.Append(Animate.Image(_colorBindableComponent).Color(packConfiguration.PackColor, colorAnimationInfo));

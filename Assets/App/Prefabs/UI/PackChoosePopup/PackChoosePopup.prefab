@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 106245234989348490}
   - component: {fileID: 106245234989348485}
   - component: {fileID: 106245234989348486}
+  - component: {fileID: 81346330464548855}
   - component: {fileID: 106245234989348487}
   m_Layer: 5
   m_Name: PackChoosePopup
@@ -420,6 +421,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 106245234989348485}
   _canvas: {fileID: 106245234989348488}
+--- !u!114 &81346330464548855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106245234989348492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97a3b60e82401d8c1c9342080ff801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticLocalizedComponents:
+  - {fileID: 2445502416607953535}
 --- !u!114 &106245234989348487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,9 +448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 106245234989348486}
+  _localizationComponent: {fileID: 81346330464548855}
+  _animationConfiguration: {fileID: 11400000, guid: febd3412d3e32f14aadb6ac9f4b1824e, type: 2}
   _itemsTransform: {fileID: 106245233923397430}
-  _viewportResizer: {fileID: 90281377}
-  _marginSide: 0.1
   _backControl: {fileID: 6492270294749205214}
   _energyView: {fileID: 1765808687897883618}
   _bindableComponents:

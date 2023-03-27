@@ -1,51 +1,37 @@
-﻿using System.Collections.Generic;
-using Common.Game.Providers;
-using Common.Packs.Data.Models;
+﻿using Common.Game.Providers;
 using Game.Logic.Systems.Health;
+using Libs.Localization;
 using Libs.Localization.Base;
-using Libs.Localization.Components.Base;
-using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
-using Libs.Popups.Animations.Extensions;
-using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Popups.MainGame.Views;
 using UnityEngine;
 
 namespace Popups.MainGame
 {
-    public class MainGamePopup : ViewModelPopup<MainGamePopupViewModel>, ILocalizable
+    public class MainGamePopup : ViewModelPopup<MainGamePopupViewModel>
     {
+        [SerializeField] private LocalizationComponent _localizationComponent;
         [SerializeField] private ButtonControl _menuControl;
         [SerializeField] private ButtonControl _winControl;
         [SerializeField] private PackageInfoView _packageInfoView;
         [SerializeField] private LevelPassPercentageView _levelPassPercentageView;
         [SerializeField] private HealthBarView _healthBarView;
-        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
-
-        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
-        private LocalizationContext _localizationContext;
 
         public HealthBarView HealthBarView => _healthBarView;
-            
+        
         [PopupConstructor]
         public void Initialize(ILocalizationManager localizationManager)
         {
-            _localizationContext = LocalizationContext
-                .Create(localizationManager)
-                .BindLocalizable(this)
-                .Refresh();
+            _localizationComponent.BindInitial(localizationManager);
+            _localizationComponent.Refresh();
         }
         
         protected override void SetupViewModel(MainGamePopupViewModel viewModel)
         {
             SetAnimation(viewModel.ShowAction, Animate.None());
-            SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
-                .RelativeTo(ParentTransform)
-                .ToBottom(_closeAnimationInfo)
-                .ToPopupCallbackAnimation());
+            SetAnimation(viewModel.CloseAction, Animate.None());
             SetAnimation(viewModel.MenuControlAction, Animate.None());
             SetAnimation(viewModel.WinControlAction, Animate.None());
             
@@ -53,8 +39,6 @@ namespace Popups.MainGame
             BindToAction(_winControl, viewModel.WinControlAction);
         }
         
-        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
-
         public override void EnableInput()
         {
             _menuControl.Enable();
@@ -70,7 +54,7 @@ namespace Popups.MainGame
         public override void Reset()
         {
             ToZeroPosition();
-            _localizationContext.Flush();
+            _localizationComponent.Unbind();
             _menuControl.Reset();
             _winControl.Reset();
             

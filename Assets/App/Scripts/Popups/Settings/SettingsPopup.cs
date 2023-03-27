@@ -2,9 +2,7 @@
 using Libs.Localization.Base;
 using Libs.Popups;
 using Libs.Popups.Animations;
-using Libs.Popups.Animations.Concrete;
 using Libs.Popups.Animations.Extensions;
-using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using UnityEngine;
 
@@ -12,12 +10,10 @@ namespace Popups.Settings
 {
     public class SettingsPopup : ViewModelPopup<SettingsPopupViewModel>
     {
+        [SerializeField] private SettingsPopupAnimationConfiguration _animationConfiguration;
         [SerializeField] private LocalizationSelector _localizationSelector;
         [SerializeField] private ButtonControl _closeControl;
 
-        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
-        
         [PopupConstructor]
         public void Initialize(ILocalizationManager localizationManager)
         {
@@ -28,11 +24,11 @@ namespace Popups.Settings
         {
             SetAnimation(viewModel.ShowAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .FromTop(_showAnimationInfo)
+                .Appear(_animationConfiguration.ShowAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .ToTop(_closeAnimationInfo)
+                .Disappear(_animationConfiguration.CloseAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.CloseControlAction, Animate.None());
             

@@ -30,7 +30,7 @@ namespace Popups.MainGame
                 var popupManager = global.GetRequiredService<IPopupManager>();
                 
                 var menuControlCommand = new MenuControlCommand(game, popupManager);
-                var winControlCommand = new WinControlCommand(pool, popupManager, control, entitiesOnField, field, timeActionsManager);
+                var winControlCommand = new WinControlCommand(pool, game, popupManager, control, entitiesOnField, field, timeActionsManager);
                 winControlCommand.SetCommandParameters(_blockDestroyTime);
                 
                 return new MainGamePopupViewModel

@@ -5589,7 +5589,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fieldPositionsGenerator: {fileID: 1808462273}
   _pointTransform: {fileID: 639020248}
-  _transitionTime: 3
+  _dynamicBuildingInfo:
+    _maxBlocksCountToBuildWithInterval: 30
+    _interval: 0.1
+    _totalBuildingTime: 3
 --- !u!1 &187389891729494695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6044,7 +6047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899bf724deb745e7a8905905c014fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowDownTime: 1.2
+  _slowDownTime: 0.8
 --- !u!1 &1525646325889677533
 GameObject:
   m_ObjectHideFlags: 0

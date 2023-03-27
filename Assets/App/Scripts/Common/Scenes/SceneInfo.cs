@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace Common.Scenes
@@ -8,9 +7,9 @@ namespace Common.Scenes
     public class SceneInfo
     {
         [SerializeField] private string _key;
-        [SerializeField] private SceneAsset _scene;
+        [SerializeField] private string _sceneName;
 
         public string Key => _key;
-        public SceneAsset Scene => _scene;
+        public string SceneName => _sceneName;
     }
 }

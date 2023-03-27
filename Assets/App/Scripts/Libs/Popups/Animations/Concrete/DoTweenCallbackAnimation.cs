@@ -16,7 +16,6 @@ namespace Libs.Popups.Animations.Concrete
         {
             _tween = _animationCallback.Invoke();
             _tween.Play().OnComplete(OnAnimationPlayed);
-            //_tween.OnComplete(OnAnimationPlayed);
         }
 
         public override void Stop()

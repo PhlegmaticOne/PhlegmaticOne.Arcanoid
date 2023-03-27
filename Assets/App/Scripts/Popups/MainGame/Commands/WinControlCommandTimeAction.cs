@@ -3,6 +3,7 @@ using System.Linq;
 using Game.Field;
 using Game.GameEntities.Blocks;
 using Libs.TimeActions.Base;
+using UnityEngine;
 
 namespace Popups.MainGame.Commands
 {
@@ -30,6 +31,11 @@ namespace Popups.MainGame.Commands
 
         public override void OnEnd()
         {
+            // foreach (var block in _activeBlocks.Where(x => x != null && x.IsDestroyed == false))
+            // {
+            //     Destroy(block);
+            // }
+            //
             _gameField.Clear();
             _activeBlocks.Clear();
         }

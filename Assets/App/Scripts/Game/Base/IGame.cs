@@ -9,6 +9,7 @@ namespace Game.Base
         event Action Lost;
         event Action Started;
         event Action Initialized;
+        bool AnimatedWin { get; set; }
         void Pause();
         void Unpause();
         void Stop();

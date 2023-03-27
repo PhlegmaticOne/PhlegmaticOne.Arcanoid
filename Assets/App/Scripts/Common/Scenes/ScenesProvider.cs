@@ -13,6 +13,6 @@ namespace Common.Scenes
             _sceneInfos.First(x => x.Key == key);
 
         public SceneInfo GetSceneBySceneName(string sceneName) => 
-            _sceneInfos.First(x => x.Scene.name == sceneName);
+            _sceneInfos.First(x => x.SceneName == sceneName);
     }
 }

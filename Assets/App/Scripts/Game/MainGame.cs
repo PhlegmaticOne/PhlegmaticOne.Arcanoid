@@ -55,9 +55,12 @@ namespace Game
         public event Action Lost;
         public event Action Started;
         public event Action Initialized;
+        
+        public bool AnimatedWin { get; set; }
 
         public void StartGame(MainGameData data)
         {
+            AnimatedWin = true;
             var controlSystem = _gameSystems.ControlSystem;
             var ballsOnField = _entitiesOnFieldCollection.BallsOnField;
             
@@ -149,6 +152,12 @@ namespace Game
 
         private void StateCheckSystemOnActiveBlocksDestroyed()
         {
+            if (AnimatedWin == false)
+            {
+                Won?.Invoke();
+                return;
+            }
+            
             PreWon?.Invoke();
             DOVirtual
                 .Float(1f, 0f, _slowDownTime, SetTimeScale)

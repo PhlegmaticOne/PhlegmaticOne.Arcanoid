@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4719939896904305342}
   - component: {fileID: 249556902036945238}
   - component: {fileID: 8103227250100154165}
+  - component: {fileID: 4623174148125205605}
   - component: {fileID: 1227007513485674636}
   m_Layer: 5
   m_Name: LosePopup
@@ -129,6 +130,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 249556902036945238}
   _canvas: {fileID: 4719939896904305336}
+--- !u!114 &4623174148125205605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4719939896904305340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97a3b60e82401d8c1c9342080ff801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticLocalizedComponents:
+  - {fileID: 76811877600528415}
+  - {fileID: 8957593544451883608}
+  - {fileID: 1171942948983855219}
+  - {fileID: 4492346415286671897}
 --- !u!114 &1227007513485674636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 8103227250100154165}
+  _localizationComponent: {fileID: 4623174148125205605}
+  _animationConfiguration: {fileID: 11400000, guid: 0e8a34b491877b44ca295bcaebd13d03, type: 2}
   _mainPopupElement: {fileID: 6855372921935788817}
   _backControl: {fileID: 6419397894963810607}
   _restartControl: {fileID: 22462180966751946}
@@ -152,13 +172,6 @@ MonoBehaviour:
   - {fileID: 76811877600528415}
   - {fileID: 8957593544451883608}
   - {fileID: 1171942948983855219}
-  _fadeAnimationInfo:
-    _animationTime: 0.3
-    _ease: 32
-  _mainPopupAnimationInfo:
-    _animationTime: 0.3
-    _ease: 32
-  _energyAnimationTime: 0.5
 --- !u!1 &4719939897064284186
 GameObject:
   m_ObjectHideFlags: 0

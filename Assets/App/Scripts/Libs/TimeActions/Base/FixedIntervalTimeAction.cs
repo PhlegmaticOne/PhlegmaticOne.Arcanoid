@@ -14,7 +14,11 @@
             CalculateExecutionTime(actionsCount);
         }
 
-        protected void SetActionsCount(int actionsCount) => CalculateExecutionTime(actionsCount);
+        protected void SetActionsCount(int actionsCount)
+        {
+            _actionsCount = actionsCount;
+            CalculateExecutionTime(actionsCount);
+        }
 
         public float ExecutionTime { get; private set; }
         public float RemainTime { get; set; }
@@ -34,6 +38,7 @@
         {
             if (_currentIntervalTime == 0f)
             {
+                RemainTime = (_actionsCount - _currentInterval) * _fixedInterval;
                 OnInterval(_currentInterval);
                 ++_currentInterval;
             }

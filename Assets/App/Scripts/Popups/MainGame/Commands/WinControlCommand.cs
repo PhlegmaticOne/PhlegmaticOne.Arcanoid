@@ -1,16 +1,20 @@
-﻿using Game.Composites;
+﻿using Game;
+using Game.Base;
+using Game.Composites;
 using Game.Field;
 using Game.Logic.Systems.Control;
 using Libs.Pooling.Base;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Commands;
 using Libs.TimeActions;
+using UnityEngine;
 
 namespace Popups.MainGame.Commands
 {
     public class WinControlCommand : EmptyCommandBase
     {
         private readonly IPoolProvider _poolProvider;
+        private readonly IGame<MainGameData, MainGameEvents> _game;
         private readonly IPopupManager _popupManager;
         private readonly ControlSystem _controlSystem;
         private readonly EntitiesOnFieldCollection _entitiesOnFieldCollection;
@@ -20,6 +24,7 @@ namespace Popups.MainGame.Commands
         private float _destroyInterval;
 
         public WinControlCommand(IPoolProvider poolProvider,
+            IGame<MainGameData, MainGameEvents> game,
             IPopupManager popupManager,
             ControlSystem controlSystem,
             EntitiesOnFieldCollection entitiesOnFieldCollection,
@@ -27,6 +32,7 @@ namespace Popups.MainGame.Commands
             TimeActionsManager timeActionsManager)
         {
             _poolProvider = poolProvider;
+            _game = game;
             _popupManager = popupManager;
             _controlSystem = controlSystem;
             _entitiesOnFieldCollection = entitiesOnFieldCollection;
@@ -41,6 +47,7 @@ namespace Popups.MainGame.Commands
         
         protected override void Execute()
         {
+            _game.AnimatedWin = false;
             _popupManager.CurrentPopup.DisableInput();
             var tag = _entitiesOnFieldCollection.BallsOnField.MainBall.BehaviorObjectTags[0].Tag;
             _entitiesOnFieldCollection.ReturnToPool(_poolProvider);

@@ -1,6 +1,6 @@
 ﻿using Libs.Popups.Animations.Animators;
 using Libs.Popups.Animations.Base;
-using Libs.Popups.Animations.Concrete.Default;
+using Libs.Popups.Animations.Concrete;
 using UnityEngine;
 using UnityEngine.UI;
 

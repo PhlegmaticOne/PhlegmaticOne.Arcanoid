@@ -15,13 +15,13 @@ namespace Libs.Popups.Animations.Animators
             _transform = transform;
         }
 
-        public Tween FullCircleAnimate(float oneCircleTime)
+        public Tween FullCircleAnimate(TweenAnimationInfo animationInfo)
         {
             return _transform
-                .DORotate(FullCircle, oneCircleTime, RotateMode.FastBeyond360)
+                .DORotate(FullCircle, animationInfo.AnimationTime, RotateMode.FastBeyond360)
                 .SetUpdate(true)
                 .SetLoops(-1, LoopType.Restart)
-                .SetEase(Ease.Linear);
+                .SetEase(animationInfo.Ease);
         }
 
         public Tween GrowFromZeroX(TweenAnimationInfo animationInfo)

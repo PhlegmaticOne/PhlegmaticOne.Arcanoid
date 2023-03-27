@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 4273243533187960002}
+  _animationConfiguration: {fileID: 11400000, guid: aed17190581bab3498622c12a120a295, type: 2}
   _loadingImage: {fileID: 1170172963741242616}
   _showAnimationInfo:
     _animationTime: 0.5

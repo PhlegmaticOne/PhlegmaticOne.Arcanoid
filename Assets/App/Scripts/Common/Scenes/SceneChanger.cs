@@ -47,7 +47,7 @@ namespace Common.Scenes
             }
             
             OnOverlay?.Invoke();
-            SceneManager.LoadScene(_tempScene.Scene.name);
+            SceneManager.LoadScene(_tempScene.SceneName);
         }
 
         private void SceneManagerOnsceneLoaded(Scene scene, LoadSceneMode arg1)

@@ -16,19 +16,19 @@ namespace Game.Field.Builder
         private readonly FieldPositionsGenerator _fieldPositionsGenerator;
         private readonly GameField _gameField;
         private readonly Transform _pointTransform;
-        private readonly float _transitionTime;
+        private readonly DynamicBuildingInfo _dynamicBuildingInfo;
 
         public FieldBuilder(IBlockSpawner blockSpawner, 
             FieldPositionsGenerator fieldPositionsGenerator,
             GameField gameField,
             Transform pointTransform,
-            float transitionTime)
+            DynamicBuildingInfo dynamicBuildingInfo)
         {
             _blockSpawner = blockSpawner;
             _fieldPositionsGenerator = fieldPositionsGenerator;
             _gameField = gameField;
             _pointTransform = pointTransform;
-            _transitionTime = transitionTime;
+            _dynamicBuildingInfo = dynamicBuildingInfo;
         }
 
         public GameField BuildField(LevelData levelData)
@@ -42,8 +42,18 @@ namespace Game.Field.Builder
                 new BlockSpawnData(positionsGenerationResult.CellSize, _pointTransform.position));
 
             _gameField.Initialize(width, height, blocks);
+
+            float interval;
             
-            var transitionTime = _transitionTime / blocks.Count(x => x != null);
+            if (blocks.Count > _dynamicBuildingInfo.MaxBlocksCountToBuildWithInterval)
+            {
+                interval = _dynamicBuildingInfo.TotalBuildingTime / blocks.Count(x => x != null);
+            }
+            else
+            {
+                interval = _dynamicBuildingInfo.Interval;
+            }
+            
             var sequence = DOTween.Sequence();
             var current = 0;
 
@@ -54,7 +64,7 @@ namespace Game.Field.Builder
 
                 if (block != null)
                 {
-                    sequence.Append(block.transform.DOMove(finalPosition, transitionTime));
+                    sequence.Append(block.transform.DOMove(finalPosition, interval));
                 }
 
                 current++;

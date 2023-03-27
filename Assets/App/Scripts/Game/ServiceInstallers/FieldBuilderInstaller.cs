@@ -11,7 +11,7 @@ namespace Game.ServiceInstallers
     {
         [SerializeField] private FieldPositionsGenerator _fieldPositionsGenerator;
         [SerializeField] private Transform _pointTransform;
-        [SerializeField] private float _transitionTime;
+        [SerializeField] private DynamicBuildingInfo _dynamicBuildingInfo;
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IFieldBuilder>(x =>
@@ -19,7 +19,7 @@ namespace Game.ServiceInstallers
                 var blockSpawner = x.GetRequiredService<IBlockSpawner>();
                 var gameField = x.GetRequiredService<GameField>();
                 return new FieldBuilder(blockSpawner, _fieldPositionsGenerator,
-                    gameField, _pointTransform, _transitionTime);
+                    gameField, _pointTransform, _dynamicBuildingInfo);
             });
         }
     }

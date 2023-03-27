@@ -11,18 +11,16 @@ namespace Popups.Transition
 {
     public class SceneTransitionPopup : Popup
     {
+        [SerializeField] private SceneTransitionPopupAnimationConfiguration _animationConfiguration;
         [SerializeField] private Image _loadingImage;
 
-        [SerializeField] private TweenAnimationInfo _showAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
-        [SerializeField] private float _animationTime;
         private Tween _rotateTween;
 
         protected override IPopupAnimation CreateCustomAppearAnimation()
         {
             return Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .FromBottom(_showAnimationInfo)
+                .Appear(_animationConfiguration.ShowAnimation)
                 .ToPopupCallbackAnimation();
         }
 
@@ -30,7 +28,7 @@ namespace Popups.Transition
         {
             return Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .ToBottom(_closeAnimationInfo)
+                .Disappear(_animationConfiguration.CloseAnimation)
                 .ToPopupCallbackAnimation();
         }
 
@@ -38,7 +36,7 @@ namespace Popups.Transition
         {
             _rotateTween = Animate
                 .Transform(_loadingImage.transform)
-                .FullCircleAnimate(_animationTime)
+                .FullCircleAnimate(_animationConfiguration.LoadingAnimation)
                 .Play();
         }
         

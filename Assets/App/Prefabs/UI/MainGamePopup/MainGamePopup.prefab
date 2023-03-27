@@ -1420,6 +1420,7 @@ GameObject:
   - component: {fileID: 4672484508011889955}
   - component: {fileID: 4672484508011889967}
   - component: {fileID: 4672484508011889964}
+  - component: {fileID: 2927293033332803718}
   - component: {fileID: 4672484508011889966}
   m_Layer: 5
   m_Name: MainGamePopup
@@ -1536,6 +1537,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 4672484508011889967}
   _canvas: {fileID: 4672484508011889965}
+--- !u!114 &2927293033332803718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672484508011889953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97a3b60e82401d8c1c9342080ff801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticLocalizedComponents:
+  - {fileID: 712194557766866693}
+  - {fileID: 2750749766178999335}
 --- !u!114 &4672484508011889966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,6 +1565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 4672484508011889964}
+  _localizationComponent: {fileID: 2927293033332803718}
   _menuControl: {fileID: 6952497760199850872}
   _winControl: {fileID: 6756989629612203142}
   _packageInfoView: {fileID: 7847499900500390622}
@@ -1557,12 +1574,6 @@ MonoBehaviour:
   _bindableComponents:
   - {fileID: 712194557766866693}
   - {fileID: 2750749766178999335}
-  _showAnimationInfo:
-    _animationTime: 0.5
-    _ease: 32
-  _closeAnimationInfo:
-    _animationTime: 0.5
-    _ease: 32
 --- !u!1001 &6637649723395721817
 PrefabInstance:
   m_ObjectHideFlags: 0

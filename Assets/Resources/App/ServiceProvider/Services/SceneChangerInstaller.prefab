@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneInfos:
   - _key: Menu
-    _scene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+    _sceneName: StartScene
   - _key: Game
-    _scene: {fileID: 102900000, guid: 7c7c4c87d98fc3449b344971ce370d4b, type: 3}
+    _sceneName: GameScene

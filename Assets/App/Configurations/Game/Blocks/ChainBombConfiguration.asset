@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChainBombConfiguration
   m_EditorClassIdentifier: 
   _blockId: 103
-  _lifesCount: 3
+  _lifesCount: 2
   _mainSprite: {fileID: 21300000, guid: 04144afc716d00b429b57cb1d433974e, type: 3}
   _isActive: 1
   _hasUnderlyingConfiguration: 0

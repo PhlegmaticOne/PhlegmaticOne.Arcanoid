@@ -1,64 +1,54 @@
-﻿using System.Collections.Generic;
-using DG.Tweening;
+﻿using DG.Tweening;
+using Libs.Localization;
 using Libs.Localization.Base;
-using Libs.Localization.Components.Base;
-using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Concrete;
 using Libs.Popups.Animations.Extensions;
-using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using UnityEngine;
 
 namespace Popups.Start
 {
-    public class StartPopup : ViewModelPopup<StartPopupViewModel>, ILocalizable
+    public class StartPopup : ViewModelPopup<StartPopupViewModel>
     {
+        [SerializeField] private LocalizationComponent _localizationComponent;
+        [SerializeField] private StartPopupAnimationConfiguration _animationConfiguration;
         [SerializeField] private ButtonControl _settingsControl;
         [SerializeField] private ButtonControl _exitControl;
         [SerializeField] private ButtonControl _startGameControl;
-        [SerializeField] private List<LocalizationBindableComponent> _bindableComponents;
 
-        [SerializeField] private TweenAnimationInfo _fadeAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _closeAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _buttonAppearAnimationInfo;
-        [SerializeField] private TweenAnimationInfo _buttonDisappearAnimationInfo;
-
-        private LocalizationContext _localizationContext;
-        
         [PopupConstructor]
         public void Initialize(ILocalizationManager localizationManager)
         {
-            _localizationContext = LocalizationContext
-                .Create(localizationManager)
-                .BindLocalizable(this)
-                .Refresh();
+            _localizationComponent.BindInitial(localizationManager);
+            _localizationComponent.Refresh();
         }
         
-        public IEnumerable<ILocalizationBindable> GetBindableComponents() => _bindableComponents;
-
         protected override void SetupViewModel(StartPopupViewModel viewModel)
         {
             SetAnimation(viewModel.ShowAction, new DoTweenSequenceAnimation(s =>
             {
-                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup).FadeIn(_fadeAnimationInfo));
-                s.Append(Animate.RectTransform(_startGameControl.RectTransform).RelativeTo(RectTransform)
-                    .FromRight(_buttonAppearAnimationInfo));
-                s.Append(Animate.RectTransform(_exitControl.RectTransform).RelativeTo(RectTransform)
-                    .FromRight(_buttonAppearAnimationInfo));
+                s.Append(Animate.CanvasGroup(PopupView.CanvasGroup)
+                    .FadeIn(_animationConfiguration.FadeInAnimation));
+                s.Append(Animate.RectTransform(_startGameControl.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .Appear(_animationConfiguration.ButtonsAppearAnimation));
+                s.Append(Animate.RectTransform(_exitControl.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .Appear(_animationConfiguration.ButtonsAppearAnimation));
             }));
             SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
-                .ToRight(_closeAnimationInfo)
+                .Disappear(_animationConfiguration.CloseAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.ExitControlAction, Animate.RectTransform(_exitControl.RectTransform)
                 .RelativeTo(RectTransform)
-                .ToRight(_buttonDisappearAnimationInfo)
+                .ToRight(_animationConfiguration.ButtonsDisappearAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.PlayControlAction, Animate.RectTransform(_startGameControl.RectTransform)
                 .RelativeTo(RectTransform)
-                .ToRight(_buttonDisappearAnimationInfo)
+                .ToRight(_animationConfiguration.ButtonsDisappearAnimation)
                 .ToPopupCallbackAnimation());
             SetAnimation(viewModel.SettingsControlAction, Animate.None());
 
@@ -85,8 +75,7 @@ namespace Popups.Start
         {
             ToZeroPosition();
             
-            _localizationContext.Flush();
-            
+            _localizationComponent.Unbind();
             _settingsControl.Reset();
             _startGameControl.Reset();
             _exitControl.Reset();

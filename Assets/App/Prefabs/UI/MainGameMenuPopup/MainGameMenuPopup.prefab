@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 5904184361336408197}
   - component: {fileID: 5904184361336408196}
   - component: {fileID: 5904184361336408203}
+  - component: {fileID: -802689438074788742}
   - component: {fileID: 5904184361336408202}
   m_Layer: 5
   m_Name: MainGameMenuPopup
@@ -279,6 +280,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 5904184361336408196}
   _canvas: {fileID: 5904184361336408199}
+--- !u!114 &-802689438074788742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904184361336408200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97a3b60e82401d8c1c9342080ff801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticLocalizedComponents:
+  - {fileID: 7752165567688009141}
+  - {fileID: 3202010299145323567}
+  - {fileID: 7991333994113275292}
+  - {fileID: 8826189384982310166}
 --- !u!114 &5904184361336408202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 5904184361336408203}
+  _localizationComponent: {fileID: -802689438074788742}
+  _animationConfiguration: {fileID: 11400000, guid: df699c67c1fbe30498857f5512de8be4, type: 2}
   _mainPopupTransform: {fileID: 6239703115424744759}
   _backControl: {fileID: 3716474800589421701}
   _continueControl: {fileID: 8388368580410826015}

@@ -179,7 +179,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4087
 --- !u!225 &8785456294690338680
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 8785456294690338687}
+  _animationConfiguration: {fileID: 11400000, guid: ccb7e27b1c1b5c041ba362a8d784cc41, type: 2}
   _localizationSelector: {fileID: 9202172334035946188}
   _closeControl: {fileID: 4915043416250027492}
   _showAnimationInfo:

@@ -6,9 +6,7 @@ namespace Libs.Popups.Animations.Extensions
 {
     public static class TweenExtensions
     {
-        public static IPopupAnimation ToPopupCallbackAnimation(this Tween tween)
-        {
-            return new DoTweenCallbackAnimation(() => tween);
-        }
+        public static IPopupAnimation ToPopupCallbackAnimation(this Tween tween) => 
+            new DoTweenCallbackAnimation(() => tween);
     }
 }

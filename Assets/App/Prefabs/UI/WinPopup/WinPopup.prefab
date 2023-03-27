@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5811766302098391509}
   - component: {fileID: 5868945133578196972}
   - component: {fileID: 8561285539520314616}
+  - component: {fileID: 4342932564355045498}
   - component: {fileID: 5213800753101665489}
   m_Layer: 5
   m_Name: WinPopup
@@ -263,6 +264,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 5868945133578196972}
   _canvas: {fileID: 3202923362805489108}
+--- !u!114 &4342932564355045498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450009977431979704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97a3b60e82401d8c1c9342080ff801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staticLocalizedComponents:
+  - {fileID: 516961552658731967}
+  - {fileID: 7684749496854418170}
+  - {fileID: 2499235180872776641}
+  - {fileID: 2849753888730051374}
 --- !u!114 &5213800753101665489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popupView: {fileID: 8561285539520314616}
+  _localizationComponent: {fileID: 4342932564355045498}
+  _animationConfiguration: {fileID: 11400000, guid: 1ec56c26ff575d84eb67d5e5325a0f39, type: 2}
   _lightsImage: {fileID: 905933403564584159}
   _youPassedAllPacksText: {fileID: 3193418440403379202}
   _mainPopupElement: {fileID: 7583466426020786888}
@@ -1370,6 +1390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3898041dba0c3104dbaef9ddf690e0bb, type: 3}
+--- !u!224 &8920425207498932182 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3832360280260100417, guid: 3898041dba0c3104dbaef9ddf690e0bb, type: 3}
+  m_PrefabInstance: {fileID: 5684932686357053079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8766462170482688027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3984642017980645004, guid: 3898041dba0c3104dbaef9ddf690e0bb, type: 3}
@@ -1381,11 +1406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618e76ade74e4807b9c10ccd51c6c684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &8920425207498932182 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3832360280260100417, guid: 3898041dba0c3104dbaef9ddf690e0bb, type: 3}
-  m_PrefabInstance: {fileID: 5684932686357053079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8745649496195155024
 PrefabInstance:
   m_ObjectHideFlags: 0
