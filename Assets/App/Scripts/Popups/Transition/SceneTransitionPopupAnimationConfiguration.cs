@@ -9,16 +9,16 @@ namespace Popups.Transition
     public class SceneTransitionPopupAnimationConfiguration : ScriptableObject
     {
         [Title(AnimationTitleNames.ShowTitle)] [SerializeField]
-        private AppearTweenAnimationInfo _showAnimation;
+        private TweenAnimationInfo _fadeInAnimation;
 
         [Title(AnimationTitleNames.CloseTitle)] [SerializeField]
-        private DisappearTweenAnimationInfo _closeAnimation;
+        private TweenAnimationInfo _fadeOutAnimation;
 
         [Title("Loading")] [SerializeField] 
         private TweenAnimationInfo _loadingAnimation;
 
-        public AppearTweenAnimationInfo ShowAnimation => _showAnimation;
-        public DisappearTweenAnimationInfo CloseAnimation => _closeAnimation;
+        public TweenAnimationInfo FadeInAnimation => _fadeInAnimation;
+        public TweenAnimationInfo FadeOutAnimation => _fadeOutAnimation;
         public TweenAnimationInfo LoadingAnimation => _loadingAnimation;
     }
 }

@@ -35,7 +35,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
         public void AddNewBalls(IEnumerable<Ball> balls)
         {
-            var mainBall = _ballsOnField.MainBall;
+            var mainBall = _ballsOnField.All[0];
             
             if (_isInitialState)
             {
@@ -59,7 +59,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
             if (_ballsOnField.All.Count == 1)
             {
                 _isInitialState = true;
-                AddNewBehaviorsToBall(_ballsOnField.MainBall, _startBallOnDestroyBehaviors);
+                AddNewBehaviorsToBall(_ballsOnField.All[0], _startBallOnDestroyBehaviors);
             }
         }
         
@@ -86,6 +86,6 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
         private void Unsubscribe() => _ballsOnField.BallRemoved -= BallsOnFieldOnBallRemoved;
 
         private List<IObjectBehavior<Ball>> GetBottomOnDestroyBehaviors() =>
-            _ballsOnField.MainBall.OnDestroyBehaviors.GetAllBehaviors(_bottomColliderTag.Tag).ToList();
+            _ballsOnField.All[0].OnDestroyBehaviors.GetAllBehaviors(_bottomColliderTag.Tag).ToList();
     }
 }

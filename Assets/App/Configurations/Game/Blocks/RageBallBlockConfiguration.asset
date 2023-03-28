@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RageBallBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 1004
-  _lifesCount: 3
+  _lifesCount: 2
   _mainSprite: {fileID: 21300000, guid: cbb4562dc5a116d4484057c73b0fb363, type: 3}
   _isActive: 1
   _hasUnderlyingConfiguration: 1

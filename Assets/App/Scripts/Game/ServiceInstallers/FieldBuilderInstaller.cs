@@ -1,9 +1,11 @@
-﻿using Game.Field;
+﻿using Game.Common;
+using Game.Field;
 using Game.Field.Builder;
 using Game.Field.Helpers;
 using Game.GameEntities.Blocks.Spawners;
 using Libs.Services;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.ServiceInstallers
 {
@@ -11,7 +13,7 @@ namespace Game.ServiceInstallers
     {
         [SerializeField] private FieldPositionsGenerator _fieldPositionsGenerator;
         [SerializeField] private Transform _pointTransform;
-        [SerializeField] private DynamicBuildingInfo _dynamicBuildingInfo;
+        [SerializeField] private DynamicBlockAffectingInfo _dynamicBlockAffectingInfo;
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IFieldBuilder>(x =>
@@ -19,7 +21,7 @@ namespace Game.ServiceInstallers
                 var blockSpawner = x.GetRequiredService<IBlockSpawner>();
                 var gameField = x.GetRequiredService<GameField>();
                 return new FieldBuilder(blockSpawner, _fieldPositionsGenerator,
-                    gameField, _pointTransform, _dynamicBuildingInfo);
+                    gameField, _pointTransform, _dynamicBlockAffectingInfo);
             });
         }
     }

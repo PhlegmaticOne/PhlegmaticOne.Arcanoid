@@ -46,6 +46,16 @@ namespace Common.Energy.Repositories
             File.WriteAllText(path, json);
         }
 
+        public void Clear()
+        {
+            var path = GetEnergySaveFilePath(_energyConfiguration);
+            
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
+
         private static void Synchronize(EnergyModel energyModel)
         {
             if (energyModel.currentEnergy >= energyModel.maxEnergy)

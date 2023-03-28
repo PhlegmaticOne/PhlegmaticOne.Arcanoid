@@ -83,8 +83,12 @@ namespace Libs.Popups
             OnClosed();
         }
 
-        protected void ToZeroPosition() => RectTransform.localPosition = Vector3.zero;
-        
+        protected void ToZeroPosition()
+        {
+            RectTransform.localPosition = Vector3.zero;
+            RectTransform.localScale = Vector3.one;
+        }
+
         protected virtual void OnBeforeShowing() { }
 
         protected virtual void OnBeforeClosing() { }

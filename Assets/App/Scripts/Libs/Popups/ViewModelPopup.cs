@@ -22,17 +22,27 @@ namespace Libs.Popups
         protected override void OnShowed() => ExecutePopupCommand(ViewModel.ShowAction.AfterActionCommand);
         protected override void OnClosed() => ExecutePopupCommand(ViewModel.CloseAction.AfterActionCommand);
 
-        protected void BindToAction(ControlBase controlBase, IControlAction controlAction)
+        protected void BindToAction(ControlBase controlBase, IControlAction controlAction, bool isChangingView = true,
+            bool resetControl = true)
         {
-            controlBase.Reset(false);
+            if (resetControl)
+            {
+                controlBase.Reset(false);
+            }
             controlBase.BindToAction(controlAction);
+            controlAction.IsChangingView = isChangingView;
             controlAction.IsExecutingChanged += ControlActionOnIsExecutingChanged;
         }
         
-        protected void BindToActionWithValue(ControlBase controlBase, IControlAction controlAction, object value)
+        protected void BindToActionWithValue(ControlBase controlBase, IControlAction controlAction, 
+            object value, bool isChangingView = true, bool resetControl = true)
         {
-            controlBase.Reset(false);
+            if (resetControl)
+            {
+                controlBase.Reset(false);
+            }
             controlBase.BindToActionWithValue(controlAction, value);
+            controlAction.IsChangingView = isChangingView;
             controlAction.IsExecutingChanged += ControlActionOnIsExecutingChanged;
         }
 
@@ -43,11 +53,16 @@ namespace Libs.Popups
             controlAction.IsExecutingChanged -= ControlActionOnIsExecutingChanged;
         }
 
-        private void ControlActionOnIsExecutingChanged(bool isExecuting)
+        private void ControlActionOnIsExecutingChanged(IControlAction controlAction, bool isExecuting)
         {
             if (isExecuting)
             {
                 DisableInput();
+            }
+
+            if (isExecuting == false && controlAction.IsChangingView == false)
+            {
+                EnableInput();
             }
         }
 

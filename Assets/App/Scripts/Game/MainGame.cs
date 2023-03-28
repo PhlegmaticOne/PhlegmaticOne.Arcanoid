@@ -20,6 +20,7 @@ namespace Game
         private readonly IPoolProvider _poolProvider;
         private readonly EntitiesOnFieldCollection _entitiesOnFieldCollection;
         private readonly GameSystems _gameSystems;
+        private readonly WinParticles _winParticles;
         private readonly IFieldBuilder _fieldBuilder;
         private readonly IBallSpawner _ballSpawner;
         private readonly TimeActionsManager _timeActionsManager;
@@ -28,10 +29,12 @@ namespace Game
         private GameField _gameField;
         private StateCheckSystem _stateCheckSystem;
         private float _slowDownTime;
+        private bool _isWon;
 
         public MainGame(IPoolProvider poolProvider,
             EntitiesOnFieldCollection entitiesOnFieldCollection,
             GameSystems gameSystems,
+            WinParticles winParticles,
             IFieldBuilder fieldBuilder,
             TimeActionsManager timeActionsManager,
             ParticleManager particleManager,
@@ -40,6 +43,7 @@ namespace Game
             _poolProvider = poolProvider;
             _entitiesOnFieldCollection = entitiesOnFieldCollection;
             _gameSystems = gameSystems;
+            _winParticles = winParticles;
             _fieldBuilder = fieldBuilder;
             _timeActionsManager = timeActionsManager;
             _particleManager = particleManager;
@@ -60,6 +64,7 @@ namespace Game
 
         public void StartGame(MainGameData data)
         {
+            _isWon = false;
             AnimatedWin = true;
             var controlSystem = _gameSystems.ControlSystem;
             var ballsOnField = _entitiesOnFieldCollection.BallsOnField;
@@ -94,6 +99,7 @@ namespace Game
         
         public void Stop()
         {
+            _winParticles.Hide();
             var blocksPool = _poolProvider.GetPool<Block>();
             foreach (var block in _gameField.Blocks)
             {
@@ -152,6 +158,14 @@ namespace Game
 
         private void StateCheckSystemOnActiveBlocksDestroyed()
         {
+            if (_isWon)
+            {
+                return;
+            }
+            
+            _isWon = true;
+            _winParticles.Show();
+            
             if (AnimatedWin == false)
             {
                 Won?.Invoke();

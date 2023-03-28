@@ -297,34 +297,13 @@ MonoBehaviour:
   _localizationComponent: {fileID: 4342932564355045498}
   _animationConfiguration: {fileID: 11400000, guid: 1ec56c26ff575d84eb67d5e5325a0f39, type: 2}
   _lightsImage: {fileID: 905933403564584159}
+  _youWinText: {fileID: 5956490536364998048}
   _youPassedAllPacksText: {fileID: 3193418440403379202}
   _mainPopupElement: {fileID: 7583466426020786888}
   _nextControl: {fileID: 8838851004428260419}
   _backControl: {fileID: 8838800832301949681}
   _packageInfoView: {fileID: 7426264599289754611}
   _energyView: {fileID: 8766462170482688027}
-  _bindableComponents:
-  - {fileID: 516961552658731967}
-  - {fileID: 7684749496854418170}
-  - {fileID: 2499235180872776641}
-  - {fileID: 2849753888730051374}
-  _fadeAnimationInfo:
-    _animationTime: 0.3
-    _ease: 1
-  _mainPopupAnimationInfo:
-    _animationTime: 0.3
-    _ease: 1
-  _nextControlAnimationInfo:
-    _animationTime: 0.3
-    _ease: 1
-  _scaleAnimationInfo:
-    _animationTime: 0.3
-    _ease: 32
-  _colorAnimationInfo:
-    _animationTime: 0.15
-    _ease: 1
-  _energyAnimationTime: 0.3
-  _lightsCircleAnimationTime: 10
 --- !u!1 &3500148935065305172
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,8 +663,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 28.74}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0, y: 28.740005}
+  m_SizeDelta: {x: -50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2459552253994224460
 CanvasRenderer:
@@ -715,7 +694,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ebd0fb50290b6514797a3b9c0a36a51c, type: 2}
   m_sharedMaterial: {fileID: 1986787447238423410, guid: ebd0fb50290b6514797a3b9c0a36a51c, type: 2}
@@ -724,15 +705,15 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 0.76862746, g: 0.6392157, b: 0.9529412, a: 1}
+    bottomRight: {r: 0.76862746, g: 0.6392157, b: 0.9529412, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0

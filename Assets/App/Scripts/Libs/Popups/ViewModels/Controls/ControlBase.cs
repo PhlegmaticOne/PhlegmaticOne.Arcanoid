@@ -35,6 +35,8 @@ namespace Libs.Popups.Controls.Base
         public abstract void Enable();
         public abstract void Disable();
 
+        public void SetActive(bool isActive) => gameObject.SetActive(isActive);
+
         public void Reset(bool complete = true)
         {
             if (complete)

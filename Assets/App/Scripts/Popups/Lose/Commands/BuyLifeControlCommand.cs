@@ -34,7 +34,7 @@ namespace Popups.Lose.Commands
         protected override bool CanExecute(IPopupViewModel parameter)
         {
             var packConfiguration = _gameDataProvider.GetGameData().PackGameData.PackConfiguration;
-            return _energyManager.CanSpendEnergy(packConfiguration.WinLevelEnergy);
+            return _energyManager.CanSpendEnergy(packConfiguration.ContinueLevelEnergy);
         }
 
         protected override void Execute(IPopupViewModel parameter)

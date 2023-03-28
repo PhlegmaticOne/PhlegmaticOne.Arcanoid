@@ -91,8 +91,7 @@ namespace Game.Logic.Systems.Control
             
             foreach (var followingObject in _followingObjects)
             {
-                var direction = (inputPosition - followingObject.GetTransform().position).normalized;
-                followingObject.StartMove(direction);
+                followingObject.StartMove(Vector2.up);
             }
             
             _followingObjects.Clear();

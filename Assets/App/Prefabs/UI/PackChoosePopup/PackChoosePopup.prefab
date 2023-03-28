@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 30
-    m_Bottom: 30
+    m_Top: 70
+    m_Bottom: 70
   m_ChildAlignment: 4
   m_Spacing: 45
   m_ChildForceExpandWidth: 1
@@ -453,18 +453,6 @@ MonoBehaviour:
   _itemsTransform: {fileID: 106245233923397430}
   _backControl: {fileID: 6492270294749205214}
   _energyView: {fileID: 1765808687897883618}
-  _bindableComponents:
-  - {fileID: 2445502416607953535}
-  _showAnimationInfo:
-    _animationTime: 0.5
-    _ease: 1
-  _closeAnimationInfo:
-    _animationTime: 0.5
-    _ease: 11
-  _packClickAnimationInfo:
-    _animationTime: 0.3
-    _ease: 32
-  _energyAnimationTime: 0.5
 --- !u!1001 &2890420760837488073
 PrefabInstance:
   m_ObjectHideFlags: 0

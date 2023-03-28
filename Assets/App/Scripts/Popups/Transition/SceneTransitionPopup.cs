@@ -18,17 +18,15 @@ namespace Popups.Transition
 
         protected override IPopupAnimation CreateCustomAppearAnimation()
         {
-            return Animate.RectTransform(RectTransform)
-                .RelativeTo(ParentTransform)
-                .Appear(_animationConfiguration.ShowAnimation)
+            return Animate.CanvasGroup(PopupView.CanvasGroup)
+                .FadeIn(_animationConfiguration.FadeInAnimation)
                 .ToPopupCallbackAnimation();
         }
 
         protected override IPopupAnimation CreateCustomDisappearAnimation()
         {
-            return Animate.RectTransform(RectTransform)
-                .RelativeTo(ParentTransform)
-                .Disappear(_animationConfiguration.CloseAnimation)
+            return Animate.CanvasGroup(PopupView.CanvasGroup)
+                .FadeOut(_animationConfiguration.FadeOutAnimation)
                 .ToPopupCallbackAnimation();
         }
 

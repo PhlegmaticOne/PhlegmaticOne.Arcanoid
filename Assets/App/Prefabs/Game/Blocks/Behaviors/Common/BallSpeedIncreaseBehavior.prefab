@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 040546202b854a3c892b1a414e57800e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _increaseBallSpeed: 4
+  _increaseBallSpeed: 3.2

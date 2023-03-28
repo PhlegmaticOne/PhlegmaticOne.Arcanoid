@@ -8,13 +8,7 @@ namespace Popups.Common.Controls
     public class SpendEnergyControl : ButtonControl
     {
         [SerializeField] private Image _disabledImage;
-        [SerializeField] private GameObject _energyTextRoot;
         [SerializeField] private TextMeshProUGUI _energyText;
-        [SerializeField] private RectTransform _mainTextTransform;
-
-        private Vector2 _offset;
-        
-        protected override void Initialize() => _offset = _mainTextTransform.offsetMax;
 
         protected override void OnInteractableSet(bool isInteractable)
         {
@@ -30,12 +24,9 @@ namespace Popups.Common.Controls
             }
         }
 
-        public void ChangeEnergyViewEnabled(bool isEnabled)
+        public void SetEnergy(int energy)
         {
-            _energyTextRoot.SetActive(isEnabled);
-            _mainTextTransform.offsetMax = isEnabled == false ? new Vector2(0, _offset.y) : _offset;
+            _energyText.text = (-energy).ToString();
         }
-
-        public void SetEnergy(int energy) => _energyText.text = energy.ToString();
     }
 }

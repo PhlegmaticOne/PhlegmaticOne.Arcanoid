@@ -5,6 +5,7 @@ using Libs.Localization.Base;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Controls;
+using Popups.MainGame.Controls;
 using Popups.MainGame.Views;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace Popups.MainGame
     {
         [SerializeField] private LocalizationComponent _localizationComponent;
         [SerializeField] private ButtonControl _menuControl;
-        [SerializeField] private ButtonControl _winControl;
+        [SerializeField] private WinControl _winControl;
         [SerializeField] private PackageInfoView _packageInfoView;
         [SerializeField] private LevelPassPercentageView _levelPassPercentageView;
         [SerializeField] private HealthBarView _healthBarView;

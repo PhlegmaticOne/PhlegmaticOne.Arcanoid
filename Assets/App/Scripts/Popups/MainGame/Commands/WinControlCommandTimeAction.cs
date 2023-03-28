@@ -31,11 +31,6 @@ namespace Popups.MainGame.Commands
 
         public override void OnEnd()
         {
-            // foreach (var block in _activeBlocks.Where(x => x != null && x.IsDestroyed == false))
-            // {
-            //     Destroy(block);
-            // }
-            //
             _gameField.Clear();
             _activeBlocks.Clear();
         }

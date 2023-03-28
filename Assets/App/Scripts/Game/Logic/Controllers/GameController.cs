@@ -15,8 +15,6 @@ namespace Game.GameEntities.Controllers
         private IPopupManager _popupManager;
         private MainGamePopup _mainGamePopup;
 
-        private bool _isUpdateForCurrentLevel;
-
         public void Initialize(MainGamePopup mainGamePopup,
             IGameDataProvider gameDataProvider,
             IPopupManager popupManager,
@@ -56,16 +54,10 @@ namespace Game.GameEntities.Controllers
 
         private void UpdateInfo()
         {
-            if (_isUpdateForCurrentLevel)
-            {
-                return;
-            }
-            
             var gameData = _gameDataProvider.GetGameData();
             var levelData = gameData.CurrentLevel;
             _mainGamePopup.UpdateHeader(gameData);
             _mainGamePopup.InitializeHealthBar(levelData.LifesCount);
-            _isUpdateForCurrentLevel = true;
         }
 
         private void EventsOnHealthLost()
@@ -86,13 +78,11 @@ namespace Game.GameEntities.Controllers
 
         private void MainGameOnLost()
         {
-            _isUpdateForCurrentLevel = false;
             _popupManager.SpawnPopup<LosePopup>();
         }
         
         private void MainGameOnWon()
         {
-            _isUpdateForCurrentLevel = false;
             _popupManager.SpawnPopup<WinPopup>();
         }
 

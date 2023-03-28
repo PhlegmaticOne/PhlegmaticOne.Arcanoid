@@ -36,7 +36,17 @@ MonoBehaviour:
   _packConfigurations:
   - _packConfiguration: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
     _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: 3b86426c89e582e4992fff22f1466271, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: c8e2071e93b3b4d4f9694741087ee306, type: 2}
+    _isUpdate: 0
   - _packConfiguration: {fileID: 11400000, guid: 05efa56963790a54d828969358413f74, type: 2}
     _isUpdate: 0
   - _packConfiguration: {fileID: 11400000, guid: e050ca889fa732043ae98f940c2558b3, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: ebd9ed393ae5cac47bc5ed19ba20dacc, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: e2029faadd77813418625ea4ba06339c, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: 0a1bc2e2d22cb2841845acb246cbd2a3, type: 2}
     _isUpdate: 0

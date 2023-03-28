@@ -5,7 +5,8 @@ namespace Libs.Popups.ViewModels.Actions
 {
     public interface IControlAction : IAction
     {
-        event Action<bool> IsExecutingChanged;
+        public bool IsChangingView { get; set; }
+        event Action<IControlAction, bool> IsExecutingChanged;
         void Execute(object parameter);
         bool CanExecute(object parameter);
     }

@@ -20,6 +20,9 @@ namespace Game.Field.Helpers
 
         [SerializeField] private ControlSystem _controlSystem;
 
+        [SerializeField] private ParticleSystem _leftParticle;
+        [SerializeField] private ParticleSystem _rightParticle;
+
         private void Start()
         {
             var fieldBounds = GenerateFieldBounds();
@@ -92,6 +95,9 @@ namespace Game.Field.Helpers
             SetCollider(_topCollider, topPosition, horizontalCollidersSize);
             SetCollider(_leftSideCollider, leftPosition, verticalCollidersSize);
             SetCollider(_rightSideCollider, rightPosition, verticalCollidersSize);
+            
+            SetParticleSize(_leftParticle, verticalCollidersSize);
+            SetParticleSize(_rightParticle, verticalCollidersSize);
         }
         
         private float HeightFromPercentage(float percentage) => _screenHeight * percentage;
@@ -103,6 +109,12 @@ namespace Game.Field.Helpers
         {
             collider2D.transform.position = position;
             collider2D.size = size;
+        }
+
+        private static void SetParticleSize(ParticleSystem particleSystem, Vector2 size)
+        {
+            var shape = particleSystem.shape;
+            shape.scale = new Vector3(size.y / 2, shape.scale.y);
         }
     }
 }

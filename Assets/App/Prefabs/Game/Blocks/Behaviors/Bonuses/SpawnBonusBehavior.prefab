@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bonusConfiguration: {fileID: 0}
+  _baseBlock: {fileID: 3769529678919385829, guid: 853e72ff148e7f840987584ce32a4714, type: 3}

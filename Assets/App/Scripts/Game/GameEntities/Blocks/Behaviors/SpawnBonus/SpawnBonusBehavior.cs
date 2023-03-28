@@ -13,7 +13,8 @@ namespace Game.GameEntities.Blocks.Behaviors.SpawnBonus
 
         private BonusConfiguration _bonusConfiguration;
 
-        public SpawnBonusBehavior(IBonusSpawner bonusSpawner, BonusesOnField bonusesOnField)
+        public SpawnBonusBehavior(IBonusSpawner bonusSpawner,
+            BonusesOnField bonusesOnField)
         {
             _bonusSpawner = bonusSpawner;
             _bonusesOnField = bonusesOnField;
@@ -27,7 +28,8 @@ namespace Game.GameEntities.Blocks.Behaviors.SpawnBonus
         {
             var bonus = _bonusSpawner.SpawnBonus(_bonusConfiguration, new BonusSpawnData
             {
-                Position = entity.transform.position
+                Position = entity.transform.position,
+                DestroyedBlockSize = entity.GetBaseSize()
             });
             
             _bonusesOnField.Add(bonus);

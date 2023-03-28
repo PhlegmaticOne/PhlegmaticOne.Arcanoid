@@ -74,18 +74,22 @@ namespace Common.Packs.Views
             {
                 return;
             }
-            
-            SetAnimation(ViewModel.PackClickedAction, new DoTweenSequenceAnimation(s =>
+
+            if (ViewModel.PackClickedAction.CanExecute(data))
             {
-                var energyToChange = -data.PackConfiguration.StartLevelEnergy;
+                SetAnimation(ViewModel.PackClickedAction, new DoTweenSequenceAnimation(s =>
+                {
+                    var energyToChange = -data.PackConfiguration.StartLevelEnergy;
                 
-                _energyView.AppendAnimationToSequence(s, energyToChange, _animationConfiguration.EnergyAnimationTime);
-                s.Append(Animate.RectTransform(view.RectTransform)
-                    .RelativeTo(RectTransform)
-                    .Disappear(_animationConfiguration.PackClickedAnimation));
-            }));
+                    _energyView.AppendAnimationToSequence(s, energyToChange, _animationConfiguration.EnergyAnimationTime);
+                    s.Append(Animate.RectTransform(view.RectTransform)
+                        .RelativeTo(RectTransform)
+                        .Disappear(_animationConfiguration.PackClickedAnimation));
+                }));
+                
+                BindToAction(view, ViewModel.PackClickedAction);
+            }
             
-            BindToAction(view, ViewModel.PackClickedAction);
             ViewModel.PackClickedAction.Execute(data);
         }
 

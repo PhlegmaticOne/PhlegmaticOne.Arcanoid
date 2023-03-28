@@ -94,6 +94,19 @@ namespace Common.Packs.Data.Repositories.PersistentRepositories
             PersistentRepositoriesHelper.SaveToTextFile(packPersistentData, persistentPath, packPersistentData.name);
         }
 
+        public void Clear()
+        {
+            var persistentDirectoryPath = PersistentRepositoriesHelper
+                .GetPathToPersistentDirectory(_packsConfiguration.PacksFileAttributes);
+            
+            var persistentDirectory = new DirectoryInfo(persistentDirectoryPath);
+
+            foreach (var file in persistentDirectory.GetFiles())
+            {
+                file.Delete(); 
+            }
+        }
+
         private string GetRelativePathToDataDirectory(PackPersistentData packPersistentData)
         {
             return PersistentRepositoriesHelper.Combine(_packsFileAttributes.PacksInResourcesDirectoryPath, 

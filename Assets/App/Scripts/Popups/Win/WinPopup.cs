@@ -5,14 +5,11 @@ using Common.Packs.Data.Models;
 using DG.Tweening;
 using Libs.Localization;
 using Libs.Localization.Base;
-using Libs.Localization.Components.Base;
-using Libs.Localization.Context;
 using Libs.Popups;
 using Libs.Popups.Animations;
 using Libs.Popups.Animations.Base;
 using Libs.Popups.Animations.Concrete;
 using Libs.Popups.Animations.Extensions;
-using Libs.Popups.Animations.Info;
 using Libs.Popups.Controls;
 using Popups.Common.Controls;
 using Popups.Common.Elements;
@@ -68,8 +65,7 @@ namespace Popups.Win
             BindToActionWithValue(_nextControl, viewModel.NextControlAction, viewModel);
             
             UpdatePackInfoView();
-            _nextControl.ChangeEnergyViewEnabled(viewModel.WinState != WinState.AllPacksPassed && 
-                                                 viewModel.WinState != WinState.PackPassedMultipleTime);
+            UpdateButtonsEnabled();
         }
         
         public IEnumerable<ILocalizationBindable> GetBindableComponents()
@@ -139,10 +135,20 @@ namespace Popups.Win
                 s.AppendCallback(() => _packageInfoView.IncreaseLevel());
                 _energyView
                     .AppendAnimationToSequence(s, GetWinEnergy(), _animationConfiguration.EnergyAnimationTime);
-                s.Append(Animate.RectTransform(_nextControl.RectTransform)
-                    .RelativeTo(RectTransform)
-                    .Appear(_animationConfiguration.NextButtonAppearAnimation));
                 
+                if (winPopupViewModel.WinState == WinState.PackPassedFirstTime ||
+                    winPopupViewModel.WinState == WinState.NextLevelInCurrentPack)
+                {
+                    s.AppendCallback(() => _nextControl.SetEnergy(GetStartNextLevelEnergy()));
+                    s.Append(Animate.RectTransform(_nextControl.RectTransform)
+                        .RelativeTo(RectTransform)
+                        .Appear(_animationConfiguration.ButtonsAppearAnimation));
+                }
+                
+                s.Append(Animate.RectTransform(_backControl.RectTransform)
+                    .RelativeTo(RectTransform)
+                    .Appear(_animationConfiguration.ButtonsAppearAnimation));
+
                 if (winPopupViewModel.WinState == WinState.AllPacksPassed)
                 {
                     _youPassedAllPacksText.gameObject.SetActive(true);
@@ -159,8 +165,6 @@ namespace Popups.Win
                         s, _animationConfiguration.PackViewScaleAnimation, 
                         _animationConfiguration.ChangePackColorAnimation);
                 }
-
-                s.AppendCallback(() => _nextControl.SetEnergy(GetStartNextLevelEnergy()));
             });
         }
 
@@ -174,6 +178,21 @@ namespace Popups.Win
                 });
 
             SetAnimation(winPopupViewModel.NextControlAction, resultAnimation);
+        }
+
+        private void UpdateButtonsEnabled()
+        {
+            if (ViewModel.WinState == WinState.AllPacksPassed ||
+                ViewModel.WinState == WinState.PackPassedMultipleTime)
+            {
+                var mean = (_nextControl.RectTransform.localPosition + _backControl.RectTransform.localPosition) / 2f;
+                _nextControl.SetActive(false);
+                _backControl.RectTransform.localPosition = mean;
+            }
+            else
+            {
+                _nextControl.SetActive(true);
+            }
         }
 
         private int GetStartNextLevelEnergy()

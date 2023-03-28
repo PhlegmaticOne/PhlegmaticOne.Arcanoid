@@ -11,6 +11,8 @@ namespace Libs.Popups.ViewModels.Actions
         private IPopupAnimation _popupAnimation;
         private object _parameter;
 
+        public static IControlAction Empty => new ControlAction(NoneCommand.New); 
+
         public ControlAction(ICommand command, ICommand cantExecuteHandler)
         {
             _command = command;
@@ -21,8 +23,9 @@ namespace Libs.Popups.ViewModels.Actions
         {
             _command = command;
         }
-        
-        public event Action<bool> IsExecutingChanged;
+
+        public bool IsChangingView { get; set; }
+        public event Action<IControlAction, bool> IsExecutingChanged;
         public void Execute(object parameter)
         {
             if (_command.CanExecute(parameter) == false)
@@ -33,8 +36,8 @@ namespace Libs.Popups.ViewModels.Actions
 
             _parameter = parameter;
             _popupAnimation.AnimationPlayed += PopupAnimationOnAnimationPlayed;
-            _popupAnimation.Play();
             SetIsExecuting(true);
+            _popupAnimation.Play();
         }
 
         public bool CanExecute(object parameter) => _command.CanExecute(parameter);
@@ -53,6 +56,6 @@ namespace Libs.Popups.ViewModels.Actions
             _popupAnimation = popupAnimation;
         }
 
-        private void SetIsExecuting(bool isExecuting) => IsExecutingChanged?.Invoke(isExecuting);
+        private void SetIsExecuting(bool isExecuting) => IsExecutingChanged?.Invoke(this, isExecuting);
     }
 }

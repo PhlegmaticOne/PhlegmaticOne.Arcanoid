@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SourceOfLifeBlockConfiguration
   m_EditorClassIdentifier: 
   _blockId: 1008
-  _lifesCount: 3
+  _lifesCount: 2
   _mainSprite: {fileID: 21300000, guid: 97c4a72fddf237e4fad0fe15fe254ee1, type: 3}
   _isActive: 1
   _hasUnderlyingConfiguration: 1

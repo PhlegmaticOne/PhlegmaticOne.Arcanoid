@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnergyConfiguration
   m_EditorClassIdentifier: 
   _maxEnergy: 30
-  _startEnergy: 25
+  _startEnergy: 40
   _regenerationTimeInMinutes: 1
   _increaseEnergyFromTimeCount: 1
   _directoryPersistentPath: EnergySaves

@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd0380673f0240fa9100cbe2fa5316a2, type: 3}
   m_Name: SceneTransitionPopupAnimationConfiguration
   m_EditorClassIdentifier: 
-  _showAnimation:
-    _animationTime: 0.5
-    _ease: 32
-    _appearType: 3
-  _closeAnimation:
+  _fadeInAnimation:
     _animationTime: 0.5
     _ease: 1
-    _disappearType: 3
+  _fadeOutAnimation:
+    _animationTime: 0.5
+    _ease: 1
   _loadingAnimation:
-    _animationTime: 2
+    _animationTime: 0.7
     _ease: 1

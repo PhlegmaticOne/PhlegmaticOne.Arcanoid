@@ -11,5 +11,6 @@ namespace Game.GameEntities.Bonuses.Spawners
     public class BonusSpawnData
     {
         public Vector2 Position { get; set; }
+        public Vector2 DestroyedBlockSize { get; set; }
     }
 }

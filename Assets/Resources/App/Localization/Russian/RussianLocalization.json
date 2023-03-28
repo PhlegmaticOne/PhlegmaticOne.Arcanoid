@@ -18,8 +18,18 @@
   "NotEnoughEnergyToContinueLevel": "Не хватает энергии для продолжения уровня",
   "YouPassedAllPacks" : "Вы прошли все паки!",
   "GalaxyNotFound" : "Галактика не найдена",
+  "ClearPlayerData": "Очистить игровые данные",
+  "WinButtonEnabled": "Кнопка 'Выиграть' включена:",
+  "Yes": "Да",
+  "No": "Нет",
+  "ToDeletePlayerData": "Вы уверены, что хотите удалить все данные?",
   
-  "Tutorial": "Обучение",
+  "BlocksGalaxy": "Галактика Блоки",
+  "BombsGalaxy": "Галактика Бомбы",
+  "BonusesGalaxy": "Галактика Бонусы",
   "CigarGalaxy": "Галактика Сигара",
-  "SombreroGalaxy": "Галактика Сомбреро"
+  "SombreroGalaxy": "Галактика Сомбреро",
+  "OdysseyGalaxy": "Галактика Одиссея",
+  "AvantgardeGalaxy": "Галактика Авангард",
+  "FinalGalaxy": "Галактика Финал"
 }

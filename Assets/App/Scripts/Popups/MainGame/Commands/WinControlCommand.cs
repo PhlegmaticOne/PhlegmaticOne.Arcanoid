@@ -1,5 +1,7 @@
-﻿using Game;
+﻿using Common.WinButton;
+using Game;
 using Game.Base;
+using Game.Common;
 using Game.Composites;
 using Game.Field;
 using Game.Logic.Systems.Control;
@@ -7,13 +9,13 @@ using Libs.Pooling.Base;
 using Libs.Popups.Base;
 using Libs.Popups.ViewModels.Commands;
 using Libs.TimeActions;
-using UnityEngine;
 
 namespace Popups.MainGame.Commands
 {
     public class WinControlCommand : EmptyCommandBase
     {
         private readonly IPoolProvider _poolProvider;
+        private readonly IWinButtonEnabledProvider _winButtonEnabledProvider;
         private readonly IGame<MainGameData, MainGameEvents> _game;
         private readonly IPopupManager _popupManager;
         private readonly ControlSystem _controlSystem;
@@ -21,9 +23,10 @@ namespace Popups.MainGame.Commands
         private readonly GameField _gameField;
         private readonly TimeActionsManager _timeActionsManager;
 
-        private float _destroyInterval;
+        private DynamicBlockAffectingInfo _dynamicBlockAffectingInfo;
 
         public WinControlCommand(IPoolProvider poolProvider,
+            IWinButtonEnabledProvider winButtonEnabledProvider,
             IGame<MainGameData, MainGameEvents> game,
             IPopupManager popupManager,
             ControlSystem controlSystem,
@@ -32,6 +35,7 @@ namespace Popups.MainGame.Commands
             TimeActionsManager timeActionsManager)
         {
             _poolProvider = poolProvider;
+            _winButtonEnabledProvider = winButtonEnabledProvider;
             _game = game;
             _popupManager = popupManager;
             _controlSystem = controlSystem;
@@ -40,21 +44,24 @@ namespace Popups.MainGame.Commands
             _timeActionsManager = timeActionsManager;
         }
 
-        public void SetCommandParameters(float destroyInterval)
+        protected override bool CanExecute() => _winButtonEnabledProvider.IsEnabled;
+
+        public void SetCommandParameters(DynamicBlockAffectingInfo dynamicBlockAffectingInfo)
         {
-            _destroyInterval = destroyInterval;
+            _dynamicBlockAffectingInfo = dynamicBlockAffectingInfo;
         }
         
         protected override void Execute()
         {
             _game.AnimatedWin = false;
             _popupManager.CurrentPopup.DisableInput();
-            var tag = _entitiesOnFieldCollection.BallsOnField.MainBall.BehaviorObjectTags[0].Tag;
+            var tag = _entitiesOnFieldCollection.BallsOnField.All[0].BehaviorObjectTags[0].Tag;
             _entitiesOnFieldCollection.ReturnToPool(_poolProvider);
             _controlSystem.DisableInput();
 
             var count = _gameField.GetDefaultBlocksCount();
-            var action = new WinControlCommandTimeAction(_gameField, tag, _destroyInterval, count + 1);
+            var interval = _dynamicBlockAffectingInfo.GetAffectingInterval(count);
+            var action = new WinControlCommandTimeAction(_gameField, tag, interval, count + 1);
             _timeActionsManager.AddTimeAction(action);
             _timeActionsManager.StopAllExcept(action);
         }

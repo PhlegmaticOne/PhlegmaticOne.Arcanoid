@@ -1,5 +1,7 @@
-﻿using Game;
+﻿using Common.WinButton;
+using Game;
 using Game.Base;
+using Game.Common;
 using Game.Composites;
 using Game.Field;
 using Game.Logic.Systems.Control;
@@ -15,7 +17,7 @@ namespace Popups.MainGame
 {
     public class MainGamePopupViewModelInstaller : ServiceInstaller
     {
-        [SerializeField] private float _blockDestroyTime = 0.1f;
+        [SerializeField] private DynamicBlockAffectingInfo _destroyBlocksInfo;
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton(x =>
@@ -28,10 +30,12 @@ namespace Popups.MainGame
                 var timeActionsManager = x.GetRequiredService<TimeActionsManager>();
                 var game = x.GetRequiredService<IGame<MainGameData, MainGameEvents>>();
                 var popupManager = global.GetRequiredService<IPopupManager>();
+                var winButtonEnabledProvider = global.GetRequiredService<IWinButtonEnabledProvider>();
                 
                 var menuControlCommand = new MenuControlCommand(game, popupManager);
-                var winControlCommand = new WinControlCommand(pool, game, popupManager, control, entitiesOnField, field, timeActionsManager);
-                winControlCommand.SetCommandParameters(_blockDestroyTime);
+                var winControlCommand = new WinControlCommand(pool, winButtonEnabledProvider, game,
+                    popupManager, control, entitiesOnField, field, timeActionsManager);
+                winControlCommand.SetCommandParameters(_destroyBlocksInfo);
                 
                 return new MainGamePopupViewModel
                 {

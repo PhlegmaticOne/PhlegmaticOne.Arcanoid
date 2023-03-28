@@ -17,4 +17,4 @@ MonoBehaviour:
   _continueLevelEnergy: 3
   _winLevelEnergy: 4
   _packImage: {fileID: 21300000, guid: b7f16d3ba8cc7f94189de8df2311aa6c, type: 3}
-  _packColor: {r: 0.6156863, g: 0.34509805, b: 1, a: 1}
+  _packColor: {r: 0.74201787, g: 0.56037736, b: 1, a: 1}

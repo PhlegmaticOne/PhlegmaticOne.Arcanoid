@@ -15,3 +15,5 @@ MonoBehaviour:
   _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
   _blockAffecting: 2
   _damage: 0
+  _exclude:
+  - {fileID: 11400000, guid: 25efc0f82fa4ce840a40916b29749b87, type: 2}

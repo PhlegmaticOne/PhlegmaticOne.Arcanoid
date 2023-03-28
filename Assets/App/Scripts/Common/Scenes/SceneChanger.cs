@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using Libs.Popups;
 using Libs.Popups.Base;
 using Popups.Transition;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Common.Scenes
 {
-    public class SceneChanger : ISceneChanger
+    public class SceneChanger : MonoBehaviour, ISceneChanger
     {
-        private readonly IPopupManager _popupManager;
-        private readonly IScenesProvider _scenesProvider;
+        private IPopupManager _popupManager;
+        private IScenesProvider _scenesProvider;
 
         private IList<Popup> _spawnedPopups;
         private SceneTransitionPopup _transitionPopup;
         private SceneInfo _tempScene;
+        private float _waitTime;
 
-        public SceneChanger(IPopupManager popupManager, IScenesProvider scenesProvider)
+        private void Awake() => DontDestroyOnLoad(gameObject);
+
+        public void Initialize(IPopupManager popupManager, IScenesProvider scenesProvider)
         {
             _popupManager = popupManager;
             _scenesProvider = scenesProvider;
             SceneManager.sceneLoaded += SceneManagerOnsceneLoaded;
+        }
+
+        public void SetParameters(float waitTime)
+        {
+            _waitTime = waitTime;
         }
         
         public event Action SceneChanged;
@@ -60,9 +69,14 @@ namespace Common.Scenes
             {
                 CurrentScene = _scenesProvider.GetSceneByCustomKey(_tempScene.Key);
                 _tempScene = null;
-                _transitionPopup.Closed += TransitionPopupOnClosed;
-                _popupManager.ClosePopup(_transitionPopup, false);
+                Invoke(nameof(ClosePopup), _waitTime);
             }
+        }
+
+        private void ClosePopup()
+        {
+            _transitionPopup.Closed += TransitionPopupOnClosed;
+            _popupManager.ClosePopup(_transitionPopup, false);
         }
 
         private void TransitionPopupOnClosed(Popup popup)

@@ -1,12 +1,20 @@
-﻿namespace Libs.Localization.Models
+﻿using System;
+using UnityEngine;
+
+namespace Libs.Localization.Models
 {
+    [Serializable]
     public class LocaleInfo
     {
-        public LocaleInfo(string systemName) => SystemName = systemName;
-        
-        public LocaleInfo(string systemName, string displayName) : this(systemName) => DisplayName = displayName;
-        public string DisplayName { get; private set; }
-        public string SystemName { get; }
-        public void SetDisplayName(string displayName) => DisplayName = displayName;
+        [SerializeField] private string _displayName;
+        [SerializeField] private string _systemName;
+        public LocaleInfo(string systemName, string displayName)
+        {
+            _systemName = systemName;
+            _displayName = displayName;
+        }
+
+        public string DisplayName => _displayName;
+        public string SystemName => _systemName;
     }
 }

@@ -6,5 +6,6 @@ namespace Common.Energy.Repositories
     {
         EnergyModel GetEnergyModel();
         void Save(EnergyModel energyModel);
+        void Clear();
     }
 }

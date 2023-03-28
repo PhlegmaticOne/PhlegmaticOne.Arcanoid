@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Packs.Data.Models;
 using DG.Tweening;
+using Game.Common;
 using Game.Field.Helpers;
 using Game.GameEntities.Blocks;
 using Game.GameEntities.Blocks.Spawners;
@@ -16,19 +17,21 @@ namespace Game.Field.Builder
         private readonly FieldPositionsGenerator _fieldPositionsGenerator;
         private readonly GameField _gameField;
         private readonly Transform _pointTransform;
-        private readonly DynamicBuildingInfo _dynamicBuildingInfo;
+        private readonly DynamicBlockAffectingInfo _dynamicBlockAffectingInfo;
+        private readonly int _maxBlocks;
 
         public FieldBuilder(IBlockSpawner blockSpawner, 
             FieldPositionsGenerator fieldPositionsGenerator,
             GameField gameField,
             Transform pointTransform,
-            DynamicBuildingInfo dynamicBuildingInfo)
+            DynamicBlockAffectingInfo dynamicBlockAffectingInfo)
         {
             _blockSpawner = blockSpawner;
             _fieldPositionsGenerator = fieldPositionsGenerator;
             _gameField = gameField;
             _pointTransform = pointTransform;
-            _dynamicBuildingInfo = dynamicBuildingInfo;
+            _dynamicBlockAffectingInfo = dynamicBlockAffectingInfo;
+            _maxBlocks = (int)(dynamicBlockAffectingInfo.MaxBuildingTime / dynamicBlockAffectingInfo.Interval);
         }
 
         public GameField BuildField(LevelData levelData)
@@ -43,17 +46,8 @@ namespace Game.Field.Builder
 
             _gameField.Initialize(width, height, blocks);
 
-            float interval;
-            
-            if (blocks.Count > _dynamicBuildingInfo.MaxBlocksCountToBuildWithInterval)
-            {
-                interval = _dynamicBuildingInfo.TotalBuildingTime / blocks.Count(x => x != null);
-            }
-            else
-            {
-                interval = _dynamicBuildingInfo.Interval;
-            }
-            
+            var actionsCount = blocks.Count(x => x != null);
+            var interval = _dynamicBlockAffectingInfo.GetAffectingInterval(actionsCount);
             var sequence = DOTween.Sequence();
             var current = 0;
 

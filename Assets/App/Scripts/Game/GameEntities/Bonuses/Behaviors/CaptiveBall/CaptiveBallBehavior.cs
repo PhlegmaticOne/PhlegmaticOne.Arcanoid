@@ -9,7 +9,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 {
     public class CaptiveBallBehavior : IObjectBehavior<Block>
     {
-        private const float DeltaAngle = 1.5f;
+        private const float DeltaAngle = 3f;
         private readonly IBallSpawner _ballSpawner;
         private readonly BallsOnField _ballsOnField;
         private readonly CaptiveBallsSystem _captiveBallsSystem;
@@ -24,10 +24,9 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 
         public void Behave(Block entity, Collision2D collision2D)
         {
-            if (TryGetBallFromCollision(collision2D, out var ball))
-            {
-                _captiveBallsSystem.AddNewBalls(CreateBalls(ball));
-            }
+            _captiveBallsSystem.AddNewBalls(TryGetBallFromCollision(collision2D, out var ball)
+                ? CreateBalls(ball.transform)
+                : CreateBalls(entity.transform));
         }
         
         public bool IsDefault => false;
@@ -47,24 +46,25 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
             return false;
         }
 
-        private List<Ball> CreateBalls(Ball original)
+        private List<Ball> CreateBalls(Transform spawnTransform)
         {
+            var mainBall = _ballsOnField.All[0];
             var count = _ballsOnField.All.Count;
-            var speed = original.GetSpeed();
+            var speed = mainBall.CurrentSpeed;
             var result = new List<Ball>();
 
             for (var i = 0; i < count; i++)
             {
                 var newBall = _ballSpawner.CreateBall(new BallCreationContext
                 {
-                    Position = original.transform.position,
-                    StartSpeed = speed.magnitude,
+                    Position = spawnTransform.transform.position,
+                    StartSpeed = speed,
                     SetSpecifiedStartSpeed = true
                 });
 
                 var direction = Quaternion.Euler(0, 0, DeltaAngle * i * Sign(i) / 2.0f) * Vector2.down;
                 newBall.StartMove(direction);
-                original.CopyToBall(newBall);
+                mainBall.CopyToBall(newBall);
                 _ballsOnField.Add(newBall);
                 result.Add(newBall);
             }

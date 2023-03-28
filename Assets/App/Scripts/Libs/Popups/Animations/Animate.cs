@@ -14,7 +14,6 @@ namespace Libs.Popups.Animations
             new TransformAnimator(transform);
         public static CanvasGroupAnimator CanvasGroup(CanvasGroup canvasGroup) => 
             new CanvasGroupAnimator(canvasGroup);
-
         public static ImageAnimator Image(Image image) => new ImageAnimator(image);
         public static IPopupAnimation None() => new NoneAnimation();
     }

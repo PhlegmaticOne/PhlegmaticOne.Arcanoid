@@ -14,7 +14,9 @@ namespace Common.ServiceInstallers
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             var energyManager = Instantiate(_energyManager);
-            energyManager.Initialize(new PersistentEnergyRepository(_energyConfiguration));
+            var energyRepository = new PersistentEnergyRepository(_energyConfiguration);
+            energyManager.Initialize(energyRepository);
+            serviceCollection.AddSingleton<IEnergyRepository>(energyRepository);
             serviceCollection.AddSingleton(energyManager);
         }
     }

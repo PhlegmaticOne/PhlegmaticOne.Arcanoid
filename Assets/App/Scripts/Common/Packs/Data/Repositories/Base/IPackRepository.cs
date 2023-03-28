@@ -12,5 +12,6 @@ namespace Common.Packs.Data.Repositories.Base
         PackPersistentData GetPersistentDataForPack(PackConfiguration packConfiguration);
         PackLevelsData GetLevelsForPack(PackPersistentData packPersistentData);
         void Save(PackPersistentData packPersistentData);
+        void Clear();
     }
 }

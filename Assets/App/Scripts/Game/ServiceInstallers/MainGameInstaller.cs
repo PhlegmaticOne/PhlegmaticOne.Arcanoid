@@ -14,6 +14,7 @@ namespace Game.ServiceInstallers
     public class MainGameInstaller : ServiceInstaller
     {
         [SerializeField] private float _slowDownTime;
+        [SerializeField] private WinParticles _winParticles;
         public override void InstallServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IGame<MainGameData, MainGameEvents>>(x =>
@@ -34,6 +35,7 @@ namespace Game.ServiceInstallers
                 var game = new MainGame(poolProvider,
                     entitiesOnField,
                     gameSystems,
+                    _winParticles,
                     fieldBuilder,
                     timeActionsManager,
                     particleManager,

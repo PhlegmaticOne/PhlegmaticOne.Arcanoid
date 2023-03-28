@@ -23,7 +23,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.RageBall
         {
             var colliderTag = _blockColliderTag.Tag;
 
-            _tempAction = _ballsOnField.MainBall
+            _tempAction = _ballsOnField.All[0]
                 .OnCollisionBehaviors.GetBehavior<MovementAngleCorrectionBehavior>(colliderTag);
             
             foreach (var ball in _ballsOnField.All)

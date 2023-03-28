@@ -26,6 +26,21 @@ namespace Libs.Popups.Animations.Animators
             return this;
         }
 
+        public Tween ScaleToOne(TweenAnimationInfo animationInfo)
+        {
+            _animated.localScale = Vector3.zero;
+            return _animated.DOScale(Vector3.one, animationInfo.AnimationTime)
+                .SetEase(animationInfo.Ease)
+                .SetUpdate(true);
+        }
+        
+        public Tween ScaleToZero(TweenAnimationInfo animationInfo)
+        {
+            return _animated.DOScale(Vector3.zero, animationInfo.AnimationTime)
+                .SetEase(animationInfo.Ease)
+                .SetUpdate(true);
+        }
+
         public Tween FromLeft(TweenAnimationInfo animationInfo)
         {
             var initial = _animated.localPosition;

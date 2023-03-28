@@ -15,6 +15,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         [SerializeField] private Color _rageColor;
         [SerializeField] private float _damage = 1f;
         private bool _isRage;
+        private Vector2 _preCollisionSpeed;
 
         private float _startSpeed;
         private float _currentSpeed;
@@ -23,18 +24,25 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         public void Initialize(float initialSpeed)
         {
             _startSpeed = initialSpeed;
-            _currentSpeed = _startSpeed;
+            _currentSpeed = initialSpeed;
         }
+
+        public Vector2 GetPreCollisionSpeed() => _preCollisionSpeed;
 
         public Collider2D GetCollider() => _circleCollider2D;
 
         public void StartMove(Vector2 direction)
         {
+            if (_isRage)
+            {
+                _trailRenderer.gameObject.SetActive(true);
+            }
             SetSpeed(direction * _startSpeed);
         }
 
         public Transform GetTransform() => transform;
         public Vector2 GetSpeed() => _rigidbody2D.velocity;
+        public float CurrentSpeed => _currentSpeed;
         public void SetStartSpeed(float startSpeed)
         {
             _startSpeed = startSpeed;
@@ -54,6 +62,11 @@ namespace Game.GameEntities.PlayerObjects.BallObject
             _rigidbody2D.velocity = _currentSpeed * _rigidbody2D.velocity.normalized;
         }
 
+        private void FixedUpdate()
+        {
+            _preCollisionSpeed = _rigidbody2D.velocity;
+        }
+
         public void AddDeltaSpeed(float deltaSpeed)
         {
             var ballSpeed = GetSpeed();
@@ -62,6 +75,8 @@ namespace Game.GameEntities.PlayerObjects.BallObject
             SetSpeed(newSpeed);
             _currentSpeed += deltaSpeed;
         }
+
+        public void DisableTrail() => _trailRenderer.gameObject.SetActive(false);
 
         public void CopyToBall(Ball ball)
         {
@@ -80,6 +95,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         protected override void ResetProtected()
         {
             _startSpeed = 0;
+            _currentSpeed = 0;
             SetSpeed(Vector2.zero);
 
             if (_isRage)

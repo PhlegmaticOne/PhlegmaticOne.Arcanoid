@@ -48,3 +48,5 @@ MonoBehaviour:
     _sceneName: StartScene
   - _key: Game
     _sceneName: GameScene
+  _sceneChanger: {fileID: 4848453472425241761, guid: d0eea0bb017cd3a489ea6a189dc20192, type: 3}
+  _waitTime: 0.7

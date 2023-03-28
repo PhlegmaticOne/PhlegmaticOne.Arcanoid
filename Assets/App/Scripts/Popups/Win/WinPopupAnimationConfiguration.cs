@@ -12,7 +12,7 @@ namespace Popups.Win
         [SerializeField] private TweenAnimationInfo _fadeInAnimation;
         [SerializeField] private AppearTweenAnimationInfo _showAnimation;
         [SerializeField] private TweenAnimationInfo _packViewScaleAnimation;
-        [SerializeField] private AppearTweenAnimationInfo _nextButtonAppearAnimation;
+        [SerializeField] private AppearTweenAnimationInfo _buttonsAppearAnimation;
         [SerializeField] private TweenAnimationInfo _youPassedAllPacksTextAppearAnimation;
         [SerializeField] private TweenAnimationInfo _changePackColorAnimation;
         [SerializeField] private float _energyAnimationTime;
@@ -27,7 +27,7 @@ namespace Popups.Win
         public TweenAnimationInfo FadeInAnimation => _fadeInAnimation;
         public AppearTweenAnimationInfo ShowAnimation => _showAnimation;
         public TweenAnimationInfo PackViewScaleAnimation => _packViewScaleAnimation;
-        public AppearTweenAnimationInfo NextButtonAppearAnimation => _nextButtonAppearAnimation;
+        public AppearTweenAnimationInfo ButtonsAppearAnimation => _buttonsAppearAnimation;
         public TweenAnimationInfo YouPassedAllPacksTextAppearAnimation => _youPassedAllPacksTextAppearAnimation;
         public TweenAnimationInfo ChangePackColorAnimation => _changePackColorAnimation;
         public float EnergyAnimationTime => _energyAnimationTime;

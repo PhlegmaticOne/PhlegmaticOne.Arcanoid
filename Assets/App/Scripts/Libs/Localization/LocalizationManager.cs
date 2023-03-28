@@ -21,6 +21,15 @@ namespace Libs.Localization.Implementations
             InitializeLocaleTables(localizationSystemConfiguration);
             SetLocale(localizationSystemConfiguration.DefaultLocale);
         }
+
+        public LocalizationManager(LocalizationSystemConfiguration localizationSystemConfiguration,
+            LocaleInfo startLocale)
+        {
+            _localeTables = new Dictionary<LocaleConfiguration, LocaleTableCollection>();
+            InitializeLocaleTables(localizationSystemConfiguration);
+            var locale = _localeTables.Keys.FirstOrDefault(x => x.SystemName == startLocale?.SystemName);
+            SetLocale(locale == null ? localizationSystemConfiguration.DefaultLocale : locale);
+        }
         
         public event Action<LocaleInfo> LocaleChanged;
         

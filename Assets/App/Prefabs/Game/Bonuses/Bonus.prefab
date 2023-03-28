@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 0.74, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -128,7 +128,7 @@ BoxCollider2D:
     oldSize: {x: 0.74, y: 0.72}
     newSize: {x: 0.74, y: 0.72}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -162,6 +162,7 @@ MonoBehaviour:
   _behaviorObjectTags: {fileID: -7618572112097487819}
   _bonusView: {fileID: 8879964657143072395}
   _rigidbody: {fileID: 5323487779614737694}
+  _boxCollider: {fileID: 2222685779558683451}
 --- !u!114 &-7618572112097487819
 MonoBehaviour:
   m_ObjectHideFlags: 0
