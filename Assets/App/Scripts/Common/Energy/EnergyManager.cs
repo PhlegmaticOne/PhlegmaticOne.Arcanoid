@@ -68,7 +68,10 @@ namespace Common.Energy
             OnEnergyChanged();
         }
 
-        public void Raise() => RaiseTime();
+        public void Raise()
+        {
+            RaiseTime();
+        }
 
         public void DisableUpdating() => _isUpdating = false;
 

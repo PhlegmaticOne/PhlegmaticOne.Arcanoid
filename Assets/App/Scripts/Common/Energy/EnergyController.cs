@@ -14,32 +14,30 @@ namespace Common.Energy
 
             var energyModel = energyManager.EnergyViewModel;
             _energyView.Init(energyModel.CurrentEnergy, energyModel.MaxEnergy);
+            _energyView.Enabled += EnergyViewOnEnabled;
             _energyManager.TimeChanged += EnergyManagerOnTimeChanged;
             _energyManager.EnergyChangedFromTime += EnergyManagerOnEnergyChangedFromTime;
             _energyManager.Raise();
         }
 
+        private void EnergyViewOnEnabled()
+        {
+            _energyManager.Raise();
+        }
+
         private void EnergyManagerOnEnergyChangedFromTime(EnergyChangedModel args)
         {
-            if (_energyManager.IsTimeRegenerating == false)
-            {
-                _energyView.SetIsFull();
-            }
             _energyView.ChangeEnergyInstant(args.EnergyChanged);
         }
 
         private void EnergyManagerOnTimeChanged(TimeChangedModel timeChangedEventArgs)
         {
-            if (_energyManager.IsTimeRegenerating == false)
-            {
-                _energyView.SetIsFull();
-                return;
-            }
             _energyView.SetTime(timeChangedEventArgs.TimeToNextEnergyInSeconds);
         }
         
         public void Disable()
         {
+            _energyView.Enabled -= EnergyViewOnEnabled;
             _energyManager.TimeChanged -= EnergyManagerOnTimeChanged;
             _energyManager.EnergyChangedFromTime -= EnergyManagerOnEnergyChangedFromTime;
         }

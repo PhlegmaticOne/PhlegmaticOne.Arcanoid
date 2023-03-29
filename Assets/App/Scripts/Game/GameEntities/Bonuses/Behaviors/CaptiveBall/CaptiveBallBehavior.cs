@@ -9,7 +9,7 @@ namespace Game.GameEntities.Bonuses.Behaviors.CaptiveBall
 {
     public class CaptiveBallBehavior : IObjectBehavior<Block>
     {
-        private const float DeltaAngle = 3f;
+        private const float DeltaAngle = 2f;
         private readonly IBallSpawner _ballSpawner;
         private readonly BallsOnField _ballsOnField;
         private readonly CaptiveBallsSystem _captiveBallsSystem;

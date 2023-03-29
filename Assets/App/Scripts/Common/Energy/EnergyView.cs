@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
-using Libs.Popups.Animations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Slider = UnityEngine.UI.Slider;
 
 namespace Common.Energy
@@ -15,11 +15,11 @@ namespace Common.Energy
         [SerializeField] private Slider _slider;
         [SerializeField] private TextMeshProUGUI _energyText;
         [SerializeField] private TextMeshProUGUI _timeText;
-
-        [SerializeField] private float _animationTime;
+        [SerializeField] private Image _timeTextPlace;
 
         private int _maxEnergy;
         private int _currentEnergy;
+        public event Action Enabled;
 
         public void Init(int currentEnergy, int maxEnergy)
         {
@@ -28,16 +28,13 @@ namespace Common.Energy
             ChangeEnergyInstant(0);
         }
         
-        public void ChangeEnergyAnimate(int energyChanged, float time)
-        {
-            StartCoroutine(UpdateCoroutine(energyChanged, time));
-        }
-
         public void AppendAnimationToSequence(Sequence s, int energyToChange, float time)
         {
             s.AppendCallback(() => ChangeEnergyAnimate(energyToChange, time));
             s.AppendInterval(time);
         }
+        
+        private void ChangeEnergyAnimate(int energyChanged, float time) => StartCoroutine(UpdateCoroutine(energyChanged, time));
 
         private IEnumerator UpdateCoroutine(int energyChanged, float time)
         {
@@ -56,13 +53,31 @@ namespace Common.Energy
         public void ChangeEnergyInstant(int energyChanged)
         {
             _currentEnergy += energyChanged;
+            
+            if (_currentEnergy < _maxEnergy)
+            {
+                if (_timeText.text == string.Empty)
+                {
+                    Enabled?.Invoke();
+                }
+                _timeTextPlace.gameObject.SetActive(true);
+            }
+            else
+            {
+                SetIsFull();
+            }
+
             _energyText.text = FormatEnergy(_currentEnergy, _maxEnergy);
             _slider.value = CalculateValue(_currentEnergy, _maxEnergy);
         }
 
         public void SetTime(int timeInSeconds) => _timeText.text = FormatTime(timeInSeconds);
-        
-        public void SetIsFull() => _timeText.text = string.Empty;
+
+        private void SetIsFull()
+        {
+            _timeText.text = string.Empty;
+            _timeTextPlace.gameObject.SetActive(false);
+        }
 
         private static float CalculateValue(int currentEnergy, int maxEnergy)
         {

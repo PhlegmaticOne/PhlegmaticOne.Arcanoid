@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79d220f79bd4801aa2f0922b9e09a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minSideAngle: 6.5
-  _minTopBottomAngle: 5.2
+  _minSideAngle: 8
+  _minTopBottomAngle: 8
   _isCorrectMovement: 1

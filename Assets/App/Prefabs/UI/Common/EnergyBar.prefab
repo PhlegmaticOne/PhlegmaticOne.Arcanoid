@@ -429,7 +429,7 @@ MonoBehaviour:
   _slider: {fileID: 6533831604266444699}
   _energyText: {fileID: 3832360280921669279}
   _timeText: {fileID: 4840705089790507281}
-  _animationTime: 0.6
+  _timeTextPlace: {fileID: 5779809243580430677}
 --- !u!1 &3832360280921669277
 GameObject:
   m_ObjectHideFlags: 0
