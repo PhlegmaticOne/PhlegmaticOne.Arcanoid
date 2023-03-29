@@ -6,10 +6,14 @@ namespace Libs.Popups.Animations.Concrete
 {
     public class DoTweenSequenceAnimation : PopupAnimationBase
     {
-        private readonly Action<Sequence> _sequenceBuildAction;
+        private Action<Sequence> _sequenceBuildAction;
+        private Action _killAction;
         private Sequence _sequence;
-        public DoTweenSequenceAnimation(Action<Sequence> sequenceBuildAction) => 
+        public DoTweenSequenceAnimation(Action<Sequence> sequenceBuildAction, Action killAction = null)
+        {
             _sequenceBuildAction = sequenceBuildAction;
+            _killAction = killAction;
+        }
 
         public override void Play()
         {
@@ -19,6 +23,13 @@ namespace Libs.Popups.Animations.Concrete
             _sequence.Play().OnComplete(OnAnimationPlayed);
         }
 
-        public override void Stop() => _sequence.Kill();
+        public override void Stop()
+        {
+            _killAction?.Invoke();
+            _sequence?.Kill();
+            _killAction = null;
+            _sequenceBuildAction = null;
+            _sequence = null;
+        }
     }
 }

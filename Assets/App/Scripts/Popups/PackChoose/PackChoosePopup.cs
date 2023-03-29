@@ -85,7 +85,7 @@ namespace Common.Packs.Views
                     s.Append(Animate.RectTransform(view.RectTransform)
                         .RelativeTo(RectTransform)
                         .Disappear(_animationConfiguration.PackClickedAnimation));
-                }));
+                }, () => RectTransform.DOKill()));
                 
                 BindToAction(view, ViewModel.PackClickedAction);
             }

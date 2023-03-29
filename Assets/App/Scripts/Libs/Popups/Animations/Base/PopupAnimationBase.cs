@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Libs.Popups.Animations.Base;
 
 namespace Libs.Popups.Animations.Base

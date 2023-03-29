@@ -73,6 +73,12 @@ MonoBehaviour:
     _initialCapacity: 4
     _maxCapacity: 16
     _destroyOnOverflow: 1
+  _sideWallParticlesInstaller:
+    _prefab: {fileID: 8082416577377132916, guid: cc91a102283e59345ada28c6ef485c3b, type: 3}
+    _spawnTransform: {fileID: 0}
+    _initialCapacity: 8
+    _maxCapacity: 16
+    _destroyOnOverflow: 1
   _bulletPoolInstaller:
     _prefab: {fileID: 316914792528453252, guid: 85468626283ec58448d7c97b2bc3a51f, type: 3}
     _spawnTransform: {fileID: 0}

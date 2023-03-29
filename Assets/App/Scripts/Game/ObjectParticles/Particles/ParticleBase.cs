@@ -7,6 +7,7 @@ namespace Game.ObjectParticles.Particles
     public abstract class ParticleBase : MonoBehaviour, IPoolable
     {
         [SerializeField] protected ParticleSystem MainParticleSystem;
+        public ParticleSystem Main => MainParticleSystem;
 
         public virtual void Play() => MainParticleSystem.Play();
         

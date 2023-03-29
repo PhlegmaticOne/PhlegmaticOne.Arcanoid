@@ -20,6 +20,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         private float _startSpeed;
         private float _currentSpeed;
         public float Damage => _damage;
+        public bool IsRage => _isRage;
         
         public void Initialize(float initialSpeed)
         {

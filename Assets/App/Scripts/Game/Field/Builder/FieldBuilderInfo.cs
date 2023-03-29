@@ -6,11 +6,16 @@ namespace Game.Field.Builder
     [CreateAssetMenu(menuName = "Field/Create field building animation configuration")]
     public class FieldBuilderInfo : ScriptableObject
     {
-        [SerializeField] private float _scalePunchTime;
         [SerializeField] private float _maxTimeToBuild;
         [SerializeField] private float _defaultScaleInterval;
 
-        public float ScalePunchTime => _scalePunchTime;
+        [SerializeField] private float _maxScale;
+        [SerializeField] private float _timeToMaxScale;
+        [SerializeField] private float _timeFromMaxScaleToOne;
+
+        public float MaxScale => _maxScale;
+        public float TimeToMaxScale => _timeToMaxScale;
+        public float TimeFromMaxScaleToOne => _timeFromMaxScaleToOne;
 
         public float GetIntervalTime(int count)
         {

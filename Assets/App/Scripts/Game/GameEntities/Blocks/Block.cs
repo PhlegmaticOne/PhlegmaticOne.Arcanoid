@@ -1,4 +1,5 @@
-﻿using Game.GameEntities.Blocks.Configurations;
+﻿using DG.Tweening;
+using Game.GameEntities.Blocks.Configurations;
 using Game.GameEntities.Blocks.View;
 using Libs.Behaviors;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace Game.GameEntities.Blocks
         
         public void Initialize(BlockConfiguration configuration, BlockCracksConfiguration blockCracksConfiguration)
         {
+            _boxCollider.enabled = true;
             BlockConfiguration = configuration;
             _health = configuration.LifesCount;
             _previousHealth = configuration.LifesCount;
@@ -40,6 +42,12 @@ namespace Game.GameEntities.Blocks
             var underlyingConfiguration = BlockConfiguration.UnderlyingBlockConfiguration;
             id = underlyingConfiguration.Id;
             return true;
+        }
+
+        public void Disable()
+        {
+            IsDestroyed = true;
+            _boxCollider.enabled = false;
         }
         
         public int GetUnderlyingId() => BlockConfiguration.UnderlyingBlockConfiguration.Id;
@@ -77,6 +85,8 @@ namespace Game.GameEntities.Blocks
 
         protected override void ResetProtected()
         {
+            transform.localScale = Vector3.one;
+            transform.DOKill();
             _blockView.Reset();
             _health = 0;
             _readyToDestroy = false;

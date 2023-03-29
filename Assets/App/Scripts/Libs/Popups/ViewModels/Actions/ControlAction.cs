@@ -47,6 +47,7 @@ namespace Libs.Popups.ViewModels.Actions
             _command.Execute(_parameter);
             SetIsExecuting(false);
             _popupAnimation.AnimationPlayed -= PopupAnimationOnAnimationPlayed;
+            _popupAnimation.Stop();
             _parameter = null;
         }
 

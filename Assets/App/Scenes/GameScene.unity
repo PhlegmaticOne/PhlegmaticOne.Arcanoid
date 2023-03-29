@@ -861,7 +861,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 12e6984b521a6af42a9ee235f1387ec2, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -1394,7 +1397,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 275b0b9154a61484495a20e1d9914eab, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -1533,7 +1539,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 23b540d2dca8aa741852fd6d361ddafa, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -1940,7 +1949,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: e9372f34ae7609f4c82614ea8937314d, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 1193777082945984579, guid: a797c7b2708d03640a1c84dd5421541a, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -2198,7 +2210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: a263280a17f75ee4680bc039d280cd85, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 1193777082945984579, guid: a797c7b2708d03640a1c84dd5421541a, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -2252,7 +2267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: cc3a5418ff764e44a9059a2b914f3099, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -2497,7 +2515,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 5a76cba868b7ffb4fa5c265e1c7152f3, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -2697,7 +2718,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: fbc6b758a2bcf7f42808b91f7e8727c2, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 1193777082945984579, guid: a797c7b2708d03640a1c84dd5421541a, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -2877,7 +2901,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: b30f8cdc81740c3428696f46764015d4, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -3598,7 +3625,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 7d8559e443d136d4ea9f65c24ec314d5, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -4211,7 +4241,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: e986ca9587d640d489748404435ba306, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -4485,7 +4518,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 89a89183759b942408291dfea9dd1176, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -4594,7 +4630,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: cb80a93fbff33b24ebb152694fc1da7d, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -4924,7 +4963,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: d1ccf968a3ff2b9459de60b1c6482e54, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -5028,6 +5070,53 @@ Transform:
   m_Father: {fileID: 552306403886423568}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1934593043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934593044}
+  - component: {fileID: 1934593045}
+  m_Layer: 0
+  m_Name: CameraShakeBehavior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1934593044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934593043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1852687635546373914}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934593045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934593043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954f71d5b3b343b2b2a9b2bbc5f3ee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1284002877}
+  _direction: {x: 0.1, y: 0.1}
+  _time: 0.7
+  _vibrato: 15
 --- !u!1 &1962282583
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,7 +5283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 904c40bae890274418e40ae6cce50f15, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 1193777082945984579, guid: a797c7b2708d03640a1c84dd5421541a, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -5889,7 +5981,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: 61be861b1c7765e48899483a615626dd, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -5927,7 +6022,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: c81544df85cb0cb4a85fa994f9f5e587, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -6047,7 +6145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: aa9e37254f482e345b3b3cbe51c55c5e, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -6100,7 +6201,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockConfiguration: {fileID: 11400000, guid: d2a4d24cd8ca1c743a176f5719377e67, type: 2}
   _blockBehaviorInstaller:
-    _onCollisionBehaviourInstallers: []
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: 6673977595551211974, guid: 9a59189ea8f199c4d8f18a19562b5a60, type: 3}
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
       _behaviourInstallers:
@@ -6364,6 +6468,7 @@ MonoBehaviour:
     - _colliderTag: {fileID: 11400000, guid: f6da2a22db19abc499679c231c09c563, type: 2}
       _behaviourInstallers:
       - {fileID: 1313371051663835552, guid: 3e3c364854931b74d9cc3ef430eed5b8, type: 3}
+      - {fileID: -554240455347207042, guid: b1a3d5b6d3c479141ac768358072ec1d, type: 3}
     - _colliderTag: {fileID: 11400000, guid: 8f63d5a3356d7ae46aa9cff295f139f2, type: 2}
       _behaviourInstallers:
       - {fileID: 1313371051663835552, guid: 3e3c364854931b74d9cc3ef430eed5b8, type: 3}
@@ -6371,6 +6476,7 @@ MonoBehaviour:
     _onDestroyBehaviourInstallers:
     - _colliderTag: {fileID: 11400000, guid: f89e86bd10b359e409435b58710265d3, type: 2}
       _behaviourInstallers:
+      - {fileID: 1934593045}
       - {fileID: 5673333985509693334, guid: 3c428e1a0478b2846bb56954b17be0b5, type: 3}
       - {fileID: 7560507918415473656, guid: 60230aa82f3d67941b8db158a2cda7c0, type: 3}
       - {fileID: 3644301805295159440, guid: 7d8f762a8a7a1884bae0e1566f8e9108, type: 3}
@@ -6386,7 +6492,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1934593044}
   m_Father: {fileID: 1603309616}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

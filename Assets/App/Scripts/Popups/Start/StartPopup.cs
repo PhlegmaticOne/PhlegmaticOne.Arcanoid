@@ -41,7 +41,7 @@ namespace Popups.Start
             SetAnimation(viewModel.CloseAction, Animate.RectTransform(RectTransform)
                 .RelativeTo(ParentTransform)
                 .Disappear(_animationConfiguration.CloseAnimation)
-                .ToPopupCallbackAnimation());
+                .ToPopupCallbackAnimation(() => _exitControl.RectTransform.DOKill()));
             SetAnimation(viewModel.ExitControlAction, Animate.RectTransform(_exitControl.RectTransform)
                 .RelativeTo(RectTransform)
                 .ToRight(_animationConfiguration.ButtonsDisappearAnimation)

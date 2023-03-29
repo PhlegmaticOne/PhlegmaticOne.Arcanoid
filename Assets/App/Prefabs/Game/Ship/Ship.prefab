@@ -242,13 +242,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85aa5eb3b1604a2daf179ca6ed6e3dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _behaviorObjectTags: {fileID: 5090016438525540947}
   _rigidbody2D: {fileID: 8987583453948060867}
   _collider2D: {fileID: 410741292467645968}
   _shipConfiguration: {fileID: 11400000, guid: a621c528654338649a98624949a37868, type: 2}
   _activeShipPart: {fileID: 2053837344483421897}
+  _unactivePartTransform: {fileID: 837736328482808524}
   _shotgunTransforms:
   - {fileID: 5064633584299383571}
   - {fileID: 1934574689560954149}
+  _shipInstaller:
+    _onCollisionBehaviourInstallers:
+    - _colliderTag: {fileID: 11400000, guid: 64f4a6842edafa541b4e4bf3b5f5a256, type: 2}
+      _behaviourInstallers:
+      - {fileID: -2431145065667997721, guid: 647cb1a1f5069b74e8005a10d2367620, type: 3}
+    _onDestroyBehaviourInstallers: []
 --- !u!114 &5090016438525540947
 MonoBehaviour:
   m_ObjectHideFlags: 0

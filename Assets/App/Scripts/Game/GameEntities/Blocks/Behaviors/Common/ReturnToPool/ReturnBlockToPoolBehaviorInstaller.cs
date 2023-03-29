@@ -4,11 +4,13 @@ using Libs.Behaviors;
 using Libs.Behaviors.Installer;
 using Libs.Pooling.Base;
 using Libs.Services;
+using UnityEngine;
 
 namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
 {
     public class ReturnBlockToPoolBehaviorInstaller : BehaviorInstaller<Block>
     {
+        [SerializeField] private float _disappearTime;
         public override IObjectBehavior<Block> CreateBehaviour()
         {
             var global = ServiceProviderAccessor.Global;
@@ -16,7 +18,9 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
             
             var poolProvider = global.GetRequiredService<IPoolProvider>();
             var fieldAccessor = game.GetRequiredService<GameField>();
-            return new ReturnBlockToPoolBehavior(poolProvider, fieldAccessor);
+            var behavior = new ReturnBlockToPoolBehavior(poolProvider, fieldAccessor);
+            behavior.SetBehaviorParameters(_disappearTime);
+            return behavior;
         }
     }
 }

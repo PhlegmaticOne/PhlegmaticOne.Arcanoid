@@ -51,6 +51,7 @@ namespace Libs.Popups
                 Showed?.Invoke(this);
                 EnableInput();
                 _onAnimationPlayedAction = null;
+                appearAnimation = null;
             };
             
             appearAnimation.AnimationPlayed += _onAnimationPlayedAction;
@@ -70,6 +71,7 @@ namespace Libs.Popups
                 onClose?.Invoke();
                 Closed?.Invoke(this);
                 _onAnimationPlayedAction = null;
+                disappearAnimation = null;
                 CloseInstant();
             };
             

@@ -7,10 +7,14 @@ namespace Libs.Popups.Animations.Concrete
     public class DoTweenCallbackAnimation : PopupAnimationBase
     {
         private Func<Tween> _animationCallback;
-
+        private Action _killAction;
         private Tween _tween;
 
-        public DoTweenCallbackAnimation(Func<Tween> animationCallback) => _animationCallback = animationCallback;
+        public DoTweenCallbackAnimation(Func<Tween> animationCallback, Action killAction = null)
+        {
+            _animationCallback = animationCallback;
+            _killAction = killAction;
+        }
 
         public override void Play()
         {
@@ -20,9 +24,11 @@ namespace Libs.Popups.Animations.Concrete
 
         public override void Stop()
         {
-            _animationCallback = null;
-            _tween.Kill();
+            _killAction?.Invoke();
+            _tween?.Kill();
             _tween = null;
+            _animationCallback = null;
+            _killAction = null;
         }
     }
 }

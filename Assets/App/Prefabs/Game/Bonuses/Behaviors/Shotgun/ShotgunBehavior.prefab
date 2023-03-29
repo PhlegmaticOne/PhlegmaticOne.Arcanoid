@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609a17889b41449d891d36595a50a895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionTime: 10
-  _shootInterval: 0.3
+  _actionTime: 12
+  _shootInterval: 0.4

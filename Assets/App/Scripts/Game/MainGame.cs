@@ -100,6 +100,7 @@ namespace Game
         public void Stop()
         {
             _winParticles.Hide();
+            _entitiesOnFieldCollection.Ship.Reset();
             var blocksPool = _poolProvider.GetPool<Block>();
             foreach (var block in _gameField.Blocks)
             {

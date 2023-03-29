@@ -43,6 +43,8 @@ namespace Libs.Popups.Controls.Base
             {
                 _rectTransform.localPosition = _awakePosition;
             }
+
+            ControlValue = null;
             _controlAction = null;
             ResetProtected();
         }

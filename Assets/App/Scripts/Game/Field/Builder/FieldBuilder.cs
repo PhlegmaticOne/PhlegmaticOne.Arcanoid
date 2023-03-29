@@ -51,7 +51,6 @@ namespace Game.Field.Builder
         
         private async void BuildAsync(List<Block> blocks, Vector2[,] positions, int width, int height)
         {
-            var interval = _fieldBuilderInfo.ScalePunchTime;
             var wait = (int)(_fieldBuilderInfo.GetIntervalTime(width + height - 1) * 1000);
             var totalTasks = new List<Task>();
 
@@ -66,7 +65,7 @@ namespace Game.Field.Builder
                         break;
                     }
                     
-                    TryAddTask(totalTasks, blocks, positions, width, r, col, interval);
+                    TryAddTask(totalTasks, blocks, positions, width, r, col);
                 }
                 
                 await Task.Delay(wait);
@@ -82,7 +81,7 @@ namespace Game.Field.Builder
                         break;
                     }
                     
-                    TryAddTask(totalTasks, blocks, positions, width, row, c, interval);
+                    TryAddTask(totalTasks, blocks, positions, width, row, c);
                 }
             
                 await Task.Delay(wait);
@@ -93,7 +92,7 @@ namespace Game.Field.Builder
         }
 
         private void TryAddTask(List<Task> tasks, List<Block> blocks, Vector2[,] positions,
-            in int width, in int row, in int col, in float interval)
+            in int width, in int row, in int col)
         {
             var block = blocks[row * width + col];
             if (block == null)
@@ -105,10 +104,10 @@ namespace Game.Field.Builder
             var transform = block.transform;
             transform.position = position;
             transform.localScale = Vector3.zero;
-            tasks.Add(block.transform.DOScale(Vector3.one, interval)
-                .SetEase(Ease.OutElastic)
-                .Play()
-                .AsyncWaitForCompletion());
+            var sequence = DOTween.Sequence();
+            sequence.Append(block.transform.DOScale(Vector3.one * _fieldBuilderInfo.MaxScale, _fieldBuilderInfo.TimeToMaxScale));
+            sequence.Append(block.transform.DOScale(Vector3.one, _fieldBuilderInfo.TimeFromMaxScaleToOne));
+            tasks.Add(sequence.Play().AsyncWaitForCompletion());
         }
 
         private List<Block> GetBlocks(LevelData levelData, BlockSpawnData blockSpawnData)

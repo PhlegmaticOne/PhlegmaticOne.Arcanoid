@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ef252d71c34a8bb1ff8cc943aacd1c, type: 3}
   m_Name: FieldAnimationConfiguration
   m_EditorClassIdentifier: 
-  _scalePunchTime: 1.3
   _maxTimeToBuild: 2
-  _defaultScaleInterval: 0.1
+  _defaultScaleInterval: 0.12
+  _maxScale: 1.2
+  _timeToMaxScale: 0.5
+  _timeFromMaxScaleToOne: 0.2
