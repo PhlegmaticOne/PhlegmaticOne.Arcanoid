@@ -35,33 +35,29 @@ namespace Game.GameEntities.PlayerObjects.BallObject.Behaviors.Particles
         {
             var particle = _particleManager.SpawnParticle<WallParticle>(x =>
             {
-                InitializeParticle(entity, x.Main, collision2D);
+                InitializeParticle(entity, x, collision2D);
             });
             particle.Play();
         }
 
-        private void InitializeParticle(Ball ball, ParticleSystem particleSystem, Collision2D collision2D)
+        private void InitializeParticle(Ball ball, WallParticle wallParticle, Collision2D collision2D)
         {
             var contact = collision2D.contacts[0];
             var angle = AngleBetweenVectors(Vector2.right, contact.normal);
-            var shape = particleSystem.shape;
-            var main = particleSystem.main;
             
-            var shapeRotation = shape.rotation;
-            shapeRotation.z += angle;
-            shape.position = contact.point;
-            shape.rotation = shapeRotation;
+            wallParticle.SetPosition(contact.point);
+            wallParticle.AddRotation(angle);
 
             if (ball.IsRage)
             {
-                main.startColor = _rageColor;
+                wallParticle.SetColor(_rageColor);
             }
 
             if (collision2D.collider.TryGetComponent<BehaviorObjectTags>(out var tags) &&
                 tags.ColliderTags.Contains(_bottomColliderTag))
             {
-                main.startColor = _bottomColor;
-                main.startSize = new ParticleSystem.MinMaxCurve(_bottomSize);
+                wallParticle.SetColor(_bottomColor);
+                wallParticle.SetSize(_bottomSize);
             }
         }
         

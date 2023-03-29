@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.ObjectParticles.Particles
 {
@@ -16,6 +15,32 @@ namespace Game.ObjectParticles.Particles
             _startRotation = shape.rotation;
             _startColor = main.startColor.color;
             _startMinMaxCurve = main.startSize;
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            var shape = MainParticleSystem.shape;
+            shape.position = position;
+        }
+
+        public void AddRotation(float rotation)
+        {
+            var shape = MainParticleSystem.shape;
+            var shapeRotation = shape.rotation;
+            shapeRotation.z += rotation;
+            shape.rotation = shapeRotation;
+        }
+
+        public void SetColor(Color color)
+        {
+            var main = MainParticleSystem.main;
+            main.startColor = color;
+        }
+
+        public void SetSize(float size)
+        {
+            var main = MainParticleSystem.main;
+            main.startSize = new ParticleSystem.MinMaxCurve(size);
         }
 
         public override void Reset()

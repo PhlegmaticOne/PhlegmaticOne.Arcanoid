@@ -40,10 +40,12 @@ namespace Game.GameEntities.PlayerObjects.ShipObject.Behaviors.Punch
             
             entity.ActivePartTransform
                 .DOPunchPosition(_punchDirection, _time, 0, 0)
+                .SetUpdate(true)
                 .Play();
             
             entity.UnactivePartTransform
                 .DOPunchPosition(_punchDirection, _time, 0, 0)
+                .SetUpdate(true)
                 .Play();
         }
     }
