@@ -1,4 +1,5 @@
 ﻿using Common.Scenes;
+using DG.Tweening;
 using Game.Field;
 using Libs.Behaviors;
 using Libs.Behaviors.Installer;
@@ -11,6 +12,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
     public class ReturnBlockToPoolBehaviorInstaller : BehaviorInstaller<Block>
     {
         [SerializeField] private float _disappearTime;
+        [SerializeField] private Ease _disappearEase;
         public override IObjectBehavior<Block> CreateBehaviour()
         {
             var global = ServiceProviderAccessor.Global;
@@ -19,7 +21,7 @@ namespace Game.GameEntities.Blocks.Behaviors.Common.ReturnToPool
             var poolProvider = global.GetRequiredService<IPoolProvider>();
             var fieldAccessor = game.GetRequiredService<GameField>();
             var behavior = new ReturnBlockToPoolBehavior(poolProvider, fieldAccessor);
-            behavior.SetBehaviorParameters(_disappearTime);
+            behavior.SetBehaviorParameters(_disappearTime, _disappearEase);
             return behavior;
         }
     }
