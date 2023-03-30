@@ -1,6 +1,7 @@
 ﻿using Common.Scenes;
 using DG.Tweening;
 using Game.Field;
+using Game.GameEntities.Blocks.Configurations;
 using Libs.Behaviors;
 using Libs.Behaviors.Installer;
 using Libs.Pooling.Base;

@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Particles/SpawnSideWallParticleBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/BallObject/Behaviors/Particles/SpawnSideWallParticleBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/ShipObject/Behaviors/Punch/PunchShipBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/PlayerObjects/ShipObject/Behaviors/Punch/PunchShipBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/ParticleBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/ParticleBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/WallParticle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/ObjectParticles/Particles/WallParticle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Common/ReturnBlockToPoolBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Common/ReturnBlockToPoolBehavior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Particles/SideWallParticle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Particles/SideWallParticle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Behaviors/PunchBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Behaviors/PunchBehavior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LosePopup/LosePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LosePopup/LosePopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyPreview.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyPreview.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,6 +215,8 @@
       <workItem from="1679997100860" duration="14771000" />
       <workItem from="1680027285939" duration="3070000" />
       <workItem from="1680078508174" duration="31081000" />
+      <workItem from="1680155877277" duration="759000" />
+      <workItem from="1680158734770" duration="2595000" />
     </task>
     <servers />
   </component>

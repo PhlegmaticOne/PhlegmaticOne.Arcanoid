@@ -79,7 +79,7 @@ namespace Game
             controlSystem.AddObjectToFollow(ball);
             controlSystem.EnableInput();
             
-            _gameSystems.HealthSystem.Initialize(data.LevelData.LifesCount);
+            _gameSystems.HealthSystem.Initialize(data.LevelData.LifesCount + 1);
             _gameSystems.CaptiveBallsSystem.Initialize(_poolProvider, ballsOnField);
             Initialized?.Invoke();
             BuildField(data);

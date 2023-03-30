@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _disappearTime: 0.5
   _disappearEase: 6
+  _graniteConfiguration: {fileID: 11400000, guid: 25efc0f82fa4ce840a40916b29749b87, type: 2}

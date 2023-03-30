@@ -167,11 +167,6 @@ MonoBehaviour:
   _restartControl: {fileID: 22462180966751946}
   _buyLifeControl: {fileID: 7801251627107648737}
   _energyView: {fileID: 590657930923501997}
-  _bindableComponents:
-  - {fileID: 4492346415286671897}
-  - {fileID: 76811877600528415}
-  - {fileID: 8957593544451883608}
-  - {fileID: 1171942948983855219}
 --- !u!1 &4719939897064284186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,12 +1007,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1980048777024133221, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980048777024133221, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
       propertyPath: m_fontSize
-      value: 32
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1980048777024133221, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
       propertyPath: m_fontSizeBase
-      value: 32
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3594682794033229632, guid: 6ea6a5b0eb9ca8749949980b67856238, type: 3}
       propertyPath: m_Name

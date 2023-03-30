@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Game.Field;
+using Game.GameEntities.Blocks.Configurations;
 using Libs.Behaviors;
 using Libs.Pooling.Base;
 using UnityEngine;
