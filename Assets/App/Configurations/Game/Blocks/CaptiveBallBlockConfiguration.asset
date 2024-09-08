@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574a3f950b544860abdba44350f4a7f8, type: 3}
+  m_Name: CaptiveBallBlockConfiguration
+  m_EditorClassIdentifier: 
+  _blockId: 1005
+  _lifesCount: 2
+  _mainSprite: {fileID: 21300000, guid: 458b3cd4deca62a4b985de0e040c8eae, type: 3}
+  _isActive: 1
+  _hasUnderlyingConfiguration: 1
+  _underlyingBlockConfiguration: {fileID: 11400000, guid: 2927c524e7a019a4192a8760e4e21027, type: 2}
+  _isColorBlock: 0

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arcanoid/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Common/ReturnBlockToPoolBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Blocks/Behaviors/Common/ReturnBlockToPoolBehavior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Particles/SideWallParticle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Particles/SideWallParticle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Behaviors/PunchBehavior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/Game/Ship/Behaviors/PunchBehavior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LosePopup/LosePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Prefabs/UI/LosePopup/LosePopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehaviorInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/GameEntities/Blocks/Behaviors/Common/ReturnToPool/ReturnBlockToPoolBehaviorInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/App/Scripts/Game/MainGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyPreview.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/BombsGalaxy/Data/BombsGalaxyPreview.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/App/MainGame/Packs/PackCollectionConfiguration.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/00/28ec8f7a/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/19/1440b2fb/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/1b/44dc1fad/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/2e/60547bdd/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/7c/485befc5/InvokableCall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/8b/df58a6a1/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/ad/ca155deb/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/d1/0037ce5e/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/ec/22d2acc5/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/f9/951d36b7/Scene.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/08ea823645ac4a518a68e458cdb975b413d000/ff/e09eb4cc/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351e49e2a5bf4fd6beabb458ce2255f3ff600/2c/02cb3ea7/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351e49e2a5bf4fd6beabb458ce2255f3ff600/fa/e02a3ea2/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39d8670c8f6e487fb992d3c14d75458429fa00/2d/545145fa/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ddb5fa70dfe40d2818192400111b9ec2aa00/26/9afc1570/Tween.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ddb5fa70dfe40d2818192400111b9ec2aa00/43/ecfafc21/DOTweenComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ddb5fa70dfe40d2818192400111b9ec2aa00/45/a9410b60/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ddb5fa70dfe40d2818192400111b9ec2aa00/b5/e28f0933/DOTween.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ddb5fa70dfe40d2818192400111b9ec2aa00/e0/ec89e88c/TweenManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/07/d5ab7eb5/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/23/62b7fce2/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/37/8ddd0c9d/Environment.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/4e/cd9aca6d/Thread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/50/4938adf9/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/50/6c28c706/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/59/6ab17665/MonoProperty.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/5d/b7773b68/Delegate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/89/6ac683ce/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/ae/abdacee3/File.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/d0/11b62275/Int32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/697e84925a1842078d89094db3b67abf7000/d2/d632a82f/SendMouseEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76860db3a1bd406f9ef62e3284ca274a64200/fc/ec3be483/SerializedScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce529ddd5fb1424f905ed386885ff5fe76be00/4d/57a5efb7/BuildPipelineInterfaces.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dc6702d8301c4ec4b08ebc2e4957672140c00/63/c70fb505/ISubmitHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dc6702d8301c4ec4b08ebc2e4957672140c00/80/e2d7c1e6/IEventSystemHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dc6702d8301c4ec4b08ebc2e4957672140c00/d3/63411422/IPointerClickHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f02cf11854b94b9cbce3b36a979ee5273800/a2/cb933a9c/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff013aa991234c059a7ac2c5cbef41871b800/5a/bfa6cf5b/BoxCollider2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/App/Scripts/Game/Field/Configurations/GameFieldConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/App/Scripts/Libs/Popups/ViewModels/Actions/IPopupAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/AspectRatioFitter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ToggleGroup.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MKHj7dZ7iHkwhHUrBptkAcne6N" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.47600767&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\lolol\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\lolol\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\lolol\\AppData\\Local\\Symbols\\src&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\2020.3.41f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\lolol\source\repos\Arcanoid -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\lolol\source\repos\Arcanoid" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\2020.3.41f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\lolol\source\repos\Arcanoid -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\lolol\source\repos\Arcanoid" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3a3e3fab-e61d-4af6-82b4-16f490c5bca3" name="Changes" comment="" />
+      <created>1677509487441</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677509487441</updated>
+      <workItem from="1677509491201" duration="12091000" />
+      <workItem from="1677563602780" duration="1486000" />
+      <workItem from="1677567644649" duration="15143000" />
+      <workItem from="1677648422770" duration="35738000" />
+      <workItem from="1677707130905" duration="239000" />
+      <workItem from="1677730564329" duration="1970000" />
+      <workItem from="1677734639124" duration="6422000" />
+      <workItem from="1677752752153" duration="7894000" />
+      <workItem from="1677822298785" duration="23801000" />
+      <workItem from="1677918364923" duration="25862000" />
+      <workItem from="1678007131951" duration="33323000" />
+      <workItem from="1678082843290" duration="1085000" />
+      <workItem from="1678086401446" duration="4109000" />
+      <workItem from="1678101077489" duration="9180000" />
+      <workItem from="1678115439109" duration="17798000" />
+      <workItem from="1678166386156" duration="10032000" />
+      <workItem from="1678189007474" duration="10086000" />
+      <workItem from="1678204832611" duration="957000" />
+      <workItem from="1678278730063" duration="32801000" />
+      <workItem from="1678343582019" duration="3727000" />
+      <workItem from="1678360978800" duration="18304000" />
+      <workItem from="1678425526847" duration="15513000" />
+      <workItem from="1678515756619" duration="4084000" />
+      <workItem from="1678526875909" duration="11077000" />
+      <workItem from="1678558728469" duration="1563000" />
+      <workItem from="1678609061410" duration="34170000" />
+      <workItem from="1678653789433" duration="5744000" />
+      <workItem from="1678659717429" duration="394000" />
+      <workItem from="1678684833167" duration="3352000" />
+      <workItem from="1678690628056" duration="3700000" />
+      <workItem from="1678714036583" duration="21254000" />
+      <workItem from="1678773567594" duration="820000" />
+      <workItem from="1678777487346" duration="19921000" />
+      <workItem from="1678858268852" duration="10266000" />
+      <workItem from="1678886655346" duration="12748000" />
+      <workItem from="1678945482359" duration="8729000" />
+      <workItem from="1678962458141" duration="8859000" />
+      <workItem from="1679030349717" duration="5651000" />
+      <workItem from="1679066371546" duration="10045000" />
+      <workItem from="1679076745115" duration="4643000" />
+      <workItem from="1679126185501" duration="27093000" />
+      <workItem from="1679210065441" duration="6212000" />
+      <workItem from="1679290221763" duration="3266000" />
+      <workItem from="1679295681414" duration="6191000" />
+      <workItem from="1679309151146" duration="1968000" />
+      <workItem from="1679317704498" duration="16803000" />
+      <workItem from="1679376268861" duration="9399000" />
+      <workItem from="1679398581013" duration="21321000" />
+      <workItem from="1679459390430" duration="1099000" />
+      <workItem from="1679462477787" duration="11430000" />
+      <workItem from="1679484640460" duration="26988000" />
+      <workItem from="1679552986553" duration="5084000" />
+      <workItem from="1679566652357" duration="22236000" />
+      <workItem from="1679604494604" duration="1315000" />
+      <workItem from="1679636087087" duration="8807000" />
+      <workItem from="1679736099316" duration="20701000" />
+      <workItem from="1679817438929" duration="8896000" />
+      <workItem from="1679848626379" duration="16025000" />
+      <workItem from="1679890507648" duration="1675000" />
+      <workItem from="1679894405696" duration="10906000" />
+      <workItem from="1679907982168" duration="745000" />
+      <workItem from="1679916262082" duration="20804000" />
+      <workItem from="1679981847130" duration="2140000" />
+      <workItem from="1679986807536" duration="4381000" />
+      <workItem from="1679997100860" duration="14771000" />
+      <workItem from="1680027285939" duration="3070000" />
+      <workItem from="1680078508174" duration="31081000" />
+      <workItem from="1680155877277" duration="759000" />
+      <workItem from="1680158734770" duration="2595000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Libs/Pooling/Implementation/ObjectPool.cs</url>
+          <line>45</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Libs\Pooling\Implementation\ObjectPool.cs" initialLine="45" containingFunctionPresentation="method 'ReturnToPool'">
+            <startOffsets>
+              <option value="1527" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1563" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Popups/Settings/Controls/LocalizationDropdownControl.cs</url>
+          <line>37</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Popups\Settings\Controls\LocalizationDropdownControl.cs" initialLine="37" containingFunctionPresentation="method 'LocalizationManagerOnLocaleChanged'">
+            <startOffsets>
+              <option value="1212" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1229" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/App/Scripts/Popups/Settings/Controls/LocalizationDropdownControl.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\lolol\source\repos\Arcanoid\Assets\App\Scripts\Popups\Settings\Controls\LocalizationDropdownControl.cs" initialLine="30" containingFunctionPresentation="method 'Initialize'">
+            <startOffsets>
+              <option value="949" />
+            </startOffsets>
+            <endOffsets>
+              <option value="992" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#Common.Packs.Data.Models.PackGameData" memberName="PackConfiguration" />
+        <PinnedItemInfo parentTag="Type#Libs.Behaviors.BehaviorObjectTags" memberName="ColliderTags" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

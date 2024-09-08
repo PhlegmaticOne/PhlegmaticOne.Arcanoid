@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9fe3177c8b41cda717d28edfe4b13b, type: 3}
+  m_Name: PackCollectionConfiguration
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _packsFileAttributes:
+    _packsInResourcesDirectoryPath: App/MainGame/Packs
+    _packsInPersistentDirectoryPath: PackSaves
+    _levelsSubfolderName: Levels
+    _dataSubfolderName: Data
+    _packDataFilePostfix: Data
+    _packPreviewFilePostfix: Preview
+  _defaultPackConfiguration:
+    _defaultPack: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
+    _defaultLevelId: 2
+  _isUpdatePacksInEditor: 0
+  _isUpdateAllPacks: 0
+  _packConfigurations:
+  - _packConfiguration: {fileID: 11400000, guid: c2ca74a0150fdb241a8a01bec84b2290, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: 3b86426c89e582e4992fff22f1466271, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: c8e2071e93b3b4d4f9694741087ee306, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: 05efa56963790a54d828969358413f74, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: e050ca889fa732043ae98f940c2558b3, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: ebd9ed393ae5cac47bc5ed19ba20dacc, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: e2029faadd77813418625ea4ba06339c, type: 2}
+    _isUpdate: 0
+  - _packConfiguration: {fileID: 11400000, guid: 0a1bc2e2d22cb2841845acb246cbd2a3, type: 2}
+    _isUpdate: 0

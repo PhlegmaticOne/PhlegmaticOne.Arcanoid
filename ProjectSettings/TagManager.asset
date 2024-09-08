@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ship
+  - Ball
+  - Bottom
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -11,12 +15,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ball
+  - Blocks
+  - Ship
+  - DynamicBlocks
+  - Walls
+  - Transition
   - 
   - 
   - 
@@ -40,4 +44,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Blocks
+    uniqueID: 701534823
+    locked: 0
+  - name: Player
+    uniqueID: 259122009
+    locked: 0
+  - name: Effects
+    uniqueID: 1147410095
+    locked: 0
+  - name: UI
+    uniqueID: 1273649905
+    locked: 0
+  - name: UIParticles
+    uniqueID: 864005647
+    locked: 0
+  - name: Transition
+    uniqueID: 1070481983
     locked: 0
