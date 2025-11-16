@@ -34,7 +34,7 @@ namespace Game.GameEntities.Bonuses
         public void StartMove()
         {
             _rigidbody.bodyType = RigidbodyType2D.Dynamic;
-            _rigidbody.velocity = _velocity;
+            _rigidbody.linearVelocity = _velocity;
         }
 
         protected override bool CanBeDestroyedOnDestroyCollision() => true;
@@ -44,7 +44,7 @@ namespace Game.GameEntities.Bonuses
             _bonusView.SetSize(_awakeSize);
             _bonusView.Reset();
             BonusConfiguration = null;
-            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.linearVelocity = Vector2.zero;
             _rigidbody.bodyType = RigidbodyType2D.Static;
         }
     }

@@ -42,7 +42,7 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         }
 
         public Transform GetTransform() => transform;
-        public Vector2 GetSpeed() => _rigidbody2D.velocity;
+        public Vector2 GetSpeed() => _rigidbody2D.linearVelocity;
         public float CurrentSpeed => _currentSpeed;
         public void SetStartSpeed(float startSpeed)
         {
@@ -54,18 +54,18 @@ namespace Game.GameEntities.PlayerObjects.BallObject
         {
             if (_rigidbody2D.bodyType != RigidbodyType2D.Static)
             {
-                _rigidbody2D.velocity = speed;
+                _rigidbody2D.linearVelocity = speed;
             }
         }
 
         private void LateUpdate()
         {
-            _rigidbody2D.velocity = _currentSpeed * _rigidbody2D.velocity.normalized;
+            _rigidbody2D.linearVelocity = _currentSpeed * _rigidbody2D.linearVelocity.normalized;
         }
 
         private void FixedUpdate()
         {
-            _preCollisionSpeed = _rigidbody2D.velocity;
+            _preCollisionSpeed = _rigidbody2D.linearVelocity;
         }
 
         public void AddDeltaSpeed(float deltaSpeed)
